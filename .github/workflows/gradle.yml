@@ -26,7 +26,8 @@ jobs:
         restore-keys: ${{ runner.os }}-gradle
     - name: Build with Gradle
       run: ./gradlew build
-    - uses: actions/upload-artifact@v2
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
       with:
-        name: Test results
+        name: test_results
         path: build/reports/allure-report
