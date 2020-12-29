@@ -25,11 +25,10 @@ class DefaultDeviceFarmTractorTest : DescribeSpec({
     val projectArn = "test_project_arn"
     val deviceFarmProjectsHandler = mockk<IDeviceFarmProjectsHandler>()
     val deviceFarmDevicePoolsHandler = mockk<IDeviceFarmDevicePoolsHandler>()
-    val mockLogger = mockk<KLogger>()
+    val mockLogger = mockk<KLogger>(relaxed = true)
     mockkObject(KotlinLogging)
 
     beforeTest {
-        every { mockLogger.info(any<() -> Any?>()) } just runs
         every { KotlinLogging.logger(any<String>()) } returns mockLogger
     }
 
@@ -225,39 +224,27 @@ class DefaultDeviceFarmTractorTest : DescribeSpec({
             confirmVerified(deviceFarmDevicePoolsHandler)
         }
         describe("Any error fetching device pools should be returned as a DeviceFarmTractorError left") {
-            data class ParametersTest(val testName: String, val argument: String) {
-                override fun toString(): String {
-                    return testName
-                }
-            }
-            forAll(
-                ParametersTest("When using empty device pool name", ""),
-                ParametersTest("When using non empty device pool name", "valid device pool name")
+            val expectedResponse = mockk<DeviceFarmTractorError>()
+            coEvery { deviceFarmDevicePoolsHandler.fetchDevicePools(any()) } returns Either.left(
+                expectedResponse
             )
-            { (_, poolName) ->
-                //GIVEN
-                val expectedResponse = mockk<DeviceFarmTractorError>()
-                coEvery { deviceFarmDevicePoolsHandler.fetchDevicePools(any()) } returns Either.left(
-                    expectedResponse
-                )
 
-                //WHEN
-                val response = DefaultDeviceFarmTractor(deviceFarmProjectsHandler, deviceFarmDevicePoolsHandler)
-                    .findOrUseDefaultDevicePool(projectArn, poolName)
+            //WHEN
+            val response = DefaultDeviceFarmTractor(deviceFarmProjectsHandler, deviceFarmDevicePoolsHandler)
+                .findOrUseDefaultDevicePool(projectArn)
 
-                //THEN
-                response shouldBeLeft expectedResponse
-                coVerify {
-                    deviceFarmDevicePoolsHandler.fetchDevicePools(projectArn)
-                }
-                confirmVerified(deviceFarmDevicePoolsHandler)
+            //THEN
+            response shouldBeLeft expectedResponse
+            coVerify {
+                deviceFarmDevicePoolsHandler.fetchDevicePools(projectArn)
             }
+            confirmVerified(deviceFarmDevicePoolsHandler)
 
         }
     }
 
     afterTest {
-        clearMocks(deviceFarmProjectsHandler)
+        clearMocks(deviceFarmProjectsHandler, deviceFarmDevicePoolsHandler)
         unmockkObject(KotlinLogging)
     }
 })
