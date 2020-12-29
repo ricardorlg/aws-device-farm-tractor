@@ -1,20 +1,340 @@
 [ {
-  "uid" : "cea188cc18846f0b",
-  "name" : "When using device pools Any error fetching device pools should be returned as a DeviceFarmTractorError left When using empty device pool name",
+  "uid" : "996d03332e23da10",
+  "name" : "When finding or creating a Project",
   "time" : {
-    "start" : 1609207174347,
-    "stop" : 1609207174380,
-    "duration" : 33
+    "start" : 1609220224496,
+    "stop" : 1609220224513,
+    "duration" : 17
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "a0e1c1dd15b49a38",
-  "name" : "When using device pools Any error fetching device pools should be returned as a DeviceFarmTractorError left When using non empty device pool name",
+  "uid" : "1921097586edef69",
+  "name" : "Any error creating the project should be returned as a DeviceFarmTractorError left",
   "time" : {
-    "start" : 1609207174497,
-    "stop" : 1609207174504,
+    "start" : 1609220224512,
+    "stop" : 1609220224513,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2e0cb38627c71864",
+  "name" : "Artifact name is mandatory, a left should be returned if not provided",
+  "time" : {
+    "start" : 1609220223991,
+    "stop" : 1609220223991,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4aa556e9c084936a",
+  "name" : "When creating AWS device farm upload",
+  "time" : {
+    "start" : 1609220223976,
+    "stop" : 1609220223995,
+    "duration" : 19
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5feec5352dd902dd",
+  "name" : "When uploading artifact to S3",
+  "time" : {
+    "start" : 1609220224001,
+    "stop" : 1609220224231,
+    "duration" : 230
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "969f341a8c463054",
+  "name" : "It should return the created AWS Upload as a right",
+  "time" : {
+    "start" : 1609220223977,
+    "stop" : 1609220223977,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "12ddefa43ecde348",
+  "name" : "Any error should be returned as a DeviceFarmTractorError left",
+  "time" : {
+    "start" : 1609220224499,
+    "stop" : 1609220224499,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e997f567c18bf019",
+  "name" : "When creating a project in AWS device farm",
+  "time" : {
+    "start" : 1609220224535,
+    "stop" : 1609220224542,
     "duration" : 7
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "40d7a69a0e566539",
+  "name" : "Any error should be returned as a left",
+  "time" : {
+    "start" : 1609220224458,
+    "stop" : 1609220224462,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4e1c57cfa9271b0a",
+  "name" : "Any error should be returned as a left",
+  "time" : {
+    "start" : 1609220224541,
+    "stop" : 1609220224542,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ec2d911c65709530",
+  "name" : "Project ARN is mandatory, a left should be returned if not provided",
+  "time" : {
+    "start" : 1609220223988,
+    "stop" : 1609220223989,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4dc89145b79cf1ce",
+  "name" : "It should return the associated device pools of a given project as a right",
+  "time" : {
+    "start" : 1609220222211,
+    "stop" : 1609220223413,
+    "duration" : 1202
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3aa3c83a794bd31c",
+  "name" : "Project ARN is mandatory, a left should be returned if it is not provided",
+  "time" : {
+    "start" : 1609220223656,
+    "stop" : 1609220223871,
+    "duration" : 215
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2a897bb2ecdb170d",
+  "name" : "It should return a left when upload result has not OK status",
+  "time" : {
+    "start" : 1609220224137,
+    "stop" : 1609220224186,
+    "duration" : 49
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4323d2f0677fc0e9",
+  "name" : "It should return an error as a left if upload ARN is empty",
+  "time" : {
+    "start" : 1609220224407,
+    "stop" : 1609220224449,
+    "duration" : 42
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a9232e0ea5eb38f1",
+  "name" : "It should create a project when is not found",
+  "time" : {
+    "start" : 1609220224500,
+    "stop" : 1609220224501,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cabb2d9cd1356572",
+  "name" : "It should return the upload as a right",
+  "time" : {
+    "start" : 1609220224276,
+    "stop" : 1609220224388,
+    "duration" : 112
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b5f51fa111cc377b",
+  "name" : "It should return the created project as a right",
+  "time" : {
+    "start" : 1609220224536,
+    "stop" : 1609220224536,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e06f98b1c1108892",
+  "name" : "It should use a default device pools when no pool name is provided",
+  "time" : {
+    "start" : 1609220224515,
+    "stop" : 1609220224515,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "214c54f1f8a47642",
+  "name" : "It should return the project when it exists",
+  "time" : {
+    "start" : 1609220224497,
+    "stop" : 1609220224497,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "97d546b5319b2d9f",
+  "name" : "When using device pools",
+  "time" : {
+    "start" : 1609220224514,
+    "stop" : 1609220224525,
+    "duration" : 11
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fadd294061b307c0",
+  "name" : "It should return DeviceFarmDevicePoolNotFound left when there is no device pool with the provided name",
+  "time" : {
+    "start" : 1609220224521,
+    "stop" : 1609220224522,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "27c938c189b0a288",
+  "name" : "When fetching device pools from AWS device farm",
+  "time" : {
+    "start" : 1609220222043,
+    "stop" : 1609220223951,
+    "duration" : 1908
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d64860ea01d66f88",
+  "name" : "Any error should be returned as a left",
+  "time" : {
+    "start" : 1609220223905,
+    "stop" : 1609220223944,
+    "duration" : 39
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "efea7c341fa54698",
+  "name" : "It should return the device pool with the provided device pool name",
+  "time" : {
+    "start" : 1609220224516,
+    "stop" : 1609220224516,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "39b35371f9d48f",
+  "name" : "It should return the project as a right",
+  "time" : {
+    "start" : 1609220224531,
+    "stop" : 1609220224531,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a9b0e184b11334bf",
+  "name" : "When fetching an AWS device farm upload",
+  "time" : {
+    "start" : 1609220224264,
+    "stop" : 1609220224480,
+    "duration" : 216
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e340daa1a99e98a6",
+  "name" : "Any error should be returned as a left",
+  "time" : {
+    "start" : 1609220224221,
+    "stop" : 1609220224230,
+    "duration" : 9
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "bc78ab27490f8053",
+  "name" : "Any error should be returned as a left",
+  "time" : {
+    "start" : 1609220223979,
+    "stop" : 1609220223979,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5202c3228e48e77f",
+  "name" : "Any error fetching device pools should be returned as a DeviceFarmTractorError left",
+  "time" : {
+    "start" : 1609220224524,
+    "stop" : 1609220224524,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "af711e812818af20",
+  "name" : "When fetching projects from AWS",
+  "time" : {
+    "start" : 1609220224529,
+    "stop" : 1609220224533,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "516571decc069900",
+  "name" : "Any error should be returned as a left",
+  "time" : {
+    "start" : 1609220224533,
+    "stop" : 1609220224533,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "af6b9ff3d5600ab4",
+  "name" : "It should return DeviceFarmProjectDoesNotHaveDevicePools left when there is no device pools associated to the project",
+  "time" : {
+    "start" : 1609220224518,
+    "stop" : 1609220224518,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "783e2f3952e59fd6",
+  "name" : "It should return a right when upload result has OK status",
+  "time" : {
+    "start" : 1609220224035,
+    "stop" : 1609220224119,
+    "duration" : 84
   },
   "status" : "passed",
   "severity" : "normal"

@@ -1,35 +1,447 @@
 {
   "uid" : "98d3104e051c652961429bf95fa0b5d6",
   "children" : [ {
-    "name" : "com.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorTest",
-    "children" : [ {
-      "name" : "When using device pools Any error fetching device pools should be returned as a DeviceFarmTractorError left When using empty device pool name",
-      "uid" : "cea188cc18846f0b",
-      "parentUid" : "f58f58b42c5bdedf5d503a37a0881d3e",
-      "status" : "passed",
-      "time" : {
-        "start" : 1609207174347,
-        "stop" : 1609207174380,
-        "duration" : 33
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ ]
-    }, {
-      "name" : "When using device pools Any error fetching device pools should be returned as a DeviceFarmTractorError left When using non empty device pool name",
-      "uid" : "a0e1c1dd15b49a38",
-      "parentUid" : "f58f58b42c5bdedf5d503a37a0881d3e",
-      "status" : "passed",
-      "time" : {
-        "start" : 1609207174497,
-        "stop" : 1609207174504,
-        "duration" : 7
-      },
-      "flaky" : false,
-      "newFailed" : false,
-      "parameters" : [ ]
-    } ],
-    "uid" : "f58f58b42c5bdedf5d503a37a0881d3e"
+    "name" : "When fetching device pools from AWS device farm",
+    "uid" : "27c938c189b0a288",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220222043,
+      "stop" : 1609220223951,
+      "duration" : 1908
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return the associated device pools of a given project as a right",
+    "uid" : "4dc89145b79cf1ce",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220222211,
+      "stop" : 1609220223413,
+      "duration" : 1202
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Project ARN is mandatory, a left should be returned if it is not provided",
+    "uid" : "3aa3c83a794bd31c",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220223656,
+      "stop" : 1609220223871,
+      "duration" : 215
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error should be returned as a left",
+    "uid" : "d64860ea01d66f88",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220223905,
+      "stop" : 1609220223944,
+      "duration" : 39
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "When creating AWS device farm upload",
+    "uid" : "4aa556e9c084936a",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220223976,
+      "stop" : 1609220223995,
+      "duration" : 19
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return the created AWS Upload as a right",
+    "uid" : "969f341a8c463054",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220223977,
+      "stop" : 1609220223977,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error should be returned as a left",
+    "uid" : "bc78ab27490f8053",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220223979,
+      "stop" : 1609220223979,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Project ARN is mandatory, a left should be returned if not provided",
+    "uid" : "ec2d911c65709530",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220223988,
+      "stop" : 1609220223989,
+      "duration" : 1
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Artifact name is mandatory, a left should be returned if not provided",
+    "uid" : "2e0cb38627c71864",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220223991,
+      "stop" : 1609220223991,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "When uploading artifact to S3",
+    "uid" : "5feec5352dd902dd",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224001,
+      "stop" : 1609220224231,
+      "duration" : 230
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return a right when upload result has OK status",
+    "uid" : "783e2f3952e59fd6",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224035,
+      "stop" : 1609220224119,
+      "duration" : 84
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return a left when upload result has not OK status",
+    "uid" : "2a897bb2ecdb170d",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224137,
+      "stop" : 1609220224186,
+      "duration" : 49
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error should be returned as a left",
+    "uid" : "e340daa1a99e98a6",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224221,
+      "stop" : 1609220224230,
+      "duration" : 9
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "When fetching an AWS device farm upload",
+    "uid" : "a9b0e184b11334bf",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224264,
+      "stop" : 1609220224480,
+      "duration" : 216
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return the upload as a right",
+    "uid" : "cabb2d9cd1356572",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224276,
+      "stop" : 1609220224388,
+      "duration" : 112
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return an error as a left if upload ARN is empty",
+    "uid" : "4323d2f0677fc0e9",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224407,
+      "stop" : 1609220224449,
+      "duration" : 42
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error should be returned as a left",
+    "uid" : "40d7a69a0e566539",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224458,
+      "stop" : 1609220224462,
+      "duration" : 4
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "When finding or creating a Project",
+    "uid" : "996d03332e23da10",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224496,
+      "stop" : 1609220224513,
+      "duration" : 17
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return the project when it exists",
+    "uid" : "214c54f1f8a47642",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224497,
+      "stop" : 1609220224497,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error should be returned as a DeviceFarmTractorError left",
+    "uid" : "12ddefa43ecde348",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224499,
+      "stop" : 1609220224499,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should create a project when is not found",
+    "uid" : "a9232e0ea5eb38f1",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224500,
+      "stop" : 1609220224501,
+      "duration" : 1
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error creating the project should be returned as a DeviceFarmTractorError left",
+    "uid" : "1921097586edef69",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224512,
+      "stop" : 1609220224513,
+      "duration" : 1
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "When using device pools",
+    "uid" : "97d546b5319b2d9f",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224514,
+      "stop" : 1609220224525,
+      "duration" : 11
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should use a default device pools when no pool name is provided",
+    "uid" : "e06f98b1c1108892",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224515,
+      "stop" : 1609220224515,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return the device pool with the provided device pool name",
+    "uid" : "efea7c341fa54698",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224516,
+      "stop" : 1609220224516,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return DeviceFarmProjectDoesNotHaveDevicePools left when there is no device pools associated to the project",
+    "uid" : "af6b9ff3d5600ab4",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224518,
+      "stop" : 1609220224518,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return DeviceFarmDevicePoolNotFound left when there is no device pool with the provided name",
+    "uid" : "fadd294061b307c0",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224521,
+      "stop" : 1609220224522,
+      "duration" : 1
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error fetching device pools should be returned as a DeviceFarmTractorError left",
+    "uid" : "5202c3228e48e77f",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224524,
+      "stop" : 1609220224524,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "When fetching projects from AWS",
+    "uid" : "af711e812818af20",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224529,
+      "stop" : 1609220224533,
+      "duration" : 4
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return the project as a right",
+    "uid" : "39b35371f9d48f",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224531,
+      "stop" : 1609220224531,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error should be returned as a left",
+    "uid" : "516571decc069900",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224533,
+      "stop" : 1609220224533,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "When creating a project in AWS device farm",
+    "uid" : "e997f567c18bf019",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224535,
+      "stop" : 1609220224542,
+      "duration" : 7
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "It should return the created project as a right",
+    "uid" : "b5f51fa111cc377b",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224536,
+      "stop" : 1609220224536,
+      "duration" : 0
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Any error should be returned as a left",
+    "uid" : "4e1c57cfa9271b0a",
+    "parentUid" : "98d3104e051c652961429bf95fa0b5d6",
+    "status" : "passed",
+    "time" : {
+      "start" : 1609220224541,
+      "stop" : 1609220224542,
+      "duration" : 1
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
   } ],
   "name" : "suites"
 }
