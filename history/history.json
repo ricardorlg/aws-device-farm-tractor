@@ -1,4 +1,61 @@
 {
+  "When Appium Node Test Spec upload type is used, file must end with .yml" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4a8069676f600130",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612956,
+        "stop" : 1609794612972,
+        "duration" : 16
+      }
+    } ]
+  },
+  "When unknown Upload type is used, an error should be returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "1305a48d93e03de",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612998,
+        "stop" : 1609794613004,
+        "duration" : 6
+      }
+    } ]
+  },
+  "It should return a DeviceFarmTractorError if something happens fetching device farm projects" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2438822ca7e3ba01",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612879,
+        "stop" : 1609794612902,
+        "duration" : 23
+      }
+    } ]
+  },
   "When fetching an AWS device farm upload, it should return the upload as a right" : {
     "statistic" : {
       "failed" : 0,
@@ -9,12 +66,12 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "e4a028f40a95e3c4",
+      "uid" : "2109e1ec7277a7df",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969901,
-        "stop" : 1609225969978,
-        "duration" : 77
+        "start" : 1609794616103,
+        "stop" : 1609794616216,
+        "duration" : 113
       }
     } ]
   },
@@ -28,31 +85,12 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "ead0b28286e2ab1d",
+      "uid" : "c7b7cea1903ae74b",
       "status" : "passed",
       "time" : {
-        "start" : 1609225970035,
-        "stop" : 1609225970046,
-        "duration" : 11
-      }
-    } ]
-  },
-  "When using device pools, any error fetching device pools should be returned as a DeviceFarmTractorError left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "54f69b5437e8ab73",
-      "status" : "passed",
-      "time" : {
-        "start" : 1609225970028,
-        "stop" : 1609225970047,
-        "duration" : 19
+        "start" : 1609794616280,
+        "stop" : 1609794616293,
+        "duration" : 13
       }
     } ]
   },
@@ -66,12 +104,50 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "6da4bca8f1fbb3e1",
+      "uid" : "3238cc4637511e54",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969338,
-        "stop" : 1609225969681,
-        "duration" : 343
+        "start" : 1609794615842,
+        "stop" : 1609794615932,
+        "duration" : 90
+      }
+    } ]
+  },
+  "It should return a DeviceFarmTractorError when uploading the artifact to s3 fails, no matters the upload status" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "80185efd71f30f4b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794613042,
+        "stop" : 1609794613107,
+        "duration" : 65
+      }
+    } ]
+  },
+  "When IOS upload type is used, and file does not have .ipa extension an error is returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "3a66aaa15434f171",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612936,
+        "stop" : 1609794612949,
+        "duration" : 13
       }
     } ]
   },
@@ -85,16 +161,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "40718ecd14db61ca",
+      "uid" : "c172a72b0f889ddb",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969251,
-        "stop" : 1609225969314,
-        "duration" : 63
+        "start" : 1609794615650,
+        "stop" : 1609794615685,
+        "duration" : 35
       }
     } ]
   },
-  "When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided" : {
+  "It should return a project if its found" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -104,12 +180,107 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "5df23c795587367f",
+      "uid" : "97092db40e8a3cb7",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969295,
-        "stop" : 1609225969312,
-        "duration" : 17
+        "start" : 1609794612550,
+        "stop" : 1609794612638,
+        "duration" : 88
+      }
+    } ]
+  },
+  "It should return an UploadFailureError, if the upload status is not succeeded before the maximum number of retries" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2d8b3073016fa34e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612942,
+        "stop" : 1609794613037,
+        "duration" : 95
+      }
+    } ]
+  },
+  "It should return the first found device pool as default when no name is provided" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "3215e1ce520d44e0",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612554,
+        "stop" : 1609794612637,
+        "duration" : 83
+      }
+    } ]
+  },
+  "When IOS upload type is used, file must end with .ipa" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "68d90516c0950bb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612930,
+        "stop" : 1609794612932,
+        "duration" : 2
+      }
+    } ]
+  },
+  "When Android upload type is used, file must end with .apk" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "45a0c89e25ac2fab",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612550,
+        "stop" : 1609794612643,
+        "duration" : 93
+      }
+    } ]
+  },
+  "It should return the device pool that has the provided name" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b9a32520ee21dbdb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612788,
+        "stop" : 1609794612864,
+        "duration" : 76
       }
     } ]
   },
@@ -123,16 +294,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "9e77c4c2aa6154ee",
+      "uid" : "71b4b12d7cee4496",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969295,
-        "stop" : 1609225969675,
-        "duration" : 380
+        "start" : 1609794615826,
+        "stop" : 1609794615944,
+        "duration" : 118
       }
     } ]
   },
-  "When fetching Projects, any error should be returned as a DeviceFarmTractorError left" : {
+  "When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -142,50 +313,69 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "ae59f38dfe95203b",
+      "uid" : "8ca47ae2166ee9b5",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969271,
-        "stop" : 1609225969769,
-        "duration" : 498
-      }
-    } ]
-  },
-  "When using device pools, it should use a default device pool when no pool name is provided" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f45923574f57059c",
-      "status" : "passed",
-      "time" : {
-        "start" : 1609225969867,
-        "stop" : 1609225969890,
-        "duration" : 23
-      }
-    } ]
-  },
-  "When using device pools, it should return DeviceFarmDevicePoolNotFound left when there is no device pool with the provided name" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "1112c3efff7890ee",
-      "status" : "passed",
-      "time" : {
-        "start" : 1609225969999,
-        "stop" : 1609225970024,
+        "start" : 1609794615813,
+        "stop" : 1609794615838,
         "duration" : 25
+      }
+    } ]
+  },
+  "It should return the upload, if its ready to be used" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "422cd1a79450ea4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612553,
+        "stop" : 1609794612758,
+        "duration" : 205
+      }
+    } ]
+  },
+  "It should return a DevicePoolNotFoundError when a device pool is not found" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2caa06414452f4b5",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612927,
+        "stop" : 1609794612944,
+        "duration" : 17
+      }
+    } ]
+  },
+  "It should return a DeviceFarmTractorError when the artifact to upload doesn't exists" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ff1d1c8e18a2115b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794613177,
+        "stop" : 1609794613196,
+        "duration" : 19
       }
     } ]
   },
@@ -199,12 +389,50 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "b8ab91aff040bd3d",
+      "uid" : "beb9cac551a7b2ee",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969779,
-        "stop" : 1609225969832,
-        "duration" : 53
+        "start" : 1609794615934,
+        "stop" : 1609794616005,
+        "duration" : 71
+      }
+    } ]
+  },
+  "When creating a project in AWS device farm, if project name is empty an error should be returned as a left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "37455d57d05835a9",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794616045,
+        "stop" : 1609794616110,
+        "duration" : 65
+      }
+    } ]
+  },
+  "It should return a DeviceFarmTractorError if something happens fetching the associated device pools of the project" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "64beff7cf007e166",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612946,
+        "stop" : 1609794612967,
+        "duration" : 21
       }
     } ]
   },
@@ -218,12 +446,31 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "a86a05fe77ac8735",
+      "uid" : "120272233a04e45d",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969763,
-        "stop" : 1609225969776,
-        "duration" : 13
+        "start" : 1609794615834,
+        "stop" : 1609794615925,
+        "duration" : 91
+      }
+    } ]
+  },
+  "It should return an UploadFailureError if the upload status is not succeeded" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b3fbca567e58dcf",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612792,
+        "stop" : 1609794612939,
+        "duration" : 147
       }
     } ]
   },
@@ -237,12 +484,31 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "2ed877ac297890be",
+      "uid" : "84293d0496d27a6b",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969334,
-        "stop" : 1609225969683,
-        "duration" : 349
+        "start" : 1609794615688,
+        "stop" : 1609794615819,
+        "duration" : 131
+      }
+    } ]
+  },
+  "It should return a DeviceFarmTractorError if something happens creating a new project" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "800251a642f2b10e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612905,
+        "stop" : 1609794612913,
+        "duration" : 8
       }
     } ]
   },
@@ -256,16 +522,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "6d4a1a7e0c49ffd2",
+      "uid" : "917daa4d534b5f22",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969887,
-        "stop" : 1609225969899,
-        "duration" : 12
+        "start" : 1609794616065,
+        "stop" : 1609794616100,
+        "duration" : 35
       }
     } ]
   },
-  "When creating a project, any error should be returned as a DeviceFarmTractorError left" : {
+  "It should create the project if it is no found" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -275,16 +541,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "f199cbcddc142c7e",
+      "uid" : "60f2af365b24550d",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969827,
-        "stop" : 1609225969857,
-        "duration" : 30
+        "start" : 1609794612793,
+        "stop" : 1609794612863,
+        "duration" : 70
       }
     } ]
   },
-  "When using device pools, it should return DeviceFarmProjectDoesNotHaveDevicePools left when there is no device pools associated to the project" : {
+  "When loading a file from a given path, if the files doesn't exists an error should be returned as a Left" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -294,12 +560,12 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "38ca15d7b77b6635",
+      "uid" : "7237854afae98828",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969982,
-        "stop" : 1609225969997,
-        "duration" : 15
+        "start" : 1609794613041,
+        "stop" : 1609794613064,
+        "duration" : 23
       }
     } ]
   },
@@ -313,12 +579,12 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "bdce5eda4c254718",
+      "uid" : "cdbc81e519301f8b",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969255,
-        "stop" : 1609225969292,
-        "duration" : 37
+        "start" : 1609794615806,
+        "stop" : 1609794615824,
+        "duration" : 18
       }
     } ]
   },
@@ -332,16 +598,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "948da05058c3b9e9",
+      "uid" : "2762a082436d9c4a",
       "status" : "passed",
       "time" : {
-        "start" : 1609225968022,
-        "stop" : 1609225969228,
-        "duration" : 1206
+        "start" : 1609794614662,
+        "stop" : 1609794615799,
+        "duration" : 1137
       }
     } ]
   },
-  "When using device pools, it should return the device pool with the provided name" : {
+  "When no path is provided an Illegal Argument error should be returnes as a left" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -351,12 +617,31 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "9cf6c78d1dc9cbaf",
+      "uid" : "2d348d49c9c1ce8d",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969896,
-        "stop" : 1609225969978,
-        "duration" : 82
+        "start" : 1609794613066,
+        "stop" : 1609794613081,
+        "duration" : 15
+      }
+    } ]
+  },
+  "When Upload type is not Android,IOS or Appium, the file must have .zip extension" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8de87bdb9e0b2027",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612985,
+        "stop" : 1609794612989,
+        "duration" : 4
       }
     } ]
   },
@@ -370,16 +655,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "47387878a8caf0c4",
+      "uid" : "35b5ffc9dd381969",
       "status" : "passed",
       "time" : {
-        "start" : 1609225968025,
-        "stop" : 1609225969228,
-        "duration" : 1203
+        "start" : 1609794614652,
+        "stop" : 1609794615799,
+        "duration" : 1147
       }
     } ]
   },
-  "When finding or creating a Project, it should create a project when no project with given name is found" : {
+  "It should return a DeviceFarmTractorError when creating the upload fails" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -389,12 +674,107 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "327301e8b6acf9ce",
+      "uid" : "ffb08ba98ce8e228",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969773,
-        "stop" : 1609225969818,
-        "duration" : 45
+        "start" : 1609794613147,
+        "stop" : 1609794613155,
+        "duration" : 8
+      }
+    } ]
+  },
+  "When Upload type is not Android,IOS or Appium, and file does not have .zip extension an error is returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "417feac923fb0392",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612992,
+        "stop" : 1609794612995,
+        "duration" : 3
+      }
+    } ]
+  },
+  "It should return a NoRegisteredDevicePoolsError when there is no device pools associated to the project" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f5ee4596b542139",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612867,
+        "stop" : 1609794612924,
+        "duration" : 57
+      }
+    } ]
+  },
+  "It should keep fetching upload status even if an error happens in a a retry" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "623640aa8440d197",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794613110,
+        "stop" : 1609794613144,
+        "duration" : 34
+      }
+    } ]
+  },
+  "When Appium Node Test Spec upload type is used, and file does not have .yml extension an error is returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d21c978191e4cb3d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612975,
+        "stop" : 1609794612982,
+        "duration" : 7
+      }
+    } ]
+  },
+  "It should return a DeviceFarmIllegalArtifactExtension when the upload file doesn't satisfy the upload type" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "53a449ae02d3fcb6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794613158,
+        "stop" : 1609794613174,
+        "duration" : 16
       }
     } ]
   },
@@ -408,12 +788,12 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "3c037b1ba068e255",
+      "uid" : "61e373619f8f9cfe",
       "status" : "passed",
       "time" : {
-        "start" : 1609225968026,
-        "stop" : 1609225969042,
-        "duration" : 1016
+        "start" : 1609794614658,
+        "stop" : 1609794615647,
+        "duration" : 989
       }
     } ]
   },
@@ -427,12 +807,31 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "9b7cf16a44689e40",
+      "uid" : "7025817440cef969",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969860,
-        "stop" : 1609225969884,
-        "duration" : 24
+        "start" : 1609794616041,
+        "stop" : 1609794616058,
+        "duration" : 17
+      }
+    } ]
+  },
+  "When Android upload type is used, and file does not have .apk extension an error is returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2a97c0cde498bdd9",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794612791,
+        "stop" : 1609794612923,
+        "duration" : 132
       }
     } ]
   },
@@ -446,31 +845,12 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "8979ecb366e0bac6",
+      "uid" : "84f802b87d098dd4",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969982,
-        "stop" : 1609225970033,
-        "duration" : 51
-      }
-    } ]
-  },
-  "When finding or creating a Project, it should return the first project with the provided name" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "e29a0e59f5af9d47",
-      "status" : "passed",
-      "time" : {
-        "start" : 1609225969002,
-        "stop" : 1609225969266,
-        "duration" : 264
+        "start" : 1609794616223,
+        "stop" : 1609794616276,
+        "duration" : 53
       }
     } ]
   },
@@ -484,12 +864,31 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "f14856e7e416f234",
+      "uid" : "461b0a45fee2a22e",
       "status" : "passed",
       "time" : {
-        "start" : 1609225969688,
-        "stop" : 1609225969752,
-        "duration" : 64
+        "start" : 1609794615991,
+        "stop" : 1609794616023,
+        "duration" : 32
+      }
+    } ]
+  },
+  "When loading a file from a given path, it should return it as a right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "969ed0708ffd83eb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1609794613017,
+        "stop" : 1609794613032,
+        "duration" : 15
       }
     } ]
   }
