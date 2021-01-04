@@ -5,35 +5,38 @@ import software.amazon.awssdk.services.devicefarm.model.UploadType
 sealed class DeviceFarmTractorError(override val message: String, override val cause: Throwable) :
     Throwable(message, cause)
 
-data class DeviceFarmListingProjectsError(override val message: String, override val cause: Throwable) :
+data class ErrorFetchingProjects(override val message: String, override val cause: Throwable) :
     DeviceFarmTractorError(message, cause)
 
-data class DeviceFarmProjectCreationError(override val message: String, override val cause: Throwable) :
+data class ErrorCreatingProject(override val message: String, override val cause: Throwable) :
     DeviceFarmTractorError(message, cause)
 
-data class DeviceFarmListingDevicePoolsError(override val message: String, override val cause: Throwable) :
+data class ErrorFetchingDevicePools(override val message: String, override val cause: Throwable) :
     DeviceFarmTractorError(message, cause)
 
-data class DeviceFarmProjectDoesNotHaveDevicePools(override val message: String) :
+data class NoRegisteredDevicePoolsError(override val message: String) :
     DeviceFarmTractorError(message, IllegalStateException(message))
 
-data class DeviceFarmDevicePoolNotFound(override val message: String) :
+data class DevicePoolNotFoundError(override val message: String) :
     DeviceFarmTractorError(message, IllegalStateException(message))
 
-data class DeviceFarmCreateUploadError(override val message: String, override val cause: Throwable) :
+data class ErrorCreatingUpload(override val message: String, override val cause: Throwable) :
     DeviceFarmTractorError(message, cause)
 
-data class DeviceFarmUploadArtifactError(override val message: String, override val cause: Throwable) :
+data class ErrorUploadingArtifact(override val message: String, override val cause: Throwable) :
     DeviceFarmTractorError(message, cause)
 
-data class DeviceFarmUploadFailedError(override val message: String) :
+data class ErrorFetchingUpload(override val message: String, override val cause: Throwable) :
+    DeviceFarmTractorError(message, cause)
+
+data class UploadFailureError(override val message: String) :
     DeviceFarmTractorError(message, IllegalStateException(message))
 
-data class DeviceFarmGetUploadError(override val message: String, override val cause: Throwable) :
-    DeviceFarmTractorError(message, cause)
-
-data class DeviceFarmIllegalArgumentError(override val message: String) :
+data class DeviceFarmTractorErrorIllegalArgumentException(override val message: String) :
     DeviceFarmTractorError(message, IllegalArgumentException(message))
+
+data class DeviceFarmTractorGeneralError(override val cause: Throwable) :
+    DeviceFarmTractorError(cause.message.orEmpty(), cause)
 
 sealed class DeviceFarmIllegalArtifactExtension(message: String) :
     DeviceFarmTractorError(message, IllegalArgumentException(message)) {

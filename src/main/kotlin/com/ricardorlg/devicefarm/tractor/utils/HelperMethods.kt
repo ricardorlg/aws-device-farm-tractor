@@ -1,7 +1,11 @@
 package com.ricardorlg.devicefarm.tractor.utils
 
 import arrow.core.Either
+import arrow.core.left
+import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorErrorIllegalArgumentException
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmIllegalArtifactExtension
+import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
+import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
 import software.amazon.awssdk.services.devicefarm.model.UploadType
 import software.amazon.awssdk.services.devicefarm.model.UploadType.*
 import java.io.File
@@ -56,14 +60,19 @@ object HelperMethods {
         }
     }
 
-    suspend fun loadFileFromPath(path: String): Either<Throwable, File> {
-        return Either.catch {
-            require(path.isNotEmpty()) { "The path parameter is mandatory" }
-            val f = File(path)
-            if (f.exists()) {
-                f
-            } else {
-                throw RuntimeException("The file $path does not exists")
+    suspend fun loadFileFromPath(path: String): Either<DeviceFarmTractorError, File> {
+        return if (path.isBlank()) {
+            DeviceFarmTractorErrorIllegalArgumentException("The path parameter is mandatory").left()
+        } else {
+            Either.catch {
+                val f = File(path)
+                if (f.exists()) {
+                    f
+                } else {
+                   throw IllegalArgumentException("The file at $path does not exists")
+                }
+            }.mapLeft {
+                DeviceFarmTractorGeneralError(it)
             }
         }
     }

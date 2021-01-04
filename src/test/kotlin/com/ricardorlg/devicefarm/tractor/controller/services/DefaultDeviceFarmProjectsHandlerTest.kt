@@ -1,10 +1,7 @@
 package com.ricardorlg.devicefarm.tractor.controller.services
 
 import com.ricardorlg.devicefarm.tractor.controller.services.implementations.DefaultDeviceFarmProjectsHandler
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmListingProjectsError
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmProjectCreationError
-import com.ricardorlg.devicefarm.tractor.model.ERROR_MESSAGE_FETCHING_AWS_PROJECTS
-import com.ricardorlg.devicefarm.tractor.model.ERROR_PREFIX_MESSAGE_CREATING_NEW_PROJECT
+import com.ricardorlg.devicefarm.tractor.model.*
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
@@ -60,7 +57,7 @@ class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmListingProjectsError>()
+            it.shouldBeInstanceOf<ErrorFetchingProjects>()
             it shouldHaveMessage ERROR_MESSAGE_FETCHING_AWS_PROJECTS
             it.cause shouldBe expectedError
         }
@@ -102,12 +99,27 @@ class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmProjectCreationError>()
+            it.shouldBeInstanceOf<ErrorCreatingProject>()
             it shouldHaveMessage "$ERROR_PREFIX_MESSAGE_CREATING_NEW_PROJECT $projectName"
             it.cause shouldBe expectedError
         }
         verify {
             dfClient.createProject(CreateProjectRequest.builder().name(projectName).build())
+        }
+        confirmVerified(dfClient)
+    }
+    "When creating a project in AWS device farm, if project name is empty an error should be returned as a left"{
+        //WHEN
+        val response = DefaultDeviceFarmProjectsHandler(dfClient).createProject("   ")
+
+        //THEN
+        response shouldBeLeft {
+            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
+            it shouldHaveMessage EMPTY_PROJECT_NAME
+            it.cause.shouldBeInstanceOf<IllegalArgumentException>()
+        }
+        verify {
+            dfClient.createProject(any<CreateProjectRequest>()) wasNot called
         }
         confirmVerified(dfClient)
     }

@@ -43,9 +43,14 @@ jar {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlin.time.ExperimentalTime"]
+}
+
 test {
     testLogging.showStandardStreams = true
     useJUnitPlatform()
+    systemProperty("kotest.framework.parallelism", System.getProperty("kotest.framework.parallelism","1"))
 }
 
 compileKotlin {

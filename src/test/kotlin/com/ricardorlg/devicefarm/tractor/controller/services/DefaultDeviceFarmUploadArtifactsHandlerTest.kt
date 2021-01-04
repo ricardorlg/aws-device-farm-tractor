@@ -73,7 +73,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmCreateUploadError>()
+            it.shouldBeInstanceOf<ErrorCreatingUpload>()
             it shouldHaveMessage ERROR_CREATING_AWS_UPLOAD.format(projectArn)
             it.cause shouldBe expectedError
         }
@@ -100,7 +100,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmIllegalArgumentError>()
+            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_PROJECT_ARN
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
         }
@@ -120,7 +120,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmIllegalArgumentError>()
+            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_FILENAME
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
         }
@@ -165,7 +165,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmUploadFailedError>()
+            it.shouldBeInstanceOf<ErrorUploadingArtifact>()
             it shouldHaveMessage ARTIFACT_UPLOAD_TO_S3_NOT_SUCCESSFULLY.format(
                 artifact.nameWithoutExtension,
                 Status.FORBIDDEN
@@ -194,7 +194,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmUploadArtifactError>()
+            it.shouldBeInstanceOf<ErrorUploadingArtifact>()
             it shouldHaveMessage ERROR_UPLOADING_ARTIFACT_TO_S3.format(
                 artifact.nameWithoutExtension
             )
@@ -235,7 +235,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmIllegalArgumentError>()
+            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_UPLOAD_ARN
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
         }
@@ -254,7 +254,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmGetUploadError>()
+            it.shouldBeInstanceOf<ErrorFetchingUpload>()
             it shouldHaveMessage ERROR_FETCHING_UPLOAD_FROM_AWS.format(uploadARN)
             it.cause shouldBe expectedError
         }

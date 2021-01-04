@@ -7,5 +7,5 @@ import io.kotest.extensions.system.NoSystemOutListener
 
 object ProjectConfig : AbstractProjectConfig() {
     override fun listeners() = listOf(AllureTestReporter(), NoSystemOutListener, NoSystemErrListener)
-    override val parallelism = 20
+    //override fun listeners() = listOf(AllureTestReporter())
 }

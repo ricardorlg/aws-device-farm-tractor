@@ -1,8 +1,8 @@
 package com.ricardorlg.devicefarm.tractor.controller.services
 
 import com.ricardorlg.devicefarm.tractor.controller.services.implementations.DefaultDeviceFarmDevicePoolsHandler
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmIllegalArgumentError
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmListingDevicePoolsError
+import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorErrorIllegalArgumentException
+import com.ricardorlg.devicefarm.tractor.model.ErrorFetchingDevicePools
 import com.ricardorlg.devicefarm.tractor.model.EMPTY_PROJECT_ARN
 import com.ricardorlg.devicefarm.tractor.model.ERROR_MESSAGE_FETCHING_DEVICE_POOLS
 import io.kotest.assertions.arrow.either.shouldBeLeft
@@ -51,7 +51,7 @@ class DefaultDeviceFarmDevicePoolsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmIllegalArgumentError>()
+            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_PROJECT_ARN
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
         }
@@ -72,7 +72,7 @@ class DefaultDeviceFarmDevicePoolsHandlerTest : StringSpec({
 
         //THEN
         response shouldBeLeft {
-            it.shouldBeInstanceOf<DeviceFarmListingDevicePoolsError>()
+            it.shouldBeInstanceOf<ErrorFetchingDevicePools>()
             it shouldHaveMessage ERROR_MESSAGE_FETCHING_DEVICE_POOLS
             it.cause shouldBe expectedError
         }

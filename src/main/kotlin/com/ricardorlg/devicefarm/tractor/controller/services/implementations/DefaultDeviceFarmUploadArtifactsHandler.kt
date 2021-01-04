@@ -4,7 +4,6 @@ import arrow.core.Either
 import arrow.core.left
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmUploadArtifactsHandler
 import com.ricardorlg.devicefarm.tractor.model.*
-import org.http4k.client.JavaHttpClient
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method
 import org.http4k.core.Request
@@ -18,7 +17,7 @@ import java.io.File
 
 class DefaultDeviceFarmUploadArtifactsHandler(
     private val deviceFarmClient: DeviceFarmClient,
-    private val httpClient: HttpHandler = JavaHttpClient()
+    private val httpClient: HttpHandler
 ) : IDeviceFarmUploadArtifactsHandler {
 
     override suspend fun createUpload(
@@ -28,10 +27,10 @@ class DefaultDeviceFarmUploadArtifactsHandler(
     ): Either<DeviceFarmTractorError, Upload> {
         return when {
             projectArn.isBlank() -> {
-                Either.left(DeviceFarmIllegalArgumentError(EMPTY_PROJECT_ARN))
+                Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_PROJECT_ARN))
             }
             artifactName.isBlank() -> {
-                Either.left(DeviceFarmIllegalArgumentError(EMPTY_FILENAME))
+                Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_FILENAME))
             }
             else -> {
                 Either.catch {
@@ -47,7 +46,7 @@ class DefaultDeviceFarmUploadArtifactsHandler(
                         )
                         .upload()
                 }.mapLeft {
-                    DeviceFarmCreateUploadError(ERROR_CREATING_AWS_UPLOAD.format(projectArn), it)
+                    ErrorCreatingUpload(ERROR_CREATING_AWS_UPLOAD.format(projectArn), it)
                 }
             }
         }
@@ -63,17 +62,16 @@ class DefaultDeviceFarmUploadArtifactsHandler(
             ifRight = {
                 Either.conditionally(it.status == Status.OK,
                     ifFalse = {
-                        DeviceFarmUploadFailedError(
-                            ARTIFACT_UPLOAD_TO_S3_NOT_SUCCESSFULLY.format(
-                                artifact.nameWithoutExtension,
-                                it.status
-                            )
+                        val msg = ARTIFACT_UPLOAD_TO_S3_NOT_SUCCESSFULLY.format(
+                            artifact.nameWithoutExtension,
+                            it.status
                         )
+                        ErrorUploadingArtifact(msg, IllegalStateException(msg))
                     },
                     ifTrue = {})
             },
             ifLeft = { error ->
-                DeviceFarmUploadArtifactError(
+                ErrorUploadingArtifact(
                     ERROR_UPLOADING_ARTIFACT_TO_S3.format(artifact.nameWithoutExtension),
                     error
                 ).left()
@@ -83,7 +81,7 @@ class DefaultDeviceFarmUploadArtifactsHandler(
 
     override suspend fun fetchUpload(uploadArn: String): Either<DeviceFarmTractorError, Upload> {
         return if (uploadArn.isBlank()) {
-            DeviceFarmIllegalArgumentError(EMPTY_UPLOAD_ARN).left()
+            DeviceFarmTractorErrorIllegalArgumentException(EMPTY_UPLOAD_ARN).left()
         } else {
             Either.catch {
                 deviceFarmClient
@@ -94,7 +92,7 @@ class DefaultDeviceFarmUploadArtifactsHandler(
                             .build()
                     ).upload()
             }.mapLeft {
-                DeviceFarmGetUploadError(ERROR_FETCHING_UPLOAD_FROM_AWS.format(uploadArn), it)
+                ErrorFetchingUpload(ERROR_FETCHING_UPLOAD_FROM_AWS.format(uploadArn), it)
             }
         }
     }
