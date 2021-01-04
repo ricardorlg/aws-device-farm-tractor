@@ -38,6 +38,12 @@ data class DeviceFarmTractorErrorIllegalArgumentException(override val message: 
 data class DeviceFarmTractorGeneralError(override val cause: Throwable) :
     DeviceFarmTractorError(cause.message.orEmpty(), cause)
 
+data class ErrorSchedulingRun(override val message: String, override val cause: Throwable) :
+    DeviceFarmTractorError(message, cause)
+
+data class ErrorFetchingAWSRun(override val message: String, override val cause: Throwable) :
+    DeviceFarmTractorError(message, cause)
+
 sealed class DeviceFarmIllegalArtifactExtension(message: String) :
     DeviceFarmTractorError(message, IllegalArgumentException(message)) {
     data class InvalidAndroidExtension(private val fileName: String) :
