@@ -2,10 +2,7 @@ package com.ricardorlg.devicefarm.tractor.controller
 
 import arrow.core.Either
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmDevicePoolsHandler
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmLogging
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmProjectsHandler
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmUploadArtifactsHandler
+import com.ricardorlg.devicefarm.tractor.stubs.*
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.assertions.fail
@@ -17,6 +14,7 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
     val logger = MockedDeviceFarmLogging()
     val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler()
     val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler()
+    val runScheduleHandler = MockedDeviceFarmRunsHandler()
     val projects = (1..10).map {
         Project
             .builder()
@@ -38,7 +36,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrCreateProject(expectedProject.name())
 
         //THEN
@@ -59,7 +58,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrCreateProject(expectedProject.name())
 
         //THEN
@@ -79,7 +79,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrCreateProject("Non Important")
 
         //THEN
@@ -100,7 +101,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrCreateProject("Non Important")
 
         //THEN

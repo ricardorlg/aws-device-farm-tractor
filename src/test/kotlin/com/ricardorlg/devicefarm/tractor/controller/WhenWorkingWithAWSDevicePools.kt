@@ -2,10 +2,7 @@ package com.ricardorlg.devicefarm.tractor.controller
 
 import arrow.core.Either
 import com.ricardorlg.devicefarm.tractor.model.*
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmDevicePoolsHandler
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmLogging
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmProjectsHandler
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmUploadArtifactsHandler
+import com.ricardorlg.devicefarm.tractor.stubs.*
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
@@ -18,6 +15,7 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
     val logger = MockedDeviceFarmLogging()
     val deviceFarmProjectHandler = MockedDeviceFarmProjectsHandler()
     val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler()
+    val runScheduleHandler = MockedDeviceFarmRunsHandler()
     val projectArn = "test_project_arn"
     val devicePools = (1..10)
         .map {
@@ -39,7 +37,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrUseDefaultDevicePool(projectArn)
 
         //THEN
@@ -58,7 +57,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrUseDefaultDevicePool(projectArn, expectedDevicePool.name())
 
         //THEN
@@ -76,7 +76,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrUseDefaultDevicePool(projectArn)
 
         //THEN
@@ -98,7 +99,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrUseDefaultDevicePool(projectArn, devicePoolName)
 
         //THEN
@@ -120,7 +122,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).findOrUseDefaultDevicePool(projectArn)
 
         //THEN

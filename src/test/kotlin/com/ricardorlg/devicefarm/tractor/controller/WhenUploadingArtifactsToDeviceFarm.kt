@@ -7,10 +7,7 @@ import arrow.fx.coroutines.milliseconds
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmIllegalArtifactExtension
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
 import com.ricardorlg.devicefarm.tractor.model.UploadFailureError
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmDevicePoolsHandler
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmLogging
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmProjectsHandler
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmUploadArtifactsHandler
+import com.ricardorlg.devicefarm.tractor.stubs.*
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.assertions.fail
@@ -28,6 +25,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
     val logger = MockedDeviceFarmLogging()
     val deviceFarmProjectHandler = MockedDeviceFarmProjectsHandler()
     val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler()
+    val runScheduleHandler = MockedDeviceFarmRunsHandler()
     val projectArn = "arn:aws:devicefarm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
     val artifactName = "testArtifact"
     val defaultUploadType = UploadType.ANDROID_APP
@@ -61,7 +59,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -103,7 +102,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -149,7 +149,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -165,6 +166,43 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             it.shouldBeInstanceOf<UploadFailureError>()
             it shouldHaveMessage expectedErrorMessage
         }
+    }
+
+    "It should return the last DeviceFarmTractorError returned when fetching upload is still failing after the maximum number of retries"{
+        //GIVEN
+        val artifactPath = tempfile("test_artifact", ".apk").absolutePath
+        val initialUpload = Upload
+            .builder()
+            .status(UploadStatus.INITIALIZED)
+            .arn(uploadARN)
+            .name(artifactName)
+            .build()
+
+        val expectedError = DeviceFarmTractorGeneralError(RuntimeException("test error"))
+
+        val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
+            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
+            uploadArtifactImpl = { _, _ -> Either.right(Unit) },
+            fetchUploadImpl = { Either.left(expectedError) }
+        )
+
+        //WHEN
+        val response = DefaultDeviceFarmTractorController(
+            logger,
+            deviceFarmProjectHandler,
+            devicePoolsHandler,
+            uploadArtifactsHandler,
+            runScheduleHandler
+        ).uploadArtifactToDeviceFarm(
+            projectArn,
+            artifactPath,
+            defaultUploadType,
+            2.milliseconds,
+            5
+        )
+
+        //THEN
+        response shouldBeLeft expectedError
     }
 
     "It should return a DeviceFarmTractorError when uploading the artifact to s3 fails, no matters the upload status"{
@@ -202,7 +240,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -259,7 +298,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).uploadArtifactToDeviceFarm(
             projectArn = projectArn,
             artifactPath = artifactPath,
@@ -289,7 +329,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -318,7 +359,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -349,7 +391,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
-            uploadArtifactsHandler
+            uploadArtifactsHandler,
+            runScheduleHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,

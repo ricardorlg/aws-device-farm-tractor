@@ -8,10 +8,7 @@ import arrow.core.rightIfNotNull
 import arrow.fx.coroutines.Duration
 import arrow.fx.coroutines.Schedule
 import arrow.fx.coroutines.parMapN
-import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmDevicePoolsHandler
-import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmProjectsHandler
-import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorLogging
-import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmUploadArtifactsHandler
+import com.ricardorlg.devicefarm.tractor.controller.services.definitions.*
 import com.ricardorlg.devicefarm.tractor.model.*
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods.validateFileExtensionByType
@@ -24,12 +21,14 @@ class DefaultDeviceFarmTractorController(
     deviceFarmProjectsHandler: IDeviceFarmProjectsHandler,
     deviceFarmDevicePoolsHandler: IDeviceFarmDevicePoolsHandler,
     deviceFarmUploadArtifactsHandler: IDeviceFarmUploadArtifactsHandler,
+    deviceFarmRunsHandler: IDeviceFarmRunsHandler
 ) :
     IDeviceFarmTractorController,
     IDeviceFarmTractorLogging by deviceFarmTractorLogging,
     IDeviceFarmProjectsHandler by deviceFarmProjectsHandler,
     IDeviceFarmDevicePoolsHandler by deviceFarmDevicePoolsHandler,
-    IDeviceFarmUploadArtifactsHandler by deviceFarmUploadArtifactsHandler {
+    IDeviceFarmUploadArtifactsHandler by deviceFarmUploadArtifactsHandler,
+    IDeviceFarmRunsHandler by deviceFarmRunsHandler {
 
     override suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project> {
         return either {
@@ -142,6 +141,38 @@ class DefaultDeviceFarmTractorController(
                     }
                 }
             }
+        }
+    }
+
+    override suspend fun scheduleRunAndWait(
+        appArn: String,
+        runConfiguration: ScheduleRunConfiguration,
+        devicePoolArn: String,
+        executionConfiguration: ExecutionConfiguration,
+        runName: String,
+        projectArn: String,
+        testConfiguration: ScheduleRunTest,
+        delaySpaceInterval: Duration
+    ): Either<DeviceFarmTractorError, Run> {
+        return either {
+            val policy = Schedule
+                .spaced<Run>(delaySpaceInterval)
+                .whileInput<Run> { run -> run.status() != ExecutionStatus.COMPLETED }
+                .logInput { logStatus("Current Run status = ${it.status()}") }
+                .zipRight(Schedule.identity())
+            logStatus("I will schedule the run $runName and wait until it finishes")
+            val initialRun = !scheduleRun(
+                appArn = appArn,
+                runConfiguration = runConfiguration,
+                devicePoolArn = devicePoolArn,
+                executionConfiguration = executionConfiguration,
+                runName = runName,
+                projectArn = projectArn,
+                testConfiguration = testConfiguration
+            )
+            repeatEffectWithPolicy(policy) {
+                !fetchRun(initialRun.arn())
+            }.also { logStatus("The test execution has just finished - result = ${it.result()}") }
         }
     }
 

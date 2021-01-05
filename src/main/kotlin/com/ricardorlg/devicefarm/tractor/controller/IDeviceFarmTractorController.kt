@@ -4,10 +4,7 @@ import arrow.core.Either
 import arrow.fx.coroutines.Duration
 import arrow.fx.coroutines.seconds
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
-import software.amazon.awssdk.services.devicefarm.model.DevicePool
-import software.amazon.awssdk.services.devicefarm.model.Project
-import software.amazon.awssdk.services.devicefarm.model.Upload
-import software.amazon.awssdk.services.devicefarm.model.UploadType
+import software.amazon.awssdk.services.devicefarm.model.*
 
 interface IDeviceFarmTractorController {
     suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project>
@@ -21,7 +18,18 @@ interface IDeviceFarmTractorController {
         projectArn: String,
         artifactPath: String,
         uploadType: UploadType,
-        delaySpaceInterval:Duration = 2.seconds,
-        maximumNumberOfRetries: Int = 100
+        delaySpaceInterval: Duration = 2.seconds,
+        maximumNumberOfRetries: Int = 3600
     ): Either<DeviceFarmTractorError, Upload>
+
+    suspend fun scheduleRunAndWait(
+        appArn: String,
+        runConfiguration: ScheduleRunConfiguration,
+        devicePoolArn: String,
+        executionConfiguration: ExecutionConfiguration,
+        runName: String,
+        projectArn: String,
+        testConfiguration: ScheduleRunTest,
+        delaySpaceInterval: Duration = 10.seconds
+    ): Either<DeviceFarmTractorError, Run>
 }
