@@ -16,6 +16,7 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
     val deviceFarmProjectsHandler = MockedDeviceFarmProjectsHandler()
     val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler()
     val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler()
+    val artifactsHandler = MockedDeviceFarmArtifactsHandler()
     val appArn = "arn:app:test:1234"
     val runConfiguration = ScheduleRunConfiguration.builder().build()
     val devicePoolArn = "arn:device_pool:test:1234"
@@ -53,7 +54,8 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
             deviceFarmProjectsHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).scheduleRunAndWait(
             appArn = appArn,
             runConfiguration = runConfiguration,
@@ -104,7 +106,8 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
             deviceFarmProjectsHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).scheduleRunAndWait(
             appArn = appArn,
             runConfiguration = runConfiguration,
@@ -143,7 +146,8 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
             deviceFarmProjectsHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).scheduleRunAndWait(
             appArn = appArn,
             runConfiguration = runConfiguration,
@@ -174,7 +178,8 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
             deviceFarmProjectsHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).scheduleRunAndWait(
             appArn = appArn,
             runConfiguration = runConfiguration,

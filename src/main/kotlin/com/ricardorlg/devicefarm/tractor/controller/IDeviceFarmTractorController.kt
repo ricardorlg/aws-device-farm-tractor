@@ -5,6 +5,7 @@ import arrow.fx.coroutines.Duration
 import arrow.fx.coroutines.seconds
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import software.amazon.awssdk.services.devicefarm.model.*
+import java.nio.file.Path
 
 interface IDeviceFarmTractorController {
     suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project>
@@ -32,4 +33,9 @@ interface IDeviceFarmTractorController {
         testConfiguration: ScheduleRunTest,
         delaySpaceInterval: Duration = 10.seconds
     ): Either<DeviceFarmTractorError, Run>
+
+    suspend fun downloadCustomerArtifacts(
+        job: Job,
+        path: Path
+    ): Either<DeviceFarmTractorError, Unit>
 }

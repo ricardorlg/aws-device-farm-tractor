@@ -1,10 +1,7 @@
 package com.ricardorlg.devicefarm.tractor.controller
 
-import arrow.core.Either
+import arrow.core.*
 import arrow.core.computations.either
-import arrow.core.flatMap
-import arrow.core.left
-import arrow.core.rightIfNotNull
 import arrow.fx.coroutines.Duration
 import arrow.fx.coroutines.Schedule
 import arrow.fx.coroutines.parMapN
@@ -13,7 +10,12 @@ import com.ricardorlg.devicefarm.tractor.model.*
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods.validateFileExtensionByType
 import com.ricardorlg.devicefarm.tractor.utils.fold
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import software.amazon.awssdk.services.devicefarm.model.*
+import java.net.URL
+import java.nio.file.Files
+import java.nio.file.Path
 import arrow.fx.coroutines.repeat as repeatEffectWithPolicy
 
 class DefaultDeviceFarmTractorController(
@@ -21,14 +23,16 @@ class DefaultDeviceFarmTractorController(
     deviceFarmProjectsHandler: IDeviceFarmProjectsHandler,
     deviceFarmDevicePoolsHandler: IDeviceFarmDevicePoolsHandler,
     deviceFarmUploadArtifactsHandler: IDeviceFarmUploadArtifactsHandler,
-    deviceFarmRunsHandler: IDeviceFarmRunsHandler
+    deviceFarmRunsHandler: IDeviceFarmRunsHandler,
+    deviceFarmArtifactsHandler: IDeviceFarmArtifactsHandler
 ) :
     IDeviceFarmTractorController,
     IDeviceFarmTractorLogging by deviceFarmTractorLogging,
     IDeviceFarmProjectsHandler by deviceFarmProjectsHandler,
     IDeviceFarmDevicePoolsHandler by deviceFarmDevicePoolsHandler,
     IDeviceFarmUploadArtifactsHandler by deviceFarmUploadArtifactsHandler,
-    IDeviceFarmRunsHandler by deviceFarmRunsHandler {
+    IDeviceFarmRunsHandler by deviceFarmRunsHandler,
+    IDeviceFarmArtifactsHandler by deviceFarmArtifactsHandler {
 
     override suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project> {
         return either {
@@ -176,4 +180,47 @@ class DefaultDeviceFarmTractorController(
         }
     }
 
+    override suspend fun downloadCustomerArtifacts(job: Job, path: Path): Either<DeviceFarmTractorError, Unit> {
+        return either {
+            val artifacts = !getArtifacts(job.arn())
+            !artifacts
+                .find { it.type() == ArtifactType.CUSTOMER_ARTIFACT }
+                .fold(
+                    ifNone = {
+                        logStatus(
+                            "There is no customer artifacts in the run associated to the device ${
+                                job.device().name()
+                            }"
+                        ).right()
+                    },
+                    ifPresent = { artifact ->
+                        val destinyPath = path.resolve("${artifact.name()}.${artifact.extension()}")
+                        downloadAndSave(destinyPath, artifact)
+                    }
+                ).mapLeft {
+                    ErrorDownloadingArtifact(it)
+                }
+        }
+    }
+
+    private suspend fun downloadAndSave(destinyPath: Path, artifact: Artifact): Either<Throwable, Unit> {
+        return withContext(Dispatchers.IO) {
+            runCatching {
+                URL(artifact.url())
+                    .openStream().use {
+                        logStatus("I will start to download the artifact, to the path: $destinyPath")
+                        Files.write(destinyPath, it.readBytes())
+                    }
+            }.fold(
+                onSuccess = {
+                    logStatus("I finish to download the artifact into $destinyPath")
+                    Unit.right()
+                },
+                onFailure = { failure ->
+                    logStatus("There was an error downloading the report, ${failure.message}")
+                    failure.left()
+                }
+            )
+        }
+    }
 }

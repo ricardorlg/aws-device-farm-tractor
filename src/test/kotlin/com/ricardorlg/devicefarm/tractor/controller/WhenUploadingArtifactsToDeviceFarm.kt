@@ -26,6 +26,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
     val deviceFarmProjectHandler = MockedDeviceFarmProjectsHandler()
     val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler()
     val runScheduleHandler = MockedDeviceFarmRunsHandler()
+    val artifactsHandler = MockedDeviceFarmArtifactsHandler()
     val projectArn = "arn:aws:devicefarm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
     val artifactName = "testArtifact"
     val defaultUploadType = UploadType.ANDROID_APP
@@ -60,7 +61,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -103,7 +105,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -150,7 +153,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -192,7 +196,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -241,7 +246,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -299,7 +305,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn = projectArn,
             artifactPath = artifactPath,
@@ -330,7 +337,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -360,7 +368,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,
@@ -392,7 +401,8 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).uploadArtifactToDeviceFarm(
             projectArn,
             artifactPath,

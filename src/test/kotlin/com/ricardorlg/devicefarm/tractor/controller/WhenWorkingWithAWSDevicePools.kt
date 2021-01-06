@@ -16,6 +16,7 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
     val deviceFarmProjectHandler = MockedDeviceFarmProjectsHandler()
     val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler()
     val runScheduleHandler = MockedDeviceFarmRunsHandler()
+    val artifactsHandler = MockedDeviceFarmArtifactsHandler()
     val projectArn = "test_project_arn"
     val devicePools = (1..10)
         .map {
@@ -38,7 +39,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrUseDefaultDevicePool(projectArn)
 
         //THEN
@@ -58,7 +60,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrUseDefaultDevicePool(projectArn, expectedDevicePool.name())
 
         //THEN
@@ -77,7 +80,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrUseDefaultDevicePool(projectArn)
 
         //THEN
@@ -100,7 +104,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrUseDefaultDevicePool(projectArn, devicePoolName)
 
         //THEN
@@ -123,7 +128,8 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrUseDefaultDevicePool(projectArn)
 
         //THEN

@@ -15,6 +15,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
     val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler()
     val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler()
     val runScheduleHandler = MockedDeviceFarmRunsHandler()
+    val artifactsHandler = MockedDeviceFarmArtifactsHandler()
+
     val projects = (1..10).map {
         Project
             .builder()
@@ -37,7 +39,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrCreateProject(expectedProject.name())
 
         //THEN
@@ -59,7 +62,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrCreateProject(expectedProject.name())
 
         //THEN
@@ -80,7 +84,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrCreateProject("Non Important")
 
         //THEN
@@ -102,7 +107,8 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
             deviceFarmProjectHandler,
             devicePoolsHandler,
             uploadArtifactsHandler,
-            runScheduleHandler
+            runScheduleHandler,
+            artifactsHandler
         ).findOrCreateProject("Non Important")
 
         //THEN

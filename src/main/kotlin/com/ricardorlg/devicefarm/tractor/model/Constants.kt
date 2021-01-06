@@ -20,4 +20,5 @@ const val EMPTY_DEVICE_POOL_ARN = "The device pool ARN must not be empty"
 const val ERROR_SCHEDULING_RUN = "There was an error scheduling a run execution"
 const val EMPTY_RUN_ARN = "The run ARN must not be empty"
 const val ERROR_FETCHING_RUN = "There was an error fetching the Run with arn: %s"
+const val ERROR_FETCHING_ARTIFACTS = "There was an error fetching the artifacts of the run %s"
 
