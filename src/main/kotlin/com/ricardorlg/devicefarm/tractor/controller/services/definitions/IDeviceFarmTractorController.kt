@@ -1,4 +1,4 @@
-package com.ricardorlg.devicefarm.tractor.controller
+package com.ricardorlg.devicefarm.tractor.controller.services.definitions
 
 import arrow.core.Either
 import arrow.fx.coroutines.Duration

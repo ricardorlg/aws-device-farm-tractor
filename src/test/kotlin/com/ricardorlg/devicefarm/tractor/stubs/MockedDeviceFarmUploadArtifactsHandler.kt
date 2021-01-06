@@ -4,6 +4,7 @@ import arrow.core.Either
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmUploadArtifactsHandler
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import io.kotest.assertions.fail
+import software.amazon.awssdk.services.devicefarm.model.DeleteUploadResponse
 import software.amazon.awssdk.services.devicefarm.model.Upload
 import software.amazon.awssdk.services.devicefarm.model.UploadType
 import java.io.File
@@ -15,7 +16,8 @@ class MockedDeviceFarmUploadArtifactsHandler(
         )
     },
     private val uploadArtifactImpl: suspend (File, Upload) -> Either<DeviceFarmTractorError, Unit> = { _, _ -> fail("Not implemented") },
-    private val fetchUploadImpl: suspend (String) -> Either<DeviceFarmTractorError, Upload> = { fail("Not implemented") }
+    private val fetchUploadImpl: suspend (String) -> Either<DeviceFarmTractorError, Upload> = { fail("Not implemented") },
+    private val deleteUploadImpl: suspend () -> Either<DeviceFarmTractorError, DeleteUploadResponse> = { fail("Not implemented") }
 ) : IDeviceFarmUploadArtifactsHandler {
     override suspend fun createUpload(
         projectArn: String,
@@ -31,5 +33,9 @@ class MockedDeviceFarmUploadArtifactsHandler(
 
     override suspend fun fetchUpload(uploadArn: String): Either<DeviceFarmTractorError, Upload> {
         return fetchUploadImpl(uploadArn)
+    }
+
+    override suspend fun deleteUpload(uploadArn: String): Either<DeviceFarmTractorError, DeleteUploadResponse> {
+        return deleteUploadImpl()
     }
 }

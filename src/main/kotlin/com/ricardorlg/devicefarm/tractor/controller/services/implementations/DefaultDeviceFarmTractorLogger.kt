@@ -1,26 +1,26 @@
 package com.ricardorlg.devicefarm.tractor.controller.services.implementations
 
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorLogging
+import mu.KLogger
 import mu.KotlinLogging
 
 class DefaultDeviceFarmTractorLogger(
-    private val loggerName: String,
+    loggerName: String,
 ) : IDeviceFarmTractorLogging {
+    private val logger: KLogger by lazy { KotlinLogging.logger(loggerName) }
     override fun logStatus(msg: String) {
         kotlin.runCatching {
-            KotlinLogging
-                .logger(loggerName)
+            logger
                 .info(msg)
         }.onFailure {
             println(msg)
         }
     }
 
-    override fun logError(msg: String) {
+    override fun logError(error: Throwable?, msg: String) {
         kotlin.runCatching {
-            KotlinLogging
-                .logger(loggerName)
-                .error(msg)
+            logger
+                .error(error) { msg }
         }.onFailure {
             System.err.println(msg)
         }

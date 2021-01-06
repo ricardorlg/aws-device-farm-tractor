@@ -1,7 +1,9 @@
 package com.ricardorlg.devicefarm.tractor.controller.services.implementations
 
 import arrow.core.Either
+import arrow.core.flatMap
 import arrow.core.left
+import arrow.core.right
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmUploadArtifactsHandler
 import com.ricardorlg.devicefarm.tractor.model.*
 import org.http4k.core.HttpHandler
@@ -9,10 +11,7 @@ import org.http4k.core.Method
 import org.http4k.core.Request
 import org.http4k.core.Status
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
-import software.amazon.awssdk.services.devicefarm.model.CreateUploadRequest
-import software.amazon.awssdk.services.devicefarm.model.GetUploadRequest
-import software.amazon.awssdk.services.devicefarm.model.Upload
-import software.amazon.awssdk.services.devicefarm.model.UploadType
+import software.amazon.awssdk.services.devicefarm.model.*
 import java.io.File
 
 class DefaultDeviceFarmUploadArtifactsHandler(
@@ -93,6 +92,30 @@ class DefaultDeviceFarmUploadArtifactsHandler(
                     ).upload()
             }.mapLeft {
                 ErrorFetchingUpload(ERROR_FETCHING_UPLOAD_FROM_AWS.format(uploadArn), it)
+            }
+        }
+    }
+
+    override suspend fun deleteUpload(uploadArn: String): Either<DeviceFarmTractorError, DeleteUploadResponse> {
+        return if (uploadArn.isBlank()) {
+            Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_UPLOAD_ARN))
+        } else {
+            Either.catch {
+                deviceFarmClient
+                    .deleteUpload(
+                        DeleteUploadRequest
+                            .builder()
+                            .arn(uploadArn)
+                            .build()
+                    )
+            }.mapLeft {
+                ErrorDeletingUpload(ERROR_DELETING_UPLOAD.format(uploadArn), it)
+            }.flatMap { response ->
+                if (!response.sdkHttpResponse().isSuccessful) {
+                    val message = DELETE_UPLOAD_INVALID_RESPONSE_CODE.format(response.sdkHttpResponse().statusCode())
+                    ErrorDeletingUpload(message, IllegalStateException(message)).left()
+                } else
+                    response.right()
             }
         }
     }

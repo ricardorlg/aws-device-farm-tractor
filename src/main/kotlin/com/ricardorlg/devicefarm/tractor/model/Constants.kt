@@ -21,4 +21,6 @@ const val ERROR_SCHEDULING_RUN = "There was an error scheduling a run execution"
 const val EMPTY_RUN_ARN = "The run ARN must not be empty"
 const val ERROR_FETCHING_RUN = "There was an error fetching the Run with arn: %s"
 const val ERROR_FETCHING_ARTIFACTS = "There was an error fetching the artifacts of the run %s"
+const val ERROR_DELETING_UPLOAD = "There was an error deleting the upload %s"
+const val DELETE_UPLOAD_INVALID_RESPONSE_CODE = "AWS Device farm response with a non 200 code, response code is: %d"
 

@@ -13,6 +13,7 @@ import io.mockk.*
 import org.http4k.core.HttpHandler
 import org.http4k.core.Response
 import org.http4k.core.Status
+import software.amazon.awssdk.http.SdkHttpResponse
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.*
 
@@ -261,6 +262,96 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
         verify {
             dfClient.getUpload(GetUploadRequest.builder().arn(uploadARN).build())
+        }
+        confirmVerified(dfClient)
+    }
+    "When deleting an Upload it should return a DeleteUploadResponse as a right"{
+        //GIVEN
+        val expectedResponse = DeleteUploadResponse
+            .builder()
+            .applyMutation {
+                it.sdkHttpResponse(
+                    SdkHttpResponse
+                        .builder()
+                        .statusCode(200)
+                        .build()
+                )
+            }
+            .build()
+
+        every { dfClient.deleteUpload(any<DeleteUploadRequest>()) } returns expectedResponse
+
+        //WHEN
+        val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).deleteUpload(uploadARN)
+
+        //THEN
+        response shouldBeRight expectedResponse
+        verify {
+            dfClient.deleteUpload(DeleteUploadRequest.builder().arn(uploadARN).build())
+        }
+        confirmVerified(dfClient)
+    }
+    "When deleting an Upload any error should be returned as a left"{
+        //GIVEN
+        val expectedError = RuntimeException("test error")
+
+        every { dfClient.deleteUpload(any<DeleteUploadRequest>()) } throws expectedError
+
+        //WHEN
+        val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).deleteUpload(uploadARN)
+
+        //THEN
+        response shouldBeLeft {
+            it.shouldBeInstanceOf<ErrorDeletingUpload>()
+            it shouldHaveMessage ERROR_DELETING_UPLOAD.format(uploadARN)
+            it.cause shouldBe expectedError
+        }
+        verify {
+            dfClient.deleteUpload(DeleteUploadRequest.builder().arn(uploadARN).build())
+        }
+        confirmVerified(dfClient)
+    }
+    "When deleting an Upload if non-200 response is received then an error should be returned as a left"{
+        //GIVEN
+        val codeError = 400
+        val expectedResponse = DeleteUploadResponse
+            .builder()
+            .applyMutation {
+                it.sdkHttpResponse(
+                    SdkHttpResponse
+                        .builder()
+                        .statusCode(codeError)
+                        .build()
+                )
+            }
+            .build()
+
+        every { dfClient.deleteUpload(any<DeleteUploadRequest>()) } returns expectedResponse
+
+        //WHEN
+        val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).deleteUpload(uploadARN)
+
+        //THEN
+        response shouldBeLeft {
+            it.shouldBeInstanceOf<ErrorDeletingUpload>()
+            it shouldHaveMessage DELETE_UPLOAD_INVALID_RESPONSE_CODE.format(codeError)
+        }
+        verify {
+            dfClient.deleteUpload(DeleteUploadRequest.builder().arn(uploadARN).build())
+        }
+        confirmVerified(dfClient)
+    }
+    "When deleting an Upload if no arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left"{
+        //WHEN
+        val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).deleteUpload("  ")
+
+        //THEN
+        response shouldBeLeft {
+            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
+            it shouldHaveMessage EMPTY_UPLOAD_ARN
+        }
+        verify {
+            dfClient.deleteUpload(any<DeleteUploadRequest>()) wasNot called
         }
         confirmVerified(dfClient)
     }

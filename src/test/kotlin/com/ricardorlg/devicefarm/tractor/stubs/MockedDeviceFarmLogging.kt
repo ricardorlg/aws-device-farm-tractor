@@ -5,5 +5,5 @@ import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDevice
 class MockedDeviceFarmLogging : IDeviceFarmTractorLogging {
     override fun logStatus(msg: String) {}
 
-    override fun logError(msg: String) {}
+    override fun logError(error:Throwable?,msg: String) {}
 }
