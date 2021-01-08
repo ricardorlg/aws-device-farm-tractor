@@ -9,6 +9,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.mockk.*
+import software.amazon.awssdk.core.pagination.sync.SdkIterable
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.*
 
@@ -268,6 +269,59 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             dfClient.getRun(GetRunRequest.builder().arn(runARN).build())
         }
         confirmVerified(dfClient)
+    }
+
+    "When fetching all the jobs associated to a Run it should return them as a right"{
+        //GIVEN
+        val run = Run
+            .builder()
+            .arn(runARN)
+            .name(runName)
+            .build()
+        val expectedJobs = (1..10)
+            .map {
+                Job
+                    .builder()
+                    .arn("arn:test:job:$it")
+                    .build()
+            }
+        every {
+            dfClient.listJobsPaginator(any<ListJobsRequest>()).jobs()
+        } returns SdkIterable { expectedJobs.toMutableList().iterator() }
+
+        //WHEN
+        val response = DefaultDeviceFarmRunsHandler(dfClient)
+            .getAssociatedJobs(run)
+
+        //THEN
+        response shouldBeRight expectedJobs
+
+        verify {
+            dfClient.listJobsPaginator(ListJobsRequest.builder().arn(run.arn()).build())
+        }
+        confirmVerified(dfClient)
+    }
+
+    "When an error happens fetching the associated jobs of a Run then it should return a ErrorListingAssociatedJobs as a left"{
+        //GIVEN
+        val run = Run
+            .builder()
+            .arn(runARN)
+            .name(runName)
+            .build()
+        val expectedError = RuntimeException("test error")
+        every { dfClient.listJobsPaginator(any<ListJobsRequest>()) } throws expectedError
+
+        //WHEN
+        val response = DefaultDeviceFarmRunsHandler(dfClient)
+            .getAssociatedJobs(run)
+
+        //THEN
+        response shouldBeLeft {
+            it.shouldBeInstanceOf<ErrorListingAssociatedJobs>()
+            it shouldHaveMessage ERROR_FETCHING_JOBS.format(run.arn())
+            it.cause shouldBe expectedError
+        }
     }
 
     afterTest {

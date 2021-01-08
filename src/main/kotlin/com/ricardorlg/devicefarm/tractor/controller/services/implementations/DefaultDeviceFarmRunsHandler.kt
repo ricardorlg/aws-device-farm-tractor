@@ -68,4 +68,19 @@ class DefaultDeviceFarmRunsHandler(private val deviceFarmClient: DeviceFarmClien
             }
         }
     }
+
+    override suspend fun getAssociatedJobs(run: Run): Either<DeviceFarmTractorError, List<Job>> {
+        return Either.catch {
+            deviceFarmClient
+                .listJobsPaginator(
+                    ListJobsRequest
+                        .builder()
+                        .arn(run.arn())
+                        .build()
+                ).jobs()
+                .toList()
+        }.mapLeft {
+            ErrorListingAssociatedJobs(ERROR_FETCHING_JOBS.format(run.arn()), it)
+        }
+    }
 }

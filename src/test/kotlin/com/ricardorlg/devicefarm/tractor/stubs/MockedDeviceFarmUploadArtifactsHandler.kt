@@ -17,7 +17,7 @@ class MockedDeviceFarmUploadArtifactsHandler(
     },
     private val uploadArtifactImpl: suspend (File, Upload) -> Either<DeviceFarmTractorError, Unit> = { _, _ -> fail("Not implemented") },
     private val fetchUploadImpl: suspend (String) -> Either<DeviceFarmTractorError, Upload> = { fail("Not implemented") },
-    private val deleteUploadImpl: suspend () -> Either<DeviceFarmTractorError, DeleteUploadResponse> = { fail("Not implemented") }
+    private val deleteUploadImpl: suspend (String) -> Either<DeviceFarmTractorError, DeleteUploadResponse> = { fail("Not implemented") }
 ) : IDeviceFarmUploadArtifactsHandler {
     override suspend fun createUpload(
         projectArn: String,
@@ -36,6 +36,6 @@ class MockedDeviceFarmUploadArtifactsHandler(
     }
 
     override suspend fun deleteUpload(uploadArn: String): Either<DeviceFarmTractorError, DeleteUploadResponse> {
-        return deleteUploadImpl()
+        return deleteUploadImpl(uploadArn)
     }
 }

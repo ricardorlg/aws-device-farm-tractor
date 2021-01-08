@@ -53,6 +53,9 @@ data class ErrorDownloadingArtifact(override val cause: Throwable) :
 data class ErrorDeletingUpload(override val message: String, override val cause: Throwable) :
     DeviceFarmTractorError(message, cause)
 
+data class ErrorListingAssociatedJobs(override val message: String, override val cause: Throwable) :
+    DeviceFarmTractorError(message, cause)
+
 sealed class DeviceFarmIllegalArtifactExtension(message: String) :
     DeviceFarmTractorError(message, IllegalArgumentException(message)) {
     data class InvalidAndroidExtension(private val fileName: String) :

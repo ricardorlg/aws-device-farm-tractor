@@ -5,6 +5,7 @@ import arrow.core.computations.either
 import arrow.fx.coroutines.Duration
 import arrow.fx.coroutines.Schedule
 import arrow.fx.coroutines.parMapN
+import arrow.fx.coroutines.parTraverse
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.*
 import com.ricardorlg.devicefarm.tractor.model.*
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods
@@ -16,6 +17,8 @@ import software.amazon.awssdk.services.devicefarm.model.*
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Path
+import kotlin.io.path.createDirectory
+import kotlin.io.path.deleteIfExists
 import arrow.fx.coroutines.repeat as repeatEffectWithPolicy
 
 class DefaultDeviceFarmTractorController(
@@ -148,6 +151,15 @@ class DefaultDeviceFarmTractorController(
         }
     }
 
+    override suspend fun deleteUploads(vararg uploads: Upload) {
+        uploads.asList().parTraverse { upload ->
+            deleteUpload(upload.arn())
+                .map {
+                    logStatus(DELETE_UPLOAD_MESSAGE.format(upload.name(), upload.arn()))
+                }
+        }
+    }
+
     override suspend fun scheduleRunAndWait(
         appArn: String,
         runConfiguration: ScheduleRunConfiguration,
@@ -180,6 +192,26 @@ class DefaultDeviceFarmTractorController(
         }
     }
 
+    override suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path) {
+        getAssociatedJobs(run)
+            .map { associatedJobs ->
+                createDirectory(
+                    destinyDirectory
+                        .resolve("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
+                ).map { reportsPath ->
+                    associatedJobs
+                        .parTraverse { job ->
+                            createDirectory(
+                                reportsPath.resolve(
+                                    job.device().name().toLowerCase().replace("\\s".toRegex(), "_")
+                                )
+                            )
+                                .map { path -> downloadCustomerArtifacts(job, path) }
+                        }
+                }
+            }
+    }
+
     override suspend fun downloadCustomerArtifacts(job: Job, path: Path): Either<DeviceFarmTractorError, Unit> {
         return either {
             val artifacts = !getArtifacts(job.arn())
@@ -187,15 +219,11 @@ class DefaultDeviceFarmTractorController(
                 .find { it.type() == ArtifactType.CUSTOMER_ARTIFACT }
                 .fold(
                     ifNone = {
-                        logStatus(
-                            "There is no customer artifacts in the run associated to the device ${
-                                job.device().name()
-                            }"
-                        ).right()
+                        logStatus(JOB_DOES_NOT_HAVE_CUSTOMER_ARTIFACTS.format(job.device().name().orEmpty())).right()
                     },
                     ifPresent = { artifact ->
                         val destinyPath = path.resolve("${artifact.name()}.${artifact.extension()}")
-                        downloadAndSave(destinyPath, artifact)
+                        downloadAndSave(destinyPath, artifact, job.device().name())
                     }
                 ).mapLeft {
                     ErrorDownloadingArtifact(it)
@@ -203,24 +231,38 @@ class DefaultDeviceFarmTractorController(
         }
     }
 
-    private suspend fun downloadAndSave(destinyPath: Path, artifact: Artifact): Either<Throwable, Unit> {
+    private suspend fun downloadAndSave(
+        destinyPath: Path,
+        artifact: Artifact,
+        deviceName: String
+    ): Either<Throwable, Unit> {
         return withContext(Dispatchers.IO) {
             runCatching {
                 URL(artifact.url())
                     .openStream().use {
-                        logStatus("I will start to download the artifact, to the path: $destinyPath")
+                        logStatus("I will start to download the report of $deviceName test run, into: $destinyPath")
                         Files.write(destinyPath, it.readBytes())
                     }
             }.fold(
                 onSuccess = {
-                    logStatus("I finish to download the artifact into $destinyPath")
+                    logStatus("I finish to download the report of $deviceName test execution")
                     Unit.right()
                 },
                 onFailure = { failure ->
-                    logStatus("There was an error downloading the report, ${failure.message}")
+                    logStatus("There was an error downloading the report of $deviceName test run. reason: ${failure.message.orEmpty()}")
+                    runCatching { destinyPath.parent.deleteIfExists() }
                     failure.left()
                 }
             )
+        }
+    }
+
+    private suspend fun createDirectory(path: Path): Either<Throwable, Path> {
+        return Either.catch {
+            path.createDirectory()
+        }.mapLeft {
+            logStatus(ERROR_CREATING_DIRECTORY.format(path.fileName.toString(), it.message.orEmpty()))
+            it
         }
     }
 }

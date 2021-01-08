@@ -23,4 +23,8 @@ const val ERROR_FETCHING_RUN = "There was an error fetching the Run with arn: %s
 const val ERROR_FETCHING_ARTIFACTS = "There was an error fetching the artifacts of the run %s"
 const val ERROR_DELETING_UPLOAD = "There was an error deleting the upload %s"
 const val DELETE_UPLOAD_INVALID_RESPONSE_CODE = "AWS Device farm response with a non 200 code, response code is: %d"
+const val ERROR_FETCHING_JOBS = "There was an error fetching the associated jobs of the run %s"
+const val ERROR_CREATING_DIRECTORY = "There was a problem creating the folder %s"
+const val JOB_DOES_NOT_HAVE_CUSTOMER_ARTIFACTS = "There is no customer artifacts in the run associated to the device %s"
+const val DELETE_UPLOAD_MESSAGE = "I've just deleted the upload %s - arn %s"
 

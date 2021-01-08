@@ -1,9 +1,5 @@
 package com.ricardorlg.devicefarm.tractor.controller.services
 
-import arrow.core.Either
-import arrow.core.left
-import arrow.core.right
-import arrow.fx.coroutines.*
 import com.ricardorlg.devicefarm.tractor.controller.services.implementations.DefaultDeviceFarmArtifactsHandler
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorErrorIllegalArgumentException
 import com.ricardorlg.devicefarm.tractor.model.EMPTY_RUN_ARN
@@ -12,19 +8,15 @@ import com.ricardorlg.devicefarm.tractor.model.ErrorFetchingArtifacts
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.engine.spec.tempfile
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.mockk.*
-import kotlinx.coroutines.Dispatchers
 import software.amazon.awssdk.core.pagination.sync.SdkIterable
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.Artifact
 import software.amazon.awssdk.services.devicefarm.model.ArtifactType
 import software.amazon.awssdk.services.devicefarm.model.ListArtifactsRequest
-import software.amazon.awssdk.services.devicefarm.model.ListArtifactsResponse
-import java.nio.file.Files
 
 class DefaultDeviceFarmArtifactsHandlerTest : StringSpec({
 

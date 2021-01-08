@@ -23,6 +23,8 @@ interface IDeviceFarmTractorController {
         maximumNumberOfRetries: Int = 3600
     ): Either<DeviceFarmTractorError, Upload>
 
+    suspend fun deleteUploads(vararg uploads: Upload)
+
     suspend fun scheduleRunAndWait(
         appArn: String,
         runConfiguration: ScheduleRunConfiguration,
@@ -33,6 +35,8 @@ interface IDeviceFarmTractorController {
         testConfiguration: ScheduleRunTest,
         delaySpaceInterval: Duration = 10.seconds
     ): Either<DeviceFarmTractorError, Run>
+
+    suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path)
 
     suspend fun downloadCustomerArtifacts(
         job: Job,
