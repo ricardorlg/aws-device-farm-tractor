@@ -1,6 +1,7 @@
 package com.ricardorlg.devicefarm.tractor.stubs
 
 import arrow.core.Either
+import arrow.core.right
 import arrow.fx.coroutines.Duration
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorController
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
@@ -9,17 +10,34 @@ import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Path
 
 class MockedDeviceFarmController(
-    private val findOrCreateProjectImpl: () -> Either<DeviceFarmTractorError, Project> = { fail("Not implemented") }
+    private val findOrCreateProjectImpl: (String) -> Either<DeviceFarmTractorError, Project> = { fail("Not implemented") },
+    private val findOrUseDefaultDevicePoolImpl: (String, String) -> Either<DeviceFarmTractorError, DevicePool> = { _, _ ->
+        fail(
+            "Not implemented"
+        )
+    },
+    private val uploadArtifactToDeviceFarmImpl: suspend (String, String, UploadType) -> Either<DeviceFarmTractorError, Upload> = { _, _, _ ->
+        fail(
+            "Not implemented"
+        )
+    },
+    private val deleteUploadsImpl: (List<Upload>) -> Unit = { _ -> fail("Not implemented") },
+    private val scheduleRunAndWaitImpl: (String, String, ExecutionConfiguration, String, String, ScheduleRunTest) -> Either<DeviceFarmTractorError, Run> = { _, _, _, _, _, _ ->
+        fail(
+            "Not implemented"
+        )
+    },
+    private val downloadAllTestReportsOfTestRunImpl: (Run, Path) -> Unit = { _, _ -> fail("Not implemented") }
 ) : IDeviceFarmTractorController {
     override suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project> {
-        TODO("Not yet implemented")
+        return findOrCreateProjectImpl(projectName)
     }
 
     override suspend fun findOrUseDefaultDevicePool(
         projectArn: String,
         devicePoolName: String
     ): Either<DeviceFarmTractorError, DevicePool> {
-        TODO("Not yet implemented")
+        return findOrUseDefaultDevicePoolImpl(projectArn, devicePoolName)
     }
 
     override suspend fun uploadArtifactToDeviceFarm(
@@ -29,11 +47,11 @@ class MockedDeviceFarmController(
         delaySpaceInterval: Duration,
         maximumNumberOfRetries: Int
     ): Either<DeviceFarmTractorError, Upload> {
-        TODO("Not yet implemented")
+        return uploadArtifactToDeviceFarmImpl(projectArn, artifactPath, uploadType)
     }
 
     override suspend fun deleteUploads(vararg uploads: Upload) {
-        TODO("Not yet implemented")
+        return deleteUploadsImpl(uploads.toList())
     }
 
     override suspend fun scheduleRunAndWait(
@@ -46,15 +64,22 @@ class MockedDeviceFarmController(
         testConfiguration: ScheduleRunTest,
         delaySpaceInterval: Duration
     ): Either<DeviceFarmTractorError, Run> {
-        TODO("Not yet implemented")
+        return scheduleRunAndWaitImpl(
+            appArn,
+            devicePoolArn,
+            executionConfiguration,
+            runName,
+            projectArn,
+            testConfiguration
+        )
     }
 
     override suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path) {
-        TODO("Not yet implemented")
+        downloadAllTestReportsOfTestRunImpl(run, destinyDirectory)
     }
 
     override suspend fun downloadCustomerArtifacts(job: Job, path: Path): Either<DeviceFarmTractorError, Unit> {
-        TODO("Not yet implemented")
+        return Unit.right()
     }
 
 }

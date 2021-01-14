@@ -21,7 +21,7 @@ import kotlin.io.path.createDirectory
 import kotlin.io.path.deleteIfExists
 import arrow.fx.coroutines.repeat as repeatEffectWithPolicy
 
-class DefaultDeviceFarmTractorController(
+internal class DefaultDeviceFarmTractorController(
     deviceFarmTractorLogging: IDeviceFarmTractorLogging,
     deviceFarmProjectsHandler: IDeviceFarmProjectsHandler,
     deviceFarmDevicePoolsHandler: IDeviceFarmDevicePoolsHandler,

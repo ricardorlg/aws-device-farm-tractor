@@ -11,6 +11,7 @@ import io.kotest.assertions.fail
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
 import io.kotest.extensions.system.captureStandardOut
+import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.paths.*
 import io.kotest.matchers.string.shouldStartWith
@@ -251,12 +252,11 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
         destinyFolder shouldContainNFiles 1
         destinyFolder.resolve(reportDirectoryPath).shouldBeADirectory()
         destinyFolder.resolve(reportDirectoryPath) shouldContainNFiles jobs.size
-        destinyFolder.resolve(reportDirectoryPath).listDirectoryEntries().forEach {
+        destinyFolder.resolve(reportDirectoryPath).listDirectoryEntries().forAll {
             it.shouldBeADirectory()
             it shouldContainFile customerArtifact.name
             it shouldContainNFiles 1
         }
-
     }
 
     "It should log an error message when downloading a report fails"{
