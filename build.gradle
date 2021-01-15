@@ -33,6 +33,10 @@ allure {
     version = "$allure_version"
 }
 
+java{
+    withSourcesJar()
+}
+
 jar {
     manifest {
         attributes("Implementation-Title": "Device Farm Tractor",
