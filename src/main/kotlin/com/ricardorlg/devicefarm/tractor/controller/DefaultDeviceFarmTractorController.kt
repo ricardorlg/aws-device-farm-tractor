@@ -92,7 +92,6 @@ internal class DefaultDeviceFarmTractorController(
         maximumNumberOfRetries: Int
     ): Either<DeviceFarmTractorError, Upload> {
         return either {
-
             val fetchAWSUploadSchedulePolicy = Schedule
                 .spaced<Either<DeviceFarmTractorError, Upload>>(delaySpaceInterval)
                 .whileOutput { retryNumber -> retryNumber < maximumNumberOfRetries }
@@ -111,7 +110,6 @@ internal class DefaultDeviceFarmTractorController(
                     }
                 }
                 .zipRight(Schedule.identity())
-
 
             val file = HelperMethods
                 .loadFileFromPath(artifactPath)
