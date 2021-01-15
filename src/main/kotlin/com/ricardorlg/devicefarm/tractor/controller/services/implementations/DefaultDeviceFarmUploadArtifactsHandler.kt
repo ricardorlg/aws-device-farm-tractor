@@ -14,7 +14,7 @@ import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.io.File
 
-class DefaultDeviceFarmUploadArtifactsHandler(
+internal class DefaultDeviceFarmUploadArtifactsHandler(
     private val deviceFarmClient: DeviceFarmClient,
     private val httpClient: HttpHandler
 ) : IDeviceFarmUploadArtifactsHandler {

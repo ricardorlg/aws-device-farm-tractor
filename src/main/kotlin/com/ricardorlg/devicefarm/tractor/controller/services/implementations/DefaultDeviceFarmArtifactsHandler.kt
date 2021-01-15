@@ -7,7 +7,7 @@ import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.Artifact
 import software.amazon.awssdk.services.devicefarm.model.ListArtifactsRequest
 
-class DefaultDeviceFarmArtifactsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmArtifactsHandler {
+internal class DefaultDeviceFarmArtifactsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmArtifactsHandler {
     override suspend fun getArtifacts(runArn: String): Either<DeviceFarmTractorError, List<Artifact>> {
         return if (runArn.isBlank()) {
             Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_RUN_ARN))

@@ -8,13 +8,14 @@ import com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunner
 import org.http4k.client.JavaHttpClient
 import software.amazon.awssdk.auth.credentials.*
 import software.amazon.awssdk.regions.Region
+import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClientBuilder
 
 
 object DeviceFarmTractorFactory {
 
     suspend fun createRunner(
-        deviceFarmClientBuilder: DeviceFarmClientBuilder,
+        deviceFarmClientBuilder: DeviceFarmClientBuilder = DeviceFarmClient.builder(),
         logger: IDeviceFarmTractorLogging,
         accessKeyId: String = "",
         secretAccessKey: String = "",

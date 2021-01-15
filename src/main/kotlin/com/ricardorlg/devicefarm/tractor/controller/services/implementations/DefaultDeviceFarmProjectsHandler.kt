@@ -7,7 +7,7 @@ import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.CreateProjectRequest
 import software.amazon.awssdk.services.devicefarm.model.Project
 
-class DefaultDeviceFarmProjectsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmProjectsHandler {
+internal class DefaultDeviceFarmProjectsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmProjectsHandler {
     override suspend fun listProjects(): Either<DeviceFarmTractorError, List<Project>> {
         return Either.catch {
             deviceFarmClient

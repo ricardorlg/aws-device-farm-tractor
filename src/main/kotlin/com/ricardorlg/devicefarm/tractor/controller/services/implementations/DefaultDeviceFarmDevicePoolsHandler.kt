@@ -11,7 +11,7 @@ import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.DevicePool
 import software.amazon.awssdk.services.devicefarm.model.ListDevicePoolsRequest
 
-class DefaultDeviceFarmDevicePoolsHandler(private val deviceFarmClient: DeviceFarmClient) :
+internal class DefaultDeviceFarmDevicePoolsHandler(private val deviceFarmClient: DeviceFarmClient) :
     IDeviceFarmDevicePoolsHandler {
     override suspend fun fetchDevicePools(projectArn: String): Either<DeviceFarmTractorError, List<DevicePool>> {
         return if (projectArn.isBlank()) {

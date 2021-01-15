@@ -6,7 +6,7 @@ import com.ricardorlg.devicefarm.tractor.model.*
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.*
 
-class DefaultDeviceFarmRunsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmRunsHandler {
+internal class DefaultDeviceFarmRunsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmRunsHandler {
 
     override suspend fun scheduleRun(
         appArn: String,
