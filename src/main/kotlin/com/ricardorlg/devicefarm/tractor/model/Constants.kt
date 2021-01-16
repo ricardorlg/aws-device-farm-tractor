@@ -27,4 +27,5 @@ const val ERROR_FETCHING_JOBS = "There was an error fetching the associated jobs
 const val ERROR_CREATING_DIRECTORY = "There was a problem creating the folder %s"
 const val JOB_DOES_NOT_HAVE_CUSTOMER_ARTIFACTS = "There is no customer artifacts in the run associated to the device %s"
 const val DELETE_UPLOAD_MESSAGE = "I've just deleted the upload %s - arn %s"
+const val MAXIMUM_LOGGED_MESSAGE_FOR_RUN_STATUS = 5
 

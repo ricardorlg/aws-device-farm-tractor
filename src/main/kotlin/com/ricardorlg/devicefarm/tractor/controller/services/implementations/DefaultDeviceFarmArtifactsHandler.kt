@@ -5,6 +5,7 @@ import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDevice
 import com.ricardorlg.devicefarm.tractor.model.*
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.Artifact
+import software.amazon.awssdk.services.devicefarm.model.ArtifactCategory
 import software.amazon.awssdk.services.devicefarm.model.ListArtifactsRequest
 
 internal class DefaultDeviceFarmArtifactsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmArtifactsHandler {
@@ -17,6 +18,7 @@ internal class DefaultDeviceFarmArtifactsHandler(private val deviceFarmClient: D
                     .listArtifactsPaginator(
                         ListArtifactsRequest
                             .builder()
+                            .type(ArtifactCategory.FILE)
                             .arn(runArn)
                             .build()
                     ).artifacts()

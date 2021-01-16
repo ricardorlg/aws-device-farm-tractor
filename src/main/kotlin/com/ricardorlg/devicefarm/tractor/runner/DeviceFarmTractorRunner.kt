@@ -2,6 +2,7 @@ package com.ricardorlg.devicefarm.tractor.runner
 
 import arrow.core.Either
 import arrow.core.computations.either
+import arrow.fx.coroutines.parSequence
 import arrow.fx.coroutines.parTupledN
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorController
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorLogging
@@ -77,10 +78,12 @@ class DeviceFarmTractorRunner(
                 projectArn = project.arn(),
                 testConfiguration = testConfiguration
             )
+            val extraSteps = mutableListOf<suspend ()->Unit>()
             if (downloadReports && testReportsBaseDirectory.isNotBlank())
-                controller.downloadAllTestReportsOfTestRun(run, Paths.get(testReportsBaseDirectory))
+                extraSteps.add { controller.downloadAllTestReportsOfTestRun(run, Paths.get(testReportsBaseDirectory)) }
             if (cleanStateAfterRun)
-                controller.deleteUploads(appUpload, testUpload, testSpecUpload)
+                extraSteps.add {  controller.deleteUploads(appUpload, testUpload, testSpecUpload)}
+            extraSteps.parSequence()
             run
         }
         return when (result) {

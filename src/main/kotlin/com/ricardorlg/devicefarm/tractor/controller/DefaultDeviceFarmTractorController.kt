@@ -2,7 +2,6 @@ package com.ricardorlg.devicefarm.tractor.controller
 
 import arrow.core.*
 import arrow.core.computations.either
-import arrow.fx.coroutines.Duration
 import arrow.fx.coroutines.Schedule
 import arrow.fx.coroutines.parMapN
 import arrow.fx.coroutines.parTraverse
@@ -12,6 +11,7 @@ import com.ricardorlg.devicefarm.tractor.utils.HelperMethods
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods.validateFileExtensionByType
 import com.ricardorlg.devicefarm.tractor.utils.fold
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.net.URL
@@ -19,6 +19,8 @@ import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.createDirectory
 import kotlin.io.path.deleteIfExists
+import kotlin.time.Duration
+import arrow.fx.coroutines.Duration as ArrowDuration
 import arrow.fx.coroutines.repeat as repeatEffectWithPolicy
 
 internal class DefaultDeviceFarmTractorController(
@@ -41,7 +43,7 @@ internal class DefaultDeviceFarmTractorController(
         return either {
             logStatus("I will try to find the project $projectName or I will create it if not found")
             val projects = !listProjects()
-            val maybeProject = projects.find { it.name().equals(projectName, true) }
+            val maybeProject = projects.find { it.name() == projectName }
             maybeProject.fold(
                 ifNone = {
                     logStatus("I didn't find the project $projectName, I will create it")
@@ -72,7 +74,7 @@ internal class DefaultDeviceFarmTractorController(
                 logStatus("I will try to find the $devicePoolName device pool")
 
                 devicePools
-                    .find { it.name().equals(devicePoolName, true) }
+                    .find { it.name() == devicePoolName }
                     .rightIfNotNull {
                         DevicePoolNotFoundError(DEVICE_POOL_NOT_FOUND.format(devicePoolName))
                     }.map {
@@ -88,39 +90,45 @@ internal class DefaultDeviceFarmTractorController(
         projectArn: String,
         artifactPath: String,
         uploadType: UploadType,
-        delaySpaceInterval: Duration,
+        delaySpaceInterval: ArrowDuration,
         maximumNumberOfRetries: Int
     ): Either<DeviceFarmTractorError, Upload> {
         return either {
-            val fetchAWSUploadSchedulePolicy = Schedule
-                .spaced<Either<DeviceFarmTractorError, Upload>>(delaySpaceInterval)
-                .whileOutput { retryNumber -> retryNumber < maximumNumberOfRetries }
-                .whileInput<Either<DeviceFarmTractorError, Upload>> { currentResult ->
-                    currentResult.isLeft()
-                            || currentResult.exists { currentUpload -> currentUpload.status() == UploadStatus.INITIALIZED || currentUpload.status() == UploadStatus.PROCESSING }
-                }
-                .logInput {
-                    when (it) {
-                        is Either.Left -> {
-                            logStatus("AWS Upload is not ready yet")
-                        }
-                        is Either.Right -> {
-                            logStatus("Current status of AWS Upload: ${it.b.status()}")
-                        }
-                    }
-                }
-                .zipRight(Schedule.identity())
-
             val file = HelperMethods
                 .loadFileFromPath(artifactPath)
                 .flatMap { it.validateFileExtensionByType(uploadType) }
                 .bind()
-
+            logStatus("I will start to upload the artifact ${file.name}")
             val initialUpload = !createUpload(
                 projectArn = projectArn,
                 uploadType = uploadType,
                 artifactName = file.name
             )
+
+            val fetchAWSUploadSchedulePolicy = Schedule
+                .spaced<Either<DeviceFarmTractorError, Upload>>(delaySpaceInterval)
+                .whileOutput { retryNumber -> retryNumber < maximumNumberOfRetries }
+                .whileInput<Either<DeviceFarmTractorError, Upload>> { currentResult ->
+                    when (currentResult) {
+                        is Either.Left -> {
+                            currentResult.a.cause !is DeviceFarmException
+                        }
+                        is Either.Right -> {
+                            currentResult.b.status() == UploadStatus.INITIALIZED || currentResult.b.status() == UploadStatus.PROCESSING
+                        }
+                    }
+                }
+                .logInput {
+                    when (it) {
+                        is Either.Left -> {
+                            logStatus("${file.nameWithoutExtension} upload is not ready yet")
+                        }
+                        is Either.Right -> {
+                            logStatus("Current status of ${file.nameWithoutExtension} AWS upload: ${it.b.status()}")
+                        }
+                    }
+                }
+                .zipRight(Schedule.identity())
 
             !parMapN(
                 fa = { !uploadArtifactToS3(file, initialUpload) },
@@ -166,13 +174,20 @@ internal class DefaultDeviceFarmTractorController(
         runName: String,
         projectArn: String,
         testConfiguration: ScheduleRunTest,
-        delaySpaceInterval: Duration
+        delaySpaceInterval: ArrowDuration
     ): Either<DeviceFarmTractorError, Run> {
+        val loggedStatuses =
+            ExecutionStatus.values().associateWith { MAXIMUM_LOGGED_MESSAGE_FOR_RUN_STATUS }.toMutableMap()
         return either {
             val policy = Schedule
                 .spaced<Run>(delaySpaceInterval)
                 .whileInput<Run> { run -> run.status() != ExecutionStatus.COMPLETED }
-                .logInput { logStatus("Current Run status = ${it.status()}") }
+                .logInput {
+                    if (loggedStatuses.getOrDefault(it.status(), -1) > 0) {
+                        logStatus(" Current Run status = ${it.status()}")
+                        loggedStatuses.merge(it.status(), -1) { oldValue, newValue -> oldValue + newValue }
+                    }
+                }
                 .zipRight(Schedule.identity())
             logStatus("I will schedule the run $runName and wait until it finishes")
             val initialRun = !scheduleRun(
@@ -190,7 +205,7 @@ internal class DefaultDeviceFarmTractorController(
         }
     }
 
-    override suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path) {
+    override suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path, delayForDownload: Duration) {
         getAssociatedJobs(run)
             .map { associatedJobs ->
                 createDirectory(
@@ -201,18 +216,25 @@ internal class DefaultDeviceFarmTractorController(
                         .parTraverse { job ->
                             createDirectory(
                                 reportsPath.resolve(
-                                    job.device().name().toLowerCase().replace("\\s".toRegex(), "_")
+                                    job.device()
+                                        .name()
+                                        .toLowerCase()
+                                        .replace("\\s".toRegex(), "_")
                                 )
-                            )
-                                .map { path -> downloadCustomerArtifacts(job, path) }
+                            ).map { path -> downloadCustomerArtifacts(job, path, delayForDownload) }
                         }
                 }
             }
     }
 
-    override suspend fun downloadCustomerArtifacts(job: Job, path: Path): Either<DeviceFarmTractorError, Unit> {
+    override suspend fun downloadCustomerArtifacts(
+        job: Job,
+        path: Path,
+        delayForDownload: Duration
+    ): Either<DeviceFarmTractorError, Unit> {
         return either {
             val artifacts = !getArtifacts(job.arn())
+            delay(delayForDownload)
             !artifacts
                 .find { it.type() == ArtifactType.CUSTOMER_ARTIFACT }
                 .fold(
@@ -220,6 +242,7 @@ internal class DefaultDeviceFarmTractorController(
                         logStatus(JOB_DOES_NOT_HAVE_CUSTOMER_ARTIFACTS.format(job.device().name().orEmpty())).right()
                     },
                     ifPresent = { artifact ->
+                        logStatus("I will start to download the reports for ${job.device().name()}")
                         val destinyPath = path.resolve("${artifact.name()}.${artifact.extension()}")
                         downloadAndSave(destinyPath, artifact, job.device().name())
                     }

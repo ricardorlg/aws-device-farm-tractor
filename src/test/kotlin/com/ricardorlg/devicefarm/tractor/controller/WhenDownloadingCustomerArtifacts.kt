@@ -25,6 +25,7 @@ import java.nio.file.Paths
 import java.nio.file.attribute.PosixFilePermissions
 import kotlin.io.path.createDirectory
 import kotlin.io.path.listDirectoryEntries
+import kotlin.time.milliseconds
 
 class WhenDownloadingCustomerArtifacts : StringSpec({
 
@@ -72,7 +73,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
             uploadArtifactsHandler,
             runScheduleHandler,
             artifactsHandler
-        ).downloadCustomerArtifacts(executionJob, destinyFolder)
+        ).downloadCustomerArtifacts(executionJob, destinyFolder,0.milliseconds)
 
         //THEN
         response shouldBeRight Unit
@@ -118,7 +119,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
             uploadArtifactsHandler,
             runScheduleHandler,
             artifactsHandler
-        ).downloadCustomerArtifacts(executionJob, destinyFolder)
+        ).downloadCustomerArtifacts(executionJob, destinyFolder,0.milliseconds)
 
         //THEN
         response shouldBeLeft {
@@ -155,7 +156,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
             uploadArtifactsHandler,
             runScheduleHandler,
             artifactsHandler
-        ).downloadCustomerArtifacts(executionJob, destinyFolder)
+        ).downloadCustomerArtifacts(executionJob, destinyFolder,0.milliseconds)
 
         //THEN
         response shouldBeRight Unit
@@ -191,7 +192,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
             uploadArtifactsHandler,
             runScheduleHandler,
             artifactsHandler
-        ).downloadCustomerArtifacts(executionJob, destinyFolder)
+        ).downloadCustomerArtifacts(executionJob, destinyFolder,0.milliseconds)
 
         //THEN
         response shouldBeLeft expectedError
@@ -245,7 +246,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllTestReportsOfTestRun(run, destinyFolder)
+        ).downloadAllTestReportsOfTestRun(run, destinyFolder,0.milliseconds)
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.toFile().name
@@ -306,7 +307,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
                 uploadArtifactsHandler,
                 runHandler,
                 downloadArtifactsHandler
-            ).downloadAllTestReportsOfTestRun(run, destinyFolder)
+            ).downloadAllTestReportsOfTestRun(run, destinyFolder,0.milliseconds)
         }.lineSequence()
             .filter(String::isNotBlank)
             .map(String::trim)
@@ -380,7 +381,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllTestReportsOfTestRun(run, destinyFolder)
+        ).downloadAllTestReportsOfTestRun(run, destinyFolder,0.milliseconds)
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.fileName.toString()
@@ -438,7 +439,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
                 uploadArtifactsHandler,
                 runHandler,
                 downloadArtifactsHandler
-            ).downloadAllTestReportsOfTestRun(run, destinyFolder)
+            ).downloadAllTestReportsOfTestRun(run, destinyFolder,0.milliseconds)
         }.lineSequence()
             .filter(String::isNotBlank)
             .map(String::trim)
@@ -487,7 +488,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
                 uploadArtifactsHandler,
                 runHandler,
                 downloadArtifactsHandler
-            ).downloadAllTestReportsOfTestRun(run, destinyFolder)
+            ).downloadAllTestReportsOfTestRun(run, destinyFolder,0.milliseconds)
         }.lineSequence()
             .filter(String::isNotBlank)
             .map(String::trim)
@@ -524,7 +525,7 @@ class WhenDownloadingCustomerArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllTestReportsOfTestRun(run, destinyFolder)
+        ).downloadAllTestReportsOfTestRun(run, destinyFolder,0.milliseconds)
 
 
         //THEN

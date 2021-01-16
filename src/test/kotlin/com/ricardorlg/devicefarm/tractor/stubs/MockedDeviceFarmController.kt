@@ -74,11 +74,11 @@ class MockedDeviceFarmController(
         )
     }
 
-    override suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path) {
+    override suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path, delayForDownload:kotlin.time.Duration) {
         downloadAllTestReportsOfTestRunImpl(run, destinyDirectory)
     }
 
-    override suspend fun downloadCustomerArtifacts(job: Job, path: Path): Either<DeviceFarmTractorError, Unit> {
+    override suspend fun downloadCustomerArtifacts(job: Job, path: Path,delayForDownload:kotlin.time.Duration): Either<DeviceFarmTractorError, Unit> {
         return Unit.right()
     }
 

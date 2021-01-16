@@ -16,6 +16,7 @@ import io.kotest.engine.spec.tempfile
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
 import kotlinx.coroutines.delay
+import software.amazon.awssdk.services.devicefarm.model.DeviceFarmException
 import software.amazon.awssdk.services.devicefarm.model.Upload
 import software.amazon.awssdk.services.devicefarm.model.UploadStatus
 import software.amazon.awssdk.services.devicefarm.model.UploadType
@@ -316,6 +317,59 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
 
         //THEN
         response shouldBeRight expectedUpload
+
+    }
+
+    "It should stop fetching upload status when a DeviceFarmException happens in a a retry"{
+        //GIVEN
+        val artifactPath = tempfile("test_artifact", ".apk").absolutePath
+
+        val initialUpload = Upload
+            .builder()
+            .status(UploadStatus.INITIALIZED)
+            .arn(uploadARN)
+            .name(artifactName)
+            .build()
+
+        val processingUpload = Upload
+            .builder()
+            .status(UploadStatus.PROCESSING)
+            .arn(uploadARN)
+            .name(artifactName)
+            .build()
+
+        val uploadFailure = DeviceFarmTractorGeneralError(DeviceFarmException.builder().message("test error").build())
+
+        val responses = iterator {
+            yield(initialUpload.right())
+            yield(processingUpload.right())
+            yield(uploadFailure.left())
+            fail("DeviceFarmException just happens, it shoudl stop fetching data")
+        }
+
+        val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
+            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
+            uploadArtifactImpl = { _, _ -> Either.right(Unit) },
+            fetchUploadImpl = { responses.next() }
+        )
+
+        //WHEN
+        val response = DefaultDeviceFarmTractorController(
+            logger,
+            deviceFarmProjectHandler,
+            devicePoolsHandler,
+            uploadArtifactsHandler,
+            runScheduleHandler,
+            artifactsHandler
+        ).uploadArtifactToDeviceFarm(
+            projectArn = projectArn,
+            artifactPath = artifactPath,
+            uploadType = defaultUploadType,
+            delaySpaceInterval = 5.milliseconds
+        )
+
+        //THEN
+        response shouldBeLeft uploadFailure
 
     }
 

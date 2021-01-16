@@ -1,11 +1,14 @@
 package com.ricardorlg.devicefarm.tractor.controller.services.definitions
 
 import arrow.core.Either
-import arrow.fx.coroutines.Duration
+import arrow.fx.coroutines.Duration as ArrowDuration
+import arrow.fx.coroutines.minutes
 import arrow.fx.coroutines.seconds
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Path
+import kotlin.time.Duration
+import kotlin.time.seconds as kotlinSeconds
 
 interface IDeviceFarmTractorController {
     suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project>
@@ -19,7 +22,7 @@ interface IDeviceFarmTractorController {
         projectArn: String,
         artifactPath: String,
         uploadType: UploadType,
-        delaySpaceInterval: Duration = 2.seconds,
+        delaySpaceInterval: ArrowDuration = 2.seconds,
         maximumNumberOfRetries: Int = 3600
     ): Either<DeviceFarmTractorError, Upload>
 
@@ -33,13 +36,18 @@ interface IDeviceFarmTractorController {
         runName: String,
         projectArn: String,
         testConfiguration: ScheduleRunTest,
-        delaySpaceInterval: Duration = 10.seconds
+        delaySpaceInterval: ArrowDuration = 1.minutes
     ): Either<DeviceFarmTractorError, Run>
 
-    suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path)
+    suspend fun downloadAllTestReportsOfTestRun(
+        run: Run,
+        destinyDirectory: Path,
+        delayForDownload: Duration = 15.kotlinSeconds
+    )
 
     suspend fun downloadCustomerArtifacts(
         job: Job,
-        path: Path
+        path: Path,
+        delayForDownload: Duration
     ): Either<DeviceFarmTractorError, Unit>
 }

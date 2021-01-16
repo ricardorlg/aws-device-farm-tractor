@@ -15,6 +15,7 @@ import io.mockk.*
 import software.amazon.awssdk.core.pagination.sync.SdkIterable
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.Artifact
+import software.amazon.awssdk.services.devicefarm.model.ArtifactCategory
 import software.amazon.awssdk.services.devicefarm.model.ArtifactType
 import software.amazon.awssdk.services.devicefarm.model.ListArtifactsRequest
 
@@ -45,7 +46,7 @@ class DefaultDeviceFarmArtifactsHandlerTest : StringSpec({
         response shouldBeRight expectedArtifacts
 
         verify {
-            dfClient.listArtifactsPaginator(ListArtifactsRequest.builder().arn(runArn).build())
+            dfClient.listArtifactsPaginator(ListArtifactsRequest.builder().type(ArtifactCategory.FILE).arn(runArn).build())
         }
         confirmVerified(dfClient)
     }
@@ -66,7 +67,7 @@ class DefaultDeviceFarmArtifactsHandlerTest : StringSpec({
         }
 
         verify {
-            dfClient.listArtifactsPaginator(ListArtifactsRequest.builder().arn(runArn).build())
+            dfClient.listArtifactsPaginator(ListArtifactsRequest.builder().type(ArtifactCategory.FILE).arn(runArn).build())
         }
         confirmVerified(dfClient)
     }
