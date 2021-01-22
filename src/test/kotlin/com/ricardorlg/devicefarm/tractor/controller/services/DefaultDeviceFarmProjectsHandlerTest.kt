@@ -18,7 +18,7 @@ import software.amazon.awssdk.services.devicefarm.model.Project
 class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
 
     val dfClient = mockk<DeviceFarmClient>()
-    val projectArn = "arn:aws:devicefarm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
+    val projectArn = "arn:aws:device_farm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
     val projectName = "test project"
 
     "When fetching projects from AWS, it should return the project as a right" {
@@ -26,7 +26,7 @@ class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
         val expectedProjects = (1..10).map {
             Project
                 .builder()
-                .arn("arn:aws:devicefarm:us-west-2:project$it")
+                .arn("arn:aws:device_farm:us-west-2:project$it")
                 .name("test_project_$it")
                 .build()
         }

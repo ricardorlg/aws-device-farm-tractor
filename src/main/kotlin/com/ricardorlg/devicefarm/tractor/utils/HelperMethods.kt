@@ -69,7 +69,7 @@ object HelperMethods {
                 if (f.exists()) {
                     f
                 } else {
-                   throw IllegalArgumentException("The file at $path does not exists")
+                    throw IllegalArgumentException("The file at $path does not exists")
                 }
             }.mapLeft {
                 DeviceFarmTractorGeneralError(it)

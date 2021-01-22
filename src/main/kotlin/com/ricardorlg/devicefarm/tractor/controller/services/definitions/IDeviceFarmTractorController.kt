@@ -1,13 +1,12 @@
 package com.ricardorlg.devicefarm.tractor.controller.services.definitions
 
 import arrow.core.Either
-import arrow.fx.coroutines.Duration as ArrowDuration
-import arrow.fx.coroutines.minutes
 import arrow.fx.coroutines.seconds
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Path
 import kotlin.time.Duration
+import arrow.fx.coroutines.Duration as ArrowDuration
 import kotlin.time.seconds as kotlinSeconds
 
 interface IDeviceFarmTractorController {
@@ -36,18 +35,21 @@ interface IDeviceFarmTractorController {
         runName: String,
         projectArn: String,
         testConfiguration: ScheduleRunTest,
-        delaySpaceInterval: ArrowDuration = 1.minutes
+        delaySpaceInterval: ArrowDuration = 10.seconds
     ): Either<DeviceFarmTractorError, Run>
 
-    suspend fun downloadAllTestReportsOfTestRun(
+    suspend fun downloadAllEvidencesOfTestRun(
         run: Run,
         destinyDirectory: Path,
-        delayForDownload: Duration = 15.kotlinSeconds
+        delayForDownload: Duration = 20.kotlinSeconds
     )
 
-    suspend fun downloadCustomerArtifacts(
-        job: Job,
+    suspend fun downloadAWSDeviceFarmArtifacts(
+        artifacts: List<Artifact>,
+        deviceName:String,
         path: Path,
-        delayForDownload: Duration
+        artifactType: ArtifactType
     ): Either<DeviceFarmTractorError, Unit>
+
+    suspend fun getDeviceResultsTable(run: Run):String
 }

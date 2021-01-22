@@ -20,7 +20,7 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
     val projects = (1..10).map {
         Project
             .builder()
-            .arn("arn:aws:devicefarm:us-west-2:project$it")
+            .arn("arn:aws:device_farm:us-west-2:project$it")
             .name("test_project_$it")
             .build()
     }

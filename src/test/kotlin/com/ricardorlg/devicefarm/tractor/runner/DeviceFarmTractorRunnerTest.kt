@@ -6,7 +6,6 @@ import arrow.core.right
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
 import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmController
-import com.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmLogging
 import io.kotest.assertions.fail
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.assertions.withClue
@@ -44,8 +43,6 @@ class DeviceFarmTractorRunnerTest : StringSpec({
     val testSpecUploadName = "testSpec.yml"
     val testSpecPath = "testSpecPath"
     val runName = "test Run unit test"
-    val logger = MockedDeviceFarmLogging()
-    val errorLogger = MockedDeviceFarmLogging(true)
 
     val mockedDate = LocalDateTime.now()
     mockkStatic(LocalDateTime::class)
@@ -119,7 +116,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -212,7 +209,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -300,7 +297,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -388,7 +385,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -478,7 +475,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -568,7 +565,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -655,7 +652,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -747,7 +744,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        DeviceFarmTractorRunner(controller, logger).runTests(
+        DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -830,7 +827,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -922,7 +919,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -1009,7 +1006,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
 
         //region WHEN
-        val response = DeviceFarmTractorRunner(controller, logger).runTests(
+        val response = DeviceFarmTractorRunner(controller).runTests(
             projectName = projectName,
             devicePoolName = devicePoolName,
             appPath = appPath,
@@ -1038,7 +1035,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //region WHEN
         val error = shouldThrow<DeviceFarmTractorError> {
             val loggedErrorMessage = captureStandardErr {
-                DeviceFarmTractorRunner(controller, errorLogger).runTests(
+                DeviceFarmTractorRunner(controller).runTests(
                     projectName = projectName,
                     devicePoolName = devicePoolName,
                     appPath = appPath,
@@ -1084,7 +1081,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //region WHEN
         val error = shouldThrow<DeviceFarmTractorError> {
             val loggedErrorMessage = captureStandardErr {
-                DeviceFarmTractorRunner(controller, errorLogger).runTests(
+                DeviceFarmTractorRunner(controller).runTests(
                     projectName = projectName,
                     devicePoolName = devicePoolName,
                     appPath = appPath,
@@ -1165,7 +1162,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //region WHEN
         val error = shouldThrow<DeviceFarmTractorError> {
             val loggedErrorMessage = captureStandardErr {
-                DeviceFarmTractorRunner(controller, errorLogger).runTests(
+                DeviceFarmTractorRunner(controller).runTests(
                     projectName = projectName,
                     devicePoolName = devicePoolName,
                     appPath = appPath,
@@ -1249,7 +1246,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //region WHEN
         val error = shouldThrow<DeviceFarmTractorError> {
             val loggedErrorMessage = captureStandardErr {
-                DeviceFarmTractorRunner(controller, errorLogger).runTests(
+                DeviceFarmTractorRunner(controller).runTests(
                     projectName = projectName,
                     devicePoolName = devicePoolName,
                     appPath = appPath,
@@ -1338,7 +1335,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //region WHEN
         val error = shouldThrow<DeviceFarmTractorError> {
             val loggedErrorMessage = captureStandardErr {
-                DeviceFarmTractorRunner(controller, errorLogger).runTests(
+                DeviceFarmTractorRunner(controller).runTests(
                     projectName = projectName,
                     devicePoolName = devicePoolName,
                     appPath = appPath,

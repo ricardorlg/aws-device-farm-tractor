@@ -2,19 +2,16 @@ package com.ricardorlg.devicefarm.tractor.runner
 
 import arrow.core.Either
 import arrow.core.computations.either
-import arrow.fx.coroutines.parSequence
 import arrow.fx.coroutines.parTupledN
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorController
-import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorLogging
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Paths
 import java.time.LocalDateTime
 
 class DeviceFarmTractorRunner(
-    private val controller: IDeviceFarmTractorController,
-    private val logger : IDeviceFarmTractorLogging
-){
+    private val controller: IDeviceFarmTractorController
+) {
 
     suspend fun runTests(
         projectName: String,
@@ -78,21 +75,24 @@ class DeviceFarmTractorRunner(
                 projectArn = project.arn(),
                 testConfiguration = testConfiguration
             )
-            val extraSteps = mutableListOf<suspend ()->Unit>()
-            if (downloadReports && testReportsBaseDirectory.isNotBlank())
-                extraSteps.add { controller.downloadAllTestReportsOfTestRun(run, Paths.get(testReportsBaseDirectory)) }
+
+            if (downloadReports && testReportsBaseDirectory.isNotBlank()) {
+                controller.downloadAllEvidencesOfTestRun(run, Paths.get(testReportsBaseDirectory))
+            }
             if (cleanStateAfterRun)
-                extraSteps.add {  controller.deleteUploads(appUpload, testUpload, testSpecUpload)}
-            extraSteps.parSequence()
+                controller.deleteUploads(appUpload, testUpload, testSpecUpload)
             run
         }
         return when (result) {
             is Either.Left -> {
-                logger.logError(result.a.cause, result.a.message)
                 throw result.a
             }
             is Either.Right -> result.b
         }
+    }
+
+    suspend fun getDeviceResultsTable(run: Run): String {
+        return controller.getDeviceResultsTable(run)
     }
 
     private fun generateRunName(): String {

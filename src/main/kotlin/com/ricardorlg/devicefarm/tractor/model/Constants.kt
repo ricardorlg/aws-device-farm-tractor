@@ -1,5 +1,7 @@
 package com.ricardorlg.devicefarm.tractor.model
 
+import software.amazon.awssdk.services.devicefarm.model.ArtifactType
+
 const val ERROR_MESSAGE_FETCHING_AWS_PROJECTS = "There was an error fetching projects from AWS"
 const val ERROR_PREFIX_MESSAGE_CREATING_NEW_PROJECT = "There was an error in AWS creating the project"
 const val ERROR_MESSAGE_FETCHING_DEVICE_POOLS = "There was an error fetching device pools from AWS"
@@ -25,7 +27,7 @@ const val ERROR_DELETING_UPLOAD = "There was an error deleting the upload %s"
 const val DELETE_UPLOAD_INVALID_RESPONSE_CODE = "AWS Device farm response with a non 200 code, response code is: %d"
 const val ERROR_FETCHING_JOBS = "There was an error fetching the associated jobs of the run %s"
 const val ERROR_CREATING_DIRECTORY = "There was a problem creating the folder %s"
-const val JOB_DOES_NOT_HAVE_CUSTOMER_ARTIFACTS = "There is no customer artifacts in the run associated to the device %s"
+const val JOB_DOES_NOT_HAVE_ARTIFACT_OF_TYPE = "There is no artifacts of type %s in the run associated to the device %s"
 const val DELETE_UPLOAD_MESSAGE = "I've just deleted the upload %s - arn %s"
-const val MAXIMUM_LOGGED_MESSAGE_FOR_RUN_STATUS = 5
+val INVALID_ARTIFACT_TYPES = listOf(ArtifactType.UNKNOWN, ArtifactType.UNKNOWN_TO_SDK_VERSION)
 

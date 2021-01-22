@@ -22,7 +22,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
 
     val dfClient = mockk<DeviceFarmClient>()
     val httpClient: HttpHandler = { Response(status = Status.OK) }
-    val projectArn = "arn:aws:devicefarm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
+    val projectArn = "arn:aws:device_farm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
     val artifactName = "testArtifact"
     val commonUploadType = UploadType.ANDROID_APP
     val uploadARN = "test_upload_arn"
@@ -136,7 +136,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val artifact = tempfile()
         val awsUpload = Upload
             .builder()
-            .url("testurl")
+            .url("test_url")
             .contentType(AWS_UPLOAD_CONTENT_TYPE)
             .build()
         //WHEN
@@ -151,7 +151,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val artifact = tempfile()
         val awsUpload = Upload
             .builder()
-            .url("testurl")
+            .url("test_url")
             .contentType(AWS_UPLOAD_CONTENT_TYPE)
             .build()
         val httpClientNonOkStatusResponse: HttpHandler = {
@@ -179,7 +179,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val artifact = tempfile()
         val awsUpload = Upload
             .builder()
-            .url("testurl")
+            .url("test_url")
             .contentType(AWS_UPLOAD_CONTENT_TYPE)
             .build()
         val expectedError = RuntimeException("Test error")

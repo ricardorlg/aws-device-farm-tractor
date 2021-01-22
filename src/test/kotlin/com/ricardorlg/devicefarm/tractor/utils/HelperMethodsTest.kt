@@ -150,7 +150,7 @@ class HelperMethodsTest : StringSpec({
             it.cause.shouldBeInstanceOf<java.lang.IllegalArgumentException>()
         }
     }
-    "When no path is provided an Illegal Argument error should be returnes as a left " {
+    "When no path is provided an Illegal Argument error should be returned as a left " {
         //WHEN
         val response = HelperMethods.loadFileFromPath("   ")
 

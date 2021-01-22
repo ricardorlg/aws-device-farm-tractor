@@ -74,12 +74,25 @@ class MockedDeviceFarmController(
         )
     }
 
-    override suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path, delayForDownload:kotlin.time.Duration) {
+    override suspend fun downloadAllEvidencesOfTestRun(
+        run: Run,
+        destinyDirectory: Path,
+        delayForDownload: kotlin.time.Duration
+    ) {
         downloadAllTestReportsOfTestRunImpl(run, destinyDirectory)
     }
 
-    override suspend fun downloadCustomerArtifacts(job: Job, path: Path,delayForDownload:kotlin.time.Duration): Either<DeviceFarmTractorError, Unit> {
+    override suspend fun downloadAWSDeviceFarmArtifacts(
+        artifacts: List<Artifact>,
+        deviceName:String,
+        path: Path,
+        artifactType: ArtifactType
+    ): Either<DeviceFarmTractorError, Unit> {
         return Unit.right()
+    }
+
+    override suspend fun getDeviceResultsTable(run: Run): String {
+        TODO("Not yet implemented")
     }
 
 }

@@ -28,7 +28,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
     val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler()
     val runScheduleHandler = MockedDeviceFarmRunsHandler()
     val artifactsHandler = MockedDeviceFarmArtifactsHandler()
-    val projectArn = "arn:aws:devicefarm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
+    val projectArn = "arn:aws:device_farm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
     val artifactName = "testArtifact"
     val defaultUploadType = UploadType.ANDROID_APP
     val uploadARN = "test_upload_arn"
@@ -344,7 +344,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             yield(initialUpload.right())
             yield(processingUpload.right())
             yield(uploadFailure.left())
-            fail("DeviceFarmException just happens, it shoudl stop fetching data")
+            fail("DeviceFarmException just happens, it should stop fetching data")
         }
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(

@@ -23,7 +23,6 @@ object DeviceFarmTractorFactory {
         region: String = ""
     ): Either<Throwable, DeviceFarmTractorRunner> {
         return Either.catch {
-
             deviceFarmClientBuilder
                 .applyMutation {
                     it.credentialsProvider(
@@ -41,9 +40,7 @@ object DeviceFarmTractorFactory {
 
                 }
 
-
             val dfClient = deviceFarmClientBuilder.build()
-
             val controller = DefaultDeviceFarmTractorController(
                 deviceFarmTractorLogging = logger,
                 deviceFarmProjectsHandler = DefaultDeviceFarmProjectsHandler(dfClient),
@@ -53,7 +50,7 @@ object DeviceFarmTractorFactory {
                 deviceFarmArtifactsHandler = DefaultDeviceFarmArtifactsHandler(dfClient)
             )
 
-            DeviceFarmTractorRunner(controller = controller, logger = logger)
+            DeviceFarmTractorRunner(controller = controller)
         }
     }
 
@@ -63,7 +60,6 @@ object DeviceFarmTractorFactory {
         secretAccessKey: String,
         sessionToken: String
     ): AwsCredentialsProvider {
-
         return when {
             accessKeyId.isBlank() || secretAccessKey.isBlank() -> {
                 DefaultCredentialsProvider.create()

@@ -20,7 +20,7 @@ import software.amazon.awssdk.services.devicefarm.model.ListDevicePoolsRequest
 class DefaultDeviceFarmDevicePoolsHandlerTest : StringSpec({
 
     val dfClient = mockk<DeviceFarmClient>()
-    val projectArn = "arn:aws:devicefarm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
+    val projectArn = "arn:aws:device_farm:us-west-2:377815266411:project:214b4fcb-e29c-43d2-94ea-7aa6e3b79dce"
 
     "When fetching device pools from AWS device farm, it should return the associated device pools of a given project as a right" {
         //GIVEN
@@ -28,7 +28,7 @@ class DefaultDeviceFarmDevicePoolsHandlerTest : StringSpec({
             DevicePool
                 .builder()
                 .name("test_device_pool_$it")
-                .arn("arn:aws:devicefarm:us-west-2:device_pool_$it")
+                .arn("arn:aws:device_farm:us-west-2:device_pool_$it")
                 .build()
         }
         every {

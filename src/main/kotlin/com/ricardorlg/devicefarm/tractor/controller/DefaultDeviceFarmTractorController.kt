@@ -2,23 +2,26 @@ package com.ricardorlg.devicefarm.tractor.controller
 
 import arrow.core.*
 import arrow.core.computations.either
-import arrow.fx.coroutines.Schedule
-import arrow.fx.coroutines.parMapN
-import arrow.fx.coroutines.parTraverse
+import arrow.core.extensions.list.foldable.find
+import arrow.fx.coroutines.*
+import com.jakewharton.picnic.Table
+import com.jakewharton.picnic.TextBorder
+import com.jakewharton.picnic.renderText
+import com.jakewharton.picnic.table
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.*
 import com.ricardorlg.devicefarm.tractor.model.*
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods.validateFileExtensionByType
-import com.ricardorlg.devicefarm.tractor.utils.fold
+import com.ricardorlg.devicefarm.tractor.utils.prettyName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.withContext
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.net.URL
 import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.io.path.createDirectory
-import kotlin.io.path.deleteIfExists
+import kotlin.io.path.deleteExisting
+import kotlin.io.path.listDirectoryEntries
 import kotlin.time.Duration
 import arrow.fx.coroutines.Duration as ArrowDuration
 import arrow.fx.coroutines.repeat as repeatEffectWithPolicy
@@ -42,18 +45,19 @@ internal class DefaultDeviceFarmTractorController(
     override suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project> {
         return either {
             logStatus("I will try to find the project $projectName or I will create it if not found")
-            val projects = !listProjects()
-            val maybeProject = projects.find { it.name() == projectName }
-            maybeProject.fold(
-                ifNone = {
-                    logStatus("I didn't find the project $projectName, I will create it")
-                    !createProject(projectName)
-                },
-                ifPresent = {
-                    logStatus("I found the project $projectName, I will use it")
-                    it
-                }
-            )
+            listProjects()
+                .bind()
+                .find { it.name() == projectName }
+                .fold(
+                    ifEmpty = {
+                        logStatus("I didn't find the project $projectName, I will create it")
+                        !createProject(projectName)
+                    },
+                    ifSome = {
+                        logStatus("I found the project $projectName, I will use it")
+                        it
+                    }
+                )
         }
     }
 
@@ -72,9 +76,8 @@ internal class DefaultDeviceFarmTractorController(
                     }.bind()
             } else {
                 logStatus("I will try to find the $devicePoolName device pool")
-
                 devicePools
-                    .find { it.name() == devicePoolName }
+                    .firstOrNull { it.name() == devicePoolName }
                     .rightIfNotNull {
                         DevicePoolNotFoundError(DEVICE_POOL_NOT_FOUND.format(devicePoolName))
                     }.map {
@@ -98,7 +101,9 @@ internal class DefaultDeviceFarmTractorController(
                 .loadFileFromPath(artifactPath)
                 .flatMap { it.validateFileExtensionByType(uploadType) }
                 .bind()
+
             logStatus("I will start to upload the artifact ${file.name}")
+
             val initialUpload = !createUpload(
                 projectArn = projectArn,
                 uploadType = uploadType,
@@ -176,18 +181,11 @@ internal class DefaultDeviceFarmTractorController(
         testConfiguration: ScheduleRunTest,
         delaySpaceInterval: ArrowDuration
     ): Either<DeviceFarmTractorError, Run> {
-        val loggedStatuses =
-            ExecutionStatus.values().associateWith { MAXIMUM_LOGGED_MESSAGE_FOR_RUN_STATUS }.toMutableMap()
         return either {
             val policy = Schedule
                 .spaced<Run>(delaySpaceInterval)
                 .whileInput<Run> { run -> run.status() != ExecutionStatus.COMPLETED }
-                .logInput {
-                    if (loggedStatuses.getOrDefault(it.status(), -1) > 0) {
-                        logStatus(" Current Run status = ${it.status()}")
-                        loggedStatuses.merge(it.status(), -1) { oldValue, newValue -> oldValue + newValue }
-                    }
-                }
+                .logInput { logStatus(" Current Run status = ${it.status()}") }
                 .zipRight(Schedule.identity())
             logStatus("I will schedule the run $runName and wait until it finishes")
             val initialRun = !scheduleRun(
@@ -201,11 +199,11 @@ internal class DefaultDeviceFarmTractorController(
             )
             repeatEffectWithPolicy(policy) {
                 !fetchRun(initialRun.arn())
-            }.also { logStatus("The test execution has just finished - result = ${it.result()}") }
+            }.also { logStatus("Test execution just finished with result = ${it.result()}") }
         }
     }
 
-    override suspend fun downloadAllTestReportsOfTestRun(run: Run, destinyDirectory: Path, delayForDownload: Duration) {
+    override suspend fun downloadAllEvidencesOfTestRun(run: Run, destinyDirectory: Path, delayForDownload: Duration) {
         getAssociatedJobs(run)
             .map { associatedJobs ->
                 createDirectory(
@@ -221,30 +219,66 @@ internal class DefaultDeviceFarmTractorController(
                                         .toLowerCase()
                                         .replace("\\s".toRegex(), "_")
                                 )
-                            ).map { path -> downloadCustomerArtifacts(job, path, delayForDownload) }
+                            ).map { path ->
+                                logStatus("I will download the artifacts associated to the test execution")
+                                //TODO Remove this when the artifact status is more clear
+                                delay(delayForDownload)
+                                getArtifacts(job.arn())
+                                    .map { artifacts ->
+                                        parTupledN(
+                                            fa = {
+                                                downloadAWSDeviceFarmArtifacts(
+                                                    artifacts = artifacts,
+                                                    deviceName = job.device().name().orEmpty(),
+                                                    path = path,
+                                                    artifactType = ArtifactType.CUSTOMER_ARTIFACT
+                                                )
+                                            },
+                                            fb = {
+                                                downloadAWSDeviceFarmArtifacts(
+                                                    artifacts = artifacts,
+                                                    deviceName = job.device().name().orEmpty(),
+                                                    path = path,
+                                                    artifactType = ArtifactType.VIDEO
+                                                )
+                                            }
+                                        )
+                                        runCatching {
+                                            if (path.listDirectoryEntries().isEmpty())
+                                                path.deleteExisting()
+                                        }
+
+                                    }
+                            }
                         }
                 }
             }
     }
 
-    override suspend fun downloadCustomerArtifacts(
-        job: Job,
+    override suspend fun downloadAWSDeviceFarmArtifacts(
+        artifacts: List<Artifact>,
+        deviceName: String,
         path: Path,
-        delayForDownload: Duration
+        artifactType: ArtifactType
     ): Either<DeviceFarmTractorError, Unit> {
-        return either {
-            val artifacts = !getArtifacts(job.arn())
-            delay(delayForDownload)
-            !artifacts
-                .find { it.type() == ArtifactType.CUSTOMER_ARTIFACT }
+        return if (artifactType in INVALID_ARTIFACT_TYPES)
+            DeviceFarmTractorErrorIllegalArgumentException("$artifactType is not supported").left()
+        else {
+            logStatus("I will start to download the ${artifactType.prettyName()} of $deviceName test run")
+            artifacts
+                .find { it.type() == artifactType }
                 .fold(
-                    ifNone = {
-                        logStatus(JOB_DOES_NOT_HAVE_CUSTOMER_ARTIFACTS.format(job.device().name().orEmpty())).right()
-                    },
-                    ifPresent = { artifact ->
-                        logStatus("I will start to download the reports for ${job.device().name()}")
+                    ifSome = { artifact ->
                         val destinyPath = path.resolve("${artifact.name()}.${artifact.extension()}")
-                        downloadAndSave(destinyPath, artifact, job.device().name())
+                        downloadAndSave(destinyPath, artifact, deviceName)
+                    },
+                    ifEmpty = {
+                        logStatus(
+                            JOB_DOES_NOT_HAVE_ARTIFACT_OF_TYPE.format(
+                                artifactType.name,
+                                deviceName
+                            )
+                        ).right()
                     }
                 ).mapLeft {
                     ErrorDownloadingArtifact(it)
@@ -257,33 +291,62 @@ internal class DefaultDeviceFarmTractorController(
         artifact: Artifact,
         deviceName: String
     ): Either<Throwable, Unit> {
-        return withContext(Dispatchers.IO) {
-            runCatching {
+        return Either.catch {
+            evalOn(Dispatchers.IO) {
                 URL(artifact.url())
                     .openStream().use {
-                        logStatus("I will start to download the report of $deviceName test run, into: $destinyPath")
                         Files.write(destinyPath, it.readBytes())
                     }
-            }.fold(
-                onSuccess = {
-                    logStatus("I finish to download the report of $deviceName test execution")
-                    Unit.right()
-                },
-                onFailure = { failure ->
-                    logStatus("There was an error downloading the report of $deviceName test run. reason: ${failure.message.orEmpty()}")
-                    runCatching { destinyPath.parent.deleteIfExists() }
-                    failure.left()
+            }
+        }.fold(
+            ifRight = {
+                logStatus(
+                    "I've finished to download the ${
+                        artifact.type().prettyName()
+                    } of $deviceName in $destinyPath"
+                )
+                Unit.right()
+            },
+            ifLeft = { failure ->
+                logStatus(
+                    "There was an error downloading the ${
+                        artifact.type().prettyName()
+                    } of $deviceName test run. reason: ${failure.message.orEmpty()}"
+                )
+                failure.left()
+            }
+        )
+    }
+
+    override suspend fun getDeviceResultsTable(run: Run): String {
+        val table = either<DeviceFarmTractorError, Table> {
+            val associatedJobs = !getAssociatedJobs(run)
+            table {
+                cellStyle {
+                    border = true
                 }
-            )
+                header {
+                    row("Device", "Result")
+                }
+                associatedJobs
+                    .forEach { job ->
+                        row(job.device().name(), job.result().name)
+
+                    }
+            }
         }
+        return table.orNull()?.renderText(border = TextBorder.ASCII).orEmpty()
     }
 
     private suspend fun createDirectory(path: Path): Either<Throwable, Path> {
         return Either.catch {
-            path.createDirectory()
+            evalOn(Dispatchers.IO) {
+                path.createDirectory()
+            }
         }.mapLeft {
             logStatus(ERROR_CREATING_DIRECTORY.format(path.fileName.toString(), it.message.orEmpty()))
             it
+
         }
     }
 }

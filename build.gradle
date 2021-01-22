@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.ricardorlg.devicefarm'
-version = '1.0.2'
+version = '1.0.3'
 
 repositories {
     mavenCentral()
@@ -13,19 +13,22 @@ repositories {
     maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
 }
 dependencies {
-    implementation platform('software.amazon.awssdk:bom:2.15.31')
+    implementation platform('software.amazon.awssdk:bom:2.15.67')
     api 'software.amazon.awssdk:devicefarm'
     implementation "io.arrow-kt:arrow-fx-coroutines:$arrow_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
     implementation "io.arrow-kt:arrow-syntax:$arrow_version"
     implementation "io.github.microutils:kotlin-logging:$kotlin_logging_version"
     implementation "org.http4k:http4k-core:$http4k_version"
-    implementation "org.slf4j:slf4j-simple:1.7.29"
+    implementation "com.jakewharton.picnic:picnic:0.5.0"
+
+    testImplementation "org.slf4j:slf4j-simple:1.7.30"
     testImplementation "io.mockk:mockk:$mockk_version"
     testImplementation "io.kotest:kotest-runner-junit5:$kotest_version"
     testImplementation "io.kotest:kotest-assertions-core:$kotest_version"
     testImplementation "io.kotest:kotest-assertions-arrow-jvm:$kotest_version"
     testImplementation "io.kotest:kotest-extensions-allure:$kotest_version"
+    testImplementation "io.kotest:kotest-property:$kotest_version"
 
 }
 allure {
@@ -33,7 +36,7 @@ allure {
     version = "$allure_version"
 }
 
-java{
+java {
     withSourcesJar()
 }
 

@@ -19,8 +19,7 @@ class DefaultDeviceFarmTractorLogger(
 
     override fun logError(error: Throwable?, msg: String) {
         kotlin.runCatching {
-            logger
-                .error(error) { msg }
+            logger.error(error) { msg }
         }.onFailure {
             System.err.println(msg)
         }
