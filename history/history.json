@@ -1,5 +1,5 @@
 {
-  "When no path is provided an Illegal Argument error should be returned as a left" : {
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_return_the_upload_if_its_ready_to_be_used" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -9,16 +9,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "b12518640452eecc",
+      "uid" : "dd2e586782f385c7",
       "status" : "passed",
       "time" : {
-        "start" : 1611305799536,
-        "stop" : 1611305799541,
-        "duration" : 5
+        "start" : 1613593124362,
+        "stop" : 1613593124419,
+        "duration" : 57
       }
     } ]
   },
-  "It should return a DeviceFarmTractorError if something happens fetching device farm projects" : {
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest/When_creating_a_project_in_AWS_device_farm_if_project_name_is_empty_an_error_should_be_returned_as_a_left" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -28,16 +28,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "1ecb25a46409f3d8",
+      "uid" : "3d95580702883df1",
       "status" : "passed",
       "time" : {
-        "start" : 1611305800573,
-        "stop" : 1611305800583,
-        "duration" : 10
+        "start" : 1613593117106,
+        "stop" : 1613593117219,
+        "duration" : 113
       }
     } ]
   },
-  "It should download an AWS Device farm artifact of a job execution depending of its type" : {
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_uploading_artifact_to_S3_it_should_return_a_left_when_upload_result_has_not_OK_status" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -47,130 +47,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "1d79c099cd4c5093",
+      "uid" : "691aec5d97fb7d42",
       "status" : "passed",
       "time" : {
-        "start" : 1611305799786,
-        "stop" : 1611305799880,
-        "duration" : 94
-      }
-    } ]
-  },
-  "When IOS upload type is used, and file does not have .ipa extension an error is returned" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "581bb234c90be02d",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799487,
-        "stop" : 1611305799490,
-        "duration" : 3
-      }
-    } ]
-  },
-  "When running a test in device farm it should use the correct Project ARN in the process" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "6c8c9161b9c380f8",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799118,
-        "stop" : 1611305799174,
-        "duration" : 56
-      }
-    } ]
-  },
-  "It should return the device pool that has the provided name" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "c0f026e0de0e70e7",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800515,
-        "stop" : 1611305800517,
-        "duration" : 2
-      }
-    } ]
-  },
-  "When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "57e7c7198ea31f2c",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305794711,
-        "stop" : 1611305794726,
-        "duration" : 15
-      }
-    } ]
-  },
-  "When an error happens fetching the logger then info messages should be redirect to stdout" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d11bf6ef17870bf6",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305796027,
-        "stop" : 1611305796353,
-        "duration" : 326
-      }
-    } ]
-  },
-  "When sessionToken is provided but no credentials, it should return a runner that uses a device farm client with default configuration" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d062792bd4fd0c37",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798227,
-        "stop" : 1611305798238,
+        "start" : 1613593119791,
+        "stop" : 1613593119802,
         "duration" : 11
       }
     } ]
   },
-  "It should not try to download the reports when an error happens fetching the associated jobs of the test run" : {
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithAWSDevicePools/It_should_return_the_device_pool_that_has_the_provided_name" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -180,1859 +66,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "6a871f98dfc87ba8",
+      "uid" : "447a677217fc3880",
       "status" : "passed",
       "time" : {
-        "start" : 1611305800123,
-        "stop" : 1611305800132,
-        "duration" : 9
-      }
-    } ]
-  },
-  "When creating a project in AWS device farm, if project name is empty an error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "1c2b293328d06c9f",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795172,
-        "stop" : 1611305795264,
-        "duration" : 92
-      }
-    } ]
-  },
-  "When deleting an Upload it should return a DeleteUploadResponse as a right" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "7d82dd1fda82a32a",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797251,
-        "stop" : 1611305797342,
-        "duration" : 91
-      }
-    } ]
-  },
-  "When creating AWS device farm upload, project ARN is mandatory, a left should be returned if not provided" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "75de1a130d22818d",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305796987,
-        "stop" : 1611305797022,
-        "duration" : 35
-      }
-    } ]
-  },
-  "When an error happens, it should return the exception wrapped as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "2ec6d1f1636ef2f2",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798423,
-        "stop" : 1611305798447,
-        "duration" : 24
-      }
-    } ]
-  },
-  "When accessKeyId, secretAccessKey, session token and region name are provided, it should return a runner that uses a device farm client with basic credentials, the session token and the provided region" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "78d9524f20c1374b",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798398,
-        "stop" : 1611305798421,
-        "duration" : 23
-      }
-    } ]
-  },
-  "It should return the executed run when the execution is completed" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "3d38598cec617ecf",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800626,
-        "stop" : 1611305800631,
-        "duration" : 5
-      }
-    } ]
-  },
-  "It should return a DeviceFarmTractorError when fetching current run fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "3d5619844a26b702",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800667,
-        "stop" : 1611305800673,
-        "duration" : 6
-      }
-    } ]
-  },
-  "It should delete uploads in parallel and keep deleting even if some operation fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "3baa1e77a9838d00",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799646,
-        "stop" : 1611305799692,
-        "duration" : 46
-      }
-    } ]
-  },
-  "When Android upload type is used, and file does not have .apk extension an error is returned" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "2568bd61a3ae48cf",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799476,
-        "stop" : 1611305799478,
-        "duration" : 2
-      }
-    } ]
-  },
-  "When fetching an AWS device farm upload, it should return an error as a left if upload ARN is empty" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "fc3fc027e6c48902",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797188,
-        "stop" : 1611305797228,
-        "duration" : 40
-      }
-    } ]
-  },
-  "When creating a project in AWS device farm, any error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d07c3bce06d563d7",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795140,
-        "stop" : 1611305795169,
-        "duration" : 29
-      }
-    } ]
-  },
-  "It should not fail if there is no artifacts to download" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f0d54967d2345973",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799941,
-        "stop" : 1611305799943,
-        "duration" : 2
-      }
-    } ]
-  },
-  "When running a test in device farm it should return the result" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "fb2c7887a256d0aa",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799066,
-        "stop" : 1611305799116,
-        "duration" : 50
-      }
-    } ]
-  },
-  "When scheduling a run, it should return the run as a right" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d538732ae581d4d6",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795329,
-        "stop" : 1611305795512,
-        "duration" : 183
-      }
-    } ]
-  },
-  "When a run name is provided it should be used" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "615b0200b7c7e411",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795521,
-        "stop" : 1611305795553,
-        "duration" : 32
-      }
-    } ]
-  },
-  "It should return the first found device pool as default when no name is provided" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "7572ee8f9ef7077a",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800511,
-        "stop" : 1611305800513,
-        "duration" : 2
-      }
-    } ]
-  },
-  "When Android upload type is used, file must end with .apk" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "61223ae1119417ec",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799471,
-        "stop" : 1611305799474,
-        "duration" : 3
-      }
-    } ]
-  },
-  "When running a test in device farm it should throw an error if a left is returner by the run handler" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "128ff77ab448ee8b",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799435,
-        "stop" : 1611305799446,
-        "duration" : 11
-      }
-    } ]
-  },
-  "It should return the upload, if its ready to be used" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "81f5250497e06b00",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800202,
-        "stop" : 1611305800233,
-        "duration" : 31
-      }
-    } ]
-  },
-  "When fetching the artifacts of a test execution any error should be returned as a DeviceFarmTractorError left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "a963414f5c56060f",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305794451,
-        "stop" : 1611305794491,
-        "duration" : 40
-      }
-    } ]
-  },
-  "info messages should be logged using Kotlin Logging lib" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "186e42c0e30792eb",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305796414,
-        "stop" : 1611305796516,
-        "duration" : 102
-      }
-    } ]
-  },
-  "When fetching a RUN it should return it as a right" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "e1ad3b8638f5aef4",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795665,
-        "stop" : 1611305795744,
-        "duration" : 79
-      }
-    } ]
-  },
-  "When an error happens fetching the logger then error messages should be redirect to stderr" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "ac62d096797f221",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305796582,
-        "stop" : 1611305796642,
-        "duration" : 60
-      }
-    } ]
-  },
-  "When accessKeyId and secretAccessKey are provided, it should return a runner that uses a device farm client with basic credentials" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "8df5863cd937718e",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798254,
-        "stop" : 1611305798297,
-        "duration" : 43
-      }
-    } ]
-  },
-  "It should log an error message when creating the test report directory of an specific device fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "8e6ff4676aef4d37",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800101,
-        "stop" : 1611305800114,
-        "duration" : 13
-      }
-    } ]
-  },
-  "It should stop fetching upload status when a DeviceFarmException happens in a a retry" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "83b5ff8e9a36b013",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800443,
-        "stop" : 1611305800471,
-        "duration" : 28
-      }
-    } ]
-  },
-  "When running a test in device farm it should have APPIUM NODE as test type" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "95dbd61a9b9de95d",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799240,
-        "stop" : 1611305799258,
-        "duration" : 18
-      }
-    } ]
-  },
-  "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f1485770b7f835b8",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799402,
-        "stop" : 1611305799415,
-        "duration" : 13
-      }
-    } ]
-  },
-  "When loading a file from a given path, if the files doesn't exists an error should be returned as a Left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "369d03c13ff9a014",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799532,
-        "stop" : 1611305799535,
-        "duration" : 3
-      }
-    } ]
-  },
-  "When no run ARN is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "576d3833f672575e",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795747,
-        "stop" : 1611305795785,
-        "duration" : 38
-      }
-    } ]
-  },
-  "When fetching projects from AWS, any error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "38e5f62f0597a5ac",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305794909,
-        "stop" : 1611305794917,
-        "duration" : 8
-      }
-    } ]
-  },
-  "When only accessKeyId is provided, it should return a runner that uses a device farm client with default configuration" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "9843a5f762b118bc",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798187,
-        "stop" : 1611305798205,
-        "duration" : 18
-      }
-    } ]
-  },
-  "It should return a DeviceFarmTractorErrorIllegalArgumentException if the searched artifact type is not supported" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "c2c28eedc6cd4a13",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799768,
-        "stop" : 1611305799784,
-        "duration" : 16
-      }
-    } ]
-  },
-  "When running a test in device farm it should try to delete the uploads of the execution by default" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "8e5579815b5b179e",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799378,
-        "stop" : 1611305799392,
-        "duration" : 14
-      }
-    } ]
-  },
-  "It should wait until the execution completes" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "30b7d91406b06d0b",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800633,
-        "stop" : 1611305800665,
-        "duration" : 32
-      }
-    } ]
-  },
-  "It should return a DeviceFarmTractorError when creating the upload fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "4370b8b86dff5d85",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800473,
-        "stop" : 1611305800476,
-        "duration" : 3
-      }
-    } ]
-  },
-  "When fetching the artifacts of a test execution if no run arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "e3ad813eb677997b",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305794498,
-        "stop" : 1611305794521,
-        "duration" : 23
-      }
-    } ]
-  },
-  "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler and the parallel upload process should be cancelled" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "216684983d6fc261",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799419,
-        "stop" : 1611305799433,
-        "duration" : 14
-      }
-    } ]
-  },
-  "It should return the last DeviceFarmTractorError returned when fetching upload is still failing after the maximum number of retries" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "ac5f0a506a019510",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800315,
-        "stop" : 1611305800343,
-        "duration" : 28
-      }
-    } ]
-  },
-  "It should return an ErrorDownloadingArtifact when there is a problem saving the artifact on disk" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b100ac43234f24e9",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799935,
-        "stop" : 1611305799938,
-        "duration" : 3
-      }
-    } ]
-  },
-  "It should keep fetching upload status even if an error happens in a a retry" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f64976552d092c7d",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800412,
-        "stop" : 1611305800441,
-        "duration" : 29
-      }
-    } ]
-  },
-  "When fetching the artifacts of a test execution it should return them as a right" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "af1aa6731a255b10",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305793254,
-        "stop" : 1611305794289,
-        "duration" : 1035
-      }
-    } ]
-  },
-  "When basic credentials and sessionToken are provided, it should return a runner that uses a device farm client with the basic credentials and session token" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "41dd30c522847b52",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798303,
-        "stop" : 1611305798312,
-        "duration" : 9
-      }
-    } ]
-  },
-  "It should log a message when the searched artifact type is not found in the job artifacts" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "c8611e3d71ad5746",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799884,
-        "stop" : 1611305799923,
-        "duration" : 39
-      }
-    } ]
-  },
-  "When no app arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "a31cdc6055f1dad4",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795563,
-        "stop" : 1611305795616,
-        "duration" : 53
-      }
-    } ]
-  },
-  "When running a test in device farm if no run name is provided it should create the name" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "cc65f019d8cb945d",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799285,
-        "stop" : 1611305799332,
-        "duration" : 47
-      }
-    } ]
-  },
-  "error messages should be logged using Kotlin Logging lib" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "958e3681e07c41ca",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305796702,
-        "stop" : 1611305796829,
-        "duration" : 127
-      }
-    } ]
-  },
-  "When an error happens scheduling the run, it should return an ErrorSchedulingRun as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "2a162e74941be996",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795655,
-        "stop" : 1611305795662,
-        "duration" : 7
-      }
-    } ]
-  },
-  "When running a test in device farm by default the capture video configuration should be enabled" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "ef596d9660e9dfe",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799175,
-        "stop" : 1611305799193,
-        "duration" : 18
-      }
-    } ]
-  },
-  "When fetching an AWS device farm upload, any error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "cc2a86d4709008a0",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797232,
-        "stop" : 1611305797244,
-        "duration" : 12
-      }
-    } ]
-  },
-  "When creating a runner without credentials and region, it should return a runner that uses a device farm client with default configuration" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "13a044447269f6d6",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797697,
-        "stop" : 1611305798183,
-        "duration" : 486
-      }
-    } ]
-  },
-  "It should return a DeviceFarmTractorError when uploading the artifact to s3 fails, no matters the upload status" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "4eddad5a3a51db7a",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800344,
-        "stop" : 1611305800410,
-        "duration" : 66
-      }
-    } ]
-  },
-  "It should return a DeviceFarmTractorError when scheduling the run fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "ab7fc7eb250d0c38",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800675,
-        "stop" : 1611305800677,
-        "duration" : 2
-      }
-    } ]
-  },
-  "It should use a pretty name when the artifact type is video or customer artifact" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f6ef2f0e8180607a",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799750,
-        "stop" : 1611305799766,
-        "duration" : 16
-      }
-    } ]
-  },
-  "When fetching device pools from AWS device farm, any error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "24f2eb3d65532ae",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305794735,
-        "stop" : 1611305794742,
-        "duration" : 7
-      }
-    } ]
-  },
-  "It should return a project if its found" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "bea593a903526c4d",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800565,
-        "stop" : 1611305800568,
-        "duration" : 3
-      }
-    } ]
-  },
-  "When creating AWS device farm upload, any error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d901f5d2a1f0ebce",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305796977,
-        "stop" : 1611305796983,
-        "duration" : 6
-      }
-    } ]
-  },
-  "It should return an UploadFailureError, if the upload status is not succeeded before the maximum number of retries" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "8ece643f97d91cfd",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800253,
-        "stop" : 1611305800314,
-        "duration" : 61
-      }
-    } ]
-  },
-  "When deleting an Upload if no arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f68310d1059488bd",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797374,
-        "stop" : 1611305797406,
-        "duration" : 32
-      }
-    } ]
-  },
-  "When IOS upload type is used, file must end with .ipa" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d3b79fc60a77ad48",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799484,
-        "stop" : 1611305799486,
-        "duration" : 2
-      }
-    } ]
-  },
-  "When running a test in device farm it should throw an error if a left is returner by the devices pool handler" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "e85df5aea4235cf5",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799399,
-        "stop" : 1611305799401,
-        "duration" : 2
-      }
-    } ]
-  },
-  "It should log an error message when downloading a recorded video or test report fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d147613444ed0f9",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799981,
-        "stop" : 1611305800056,
-        "duration" : 75
-      }
-    } ]
-  },
-  "It should return a DevicePoolNotFoundError when a device pool is not found" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d4421756416fa23c",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800525,
-        "stop" : 1611305800529,
-        "duration" : 4
-      }
-    } ]
-  },
-  "When running a test in device farm if the base test report directory path is empty it should not download the results" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b60a1ad74cb1a00c",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799333,
-        "stop" : 1611305799354,
-        "duration" : 21
-      }
-    } ]
-  },
-  "When uploading artifact to S3, it should return a right when upload result has OK status" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b27b10cba720857f",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797029,
-        "stop" : 1611305797060,
-        "duration" : 31
-      }
-    } ]
-  },
-  "It should return a DeviceFarmTractorError if something happens fetching the associated device pools of the project" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "60b4d6fcce8fa53",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800531,
-        "stop" : 1611305800535,
-        "duration" : 4
-      }
-    } ]
-  },
-  "When running a test in device farm the capture video configuration should be able to be specified" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "fdf35be22d1e693",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799194,
-        "stop" : 1611305799217,
-        "duration" : 23
-      }
-    } ]
-  },
-  "When deleting an Upload any error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b77a15b3ef332f72",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797353,
-        "stop" : 1611305797360,
-        "duration" : 7
-      }
-    } ]
-  },
-  "When uploading artifact to S3, any error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "a448df204789d889",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797082,
-        "stop" : 1611305797084,
-        "duration" : 2
-      }
-    } ]
-  },
-  "It should download all the reports even if any of them fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "ef551cbeb5a9b2d4",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800057,
-        "stop" : 1611305800079,
-        "duration" : 22
-      }
-    } ]
-  },
-  "When running a test in device farm it should throw an error if a left is returner by the projects handler" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "63c483b38f180e40",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799393,
-        "stop" : 1611305799397,
-        "duration" : 4
-      }
-    } ]
-  },
-  "When running a test in device farm it should use the test project uploaded and the test spec provided" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "fdcd01ed06de73df",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799260,
-        "stop" : 1611305799268,
-        "duration" : 8
-      }
-    } ]
-  },
-  "When running a test in device farm if the base test report directory is provided it should use it as a path" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d93cd1fc04555aa6",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799357,
-        "stop" : 1611305799373,
-        "duration" : 16
-      }
-    } ]
-  },
-  "When Upload type is not Android,IOS or Appium, the file must have .zip extension" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "eb480fd813e7627a",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799506,
-        "stop" : 1611305799509,
-        "duration" : 3
-      }
-    } ]
-  },
-  "When an error happens fetching the associated jobs of a Run then it should return a ErrorListingAssociatedJobs as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "6c76a5e0003274fa",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795919,
-        "stop" : 1611305795928,
-        "duration" : 9
-      }
-    } ]
-  },
-  "It should return a NoRegisteredDevicePoolsError when there is no device pools associated to the project" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "4df692202403e020",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800519,
-        "stop" : 1611305800523,
-        "duration" : 4
-      }
-    } ]
-  },
-  "When only secretAccessKey is provided, it should return a runner that uses a device farm client with default configuration" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "faf3af98cd0c8e3d",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798207,
-        "stop" : 1611305798216,
-        "duration" : 9
-      }
-    } ]
-  },
-  "It should delete all the provided uploads" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "a74066e19064051c",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799580,
-        "stop" : 1611305799644,
-        "duration" : 64
-      }
-    } ]
-  },
-  "When creating a runner without credentials but with region, it should return a runner that uses a device farm client with default configuration but that use the provided region" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "6922af6096a4b34c",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798330,
-        "stop" : 1611305798358,
-        "duration" : 28
-      }
-    } ]
-  },
-  "When accessKeyId, secretAccessKey and region name are provided, it should return a runner that uses a device farm client with basic credentials and the provided region" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "96c06406e711cb35",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305798375,
-        "stop" : 1611305798385,
-        "duration" : 10
-      }
-    } ]
-  },
-  "When uploading artifact to S3, it should return a left when upload result has not OK status" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "98540b1d6b5a5d92",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797067,
-        "stop" : 1611305797076,
-        "duration" : 9
-      }
-    } ]
-  },
-  "When Appium Node Test Spec upload type is used, file must end with .yml" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "4e0b9c7fc55d8349",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799494,
-        "stop" : 1611305799498,
-        "duration" : 4
-      }
-    } ]
-  },
-  "When an error happens fetching a run it should return a ErrorFetchingAWSRun as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "d6001ccf704984f3",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795788,
-        "stop" : 1611305795799,
-        "duration" : 11
-      }
-    } ]
-  },
-  "It should download the recorded videos and test reports even if any of them fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "77c03356a2a9759b",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800134,
-        "stop" : 1611305800159,
-        "duration" : 25
-      }
-    } ]
-  },
-  "It should download all the recorded videos even if any of them fails" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "12d1237e0aac53ac",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800082,
-        "stop" : 1611305800098,
-        "duration" : 16
-      }
-    } ]
-  },
-  "When unknown Upload type is used, an error should be returned" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "18f3fbf079a74341",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799516,
-        "stop" : 1611305799521,
-        "duration" : 5
-      }
-    } ]
-  },
-  "When fetching an AWS device farm upload, it should return the upload as a right" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b13dc2398d6a2505",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797091,
-        "stop" : 1611305797174,
-        "duration" : 83
-      }
-    } ]
-  },
-  "When deleting an Upload if non-200 response is received then an error should be returned as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "14194b577393c77b",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797368,
-        "stop" : 1611305797372,
-        "duration" : 4
-      }
-    } ]
-  },
-  "When creating a project in AWS device farm, it should return the created project as a right" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f7d95d4461d46b8",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305794940,
-        "stop" : 1611305795127,
-        "duration" : 187
-      }
-    } ]
-  },
-  "When no project arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "f12e40cc46877b0c",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305795636,
-        "stop" : 1611305795641,
-        "duration" : 5
-      }
-    } ]
-  },
-  "It should return a DeviceFarmTractorError when the artifact to upload doesn't exists" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "19d8a740adc4064e",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800481,
-        "stop" : 1611305800485,
-        "duration" : 4
-      }
-    } ]
-  },
-  "It should never try to delete when no uploads are provided" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "3eab5052294bf222",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799699,
-        "stop" : 1611305799711,
-        "duration" : 12
-      }
-    } ]
-  },
-  "When running a test in device farm it should use the correct paths for the different upload types" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b51e34933f6e3107",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799270,
-        "stop" : 1611305799284,
-        "duration" : 14
-      }
-    } ]
-  },
-  "When creating AWS device farm upload, artifact name is mandatory, a left should be returned if not provided" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "5b30a48353688973",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305797024,
-        "stop" : 1611305797026,
-        "duration" : 2
-      }
-    } ]
-  },
-  "It should return an UploadFailureError if the upload status is not succeeded" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "1d55b160e344dcef",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800236,
-        "stop" : 1611305800252,
-        "duration" : 16
-      }
-    } ]
-  },
-  "It should return a DeviceFarmTractorError if something happens creating a new project" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "392462ab95c3d77d",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800590,
-        "stop" : 1611305800592,
-        "duration" : 2
-      }
-    } ]
-  },
-  "It should create the project if it is no found" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "feebd69ae2e45a97",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305800570,
-        "stop" : 1611305800571,
+        "start" : 1613593124862,
+        "stop" : 1613593124863,
         "duration" : 1
       }
     } ]
   },
-  "When fetching device pools from AWS device farm, it should return the associated device pools of a given project as a right" : {
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_if_the_base_test_report_directory_path_is_empty_it_should_not_download_the_results" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2042,16 +85,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "446e9dbadd11e577",
+      "uid" : "4995cc3534466afc",
       "status" : "passed",
       "time" : {
-        "start" : 1611305794587,
-        "stop" : 1611305794702,
-        "duration" : 115
+        "start" : 1613593123033,
+        "stop" : 1613593123041,
+        "duration" : 8
       }
     } ]
   },
-  "When no device pool arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left" : {
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmProjects/It_should_return_a_DeviceFarmTractorError_if_something_happens_fetching_device_farm_projects" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2061,16 +104,54 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "42e949b8f96589af",
+      "uid" : "1456c88b9a5f4d9a",
       "status" : "passed",
       "time" : {
-        "start" : 1611305795622,
-        "stop" : 1611305795627,
+        "start" : 1613593124955,
+        "stop" : 1613593124957,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_creating_a_runner_without_credentials_but_with_region_it_should_return_a_runner_that_uses_a_device_farm_client_with_default_configuration_but_that_use_the_provided_region" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4b8417765f0f4578",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121766,
+        "stop" : 1613593121804,
+        "duration" : 38
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_deleting_an_Upload_if_non200_response_is_received_then_an_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9242184325f22985",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593120293,
+        "stop" : 1613593120298,
         "duration" : 5
       }
     } ]
   },
-  "When fetching projects from AWS, it should return the project as a right" : {
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_return_an_ErrorDownloadingArtifact_when_there_is_a_problem_saving_the_artifact_on_disk" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2080,54 +161,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "e5afa8571dbb0cee",
+      "uid" : "fc6cb0034b17f8a5",
       "status" : "passed",
       "time" : {
-        "start" : 1611305794782,
-        "stop" : 1611305794891,
-        "duration" : 109
-      }
-    } ]
-  },
-  "When Upload type is not Android,IOS or Appium, and file does not have .zip extension an error is returned" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b2059d554e54b92",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799510,
-        "stop" : 1611305799515,
-        "duration" : 5
-      }
-    } ]
-  },
-  "When Appium Node Test Spec upload type is used, and file does not have .yml extension an error is returned" : {
-    "statistic" : {
-      "failed" : 0,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 1,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "8ac54a88bdbebf96",
-      "status" : "passed",
-      "time" : {
-        "start" : 1611305799499,
-        "stop" : 1611305799505,
+        "start" : 1613593123884,
+        "stop" : 1613593123890,
         "duration" : 6
       }
     } ]
   },
-  "When fetching all the jobs associated to a Run it should return them as a right" : {
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithAWSDevicePools/It_should_return_the_first_found_device_pool_as_default_when_no_name_is_provided" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2137,16 +180,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "53e80574b68724e5",
+      "uid" : "8d55f0dc72e7e1f3",
       "status" : "passed",
       "time" : {
-        "start" : 1611305795806,
-        "stop" : 1611305795915,
-        "duration" : 109
+        "start" : 1613593124855,
+        "stop" : 1613593124857,
+        "duration" : 2
       }
     } ]
   },
-  "It should return a DeviceFarmIllegalArtifactExtension when the upload file doesn't satisfy the upload type" : {
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmProjects/It_should_create_the_project_if_it_is_no_found" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2156,16 +199,358 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "44ed69c4f49cd16d",
+      "uid" : "b498a65c954d040c",
       "status" : "passed",
       "time" : {
-        "start" : 1611305800477,
-        "stop" : 1611305800480,
+        "start" : 1613593124952,
+        "stop" : 1613593124954,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmRuns/It_should_return_the_executed_run_when_the_execution_is_completed" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b7bb13470edf0efd",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593125065,
+        "stop" : 1613593125070,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmTractorLoggerTest/When_an_error_happens_fetching_the_logger_then_info_messages_should_be_redirect_to_stdout" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "5368a6d4cc454a64",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593118194,
+        "stop" : 1613593118627,
+        "duration" : 433
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_IOS_upload_type_is_used_and_file_does_not_have_.ipa_extension_an_error_is_returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "974c8b346b0cf210",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123328,
+        "stop" : 1613593123334,
+        "duration" : 6
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_getting_the_upload_type_of_an_unsupported_file_an_Illegal_Argument_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "1aba5af8b844070d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123422,
+        "stop" : 1613593123424,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_return_the_last_DeviceFarmTractorError_returned_when_fetching_upload_is_still_failing_after_the_maximum_number_of_retries" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e46915eddf7dec6f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124554,
+        "stop" : 1613593124598,
+        "duration" : 44
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_loading_a_file_from_a_given_path_if_the_files_doesnt_exists_an_error_should_be_returned_as_a_Left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "1f8fcbc0776244aa",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123402,
+        "stop" : 1613593123404,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_creating_AWS_device_farm_upload_project_ARN_is_mandatory_a_left_should_be_returned_if_not_provided" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e5b799224d0bf517",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593119649,
+        "stop" : 1613593119704,
+        "duration" : 55
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_fetching_an_AWS_device_farm_upload_any_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c2cb834a739cba21",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593120083,
+        "stop" : 1613593120090,
+        "duration" : 7
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_be_a_metered_execution_by_default" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "7e8e81b3e95af5f8",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123195,
+        "stop" : 1613593123239,
+        "duration" : 44
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDeletingUploadsFromDeviceFarm/It_should_delete_uploads_in_parallel_and_keep_deleting_even_if_some_operation_fails" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6ebf9f83ee2eee6b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123586,
+        "stop" : 1613593123649,
+        "duration" : 63
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest/When_fetching_device_pools_from_AWS_device_farm_project_ARN_is_mandatory_a_left_should_be_returned_if_it_is_not_provided" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8ca15ba0ac4213e0",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593116529,
+        "stop" : 1613593116534,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_download_the_recorded_videos_and_test_reports_even_if_any_of_them_fails" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2f9b4b479d67b8ea",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124154,
+        "stop" : 1613593124172,
+        "duration" : 18
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_an_error_happens_fetching_the_associated_jobs_of_a_Run_then_it_should_return_a_ErrorListingAssociatedJobs_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "afa96326bd17ceb2",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593118033,
+        "stop" : 1613593118037,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_fetching_an_AWS_device_farm_upload_it_should_return_an_error_as_a_left_if_upload_ARN_is_empty" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "5fd588425678c61c",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593120004,
+        "stop" : 1613593120063,
+        "duration" : 59
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_not_try_to_download_the_reports_when_an_error_happens_fetching_the_associated_jobs_of_the_test_run" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8d4630d90a410151",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124150,
+        "stop" : 1613593124152,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_accessKeyId_and_secretAccessKey_are_provided_it_should_return_a_runner_that_uses_a_device_farm_client_with_basic_credentials" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a74c877851a91cbb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121692,
+        "stop" : 1613593121733,
+        "duration" : 41
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_creating_AWS_device_farm_upload_any_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c8a5a82fdcfde96c",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593119624,
+        "stop" : 1613593119629,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithAWSDevicePools/It_should_return_a_DevicePoolNotFoundError_when_a_device_pool_is_not_found" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a1718971a1c03a98",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124882,
+        "stop" : 1613593124885,
         "duration" : 3
       }
     } ]
   },
-  "When creating AWS device farm upload, tt should return the created AWS Upload as a right" : {
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_Upload_type_is_not_AndroidIOS_or_Appium_the_file_must_have_.zip_extension" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2175,16 +560,16 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "e5d5161077be1aab",
+      "uid" : "6be380184dd6ba00",
       "status" : "passed",
       "time" : {
-        "start" : 1611305796867,
-        "stop" : 1611305796962,
-        "duration" : 95
+        "start" : 1613593123367,
+        "stop" : 1613593123370,
+        "duration" : 3
       }
     } ]
   },
-  "It should download all the test reports and recorded videos associated to the test Run" : {
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_no_path_is_provided_getting_the_upload_type_of_a_path_an_Illegal_Argument_error_should_be_returned_as_a_left" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2194,16 +579,1498 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "fda87d5d1b96ed86",
+      "uid" : "533b130a8596ce5b",
       "status" : "passed",
       "time" : {
-        "start" : 1611305799944,
-        "stop" : 1611305799980,
+        "start" : 1613593123415,
+        "stop" : 1613593123416,
+        "duration" : 1
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_return_a_DeviceFarmTractorErrorIllegalArgumentException_if_the_searched_artifact_type_is_not_supported" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f3de4053748edab1",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123721,
+        "stop" : 1613593123733,
+        "duration" : 12
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_Android_upload_type_is_used_and_file_does_not_have_.apk_extension_an_error_is_returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b688c77f1624b042",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123305,
+        "stop" : 1613593123307,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_only_accessKeyId_is_provided_it_should_return_a_runner_that_uses_a_device_farm_client_with_default_configuration" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6151fc7ed9a2287b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121596,
+        "stop" : 1613593121607,
+        "duration" : 11
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_IOS_upload_type_is_used_file_must_end_with_.ipa" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6aa1273e9183a073",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123314,
+        "stop" : 1613593123315,
+        "duration" : 1
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_getting_the_upload_type_of_a_valid_file_it_should_return_it_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "1ed5e72258f9071b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123432,
+        "stop" : 1613593123455,
+        "duration" : 23
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_return_a_DeviceFarmIllegalArtifactExtension_when_the_upload_file_doesnt_satisfy_the_upload_type" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ce80cf06dd3784dd",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124813,
+        "stop" : 1613593124825,
+        "duration" : 12
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenFetchingResultsTable/It_should_return_an_empty_string_when_there_is_an_error_fetching_the_associated_jobs_of_the_run" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8841b3bb1481743b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124297,
+        "stop" : 1613593124298,
+        "duration" : 1
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmRuns/It_should_return_a_DeviceFarmTractorError_when_scheduling_the_run_fails" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9414c70fb6048071",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593125177,
+        "stop" : 1613593125179,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_throw_an_error_if_a_left_is_returner_by_the_run_handler" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "1e6a77154096ec40",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123186,
+        "stop" : 1613593123191,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmProjects/It_should_return_a_DeviceFarmTractorError_if_something_happens_creating_a_new_project" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ccd9f8a3b0c39771",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124958,
+        "stop" : 1613593124960,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_Android_upload_type_is_used_file_must_end_with_.apk" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4b73853191ce0ea1",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123296,
+        "stop" : 1613593123298,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_creating_AWS_device_farm_upload_artifact_name_is_mandatory_a_left_should_be_returned_if_not_provided" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e7dd4971d2a83121",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593119725,
+        "stop" : 1613593119730,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_fetching_all_the_jobs_associated_to_a_Run_it_should_return_them_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c0b9d718c93ea26e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117877,
+        "stop" : 1613593118016,
+        "duration" : 139
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_deleting_an_Upload_if_no_arn_is_provided_a_DeviceFarmTractorErrorIllegalArgumentException_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e15c13da1550b7dc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593120309,
+        "stop" : 1613593120349,
+        "duration" : 40
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest/When_fetching_the_artifacts_of_a_test_execution_if_no_run_arn_is_provided_a_DeviceFarmTractorErrorIllegalArgumentException_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "19a92b2d6d86e692",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593116355,
+        "stop" : 1613593116362,
+        "duration" : 7
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_have_the_app_performance_monitoring_enable_by_default" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2f4d7255916ad0c6",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123253,
+        "stop" : 1613593123257,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_creating_AWS_device_farm_upload_tt_should_return_the_created_AWS_Upload_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "5b29e88c4a7e1a32",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593119475,
+        "stop" : 1613593119605,
+        "duration" : 130
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_scheduling_a_run_it_should_return_the_run_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "70f856f0460aebaa",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117323,
+        "stop" : 1613593117493,
+        "duration" : 170
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_by_default_the_capture_video_configuration_should_be_enabled" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2651a0eca917569",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593122858,
+        "stop" : 1613593122864,
+        "duration" : 6
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmProjects/It_should_return_a_project_if_its_found" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8cd410fc44c5c443",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124947,
+        "stop" : 1613593124950,
+        "duration" : 3
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDeletingUploadsFromDeviceFarm/It_should_delete_all_the_provided_uploads" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "dc1da40d03650a29",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123510,
+        "stop" : 1613593123584,
+        "duration" : 74
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_use_the_correct_paths_for_the_different_upload_types" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ebb2232cafcc7fea",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593122895,
+        "stop" : 1613593122901,
+        "duration" : 6
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_use_the_test_project_uploaded_and_the_test_spec_provided" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6ebe8cdb3ddf6c2b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593122888,
+        "stop" : 1613593122893,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmRuns/It_should_wait_until_the_execution_completes" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8beacd8767859d73",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593125074,
+        "stop" : 1613593125130,
+        "duration" : 56
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_keep_fetching_upload_status_even_if_an_error_happens_in_a_a_retry" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "276bccc3467cef91",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124691,
+        "stop" : 1613593124744,
+        "duration" : 53
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_allow_to_disable_the_app_performance_monitoring" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c677d432b34e4280",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123260,
+        "stop" : 1613593123266,
+        "duration" : 6
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_return_a_DeviceFarmTractorError_when_the_artifact_to_upload_doesnt_exists" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "377e44f44ab36242",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124828,
+        "stop" : 1613593124830,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_creating_a_runner_without_credentials_and_region_it_should_return_a_runner_that_uses_a_device_farm_client_with_default_configuration" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "30d81af8d994a4dc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593120826,
+        "stop" : 1613593121589,
+        "duration" : 763
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_fetching_an_AWS_device_farm_upload_it_should_return_the_upload_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "95a681f9a17f649d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593119847,
+        "stop" : 1613593119981,
+        "duration" : 134
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_throw_an_error_if_a_left_is_returner_by_the_upload_artifacts_handler_and_the_parallel_upload_process_should_be_cancelled" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e563fc1e2211c454",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123132,
+        "stop" : 1613593123182,
+        "duration" : 50
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_deleting_an_Upload_it_should_return_a_DeleteUploadResponse_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9aa555d1f13c2696",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593120108,
+        "stop" : 1613593120255,
+        "duration" : 147
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_fetching_a_RUN_it_should_return_it_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f58433c5e9d2b1bd",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117682,
+        "stop" : 1613593117781,
+        "duration" : 99
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_no_project_arn_is_provided_it_should_return_a_DeviceFarmTractorErrorIllegalArgumentException_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a22abbafedeb9cfc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117623,
+        "stop" : 1613593117627,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_if_the_base_test_report_directory_is_provided_it_should_use_it_as_a_path" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "bc08042916c9d647",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123046,
+        "stop" : 1613593123054,
+        "duration" : 8
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithAWSDevicePools/It_should_return_a_NoRegisteredDevicePoolsError_when_there_is_no_device_pools_associated_to_the_project" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "571df28a3e1b012a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124874,
+        "stop" : 1613593124878,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_loading_a_file_from_a_given_path_it_should_return_it_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e270f22c088d1124",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123392,
+        "stop" : 1613593123396,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_download_an_AWS_Device_farm_artifact_of_a_job_execution_depending_of_its_type" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "287db0c272da4bab",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123736,
+        "stop" : 1613593123846,
+        "duration" : 110
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDeletingUploadsFromDeviceFarm/It_should_never_try_to_delete_when_no_uploads_are_provided" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "baccce0d9cfa508e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123651,
+        "stop" : 1613593123655,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_no_device_pool_arn_is_provided_it_should_return_a_DeviceFarmTractorErrorIllegalArgumentException_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "667e3a2cf6e083fc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117602,
+        "stop" : 1613593117606,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_Upload_type_is_not_AndroidIOS_or_Appium_and_file_does_not_have_.zip_extension_an_error_is_returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "bd6dcfd89eb7d762",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123378,
+        "stop" : 1613593123381,
+        "duration" : 3
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_throw_an_error_if_a_left_is_returned_when_loading_the_app_upload_type" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8b4d4eeea985c740",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123086,
+        "stop" : 1613593123089,
+        "duration" : 3
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest/When_fetching_the_artifacts_of_a_test_execution_it_should_return_them_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a139c33a1d043b87",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593114922,
+        "stop" : 1613593116070,
+        "duration" : 1148
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_uploading_artifact_to_S3_it_should_return_a_right_when_upload_result_has_OK_status" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a9ea2f80de3ce50d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593119750,
+        "stop" : 1613593119775,
+        "duration" : 25
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_have_APPIUM_NODE_as_test_type" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f38b464e2462fb34",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593122878,
+        "stop" : 1613593122883,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_unknown_Upload_type_is_used_an_error_should_be_returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "115eea7405a38737",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123386,
+        "stop" : 1613593123388,
+        "duration" : 2
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_only_secretAccessKey_is_provided_it_should_return_a_runner_that_uses_a_device_farm_client_with_default_configuration" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "463a92024d74b84d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121630,
+        "stop" : 1613593121657,
+        "duration" : 27
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_no_path_is_provided_an_Illegal_Argument_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b8f31d544e42221a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123409,
+        "stop" : 1613593123410,
+        "duration" : 1
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmRuns/It_should_return_a_DeviceFarmTractorError_when_fetching_current_run_fails" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6bd130e886989efc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593125163,
+        "stop" : 1613593125172,
+        "duration" : 9
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmTractorLoggerTest/error_messages_should_be_logged_using_Kotlin_Logging_lib" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6cb43e83f011d95a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593119198,
+        "stop" : 1613593119390,
+        "duration" : 192
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_an_error_happens_it_should_return_the_exception_wrapped_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "929219b6f68fe62",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121897,
+        "stop" : 1613593121904,
+        "duration" : 7
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_sessionToken_is_provided_but_no_credentials_it_should_return_a_runner_that_uses_a_device_farm_client_with_default_configuration" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a912f59679c9f98f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121666,
+        "stop" : 1613593121685,
+        "duration" : 19
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithAWSDevicePools/It_should_return_a_DeviceFarmTractorError_if_something_happens_fetching_the_associated_device_pools_of_the_project" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "3efe70aa71fd4e0f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124888,
+        "stop" : 1613593124889,
+        "duration" : 1
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_if_no_run_name_is_provided_it_should_create_the_name" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a3511f5271d2f582",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593122919,
+        "stop" : 1613593123030,
+        "duration" : 111
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_return_the_result" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b0476dea3979e394",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593122681,
+        "stop" : 1613593122759,
+        "duration" : 78
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_throw_an_error_if_a_left_is_returner_by_the_projects_handler" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "311f8277494e851b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123092,
+        "stop" : 1613593123096,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_an_error_happens_scheduling_the_run_it_should_return_an_ErrorSchedulingRun_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "773cf73ffc50257d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117646,
+        "stop" : 1613593117653,
+        "duration" : 7
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest/When_fetching_the_artifacts_of_a_test_execution_any_error_should_be_returned_as_a_DeviceFarmTractorError_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e7bd375cebf72b25",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593116310,
+        "stop" : 1613593116339,
+        "duration" : 29
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_use_the_correct_Project_ARN_in_the_process" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "50c1073a1fb18ea2",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593122796,
+        "stop" : 1613593122855,
+        "duration" : 59
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_a_run_name_is_provided_it_should_be_used" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "392cb6341c7193ca",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117511,
+        "stop" : 1613593117516,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_log_an_error_message_when_creating_the_test_reports_directory_fails" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ffc4692338e98a7f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124140,
+        "stop" : 1613593124145,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest/When_fetching_device_pools_from_AWS_device_farm_any_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "446c624b465ddb67",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593116554,
+        "stop" : 1613593116561,
+        "duration" : 7
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_Appium_Node_Test_Spec_upload_type_is_used_file_must_end_with_.yml" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d51cc650812a22d0",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123346,
+        "stop" : 1613593123350,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_accessKeyId_secretAccessKey_session_token_and_region_name_are_provided_it_should_return_a_runner_that_uses_a_device_farm_client_with_basic_credentials_the_session_token_and_the_provided_region" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "94262e37a1cd20bd",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121867,
+        "stop" : 1613593121875,
+        "duration" : 8
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_return_a_DeviceFarmTractorError_when_uploading_the_artifact_to_s3_fails_no_matters_the_upload_status" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "3f1cf01c30e97bff",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124601,
+        "stop" : 1613593124689,
+        "duration" : 88
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest/When_fetching_device_pools_from_AWS_device_farm_it_should_return_the_associated_device_pools_of_a_given_project_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9b5ea95cd5c497bb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593116423,
+        "stop" : 1613593116512,
+        "duration" : 89
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest/When_Appium_Node_Test_Spec_upload_type_is_used_and_file_does_not_have_.yml_extension_an_error_is_returned" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d7ea8da926b8420f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123357,
+        "stop" : 1613593123360,
+        "duration" : 3
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_try_to_delete_the_uploads_of_the_execution_by_default" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a69e8166d1642597",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123060,
+        "stop" : 1613593123070,
+        "duration" : 10
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_return_an_UploadFailureError_if_the_upload_status_is_not_succeeded_before_the_maximum_number_of_retries" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "18cb0fe7ba4d00b2",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124465,
+        "stop" : 1613593124552,
+        "duration" : 87
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_the_capture_video_configuration_should_be_able_to_be_specified" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "90ab699d9aa21166",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593122869,
+        "stop" : 1613593122874,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_deleting_an_Upload_any_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "7a87c862e828c078",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593120280,
+        "stop" : 1613593120285,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_not_fail_if_there_is_no_artifacts_to_download" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "6a83d263d7ee5052",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123893,
+        "stop" : 1613593123896,
+        "duration" : 3
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenFetchingResultsTable/It_should_return_a_string_table_with_the_results_of_the_run_per_each_device" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d70723ef3e55cca",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124249,
+        "stop" : 1613593124294,
+        "duration" : 45
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_stop_fetching_upload_status_when_a_DeviceFarmException_happens_in_a_a_retry" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "fca31371197fbf89",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124747,
+        "stop" : 1613593124801,
+        "duration" : 54
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmTractorLoggerTest/When_an_error_happens_fetching_the_logger_then_error_messages_should_be_redirect_to_stderr" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c008da7f935392f7",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593118994,
+        "stop" : 1613593119087,
+        "duration" : 93
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_download_all_the_recorded_videos_even_if_any_of_them_fails" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8152ded29214e968",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124064,
+        "stop" : 1613593124112,
+        "duration" : 48
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_log_a_message_when_the_searched_artifact_type_is_not_found_in_the_job_artifacts" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b99160ae573f7bd",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123848,
+        "stop" : 1613593123879,
+        "duration" : 31
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_return_an_UploadFailureError_if_the_upload_status_is_not_succeeded" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "413d957fdd25b784",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124458,
+        "stop" : 1613593124462,
+        "duration" : 4
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_accessKeyId_secretAccessKey_and_region_name_are_provided_it_should_return_a_runner_that_uses_a_device_farm_client_with_basic_credentials_and_the_provided_region" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d1d459ee6c34c005",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121827,
+        "stop" : 1613593121863,
         "duration" : 36
       }
     } ]
   },
-  "It should log an error message when creating the test reports directory fails" : {
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_download_all_the_reports_even_if_any_of_them_fails" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2213,16 +2080,149 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "110a1de1e9e5f133",
+      "uid" : "f93218330f79a9e4",
       "status" : "passed",
       "time" : {
-        "start" : 1611305800116,
-        "stop" : 1611305800119,
+        "start" : 1613593124045,
+        "stop" : 1613593124059,
+        "duration" : 14
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmTractorLoggerTest/info_messages_should_be_logged_using_Kotlin_Logging_lib" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "35cd8307e513b53f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593118737,
+        "stop" : 1613593118888,
+        "duration" : 151
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest/When_basic_credentials_and_sessionToken_are_provided_it_should_return_a_runner_that_uses_a_device_farm_client_with_the_basic_credentials_and_session_token" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "cc77b3c5a3847877",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593121737,
+        "stop" : 1613593121748,
+        "duration" : 11
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest/When_fetching_projects_from_AWS_any_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "812cd02211c9e1c7",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593116803,
+        "stop" : 1613593116813,
+        "duration" : 10
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_no_app_arn_is_provided_it_should_return_a_DeviceFarmTractorErrorIllegalArgumentException_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "3c7afda278888261",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117536,
+        "stop" : 1613593117582,
+        "duration" : 46
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest/When_creating_a_project_in_AWS_device_farm_it_should_return_the_created_project_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9b3d6fccfc66f61e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593116848,
+        "stop" : 1613593117051,
+        "duration" : 203
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_an_error_happens_fetching_a_run_it_should_return_a_ErrorFetchingAWSRun_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b318a5deb24cddd8",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117855,
+        "stop" : 1613593117860,
+        "duration" : 5
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_use_a_pretty_name_when_the_artifact_type_is_video_or_customer_artifact" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9f52ed20eebf712f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123717,
+        "stop" : 1613593123720,
         "duration" : 3
       }
     } ]
   },
-  "When loading a file from a given path, it should return it as a right" : {
+  "com.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm/It_should_return_a_DeviceFarmTractorError_when_creating_the_upload_fails" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -2232,12 +2232,221 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "66af6dc904f66543",
+      "uid" : "15d2f960729fa4fa",
       "status" : "passed",
       "time" : {
-        "start" : 1611305799522,
-        "stop" : 1611305799530,
+        "start" : 1613593124806,
+        "stop" : 1613593124809,
+        "duration" : 3
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_allow_unmetered_executions" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d5e15b5fb7b6615",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123241,
+        "stop" : 1613593123251,
+        "duration" : 10
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_log_an_error_message_when_creating_the_test_report_directory_of_an_specific_device_fails" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "892b8fe38ce7fc0d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593124114,
+        "stop" : 1613593124138,
+        "duration" : 24
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_download_all_the_test_reports_and_recorded_videos_associated_to_the_test_Run" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4bd229fb7954efb5",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123900,
+        "stop" : 1613593123943,
+        "duration" : 43
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_throw_an_error_when_no_app_path_is_provided" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "db8d6239e051b420",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123075,
+        "stop" : 1613593123083,
         "duration" : 8
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_throw_an_error_if_a_left_is_returner_by_the_devices_pool_handler" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4153b9598a0a6f20",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123106,
+        "stop" : 1613593123112,
+        "duration" : 6
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest/When_running_a_test_in_device_farm_it_should_throw_an_error_if_a_left_is_returner_by_the_upload_artifacts_handler" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "9bfb5cbb3f078106",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123117,
+        "stop" : 1613593123124,
+        "duration" : 7
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest/When_fetching_projects_from_AWS_it_should_return_the_project_as_a_right" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d4da70198bdd6403",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593116635,
+        "stop" : 1613593116785,
+        "duration" : 150
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest/When_uploading_artifact_to_S3_any_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "5cf689a476f9b287",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593119823,
+        "stop" : 1613593119830,
+        "duration" : 7
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts/It_should_log_an_error_message_when_downloading_a_recorded_video_or_test_report_fails" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "20dce2694c4a8889",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593123945,
+        "stop" : 1613593124041,
+        "duration" : 96
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest/When_creating_a_project_in_AWS_device_farm_any_error_should_be_returned_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "716cfc288aba4a71",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117068,
+        "stop" : 1613593117083,
+        "duration" : 15
+      }
+    } ]
+  },
+  "com.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest/When_no_run_ARN_is_provided_it_should_return_a_DeviceFarmTractorErrorIllegalArgumentException_as_a_left" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "2e87ebfc2fd2db1c",
+      "status" : "passed",
+      "time" : {
+        "start" : 1613593117800,
+        "stop" : 1613593117831,
+        "duration" : 31
       }
     } ]
   }
