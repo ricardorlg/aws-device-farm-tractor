@@ -220,7 +220,11 @@ internal class DefaultDeviceFarmTractorController(
                                         .replace("\\s".toRegex(), "_")
                                 )
                             ).map { path ->
-                                logStatus("I will download the artifacts associated to the test execution")
+                                logStatus(
+                                    "I will download the artifacts associated to the device ${
+                                        job.device().name()
+                                    }"
+                                )
                                 //TODO Remove this when the artifact status is more clear
                                 delay(delayForDownload)
                                 getArtifacts(job.arn())
@@ -331,7 +335,6 @@ internal class DefaultDeviceFarmTractorController(
                 associatedJobs
                     .forEach { job ->
                         row(job.device().name(), job.result().name)
-
                     }
             }
         }

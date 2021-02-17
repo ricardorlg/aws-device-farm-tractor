@@ -22,7 +22,7 @@ class MockedDeviceFarmController(
         )
     },
     private val deleteUploadsImpl: (List<Upload>) -> Unit = { _ -> fail("Not implemented") },
-    private val scheduleRunAndWaitImpl: (String, String, ExecutionConfiguration, String, String, ScheduleRunTest) -> Either<DeviceFarmTractorError, Run> = { _, _, _, _, _, _ ->
+    private val scheduleRunAndWaitImpl: (String, ScheduleRunConfiguration, String, ExecutionConfiguration, String, String, ScheduleRunTest) -> Either<DeviceFarmTractorError, Run> = { _, _, _, _, _, _, _ ->
         fail(
             "Not implemented"
         )
@@ -66,6 +66,7 @@ class MockedDeviceFarmController(
     ): Either<DeviceFarmTractorError, Run> {
         return scheduleRunAndWaitImpl(
             appArn,
+            runConfiguration,
             devicePoolArn,
             executionConfiguration,
             runName,
@@ -84,7 +85,7 @@ class MockedDeviceFarmController(
 
     override suspend fun downloadAWSDeviceFarmArtifacts(
         artifacts: List<Artifact>,
-        deviceName:String,
+        deviceName: String,
         path: Path,
         artifactType: ArtifactType
     ): Either<DeviceFarmTractorError, Unit> {

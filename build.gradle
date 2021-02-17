@@ -1,19 +1,17 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.30'
     id 'io.qameta.allure' version '2.8.1'
     id 'maven-publish'
 }
 
 group = 'com.ricardorlg.devicefarm'
-version = '1.0.3'
+version = '1.0.4'
 
 repositories {
     mavenCentral()
-    jcenter()
-    maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
 }
 dependencies {
-    implementation platform('software.amazon.awssdk:bom:2.15.67')
+    implementation platform('software.amazon.awssdk:bom:2.15.82')
     api 'software.amazon.awssdk:devicefarm'
     implementation "io.arrow-kt:arrow-fx-coroutines:$arrow_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"

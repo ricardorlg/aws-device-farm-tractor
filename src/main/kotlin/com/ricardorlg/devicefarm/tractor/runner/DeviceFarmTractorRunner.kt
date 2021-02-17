@@ -4,7 +4,9 @@ import arrow.core.Either
 import arrow.core.computations.either
 import arrow.fx.coroutines.parTupledN
 import com.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorController
+import com.ricardorlg.devicefarm.tractor.model.APP_PERFORMANCE_MONITORING_PARAMETER_KEY
 import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
+import com.ricardorlg.devicefarm.tractor.utils.HelperMethods.uploadType
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Paths
 import java.time.LocalDateTime
@@ -17,16 +19,18 @@ class DeviceFarmTractorRunner(
         projectName: String,
         devicePoolName: String,
         appPath: String,
-        appUploadType: UploadType,
         testProjectPath: String,
         testSpecPath: String,
         captureVideo: Boolean = true,
         runName: String = "",
         testReportsBaseDirectory: String = "",
         downloadReports: Boolean = true,
-        cleanStateAfterRun: Boolean = true
+        cleanStateAfterRun: Boolean = true,
+        meteredTests: Boolean = true,
+        disablePerformanceMonitoring: Boolean = false
     ): Run {
         val result = either<DeviceFarmTractorError, Run> {
+            val appUploadType = !appPath.uploadType()
             val project = !controller.findOrCreateProject(projectName)
             val devicePool = !controller.findOrUseDefaultDevicePool(project.arn(), devicePoolName)
             val (appUpload, testUpload, testSpecUpload) = parTupledN(
@@ -54,6 +58,7 @@ class DeviceFarmTractorRunner(
             )
             val runConfiguration = ScheduleRunConfiguration
                 .builder()
+                .billingMethod(BillingMethod.METERED.takeIf { meteredTests } ?: BillingMethod.UNMETERED)
                 .build()
             val executionConfiguration = ExecutionConfiguration
                 .builder()
@@ -64,6 +69,11 @@ class DeviceFarmTractorRunner(
                 .testPackageArn(testUpload.arn())
                 .testSpecArn(testSpecUpload.arn())
                 .type(TestType.APPIUM_NODE)
+                .apply {
+                    if (disablePerformanceMonitoring) {
+                        parameters(mutableMapOf(APP_PERFORMANCE_MONITORING_PARAMETER_KEY to "false"))
+                    }
+                }
                 .build()
 
             val run = !controller.scheduleRunAndWait(

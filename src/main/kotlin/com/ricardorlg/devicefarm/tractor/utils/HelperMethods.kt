@@ -2,10 +2,8 @@ package com.ricardorlg.devicefarm.tractor.utils
 
 import arrow.core.Either
 import arrow.core.left
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorErrorIllegalArgumentException
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmIllegalArtifactExtension
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
+import arrow.core.right
+import com.ricardorlg.devicefarm.tractor.model.*
 import software.amazon.awssdk.services.devicefarm.model.UploadType
 import software.amazon.awssdk.services.devicefarm.model.UploadType.*
 import java.io.File
@@ -62,7 +60,7 @@ object HelperMethods {
 
     suspend fun loadFileFromPath(path: String): Either<DeviceFarmTractorError, File> {
         return if (path.isBlank()) {
-            DeviceFarmTractorErrorIllegalArgumentException("The path parameter is mandatory").left()
+            DeviceFarmTractorErrorIllegalArgumentException(MANDATORY_PATH_PARAMETER).left()
         } else {
             Either.catch {
                 val f = File(path)
@@ -73,6 +71,28 @@ object HelperMethods {
                 }
             }.mapLeft {
                 DeviceFarmTractorGeneralError(it)
+            }
+        }
+    }
+
+    fun String.uploadType(): Either<DeviceFarmTractorError, UploadType> {
+        return if (isBlank()) {
+            DeviceFarmTractorErrorIllegalArgumentException(MANDATORY_PATH_PARAMETER).left()
+        } else {
+            when {
+                endsWith(".apk") -> {
+                    ANDROID_APP.right()
+                }
+                endsWith(".ipa") -> {
+                    IOS_APP.right()
+                }
+                else -> {
+                    DeviceFarmTractorErrorIllegalArgumentException(
+                        UNSUPPORTED_APP_FILE_EXTENSION.format(
+                            substringAfterLast('.')
+                        )
+                    ).left()
+                }
             }
         }
     }

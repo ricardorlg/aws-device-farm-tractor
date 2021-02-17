@@ -1,8 +1,7 @@
 package com.ricardorlg.devicefarm.tractor.utils
 
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmIllegalArtifactExtension
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorErrorIllegalArgumentException
-import com.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
+import com.ricardorlg.devicefarm.tractor.model.*
+import com.ricardorlg.devicefarm.tractor.utils.HelperMethods.uploadType
 import com.ricardorlg.devicefarm.tractor.utils.HelperMethods.validateFileExtensionByType
 import io.kotest.assertions.arrow.either.shouldBeLeft
 import io.kotest.assertions.arrow.either.shouldBeRight
@@ -10,6 +9,9 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
+import io.kotest.property.Exhaustive
+import io.kotest.property.checkAll
+import io.kotest.property.exhaustive.collection
 import software.amazon.awssdk.services.devicefarm.model.UploadType
 
 class HelperMethodsTest : StringSpec({
@@ -140,7 +142,7 @@ class HelperMethodsTest : StringSpec({
     }
     "When loading a file from a given path, if the files doesn't exists an error should be returned as a Left" {
         //WHEN
-        val path="path/to/nonexisting/file"
+        val path = "path/to/nonexisting/file"
         val response = HelperMethods.loadFileFromPath(path)
 
         //THEN
@@ -157,6 +159,51 @@ class HelperMethodsTest : StringSpec({
         //THEN
         response shouldBeLeft {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
+        }
+    }
+
+    "When no path is provided getting the upload type of a path, an Illegal Argument error should be returned as a left"{
+        //WHEN
+        val response = "   ".uploadType()
+
+        //THEN
+        response shouldBeLeft {
+            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
+            it shouldHaveMessage MANDATORY_PATH_PARAMETER
+        }
+    }
+
+    "When getting the upload type of an unsupported file, an Illegal Argument error should be returned as a left"{
+        //GIVEN
+        val app = tempfile("testApp", ".zip")
+
+        //WHEN
+        val response = app.path.uploadType()
+
+        //THEN
+        response shouldBeLeft {
+            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
+            it shouldHaveMessage UNSUPPORTED_APP_FILE_EXTENSION.format(app.extension)
+        }
+    }
+
+    "When getting the upload type of a valid file, it should return it as a right"{
+        checkAll(
+            Exhaustive.collection(
+                listOf(
+                    ".apk" to UploadType.ANDROID_APP,
+                    ".ipa" to UploadType.IOS_APP
+                )
+            )
+        ) { (extension, expectedUploadType) ->
+            //GIVEN
+            val app = tempfile("testApp", extension)
+
+            //WHEN
+            val response = app.path.uploadType()
+
+            //THEN
+            response shouldBeRight expectedUploadType
         }
     }
 })

@@ -30,4 +30,6 @@ const val ERROR_CREATING_DIRECTORY = "There was a problem creating the folder %s
 const val JOB_DOES_NOT_HAVE_ARTIFACT_OF_TYPE = "There is no artifacts of type %s in the run associated to the device %s"
 const val DELETE_UPLOAD_MESSAGE = "I've just deleted the upload %s - arn %s"
 val INVALID_ARTIFACT_TYPES = listOf(ArtifactType.UNKNOWN, ArtifactType.UNKNOWN_TO_SDK_VERSION)
-
+const val UNSUPPORTED_APP_FILE_EXTENSION = "the extension %s is not supported, only .apk or .ipa files are supported"
+const val MANDATORY_PATH_PARAMETER = "The path parameter is mandatory"
+const val APP_PERFORMANCE_MONITORING_PARAMETER_KEY = "app_performance_monitoring"
