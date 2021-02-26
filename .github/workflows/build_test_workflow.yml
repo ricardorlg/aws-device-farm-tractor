@@ -24,7 +24,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build allureReport
     - name: Publish Unit Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1.6
+      uses: EnricoMi/publish-unit-test-result-action@v1.9
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
