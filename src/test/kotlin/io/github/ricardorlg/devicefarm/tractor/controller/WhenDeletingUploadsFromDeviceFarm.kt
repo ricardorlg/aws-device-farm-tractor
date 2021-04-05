@@ -37,12 +37,12 @@ class WhenDeletingUploadsFromDeviceFarm : StringSpec({
         val mockedDeleteResponse = DeleteUploadResponse.builder().build()
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            deleteUploadImpl = { Either.right(mockedDeleteResponse) }
+            deleteUploadImpl = { Either.Right(mockedDeleteResponse) }
         )
 
         //WHEN
         val lastOutputs = captureStandardOut {
-            io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+            DefaultDeviceFarmTractorController(
                 MockedDeviceFarmLogging(true),
                 deviceFarmProjectsHandler,
                 devicePoolsHandler,
@@ -91,7 +91,7 @@ class WhenDeletingUploadsFromDeviceFarm : StringSpec({
 
         //WHEN
         val lastOutputs = captureStandardOut {
-            io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+            DefaultDeviceFarmTractorController(
                 MockedDeviceFarmLogging(true),
                 deviceFarmProjectsHandler,
                 devicePoolsHandler,
@@ -115,7 +115,7 @@ class WhenDeletingUploadsFromDeviceFarm : StringSpec({
 
         //WHEN
         val lastOutputs = captureStandardOut {
-            io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+            DefaultDeviceFarmTractorController(
                 MockedDeviceFarmLogging(true),
                 deviceFarmProjectsHandler,
                 devicePoolsHandler,

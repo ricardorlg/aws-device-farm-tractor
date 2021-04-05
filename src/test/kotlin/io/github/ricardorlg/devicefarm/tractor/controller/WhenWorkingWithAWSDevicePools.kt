@@ -30,11 +30,11 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
         //GIVEN
         val expectedDevicePool = devicePools.first()
         val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler(
-            fetchDevicePoolsImpl = { Either.right(devicePools) }
+            fetchDevicePoolsImpl = { Either.Right(devicePools) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -51,11 +51,11 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
         //GIVEN
         val expectedDevicePool = devicePools.random()
         val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler(
-            fetchDevicePoolsImpl = { Either.right(devicePools) }
+            fetchDevicePoolsImpl = { Either.Right(devicePools) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -71,11 +71,11 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
     "It should return a NoRegisteredDevicePoolsError when there is no device pools associated to the project"{
         //GIVEN
         val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler(
-            fetchDevicePoolsImpl = { Either.right(emptyList()) }
+            fetchDevicePoolsImpl = { Either.Right(emptyList()) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -95,11 +95,11 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
         //GIVEN
         val devicePoolName = devicePools.first().name()
         val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler(
-            fetchDevicePoolsImpl = { Either.right(devicePools.drop(1)) }
+            fetchDevicePoolsImpl = { Either.Right(devicePools.drop(1)) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -119,11 +119,11 @@ class WhenWorkingWithAWSDevicePools : StringSpec({
         //GIVEN
         val expectedError = DeviceFarmTractorGeneralError(RuntimeException("test error"))
         val devicePoolsHandler = MockedDeviceFarmDevicePoolsHandler(
-            fetchDevicePoolsImpl = { Either.left(expectedError) }
+            fetchDevicePoolsImpl = { Either.Left(expectedError) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,

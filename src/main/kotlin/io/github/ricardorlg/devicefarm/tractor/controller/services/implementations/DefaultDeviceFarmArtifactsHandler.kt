@@ -11,7 +11,7 @@ import software.amazon.awssdk.services.devicefarm.model.ListArtifactsRequest
 internal class DefaultDeviceFarmArtifactsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmArtifactsHandler {
     override suspend fun getArtifacts(runArn: String): Either<DeviceFarmTractorError, List<Artifact>> {
         return if (runArn.isBlank()) {
-            Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_RUN_ARN))
+            Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_RUN_ARN))
         } else {
             Either.catch {
                 deviceFarmClient

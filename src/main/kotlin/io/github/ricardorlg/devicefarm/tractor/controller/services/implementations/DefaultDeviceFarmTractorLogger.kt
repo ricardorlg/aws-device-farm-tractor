@@ -8,7 +8,7 @@ class DefaultDeviceFarmTractorLogger(
     loggerName: String,
 ) : IDeviceFarmTractorLogging {
     private val logger: KLogger by lazy { KotlinLogging.logger(loggerName) }
-    override fun logStatus(msg: String) {
+    override fun logMessage(msg: String) {
         kotlin.runCatching {
             logger
                 .info(msg)

@@ -9,7 +9,7 @@ import software.amazon.awssdk.services.devicefarm.model.DevicePool
 class MockedDeviceFarmDevicePoolsHandler(
     private val fetchDevicePoolsImpl: (String) -> Either<DeviceFarmTractorError, List<DevicePool>> = { fail("Not implemented") }
 ) : IDeviceFarmDevicePoolsHandler {
-    override suspend fun fetchDevicePools(projectArn: String): Either<DeviceFarmTractorError, List<DevicePool>> {
+    override fun fetchDevicePools(projectArn: String): Either<DeviceFarmTractorError, List<DevicePool>> {
         return fetchDevicePoolsImpl(projectArn)
     }
 }

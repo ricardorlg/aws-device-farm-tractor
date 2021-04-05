@@ -8,15 +8,15 @@ import software.amazon.awssdk.services.devicefarm.model.UploadType
 import java.io.File
 
 interface IDeviceFarmUploadArtifactsHandler {
-    suspend fun createUpload(
+    fun createUpload(
         projectArn: String,
         uploadType: UploadType,
         artifactName: String
     ): Either<DeviceFarmTractorError, Upload>
 
-    suspend fun uploadArtifactToS3(artifact: File, awsUpload: Upload): Either<DeviceFarmTractorError, Unit>
+    fun uploadArtifactToS3(artifact: File, awsUpload: Upload): Either<DeviceFarmTractorError, Unit>
 
-    suspend fun fetchUpload(uploadArn: String):Either<DeviceFarmTractorError,Upload>
+    fun fetchUpload(uploadArn: String): Either<DeviceFarmTractorError, Upload>
 
-    suspend fun deleteUpload(uploadArn: String):Either<DeviceFarmTractorError,DeleteUploadResponse>
+    fun deleteUpload(uploadArn: String): Either<DeviceFarmTractorError, DeleteUploadResponse>
 }

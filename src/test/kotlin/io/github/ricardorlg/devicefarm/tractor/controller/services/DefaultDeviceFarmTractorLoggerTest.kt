@@ -24,7 +24,7 @@ class DefaultDeviceFarmTractorLoggerTest : StringSpec({
 
         //WHEN
         val response = captureStandardOut {
-            DefaultDeviceFarmTractorLogger(loggerName).logStatus(expectedMessage)
+            DefaultDeviceFarmTractorLogger(loggerName).logMessage(expectedMessage)
         }.trim()
 
         //THEN
@@ -41,7 +41,7 @@ class DefaultDeviceFarmTractorLoggerTest : StringSpec({
         every { KotlinLogging.logger(loggerName) } returns logger
 
         //WHEN
-        DefaultDeviceFarmTractorLogger(loggerName).logStatus("No matters")
+        DefaultDeviceFarmTractorLogger(loggerName).logMessage("No matters")
 
         //THEN
         verifySequence {

@@ -5,5 +5,5 @@ import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import software.amazon.awssdk.services.devicefarm.model.DevicePool
 
 interface IDeviceFarmDevicePoolsHandler {
-    suspend fun fetchDevicePools(projectArn: String): Either<DeviceFarmTractorError, List<DevicePool>>
+    fun fetchDevicePools(projectArn: String): Either<DeviceFarmTractorError, List<DevicePool>>
 }

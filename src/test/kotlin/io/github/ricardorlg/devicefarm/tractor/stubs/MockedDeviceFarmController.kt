@@ -2,12 +2,12 @@ package io.github.ricardorlg.devicefarm.tractor.stubs
 
 import arrow.core.Either
 import arrow.core.right
-import arrow.fx.coroutines.Duration
 import io.github.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorController
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import io.kotest.assertions.fail
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Path
+import kotlin.time.Duration
 
 class MockedDeviceFarmController(
     private val findOrCreateProjectImpl: (String) -> Either<DeviceFarmTractorError, Project> = { fail("Not implemented") },
@@ -78,7 +78,7 @@ class MockedDeviceFarmController(
     override suspend fun downloadAllEvidencesOfTestRun(
         run: Run,
         destinyDirectory: Path,
-        delayForDownload: kotlin.time.Duration
+        delayForDownload: Duration
     ) {
         downloadAllTestReportsOfTestRunImpl(run, destinyDirectory)
     }

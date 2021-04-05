@@ -62,7 +62,7 @@ class WhenFetchingResultsTable : StringSpec({
         //endregion
 
         //region WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             deviceFarmTractorLogging = logger,
             deviceFarmProjectsHandler = deviceFarmProjectsHandler,
             deviceFarmDevicePoolsHandler = devicePoolsHandler,
@@ -85,7 +85,7 @@ class WhenFetchingResultsTable : StringSpec({
         //endregion
 
         //region WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             deviceFarmTractorLogging = logger,
             deviceFarmProjectsHandler = deviceFarmProjectsHandler,
             deviceFarmDevicePoolsHandler = devicePoolsHandler,

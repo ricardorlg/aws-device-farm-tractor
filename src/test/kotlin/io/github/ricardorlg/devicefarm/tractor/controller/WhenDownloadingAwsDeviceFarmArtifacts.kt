@@ -14,7 +14,10 @@ import io.kotest.engine.spec.tempfile
 import io.kotest.extensions.system.captureStandardOut
 import io.kotest.inspectors.forAll
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
-import io.kotest.matchers.paths.*
+import io.kotest.matchers.paths.shouldBeADirectory
+import io.kotest.matchers.paths.shouldContainFile
+import io.kotest.matchers.paths.shouldContainNFiles
+import io.kotest.matchers.paths.shouldNotContainFile
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldStartWith
 import io.kotest.matchers.throwable.shouldHaveMessage
@@ -73,7 +76,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                 .build()
 
             //WHEN
-            val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+            val response = DefaultDeviceFarmTractorController(
                 logger,
                 deviceFarmProjectsHandler,
                 devicePoolsHandler,
@@ -112,7 +115,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                 .build()
 
             //WHEN
-            val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+            val response = DefaultDeviceFarmTractorController(
                 logger,
                 deviceFarmProjectsHandler,
                 devicePoolsHandler,
@@ -154,7 +157,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
 
             //WHEN
             val loggedMessage = captureStandardOut {
-                io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+                DefaultDeviceFarmTractorController(
                     MockedDeviceFarmLogging(true),
                     deviceFarmProjectsHandler,
                     devicePoolsHandler,
@@ -196,7 +199,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             .build()
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -223,7 +226,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val destinyFolder = tempFolder("testReports")
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -284,15 +287,15 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             .build()
 
         val downloadArtifactsHandler = MockedDeviceFarmArtifactsHandler(
-            getArtifactsImpl = { Either.right(listOf(customerArtifact, recordedVideoArtifact)) }
+            getArtifactsImpl = { Either.Right(listOf(customerArtifact, recordedVideoArtifact)) }
         )
         val runHandler = MockedDeviceFarmRunsHandler(
-            getAssociatedJobsImpl = { Either.right(jobs) }
+            getAssociatedJobsImpl = { Either.Right(jobs) }
         )
         val reportDirectoryPath = Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
 
         //WHEN
-        io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -344,10 +347,10 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                 .build()
 
             val downloadArtifactsHandler = MockedDeviceFarmArtifactsHandler(
-                getArtifactsImpl = { Either.right(listOf(artifact)) }
+                getArtifactsImpl = { Either.Right(listOf(artifact)) }
             )
             val runHandler = MockedDeviceFarmRunsHandler(
-                getAssociatedJobsImpl = { Either.right(listOf(job)) }
+                getAssociatedJobsImpl = { Either.Right(listOf(job)) }
             )
             val reportDirectoryPath =
                 Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
@@ -356,7 +359,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
 
             //WHEN
             val loggedMessages = captureStandardOut {
-                io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+                DefaultDeviceFarmTractorController(
                     MockedDeviceFarmLogging(true),
                     deviceFarmProjectsHandler,
                     devicePoolsHandler,
@@ -428,17 +431,17 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val downloadArtifactsHandler = MockedDeviceFarmArtifactsHandler(
             getArtifactsImpl = {
                 synchronized(this) {
-                    Either.right(listOf(artifactsProvider.next()))
+                    Either.Right(listOf(artifactsProvider.next()))
                 }
             }
         )
         val runHandler = MockedDeviceFarmRunsHandler(
-            getAssociatedJobsImpl = { Either.right(jobs) }
+            getAssociatedJobsImpl = { Either.Right(jobs) }
         )
         val reportDirectoryPath = Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
 
         //WHEN
-        io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -509,17 +512,17 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val downloadArtifactsHandler = MockedDeviceFarmArtifactsHandler(
             getArtifactsImpl = {
                 synchronized(this) {
-                    Either.right(listOf(artifactsProvider.next()))
+                    Either.Right(listOf(artifactsProvider.next()))
                 }
             }
         )
         val runHandler = MockedDeviceFarmRunsHandler(
-            getAssociatedJobsImpl = { Either.right(jobs) }
+            getAssociatedJobsImpl = { Either.Right(jobs) }
         )
         val reportDirectoryPath = Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
 
         //WHEN
-        io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -569,7 +572,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             getArtifactsImpl = { fail("This should never been called") }
         )
         val runHandler = MockedDeviceFarmRunsHandler(
-            getAssociatedJobsImpl = { Either.right(listOf(job)) }
+            getAssociatedJobsImpl = { Either.Right(listOf(job)) }
         )
         val reportDirectoryPath = destinyFolder
             .resolve("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
@@ -577,7 +580,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
 
         //WHEN
         val lastOutput = captureStandardOut {
-            io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+            DefaultDeviceFarmTractorController(
                 MockedDeviceFarmLogging(true),
                 deviceFarmProjectsHandler,
                 devicePoolsHandler,
@@ -618,7 +621,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             getArtifactsImpl = { fail("This should never been called") }
         )
         val runHandler = MockedDeviceFarmRunsHandler(
-            getAssociatedJobsImpl = { Either.right(listOf(job)) }
+            getAssociatedJobsImpl = { Either.Right(listOf(job)) }
         )
         val testReportsName = "test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}"
         destinyFolder.toFile().setReadOnly()
@@ -626,7 +629,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
 
         //WHEN
         val lastOutput = captureStandardOut {
-            io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+            DefaultDeviceFarmTractorController(
                 MockedDeviceFarmLogging(true),
                 deviceFarmProjectsHandler,
                 devicePoolsHandler,
@@ -659,11 +662,11 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             getArtifactsImpl = { fail("This should never been called") }
         )
         val runHandler = MockedDeviceFarmRunsHandler(
-            getAssociatedJobsImpl = { Either.left(error) }
+            getAssociatedJobsImpl = { Either.Left(error) }
         )
 
         //WHEN
-        io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -742,12 +745,12 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val downloadArtifactsHandler = MockedDeviceFarmArtifactsHandler(
             getArtifactsImpl = {
                 synchronized(this) {
-                    Either.right(listOf(customerArtifactsProvider.next(), videoArtifactsProvider.next()))
+                    Either.Right(listOf(customerArtifactsProvider.next(), videoArtifactsProvider.next()))
                 }
             }
         )
         val runHandler = MockedDeviceFarmRunsHandler(
-            getAssociatedJobsImpl = { Either.right(jobs) }
+            getAssociatedJobsImpl = { Either.Right(jobs) }
         )
         val reportDirectoryPath = Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
 
@@ -761,7 +764,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             if (expectedReports.indexOf(reportNotReadable) == expectedRecordedVideos.indexOf(videoNotReadable)) jobs.size - 1 else jobs.size
 
         //WHEN
-        io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,

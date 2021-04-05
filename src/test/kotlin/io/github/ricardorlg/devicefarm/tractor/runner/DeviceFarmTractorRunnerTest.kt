@@ -93,10 +93,10 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
+            findOrCreateProjectImpl = { Either.Right(project) },
             findOrUseDefaultDevicePoolImpl = { _, _poolName ->
                 _poolName shouldBe devicePoolName
-                Either.right(devicePool)
+                Either.Right(devicePool)
             },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
@@ -112,7 +112,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     else -> fail("the upload type $uploadType should never been passed as a parameter")
                 }.right()
             },
-            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.right(expectedRun) }
+            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.Right(expectedRun) }
         )
         //endregion
 
@@ -177,10 +177,10 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
+            findOrCreateProjectImpl = { Either.Right(project) },
             findOrUseDefaultDevicePoolImpl = { actualProjectArn, _ ->
                 actualProjectArn shouldBe expectedProjectArn
-                Either.right(devicePool)
+                Either.Right(devicePool)
             },
             uploadArtifactToDeviceFarmImpl = { actualProjectArn, _, uploadType ->
                 synchronized(this) {
@@ -201,7 +201,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             },
             scheduleRunAndWaitImpl = { _, _, _, _, _, actualProjectArn, _ ->
                 actualProjectArn shouldBe expectedProjectArn
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             },
         )
         //endregion
@@ -267,8 +267,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -287,7 +287,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 withClue("by default the vide capture property should be enabled") {
                     executionConfiguration.videoCapture().shouldBeTrue()
                 }
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion
@@ -353,8 +353,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -373,7 +373,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 withClue("the video capture configuration should be disabled") {
                     executionConfiguration.videoCapture().shouldBeFalse()
                 }
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion
@@ -440,8 +440,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -460,7 +460,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 withClue("the test execution type should be Appium Node") {
                     testConfiguration.type() shouldBe TestType.APPIUM_NODE
                 }
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion
@@ -526,8 +526,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -547,7 +547,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     testConfiguration.testPackageArn() shouldBe testsUploadArn
                     testConfiguration.testSpecArn() shouldBe testSpecUploadArn
                 }
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion
@@ -613,8 +613,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, path, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -632,7 +632,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     else -> fail("the upload type $uploadType should never been passed as a parameter")
                 }.right()
             },
-            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.right(expectedRun) }
+            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.Right(expectedRun) }
         )
         //endregion
 
@@ -702,8 +702,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         var actualRunName = ""
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -720,7 +720,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             },
             scheduleRunAndWaitImpl = { _, _, _, _, _runName, _, _ ->
                 actualRunName = _runName
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion
@@ -785,8 +785,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -801,7 +801,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     else -> fail("the upload type $uploadType should never been passed as a parameter")
                 }.right()
             },
-            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.right(expectedRun) },
+            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.Right(expectedRun) },
             downloadAllTestReportsOfTestRunImpl = { _, _ -> fail("the reports should not be downloaded if no base report directory was provided") }
         )
         //endregion
@@ -870,8 +870,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         val expectedPath = Paths.get(testBaseReportDirectory)
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -886,7 +886,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     else -> fail("the upload type $uploadType should never been passed as a parameter")
                 }.right()
             },
-            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.right(expectedRun) },
+            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.Right(expectedRun) },
             downloadAllTestReportsOfTestRunImpl = { _, actualPath ->
                 withClue("the base test reports directory should be used as a Path") {
                     actualPath shouldBe expectedPath
@@ -956,8 +956,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -972,7 +972,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     else -> fail("the upload type $uploadType should never been passed as a parameter")
                 }.right()
             },
-            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.right(expectedRun) },
+            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.Right(expectedRun) },
             deleteUploadsImpl = { uploads ->
                 uploads shouldContainExactly listOf(appUpload, testsUpload, testSpecUpload)
             }
@@ -1048,7 +1048,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         val expectedErrorMessage = "A test error message"
         val expectedErrorCause = RuntimeException(expectedErrorMessage)
         val expectedError = DeviceFarmTractorGeneralError(expectedErrorCause)
-        val controller = MockedDeviceFarmController(findOrCreateProjectImpl = { Either.left(expectedError) })
+        val controller = MockedDeviceFarmController(findOrCreateProjectImpl = { Either.Left(expectedError) })
         //endregion
 
         //region WHEN
@@ -1090,8 +1090,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
 
         val controller =
             MockedDeviceFarmController(
-                findOrCreateProjectImpl = { Either.right(project) },
-                findOrUseDefaultDevicePoolImpl = { _, _ -> Either.left(expectedError) })
+                findOrCreateProjectImpl = { Either.Right(project) },
+                findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Left(expectedError) })
         //endregion
 
         //region WHEN
@@ -1153,8 +1153,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
 
         val controller =
             MockedDeviceFarmController(
-                findOrCreateProjectImpl = { Either.right(project) },
-                findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+                findOrCreateProjectImpl = { Either.Right(project) },
+                findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
                 uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                     when (uploadType) {
                         UploadType.ANDROID_APP -> {
@@ -1233,8 +1233,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
 
         val controller =
             MockedDeviceFarmController(
-                findOrCreateProjectImpl = { Either.right(project) },
-                findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+                findOrCreateProjectImpl = { Either.Right(project) },
+                findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
                 uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                     when (uploadType) {
                         UploadType.ANDROID_APP -> {
@@ -1319,8 +1319,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
 
         val controller =
             MockedDeviceFarmController(
-                findOrCreateProjectImpl = { Either.right(project) },
-                findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+                findOrCreateProjectImpl = { Either.Right(project) },
+                findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
                 uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                     when (uploadType) {
                         UploadType.ANDROID_APP -> {
@@ -1335,7 +1335,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                         else -> fail("the upload type $uploadType should never been passed as a parameter")
                     }.right()
                 },
-                scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.left(expectedError) }
+                scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.Left(expectedError) }
             )
         //endregion
 
@@ -1407,8 +1407,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -1427,7 +1427,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 withClue("by default the test execution should be metered") {
                     scheduleRunConfiguration.billingMethod() shouldBe BillingMethod.METERED
                 }
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion
@@ -1493,8 +1493,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -1513,7 +1513,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 withClue("unmetered executions should be available") {
                     scheduleRunConfiguration.billingMethod() shouldBe BillingMethod.UNMETERED
                 }
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion
@@ -1580,8 +1580,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -1601,7 +1601,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     scheduleRunTestConfiguration.parameters()
                         .getOrDefault(APP_PERFORMANCE_MONITORING_PARAMETER_KEY, "true").toBoolean().shouldBeTrue()
                 }
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion
@@ -1667,8 +1667,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             .build()
 
         val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.right(devicePool) },
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
             uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                 when (uploadType) {
                     UploadType.ANDROID_APP -> {
@@ -1688,7 +1688,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     scheduleRunTestConfiguration.parameters()
                         .getOrDefault(APP_PERFORMANCE_MONITORING_PARAMETER_KEY, "true").toBoolean().shouldBeFalse()
                 }
-                Either.right(expectedRun)
+                Either.Right(expectedRun)
             }
         )
         //endregion

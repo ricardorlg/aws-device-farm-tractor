@@ -11,11 +11,11 @@ class MockedDeviceFarmProjectsHandler(
     private val createProjectImpl: (String) -> Either<DeviceFarmTractorError, Project> = { fail("Not implemented") }
 
 ) : IDeviceFarmProjectsHandler {
-    override suspend fun listProjects(): Either<DeviceFarmTractorError, List<Project>> {
+    override fun listProjects(): Either<DeviceFarmTractorError, List<Project>> {
         return listProjectsImpl()
     }
 
-    override suspend fun createProject(projectName: String): Either<DeviceFarmTractorError, Project> {
+    override fun createProject(projectName: String): Either<DeviceFarmTractorError, Project> {
         return createProjectImpl(projectName)
     }
 }

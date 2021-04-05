@@ -7,8 +7,9 @@ import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
 import software.amazon.awssdk.services.devicefarm.model.CreateProjectRequest
 import software.amazon.awssdk.services.devicefarm.model.Project
 
-internal class DefaultDeviceFarmProjectsHandler(private val deviceFarmClient: DeviceFarmClient) : IDeviceFarmProjectsHandler {
-    override suspend fun listProjects(): Either<DeviceFarmTractorError, List<Project>> {
+internal class DefaultDeviceFarmProjectsHandler(private val deviceFarmClient: DeviceFarmClient) :
+    IDeviceFarmProjectsHandler {
+    override fun listProjects(): Either<DeviceFarmTractorError, List<Project>> {
         return Either.catch {
             deviceFarmClient
                 .listProjectsPaginator()
@@ -19,9 +20,9 @@ internal class DefaultDeviceFarmProjectsHandler(private val deviceFarmClient: De
         }
     }
 
-    override suspend fun createProject(projectName: String): Either<DeviceFarmTractorError, Project> {
+    override fun createProject(projectName: String): Either<DeviceFarmTractorError, Project> {
         return if (projectName.isBlank()) {
-            Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_PROJECT_NAME))
+            Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_PROJECT_NAME))
         } else Either.catch {
             deviceFarmClient
                 .createProject(

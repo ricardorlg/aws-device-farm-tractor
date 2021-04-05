@@ -1,7 +1,6 @@
 package io.github.ricardorlg.devicefarm.tractor.factory
 
 import arrow.core.Either
-import io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController
 import io.github.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorLogging
 import io.github.ricardorlg.devicefarm.tractor.controller.services.implementations.*
 import io.github.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunner
@@ -14,7 +13,7 @@ import software.amazon.awssdk.services.devicefarm.DeviceFarmClientBuilder
 
 object DeviceFarmTractorFactory {
 
-    suspend fun createRunner(
+    fun createRunner(
         deviceFarmClientBuilder: DeviceFarmClientBuilder = DeviceFarmClient.builder(),
         logger: IDeviceFarmTractorLogging,
         accessKeyId: String = "",
@@ -34,7 +33,7 @@ object DeviceFarmTractorFactory {
                         )
                     )
                     if (region.isNotBlank()) {
-                        logger.logStatus("I will create the device farm client using the provided region")
+                        logger.logMessage("I will create the device farm client using the provided region")
                         it.region(Region.of(region))
                     }
 
@@ -65,12 +64,12 @@ object DeviceFarmTractorFactory {
                 DefaultCredentialsProvider.create()
             }
             sessionToken.isBlank() -> {
-                logger.logStatus("I will create the device farm client using the provided credentials")
+                logger.logMessage("I will create the device farm client using the provided credentials")
                 StaticCredentialsProvider
                     .create(AwsBasicCredentials.create(accessKeyId, secretAccessKey))
             }
             else -> {
-                logger.logStatus("I will create the device farm client using the provided credentials and session token")
+                logger.logMessage("I will create the device farm client using the provided credentials and session token")
                 StaticCredentialsProvider
                     .create(AwsSessionCredentials.create(accessKeyId, secretAccessKey, sessionToken))
             }

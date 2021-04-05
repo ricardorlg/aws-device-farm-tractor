@@ -2,11 +2,12 @@ package io.github.ricardorlg.devicefarm.tractor.runner
 
 import arrow.core.Either
 import arrow.core.computations.either
-import arrow.fx.coroutines.parTupledN
+import arrow.fx.coroutines.parZip
 import io.github.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorController
 import io.github.ricardorlg.devicefarm.tractor.model.APP_PERFORMANCE_MONITORING_PARAMETER_KEY
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import io.github.ricardorlg.devicefarm.tractor.utils.HelperMethods.uploadType
+import kotlinx.coroutines.Dispatchers
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Paths
 import java.time.LocalDateTime
@@ -30,32 +31,35 @@ class DeviceFarmTractorRunner(
         disablePerformanceMonitoring: Boolean = false
     ): Run {
         val result = either<DeviceFarmTractorError, Run> {
-            val appUploadType = !appPath.uploadType()
-            val project = !controller.findOrCreateProject(projectName)
-            val devicePool = !controller.findOrUseDefaultDevicePool(project.arn(), devicePoolName)
-            val (appUpload, testUpload, testSpecUpload) = parTupledN(
+            val appUploadType = appPath.uploadType().bind()
+            val project = controller.findOrCreateProject(projectName).bind()
+            val devicePool = controller.findOrUseDefaultDevicePool(project.arn(), devicePoolName).bind()
+            val (appUpload, testUpload, testSpecUpload) = parZip(
+                Dispatchers.IO,
                 fa = {
-                    !controller.uploadArtifactToDeviceFarm(
+                    controller.uploadArtifactToDeviceFarm(
                         project.arn(),
                         appPath,
                         appUploadType
-                    )
+                    ).bind()
                 },
                 fb = {
-                    !controller.uploadArtifactToDeviceFarm(
+                    controller.uploadArtifactToDeviceFarm(
                         project.arn(),
                         testProjectPath,
                         UploadType.APPIUM_NODE_TEST_PACKAGE
-                    )
+                    ).bind()
                 },
                 fc = {
-                    !controller.uploadArtifactToDeviceFarm(
+                    controller.uploadArtifactToDeviceFarm(
                         project.arn(),
                         testSpecPath,
                         UploadType.APPIUM_NODE_TEST_SPEC
-                    )
+                    ).bind()
                 }
-            )
+            ) { a, b, c ->
+                Triple(a, b, c)
+            }
             val runConfiguration = ScheduleRunConfiguration
                 .builder()
                 .billingMethod(BillingMethod.METERED.takeIf { meteredTests } ?: BillingMethod.UNMETERED)
@@ -76,7 +80,7 @@ class DeviceFarmTractorRunner(
                 }
                 .build()
 
-            val run = !controller.scheduleRunAndWait(
+            val run = controller.scheduleRunAndWait(
                 appArn = appUpload.arn(),
                 runConfiguration = runConfiguration,
                 devicePoolArn = devicePool.arn(),
@@ -84,7 +88,7 @@ class DeviceFarmTractorRunner(
                 runName = runName.ifBlank { generateRunName() },
                 projectArn = project.arn(),
                 testConfiguration = testConfiguration
-            )
+            ).bind()
 
             if (downloadReports && testReportsBaseDirectory.isNotBlank()) {
                 controller.downloadAllEvidencesOfTestRun(run, Paths.get(testReportsBaseDirectory))
@@ -95,12 +99,13 @@ class DeviceFarmTractorRunner(
         }
         return when (result) {
             is Either.Left -> {
-                throw result.a
+                throw result.value
             }
-            is Either.Right -> result.b
+            is Either.Right -> result.value
         }
     }
 
+    @Suppress("unused")
     suspend fun getDeviceResultsTable(run: Run): String {
         return controller.getDeviceResultsTable(run)
     }

@@ -2,8 +2,9 @@ package io.github.ricardorlg.devicefarm.tractor.controller
 
 import arrow.core.*
 import arrow.core.computations.either
-import arrow.core.extensions.list.foldable.find
-import arrow.fx.coroutines.*
+import arrow.fx.coroutines.Schedule
+import arrow.fx.coroutines.parTraverse
+import arrow.fx.coroutines.parZip
 import com.jakewharton.picnic.Table
 import com.jakewharton.picnic.TextBorder
 import com.jakewharton.picnic.renderText
@@ -12,6 +13,7 @@ import io.github.ricardorlg.devicefarm.tractor.controller.services.definitions.*
 import io.github.ricardorlg.devicefarm.tractor.model.*
 import io.github.ricardorlg.devicefarm.tractor.utils.HelperMethods
 import io.github.ricardorlg.devicefarm.tractor.utils.HelperMethods.validateFileExtensionByType
+import io.github.ricardorlg.devicefarm.tractor.utils.ensure
 import io.github.ricardorlg.devicefarm.tractor.utils.prettyName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -23,8 +25,6 @@ import kotlin.io.path.createDirectory
 import kotlin.io.path.deleteExisting
 import kotlin.io.path.listDirectoryEntries
 import kotlin.time.Duration
-import arrow.fx.coroutines.Duration as ArrowDuration
-import arrow.fx.coroutines.repeat as repeatEffectWithPolicy
 
 internal class DefaultDeviceFarmTractorController(
     deviceFarmTractorLogging: IDeviceFarmTractorLogging,
@@ -44,17 +44,17 @@ internal class DefaultDeviceFarmTractorController(
 
     override suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project> {
         return either {
-            logStatus("I will try to find the project $projectName or I will create it if not found")
+            logMessage("I will try to find the project $projectName or I will create it if not found")
             listProjects()
                 .bind()
-                .find { it.name() == projectName }
+                .firstOrNone { it.name() == projectName }
                 .fold(
                     ifEmpty = {
-                        logStatus("I didn't find the project $projectName, I will create it")
-                        !createProject(projectName)
+                        logMessage("I didn't find the project $projectName, I will create it")
+                        createProject(projectName).bind()
                     },
                     ifSome = {
-                        logStatus("I found the project $projectName, I will use it")
+                        logMessage("I found the project $projectName, I will use it")
                         it
                     }
                 )
@@ -66,22 +66,22 @@ internal class DefaultDeviceFarmTractorController(
         devicePoolName: String
     ): Either<DeviceFarmTractorError, DevicePool> {
         return either {
-            val devicePools = !fetchDevicePools(projectArn)
+            val devicePools = fetchDevicePools(projectArn).bind()
             if (devicePoolName.isBlank()) {
-                logStatus("No device pool name was provided, I will use the first associated device pool of current project")
+                logMessage("No device pool name was provided, I will use the first associated device pool of current project")
                 devicePools
                     .firstOrNull()
                     .rightIfNotNull {
                         NoRegisteredDevicePoolsError(PROJECT_DOES_NOT_HAVE_DEVICE_POOLS.format(projectArn))
                     }.bind()
             } else {
-                logStatus("I will try to find the $devicePoolName device pool")
+                logMessage("I will try to find the $devicePoolName device pool")
                 devicePools
                     .firstOrNull { it.name() == devicePoolName }
                     .rightIfNotNull {
                         DevicePoolNotFoundError(DEVICE_POOL_NOT_FOUND.format(devicePoolName))
                     }.map {
-                        logStatus("I found the device pool $devicePoolName, I will use it")
+                        logMessage("I found the device pool $devicePoolName, I will use it")
                         it
                     }
                     .bind()
@@ -93,7 +93,7 @@ internal class DefaultDeviceFarmTractorController(
         projectArn: String,
         artifactPath: String,
         uploadType: UploadType,
-        delaySpaceInterval: ArrowDuration,
+        delaySpaceInterval: Duration,
         maximumNumberOfRetries: Int
     ): Either<DeviceFarmTractorError, Upload> {
         return either {
@@ -102,13 +102,13 @@ internal class DefaultDeviceFarmTractorController(
                 .flatMap { it.validateFileExtensionByType(uploadType) }
                 .bind()
 
-            logStatus("I will start to upload the artifact ${file.name}")
+            logMessage("I will start to upload the artifact ${file.name}")
 
-            val initialUpload = !createUpload(
+            val initialUpload = createUpload(
                 projectArn = projectArn,
                 uploadType = uploadType,
                 artifactName = file.name
-            )
+            ).bind()
 
             val fetchAWSUploadSchedulePolicy = Schedule
                 .spaced<Either<DeviceFarmTractorError, Upload>>(delaySpaceInterval)
@@ -116,49 +116,39 @@ internal class DefaultDeviceFarmTractorController(
                 .whileInput<Either<DeviceFarmTractorError, Upload>> { currentResult ->
                     when (currentResult) {
                         is Either.Left -> {
-                            currentResult.a.cause !is DeviceFarmException
+                            currentResult.value.cause !is DeviceFarmException
                         }
                         is Either.Right -> {
-                            currentResult.b.status() == UploadStatus.INITIALIZED || currentResult.b.status() == UploadStatus.PROCESSING
+                            currentResult.value.status() == UploadStatus.INITIALIZED || currentResult.value.status() == UploadStatus.PROCESSING
                         }
                     }
                 }
                 .logInput {
                     when (it) {
                         is Either.Left -> {
-                            logStatus("${file.nameWithoutExtension} upload is not ready yet")
+                            logMessage("${file.nameWithoutExtension} upload is not ready yet")
                         }
                         is Either.Right -> {
-                            logStatus("Current status of ${file.nameWithoutExtension} AWS upload: ${it.b.status()}")
+                            logMessage("Current status of ${file.nameWithoutExtension} AWS upload: ${it.value.status()}")
                         }
                     }
                 }
                 .zipRight(Schedule.identity())
 
-            !parMapN(
-                fa = { !uploadArtifactToS3(file, initialUpload) },
+            parZip(
+                ctx = Dispatchers.IO,
+                fa = { uploadArtifactToS3(file, initialUpload).bind() },
                 fb = {
-                    repeatEffectWithPolicy(fetchAWSUploadSchedulePolicy) {
+                    fetchAWSUploadSchedulePolicy.repeat {
                         fetchUpload(initialUpload.arn())
                     }
-                }
-            ) { _, result ->
-                when (result) {
-                    is Either.Left -> {
-                        result
-                    }
-                    is Either.Right -> {
-                        if (result.b.status() != UploadStatus.SUCCEEDED) {
-                            UploadFailureError("The artifact ${file.nameWithoutExtension} AWS status was ${result.b.status()} message = ${result.b.message()}")
-                                .left()
-                        } else {
-                            logStatus("The Artifact ${file.nameWithoutExtension} was uploaded to AWS and is ready to use")
-                            result
-                        }
-
-                    }
-                }
-            }
+                }) { _, b ->
+                b.ensure(
+                    error = { upload -> UploadFailureError("The artifact ${file.nameWithoutExtension} AWS status was ${upload.status()} message = ${upload.message()}") },
+                    predicate = { upload -> upload.status() == UploadStatus.SUCCEEDED },
+                    predicateAction = { logMessage("The Artifact ${file.nameWithoutExtension} was uploaded to AWS and is ready to use") }
+                )
+            }.bind()
         }
     }
 
@@ -166,7 +156,7 @@ internal class DefaultDeviceFarmTractorController(
         uploads.asList().parTraverse { upload ->
             deleteUpload(upload.arn())
                 .map {
-                    logStatus(DELETE_UPLOAD_MESSAGE.format(upload.name(), upload.arn()))
+                    logMessage(DELETE_UPLOAD_MESSAGE.format(upload.name(), upload.arn()))
                 }
         }
     }
@@ -179,16 +169,18 @@ internal class DefaultDeviceFarmTractorController(
         runName: String,
         projectArn: String,
         testConfiguration: ScheduleRunTest,
-        delaySpaceInterval: ArrowDuration
+        delaySpaceInterval: Duration
     ): Either<DeviceFarmTractorError, Run> {
         return either {
             val policy = Schedule
                 .spaced<Run>(delaySpaceInterval)
                 .whileInput<Run> { run -> run.status() != ExecutionStatus.COMPLETED }
-                .logInput { logStatus(" Current Run status = ${it.status()}") }
+                .logInput { logMessage(" Current Run status = ${it.status()}") }
                 .zipRight(Schedule.identity())
-            logStatus("I will schedule the run $runName and wait until it finishes")
-            val initialRun = !scheduleRun(
+
+            logMessage("I will schedule the run $runName and wait until it finishes")
+
+            val initialRun = scheduleRun(
                 appArn = appArn,
                 runConfiguration = runConfiguration,
                 devicePoolArn = devicePoolArn,
@@ -196,10 +188,10 @@ internal class DefaultDeviceFarmTractorController(
                 runName = runName,
                 projectArn = projectArn,
                 testConfiguration = testConfiguration
-            )
-            repeatEffectWithPolicy(policy) {
-                !fetchRun(initialRun.arn())
-            }.also { logStatus("Test execution just finished with result = ${it.result()}") }
+            ).bind()
+            policy.repeat {
+                fetchRun(initialRun.arn()).bind()
+            }.also { logMessage("Test execution just finished with result = ${it.result()}") }
         }
     }
 
@@ -211,7 +203,7 @@ internal class DefaultDeviceFarmTractorController(
                         .resolve("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
                 ).map { reportsPath ->
                     associatedJobs
-                        .parTraverse { job ->
+                        .parTraverse(Dispatchers.IO) { job ->
                             createDirectory(
                                 reportsPath.resolve(
                                     job.device()
@@ -220,7 +212,7 @@ internal class DefaultDeviceFarmTractorController(
                                         .replace("\\s".toRegex(), "_")
                                 )
                             ).map { path ->
-                                logStatus(
+                                logMessage(
                                     "I will download the artifacts associated to the device ${
                                         job.device().name()
                                     }"
@@ -229,24 +221,21 @@ internal class DefaultDeviceFarmTractorController(
                                 delay(delayForDownload)
                                 getArtifacts(job.arn())
                                     .map { artifacts ->
-                                        parTupledN(
-                                            fa = {
-                                                downloadAWSDeviceFarmArtifacts(
-                                                    artifacts = artifacts,
-                                                    deviceName = job.device().name().orEmpty(),
-                                                    path = path,
-                                                    artifactType = ArtifactType.CUSTOMER_ARTIFACT
-                                                )
-                                            },
-                                            fb = {
-                                                downloadAWSDeviceFarmArtifacts(
-                                                    artifacts = artifacts,
-                                                    deviceName = job.device().name().orEmpty(),
-                                                    path = path,
-                                                    artifactType = ArtifactType.VIDEO
-                                                )
-                                            }
-                                        )
+                                        parZip({
+                                            downloadAWSDeviceFarmArtifacts(
+                                                artifacts = artifacts,
+                                                deviceName = job.device().name().orEmpty(),
+                                                path = path,
+                                                artifactType = ArtifactType.CUSTOMER_ARTIFACT
+                                            )
+                                        }, {
+                                            downloadAWSDeviceFarmArtifacts(
+                                                artifacts = artifacts,
+                                                deviceName = job.device().name().orEmpty(),
+                                                path = path,
+                                                artifactType = ArtifactType.VIDEO
+                                            )
+                                        }, { _, _ -> })
                                         runCatching {
                                             if (path.listDirectoryEntries().isEmpty())
                                                 path.deleteExisting()
@@ -268,21 +257,21 @@ internal class DefaultDeviceFarmTractorController(
         return if (artifactType in INVALID_ARTIFACT_TYPES)
             DeviceFarmTractorErrorIllegalArgumentException("$artifactType is not supported").left()
         else {
-            logStatus("I will start to download the ${artifactType.prettyName()} of $deviceName test run")
+            logMessage("I will start to download the ${artifactType.prettyName()} of $deviceName test run")
             artifacts
-                .find { it.type() == artifactType }
+                .firstOrNone { it.type() == artifactType }
                 .fold(
-                    ifSome = { artifact ->
-                        val destinyPath = path.resolve("${artifact.name()}.${artifact.extension()}")
-                        downloadAndSave(destinyPath, artifact, deviceName)
-                    },
                     ifEmpty = {
-                        logStatus(
+                        logMessage(
                             JOB_DOES_NOT_HAVE_ARTIFACT_OF_TYPE.format(
                                 artifactType.name,
                                 deviceName
                             )
                         ).right()
+                    },
+                    ifSome = { artifact ->
+                        val destinyPath = path.resolve("${artifact.name()}.${artifact.extension()}")
+                        downloadAndSave(destinyPath, artifact, deviceName)
                     }
                 ).mapLeft {
                     ErrorDownloadingArtifact(it)
@@ -290,21 +279,19 @@ internal class DefaultDeviceFarmTractorController(
         }
     }
 
-    private suspend fun downloadAndSave(
+    private fun downloadAndSave(
         destinyPath: Path,
         artifact: Artifact,
         deviceName: String
     ): Either<Throwable, Unit> {
         return Either.catch {
-            evalOn(Dispatchers.IO) {
-                URL(artifact.url())
-                    .openStream().use {
-                        Files.write(destinyPath, it.readBytes())
-                    }
-            }
+            URL(artifact.url())
+                .openStream().use {
+                    Files.write(destinyPath, it.readBytes())
+                }
         }.fold(
             ifRight = {
-                logStatus(
+                logMessage(
                     "I've finished to download the ${
                         artifact.type().prettyName()
                     } of $deviceName in $destinyPath"
@@ -312,7 +299,7 @@ internal class DefaultDeviceFarmTractorController(
                 Unit.right()
             },
             ifLeft = { failure ->
-                logStatus(
+                logMessage(
                     "There was an error downloading the ${
                         artifact.type().prettyName()
                     } of $deviceName test run. reason: ${failure.message.orEmpty()}"
@@ -324,7 +311,7 @@ internal class DefaultDeviceFarmTractorController(
 
     override suspend fun getDeviceResultsTable(run: Run): String {
         val table = either<DeviceFarmTractorError, Table> {
-            val associatedJobs = !getAssociatedJobs(run)
+            val associatedJobs = getAssociatedJobs(run).bind()
             table {
                 cellStyle {
                     border = true
@@ -341,15 +328,10 @@ internal class DefaultDeviceFarmTractorController(
         return table.orNull()?.renderText(border = TextBorder.ASCII).orEmpty()
     }
 
-    private suspend fun createDirectory(path: Path): Either<Throwable, Path> {
-        return Either.catch {
-            evalOn(Dispatchers.IO) {
-                path.createDirectory()
-            }
-        }.mapLeft {
-            logStatus(ERROR_CREATING_DIRECTORY.format(path.fileName.toString(), it.message.orEmpty()))
+    private fun createDirectory(path: Path): Either<Throwable, Path> {
+        return Either.catch { path.createDirectory() }.mapLeft {
+            logMessage(ERROR_CREATING_DIRECTORY.format(path.fileName.toString(), it.message.orEmpty()))
             it
-
         }
     }
 }

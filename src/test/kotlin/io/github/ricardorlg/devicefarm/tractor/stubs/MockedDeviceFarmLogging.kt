@@ -3,7 +3,7 @@ package io.github.ricardorlg.devicefarm.tractor.stubs
 import io.github.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorLogging
 
 class MockedDeviceFarmLogging(private val printMessages: Boolean = false) : IDeviceFarmTractorLogging {
-    override fun logStatus(msg: String) {
+    override fun logMessage(msg: String) {
         if (printMessages)
             println(msg)
     }

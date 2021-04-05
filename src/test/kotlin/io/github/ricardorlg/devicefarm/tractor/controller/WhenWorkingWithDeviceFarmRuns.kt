@@ -1,7 +1,6 @@
 package io.github.ricardorlg.devicefarm.tractor.controller
 
 import arrow.core.Either
-import arrow.fx.coroutines.milliseconds
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
 import io.github.ricardorlg.devicefarm.tractor.stubs.*
 import io.kotest.assertions.arrow.either.shouldBeLeft
@@ -9,6 +8,7 @@ import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.assertions.fail
 import io.kotest.core.spec.style.StringSpec
 import software.amazon.awssdk.services.devicefarm.model.*
+import kotlin.time.milliseconds
 
 class WhenWorkingWithDeviceFarmRuns : StringSpec({
 
@@ -44,12 +44,12 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
             .build()
 
         val runScheduleHandler = MockedDeviceFarmRunsHandler(
-            scheduleRunImpl = { Either.right(initialRun) },
-            fetchRunImpl = { Either.right(expectedResult) }
+            scheduleRunImpl = { Either.Right(initialRun) },
+            fetchRunImpl = { Either.Right(expectedResult) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -96,12 +96,12 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
         }
 
         val runScheduleHandler = MockedDeviceFarmRunsHandler(
-            scheduleRunImpl = { Either.right(initialRun) },
-            fetchRunImpl = { Either.right(responses.next()) }
+            scheduleRunImpl = { Either.Right(initialRun) },
+            fetchRunImpl = { Either.Right(responses.next()) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -136,12 +136,12 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
             .build()
 
         val runScheduleHandler = MockedDeviceFarmRunsHandler(
-            scheduleRunImpl = { Either.right(initialRun) },
-            fetchRunImpl = { Either.left(expectedError) }
+            scheduleRunImpl = { Either.Right(initialRun) },
+            fetchRunImpl = { Either.Left(expectedError) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,
@@ -168,12 +168,12 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
         val expectedError = DeviceFarmTractorGeneralError(RuntimeException("test error"))
 
         val runScheduleHandler = MockedDeviceFarmRunsHandler(
-            scheduleRunImpl = { Either.left(expectedError) },
+            scheduleRunImpl = { Either.Left(expectedError) },
             fetchRunImpl = { fail("this should never been called") }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectsHandler,
             devicePoolsHandler,

@@ -42,7 +42,7 @@ object HelperMethods {
                 ifTrue = { this }
             )
         }
-        UNKNOWN_TO_SDK_VERSION -> Either.left(
+        UNKNOWN_TO_SDK_VERSION -> Either.Left(
             DeviceFarmIllegalArtifactExtension
                 .UnsupportedException(uploadType)
         )
@@ -58,7 +58,7 @@ object HelperMethods {
         }
     }
 
-    suspend fun loadFileFromPath(path: String): Either<DeviceFarmTractorError, File> {
+    fun loadFileFromPath(path: String): Either<DeviceFarmTractorError, File> {
         return if (path.isBlank()) {
             DeviceFarmTractorErrorIllegalArgumentException(MANDATORY_PATH_PARAMETER).left()
         } else {

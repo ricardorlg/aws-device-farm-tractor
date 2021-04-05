@@ -29,12 +29,12 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
         //GIVEN
         val expectedProject = projects.random()
         val deviceFarmProjectHandler = MockedDeviceFarmProjectsHandler(
-            listProjectsImpl = { Either.right(projects) },
+            listProjectsImpl = { Either.Right(projects) },
             createProjectImpl = { fail("the impossible happens") }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -52,12 +52,12 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
         //GIVEN
         val expectedProject = projects.random()
         val deviceFarmProjectHandler = MockedDeviceFarmProjectsHandler(
-            listProjectsImpl = { Either.right(emptyList()) },
-            createProjectImpl = { Either.right(expectedProject) }
+            listProjectsImpl = { Either.Right(emptyList()) },
+            createProjectImpl = { Either.Right(expectedProject) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -74,12 +74,12 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
         //GIVEN
         val expectedError = DeviceFarmTractorGeneralError(RuntimeException("Test exception"))
         val deviceFarmProjectHandler = MockedDeviceFarmProjectsHandler(
-            listProjectsImpl = { Either.left(expectedError) },
+            listProjectsImpl = { Either.Left(expectedError) },
             createProjectImpl = { fail("the impossible happens") }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -97,12 +97,12 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
         //GIVEN
         val expectedError = DeviceFarmTractorGeneralError(RuntimeException("Test exception"))
         val deviceFarmProjectHandler = MockedDeviceFarmProjectsHandler(
-            listProjectsImpl = { Either.right(emptyList()) },
-            createProjectImpl = { Either.left(expectedError) }
+            listProjectsImpl = { Either.Right(emptyList()) },
+            createProjectImpl = { Either.Left(expectedError) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,

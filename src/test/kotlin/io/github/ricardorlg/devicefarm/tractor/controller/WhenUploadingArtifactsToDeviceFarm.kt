@@ -3,7 +3,6 @@ package io.github.ricardorlg.devicefarm.tractor.controller
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import arrow.fx.coroutines.milliseconds
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmIllegalArtifactExtension
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
 import io.github.ricardorlg.devicefarm.tractor.model.UploadFailureError
@@ -20,6 +19,7 @@ import software.amazon.awssdk.services.devicefarm.model.DeviceFarmException
 import software.amazon.awssdk.services.devicefarm.model.Upload
 import software.amazon.awssdk.services.devicefarm.model.UploadStatus
 import software.amazon.awssdk.services.devicefarm.model.UploadType
+import kotlin.time.milliseconds
 
 class WhenUploadingArtifactsToDeviceFarm : StringSpec({
 
@@ -51,13 +51,13 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             .build()
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
-            uploadArtifactImpl = { _, _ -> Either.right(Unit) },
-            fetchUploadImpl = { Either.right(expectedUpload) }
+            createUploadImpl = { _, _, _ -> Either.Right(initialUpload) },
+            uploadArtifactImpl = { _, _ -> Either.Right(Unit) },
+            fetchUploadImpl = { Either.Right(expectedUpload) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -95,13 +95,13 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             .build()
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
-            uploadArtifactImpl = { _, _ -> Either.right(Unit) },
-            fetchUploadImpl = { Either.right(expectedUpload) }
+            createUploadImpl = { _, _, _ -> Either.Right(initialUpload) },
+            uploadArtifactImpl = { _, _ -> Either.Right(Unit) },
+            fetchUploadImpl = { Either.Right(expectedUpload) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -143,13 +143,13 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             .build()
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
-            uploadArtifactImpl = { _, _ -> Either.right(Unit) },
-            fetchUploadImpl = { Either.right(expectedUpload) }
+            createUploadImpl = { _, _, _ -> Either.Right(initialUpload) },
+            uploadArtifactImpl = { _, _ -> Either.Right(Unit) },
+            fetchUploadImpl = { Either.Right(expectedUpload) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -186,13 +186,13 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         val expectedError = DeviceFarmTractorGeneralError(RuntimeException("test error"))
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
-            uploadArtifactImpl = { _, _ -> Either.right(Unit) },
-            fetchUploadImpl = { Either.left(expectedError) }
+            createUploadImpl = { _, _, _ -> Either.Right(initialUpload) },
+            uploadArtifactImpl = { _, _ -> Either.Right(Unit) },
+            fetchUploadImpl = { Either.Left(expectedError) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -233,16 +233,16 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         val expectedError = DeviceFarmTractorGeneralError(RuntimeException("test error"))
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
+            createUploadImpl = { _, _, _ -> Either.Right(initialUpload) },
             uploadArtifactImpl = { _, _ ->
                 delay(50)
-                Either.left(expectedError)
+                Either.Left(expectedError)
             },
-            fetchUploadImpl = { Either.right(currentUpload) }
+            fetchUploadImpl = { Either.Right(currentUpload) }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -295,13 +295,13 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         }
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
-            uploadArtifactImpl = { _, _ -> Either.right(Unit) },
+            createUploadImpl = { _, _, _ -> Either.Right(initialUpload) },
+            uploadArtifactImpl = { _, _ -> Either.Right(Unit) },
             fetchUploadImpl = { responses.next() }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -348,13 +348,13 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         }
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            createUploadImpl = { _, _, _ -> Either.right(initialUpload) },
-            uploadArtifactImpl = { _, _ -> Either.right(Unit) },
+            createUploadImpl = { _, _, _ -> Either.Right(initialUpload) },
+            uploadArtifactImpl = { _, _ -> Either.Right(Unit) },
             fetchUploadImpl = { responses.next() }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -380,13 +380,13 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
 
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
-            createUploadImpl = { _, _, _ -> Either.left(expectedError) },
+            createUploadImpl = { _, _, _ -> Either.Left(expectedError) },
             uploadArtifactImpl = { _, _ -> fail("this should never been called") },
             fetchUploadImpl = { fail("this should never been called") }
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -417,7 +417,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,
@@ -450,7 +450,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //WHEN
-        val response = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+        val response = DefaultDeviceFarmTractorController(
             logger,
             deviceFarmProjectHandler,
             devicePoolsHandler,

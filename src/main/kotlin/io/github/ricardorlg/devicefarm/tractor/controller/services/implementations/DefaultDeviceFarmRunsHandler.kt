@@ -19,13 +19,13 @@ internal class DefaultDeviceFarmRunsHandler(private val deviceFarmClient: Device
     ): Either<DeviceFarmTractorError, Run> {
         return when {
             appArn.isBlank() -> {
-                Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_APP_ARN))
+                Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_APP_ARN))
             }
             devicePoolArn.isBlank() -> {
-                Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_DEVICE_POOL_ARN))
+                Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_DEVICE_POOL_ARN))
             }
             projectArn.isBlank() -> {
-                Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_PROJECT_ARN))
+                Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_PROJECT_ARN))
             }
             else -> {
                 Either.catch {
@@ -53,7 +53,7 @@ internal class DefaultDeviceFarmRunsHandler(private val deviceFarmClient: Device
 
     override suspend fun fetchRun(runArn: String): Either<DeviceFarmTractorError, Run> {
         return if (runArn.isBlank()) {
-            Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_RUN_ARN))
+            Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_RUN_ARN))
         } else {
             Either.catch {
                 deviceFarmClient

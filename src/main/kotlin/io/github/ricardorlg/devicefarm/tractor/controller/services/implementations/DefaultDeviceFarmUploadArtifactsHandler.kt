@@ -19,17 +19,17 @@ internal class DefaultDeviceFarmUploadArtifactsHandler(
     private val httpClient: HttpHandler
 ) : IDeviceFarmUploadArtifactsHandler {
 
-    override suspend fun createUpload(
+    override fun createUpload(
         projectArn: String,
         uploadType: UploadType,
         artifactName: String
     ): Either<DeviceFarmTractorError, Upload> {
         return when {
             projectArn.isBlank() -> {
-                Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_PROJECT_ARN))
+                Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_PROJECT_ARN))
             }
             artifactName.isBlank() -> {
-                Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_FILENAME))
+                Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_FILENAME))
             }
             else -> {
                 Either.catch {
@@ -51,7 +51,7 @@ internal class DefaultDeviceFarmUploadArtifactsHandler(
         }
     }
 
-    override suspend fun uploadArtifactToS3(artifact: File, awsUpload: Upload): Either<DeviceFarmTractorError, Unit> {
+    override fun uploadArtifactToS3(artifact: File, awsUpload: Upload): Either<DeviceFarmTractorError, Unit> {
         return Either.catch {
             val request = Request(Method.PUT, awsUpload.url())
                 .header("Content-Type", awsUpload.contentType())
@@ -78,7 +78,7 @@ internal class DefaultDeviceFarmUploadArtifactsHandler(
         )
     }
 
-    override suspend fun fetchUpload(uploadArn: String): Either<DeviceFarmTractorError, Upload> {
+    override fun fetchUpload(uploadArn: String): Either<DeviceFarmTractorError, Upload> {
         return if (uploadArn.isBlank()) {
             DeviceFarmTractorErrorIllegalArgumentException(EMPTY_UPLOAD_ARN).left()
         } else {
@@ -96,9 +96,9 @@ internal class DefaultDeviceFarmUploadArtifactsHandler(
         }
     }
 
-    override suspend fun deleteUpload(uploadArn: String): Either<DeviceFarmTractorError, DeleteUploadResponse> {
+    override fun deleteUpload(uploadArn: String): Either<DeviceFarmTractorError, DeleteUploadResponse> {
         return if (uploadArn.isBlank()) {
-            Either.left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_UPLOAD_ARN))
+            Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_UPLOAD_ARN))
         } else {
             Either.catch {
                 deviceFarmClient
