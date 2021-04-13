@@ -8,207 +8,207 @@
         "name" : "services",
         "children" : [ {
           "name" : "When fetching the artifacts of a test execution it should return them as a right",
-          "uid" : "c60c83b30abef679",
+          "uid" : "5fd35590b865b4fe",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066377179,
-            "stop" : 1618066378337,
-            "duration" : 1158
+            "start" : 1618292147929,
+            "stop" : 1618292148844,
+            "duration" : 915
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
           "name" : "When fetching the artifacts of a test execution any error should be returned as a DeviceFarmTractorError left",
-          "uid" : "5a2afa3cb22234a9",
+          "uid" : "9795c1aafda0b506",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066378434,
-            "stop" : 1618066378457,
-            "duration" : 23
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching the artifacts of a test execution if no run arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left",
-          "uid" : "b68fcda1e2a25f4b",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066378471,
-            "stop" : 1618066378478,
-            "duration" : 7
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching device pools from AWS device farm, it should return the associated device pools of a given project as a right",
-          "uid" : "ae19ce06c6a78f44",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066378507,
-            "stop" : 1618066378607,
-            "duration" : 100
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided",
-          "uid" : "19145251d6209f47",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066378622,
-            "stop" : 1618066378626,
-            "duration" : 4
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching device pools from AWS device farm, any error should be returned as a left",
-          "uid" : "4fa582fcab47771f",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066378632,
-            "stop" : 1618066378638,
-            "duration" : 6
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching projects from AWS, it should return the project as a right",
-          "uid" : "2ff84d817da41e32",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066378673,
-            "stop" : 1618066378758,
-            "duration" : 85
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching projects from AWS, any error should be returned as a left",
-          "uid" : "c976acb86684d50c",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066378771,
-            "stop" : 1618066378777,
-            "duration" : 6
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When creating a project in AWS device farm, it should return the created project as a right",
-          "uid" : "e77fdbc7cb61178d",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066378797,
-            "stop" : 1618066378986,
-            "duration" : 189
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When creating a project in AWS device farm, any error should be returned as a left",
-          "uid" : "b37ff3bd74f687ca",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066379004,
-            "stop" : 1618066379010,
-            "duration" : 6
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When creating a project in AWS device farm, if project name is empty an error should be returned as a left",
-          "uid" : "57818fcadc2553e3",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066379020,
-            "stop" : 1618066379118,
-            "duration" : 98
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When scheduling a run, it should return the run as a right",
-          "uid" : "6f1cd7e1934d0087",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066379185,
-            "stop" : 1618066379313,
-            "duration" : 128
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When a run name is provided it should be used",
-          "uid" : "71f1ec43adaebf34",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066379328,
-            "stop" : 1618066379344,
-            "duration" : 16
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When no app arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
-          "uid" : "d695afe0f8898f44",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066379359,
-            "stop" : 1618066379385,
+            "start" : 1618292148993,
+            "stop" : 1618292149019,
             "duration" : 26
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
-          "name" : "When no device pool arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
-          "uid" : "54421dfd22d51484",
+          "name" : "When fetching the artifacts of a test execution if no run arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left",
+          "uid" : "9a977868b84e07fc",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066379403,
-            "stop" : 1618066379406,
-            "duration" : 3
+            "start" : 1618292149031,
+            "stop" : 1618292149044,
+            "duration" : 13
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When fetching device pools from AWS device farm, it should return the associated device pools of a given project as a right",
+          "uid" : "27417ad402c2b0fa",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149064,
+            "stop" : 1618292149147,
+            "duration" : 83
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided",
+          "uid" : "6baa907300a16ae4",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149153,
+            "stop" : 1618292149158,
+            "duration" : 5
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When fetching device pools from AWS device farm, any error should be returned as a left",
+          "uid" : "c4bcc98653778bac",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149165,
+            "stop" : 1618292149172,
+            "duration" : 7
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When fetching projects from AWS, it should return the project as a right",
+          "uid" : "64ba58b19a51088a",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149187,
+            "stop" : 1618292149275,
+            "duration" : 88
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When fetching projects from AWS, any error should be returned as a left",
+          "uid" : "f222ab869d51bfd0",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149285,
+            "stop" : 1618292149292,
+            "duration" : 7
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When creating a project in AWS device farm, it should return the created project as a right",
+          "uid" : "7fd196f5f67e356d",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149306,
+            "stop" : 1618292149472,
+            "duration" : 166
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When creating a project in AWS device farm, any error should be returned as a left",
+          "uid" : "da5ef3f1766510e7",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149485,
+            "stop" : 1618292149495,
+            "duration" : 10
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When creating a project in AWS device farm, if project name is empty an error should be returned as a left",
+          "uid" : "84768d5e3dcf86ed",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149500,
+            "stop" : 1618292149558,
+            "duration" : 58
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When scheduling a run, it should return the run as a right",
+          "uid" : "4283f528f4370d17",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149608,
+            "stop" : 1618292149691,
+            "duration" : 83
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When a run name is provided it should be used",
+          "uid" : "9c67b8bc8b99ff19",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149705,
+            "stop" : 1618292149732,
+            "duration" : 27
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When no app arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
+          "uid" : "5734939aff2a9575",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149747,
+            "stop" : 1618292149769,
+            "duration" : 22
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When no device pool arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
+          "uid" : "8977bdebb5fe890b",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292149772,
+            "stop" : 1618292149796,
+            "duration" : 24
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
           "name" : "When no project arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
-          "uid" : "f94302c1e2f55c17",
+          "uid" : "2befe3998f371c2",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066379413,
-            "stop" : 1618066379417,
+            "start" : 1618292149809,
+            "stop" : 1618292149813,
             "duration" : 4
           },
           "flaky" : false,
@@ -216,51 +216,51 @@
           "parameters" : [ ]
         }, {
           "name" : "When an error happens scheduling the run, it should return an ErrorSchedulingRun as a left",
-          "uid" : "f1f7704ed39b7b03",
+          "uid" : "da4aac4e7ce96e77",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066379431,
-            "stop" : 1618066379440,
-            "duration" : 9
+            "start" : 1618292149818,
+            "stop" : 1618292149822,
+            "duration" : 4
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
           "name" : "When fetching a RUN it should return it as a right",
-          "uid" : "24d648c265ecb17f",
+          "uid" : "20af6c85a45004da",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066379447,
-            "stop" : 1618066379530,
-            "duration" : 83
+            "start" : 1618292149826,
+            "stop" : 1618292149891,
+            "duration" : 65
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
           "name" : "When no run ARN is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
-          "uid" : "a8401d11d33b56d3",
+          "uid" : "d4147685448226d2",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066379536,
-            "stop" : 1618066379591,
-            "duration" : 55
+            "start" : 1618292149900,
+            "stop" : 1618292149935,
+            "duration" : 35
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
           "name" : "When an error happens fetching a run it should return a ErrorFetchingAWSRun as a left",
-          "uid" : "f70099c49956747b",
+          "uid" : "e4965f54a16c913a",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066379602,
-            "stop" : 1618066379611,
+            "start" : 1618292149946,
+            "stop" : 1618292149955,
             "duration" : 9
           },
           "flaky" : false,
@@ -268,260 +268,260 @@
           "parameters" : [ ]
         }, {
           "name" : "When fetching all the jobs associated to a Run it should return them as a right",
-          "uid" : "3af5fd035eaa94a4",
+          "uid" : "62145d3e7a8a2353",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066379622,
-            "stop" : 1618066379717,
-            "duration" : 95
+            "start" : 1618292149959,
+            "stop" : 1618292150053,
+            "duration" : 94
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
           "name" : "When an error happens fetching the associated jobs of a Run then it should return a ErrorListingAssociatedJobs as a left",
-          "uid" : "d2b6ca1f2488b240",
+          "uid" : "99670b0ade1c6be9",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066379726,
-            "stop" : 1618066379737,
-            "duration" : 11
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When an error happens fetching the logger then info messages should be redirect to stdout",
-          "uid" : "b488a241c81d7124",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066379833,
-            "stop" : 1618066380075,
-            "duration" : 242
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "info messages should be logged using Kotlin Logging lib",
-          "uid" : "2d1d4e73b61672fc",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380136,
-            "stop" : 1618066380258,
-            "duration" : 122
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When an error happens fetching the logger then error messages should be redirect to stderr",
-          "uid" : "6d6a7048075d0347",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380323,
-            "stop" : 1618066380375,
-            "duration" : 52
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "error messages should be logged using Kotlin Logging lib",
-          "uid" : "b7b0d3886d766563",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380431,
-            "stop" : 1618066380524,
-            "duration" : 93
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When creating AWS device farm upload, tt should return the created AWS Upload as a right",
-          "uid" : "733abcbd12ec823d",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380560,
-            "stop" : 1618066380644,
-            "duration" : 84
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When creating AWS device farm upload, any error should be returned as a left",
-          "uid" : "e0f4de21fde7be26",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380649,
-            "stop" : 1618066380657,
-            "duration" : 8
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When creating AWS device farm upload, project ARN is mandatory, a left should be returned if not provided",
-          "uid" : "f3a90100595c0846",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380661,
-            "stop" : 1618066380693,
-            "duration" : 32
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When creating AWS device farm upload, artifact name is mandatory, a left should be returned if not provided",
-          "uid" : "94f95c01862f21dc",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380698,
-            "stop" : 1618066380704,
-            "duration" : 6
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When uploading artifact to S3, it should return a right when upload result has OK status",
-          "uid" : "57ee9929d6a6df2a",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380709,
-            "stop" : 1618066380733,
-            "duration" : 24
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When uploading artifact to S3, it should return a left when upload result has not OK status",
-          "uid" : "7bd576384ff575a8",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380737,
-            "stop" : 1618066380751,
-            "duration" : 14
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When uploading artifact to S3, any error should be returned as a left",
-          "uid" : "ac98518a6ad42eb5",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380755,
-            "stop" : 1618066380757,
-            "duration" : 2
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching an AWS device farm upload, it should return the upload as a right",
-          "uid" : "8ad99aa7bf542850",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380760,
-            "stop" : 1618066380837,
-            "duration" : 77
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching an AWS device farm upload, it should return an error as a left if upload ARN is empty",
-          "uid" : "dd0da76b854c6e7b",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380852,
-            "stop" : 1618066380877,
-            "duration" : 25
-          },
-          "flaky" : false,
-          "newFailed" : false,
-          "parameters" : [ ]
-        }, {
-          "name" : "When fetching an AWS device farm upload, any error should be returned as a left",
-          "uid" : "63ea041781885c04",
-          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
-          "status" : "passed",
-          "time" : {
-            "start" : 1618066380884,
-            "stop" : 1618066380891,
+            "start" : 1618292150060,
+            "stop" : 1618292150067,
             "duration" : 7
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
-          "name" : "When deleting an Upload it should return a DeleteUploadResponse as a right",
-          "uid" : "2b62cf2c37902a1e",
+          "name" : "When an error happens fetching the logger then info messages should be redirect to stdout",
+          "uid" : "6f6f8881ee5da958",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066380896,
-            "stop" : 1618066380972,
-            "duration" : 76
+            "start" : 1618292150132,
+            "stop" : 1618292150314,
+            "duration" : 182
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
-          "name" : "When deleting an Upload any error should be returned as a left",
-          "uid" : "22caddf1f3f4615d",
+          "name" : "info messages should be logged using Kotlin Logging lib",
+          "uid" : "ea4ca48369298934",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066380981,
-            "stop" : 1618066380991,
+            "start" : 1618292150358,
+            "stop" : 1618292150442,
+            "duration" : 84
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When an error happens fetching the logger then error messages should be redirect to stderr",
+          "uid" : "871720b42286ffd9",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150503,
+            "stop" : 1618292150551,
+            "duration" : 48
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "error messages should be logged using Kotlin Logging lib",
+          "uid" : "9a735a94f6cbff02",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150600,
+            "stop" : 1618292150721,
+            "duration" : 121
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When creating AWS device farm upload, tt should return the created AWS Upload as a right",
+          "uid" : "8d729fca0caf46ec",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150744,
+            "stop" : 1618292150819,
+            "duration" : 75
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When creating AWS device farm upload, any error should be returned as a left",
+          "uid" : "df688ca7a538427e",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150823,
+            "stop" : 1618292150833,
             "duration" : 10
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
-          "name" : "When deleting an Upload if non-200 response is received then an error should be returned as a left",
-          "uid" : "62cfa807ed326be6",
+          "name" : "When creating AWS device farm upload, project ARN is mandatory, a left should be returned if not provided",
+          "uid" : "a80b98456be5f055",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066381003,
-            "stop" : 1618066381006,
-            "duration" : 3
+            "start" : 1618292150836,
+            "stop" : 1618292150862,
+            "duration" : 26
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When creating AWS device farm upload, artifact name is mandatory, a left should be returned if not provided",
+          "uid" : "56072e77d10ae854",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150869,
+            "stop" : 1618292150874,
+            "duration" : 5
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When uploading artifact to S3, it should return a right when upload result has OK status",
+          "uid" : "aa25df958a4983d0",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150882,
+            "stop" : 1618292150911,
+            "duration" : 29
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When uploading artifact to S3, it should return a left when upload result has not OK status",
+          "uid" : "34416a4c42caff57",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150920,
+            "stop" : 1618292150927,
+            "duration" : 7
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When uploading artifact to S3, any error should be returned as a left",
+          "uid" : "e0dc85bc28cc8aad",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150937,
+            "stop" : 1618292150942,
+            "duration" : 5
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When fetching an AWS device farm upload, it should return the upload as a right",
+          "uid" : "ddc1238354c69fe1",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292150946,
+            "stop" : 1618292151026,
+            "duration" : 80
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When fetching an AWS device farm upload, it should return an error as a left if upload ARN is empty",
+          "uid" : "3a2903ab675513c3",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292151040,
+            "stop" : 1618292151066,
+            "duration" : 26
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When fetching an AWS device farm upload, any error should be returned as a left",
+          "uid" : "f6537fa889943700",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292151070,
+            "stop" : 1618292151076,
+            "duration" : 6
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When deleting an Upload it should return a DeleteUploadResponse as a right",
+          "uid" : "a098cdc49dbe97c2",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292151081,
+            "stop" : 1618292151150,
+            "duration" : 69
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When deleting an Upload any error should be returned as a left",
+          "uid" : "6ce93475b474f609",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292151163,
+            "stop" : 1618292151175,
+            "duration" : 12
+          },
+          "flaky" : false,
+          "newFailed" : false,
+          "parameters" : [ ]
+        }, {
+          "name" : "When deleting an Upload if non-200 response is received then an error should be returned as a left",
+          "uid" : "a69bfb3161d6fdf9",
+          "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
+          "status" : "passed",
+          "time" : {
+            "start" : 1618292151183,
+            "stop" : 1618292151190,
+            "duration" : 7
           },
           "flaky" : false,
           "newFailed" : false,
           "parameters" : [ ]
         }, {
           "name" : "When deleting an Upload if no arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left",
-          "uid" : "9d67c49febaa1128",
+          "uid" : "db0edbe1d0b5be78",
           "parentUid" : "d23f4ede7bb92da2075959cb8619bf8e",
           "status" : "passed",
           "time" : {
-            "start" : 1618066381015,
-            "stop" : 1618066381048,
-            "duration" : 33
+            "start" : 1618292151193,
+            "stop" : 1618292151222,
+            "duration" : 29
           },
           "flaky" : false,
           "newFailed" : false,
@@ -530,12 +530,12 @@
         "uid" : "d23f4ede7bb92da2075959cb8619bf8e"
       }, {
         "name" : "It should delete all the provided uploads",
-        "uid" : "137190c583a9b4d6",
+        "uid" : "ef4e34462c5b9d6e",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383045,
-          "stop" : 1618066383071,
+          "start" : 1618292153090,
+          "stop" : 1618292153116,
           "duration" : 26
         },
         "flaky" : false,
@@ -543,25 +543,25 @@
         "parameters" : [ ]
       }, {
         "name" : "It should delete uploads in parallel and keep deleting even if some operation fails",
-        "uid" : "bfe1d6d5587a4b74",
+        "uid" : "71dc91a1b8dcae2c",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383075,
-          "stop" : 1618066383079,
-          "duration" : 4
+          "start" : 1618292153124,
+          "stop" : 1618292153134,
+          "duration" : 10
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should never try to delete when no uploads are provided",
-        "uid" : "82a0d49cdd344c78",
+        "uid" : "b2a4d78b31de9b89",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383081,
-          "stop" : 1618066383084,
+          "start" : 1618292153137,
+          "stop" : 1618292153140,
           "duration" : 3
         },
         "flaky" : false,
@@ -569,64 +569,64 @@
         "parameters" : [ ]
       }, {
         "name" : "It should use a pretty name when the artifact type is video or customer artifact",
-        "uid" : "ebf2e286513eb475",
+        "uid" : "5e12858432b26d6e",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383099,
-          "stop" : 1618066383101,
-          "duration" : 2
+          "start" : 1618292153165,
+          "stop" : 1618292153169,
+          "duration" : 4
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorErrorIllegalArgumentException if the searched artifact type is not supported",
-        "uid" : "58b1dd70385be550",
+        "uid" : "4a30b322350d71c7",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383104,
-          "stop" : 1618066383116,
-          "duration" : 12
+          "start" : 1618292153177,
+          "stop" : 1618292153191,
+          "duration" : 14
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should download an AWS Device farm artifact of a job execution depending of its type",
-        "uid" : "79c0342f29da56ae",
+        "uid" : "769fd44cdeb94bad",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383123,
-          "stop" : 1618066383158,
-          "duration" : 35
+          "start" : 1618292153200,
+          "stop" : 1618292153225,
+          "duration" : 25
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should log a message when the searched artifact type is not found in the job artifacts",
-        "uid" : "fa6b5900db64aa4d",
+        "uid" : "74bc0de333723304",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383167,
-          "stop" : 1618066383207,
-          "duration" : 40
+          "start" : 1618292153237,
+          "stop" : 1618292153281,
+          "duration" : 44
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return an ErrorDownloadingArtifact when there is a problem saving the artifact on disk",
-        "uid" : "fa40d9ef97d9b0e",
+        "uid" : "b5dd79a3a87a89a6",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383213,
-          "stop" : 1618066383216,
+          "start" : 1618292153284,
+          "stop" : 1618292153287,
           "duration" : 3
         },
         "flaky" : false,
@@ -634,12 +634,12 @@
         "parameters" : [ ]
       }, {
         "name" : "It should not fail if there is no artifacts to download",
-        "uid" : "a929f459a486aed5",
+        "uid" : "e70fedf7e43da72c",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383218,
-          "stop" : 1618066383219,
+          "start" : 1618292153289,
+          "stop" : 1618292153290,
           "duration" : 1
         },
         "flaky" : false,
@@ -647,77 +647,77 @@
         "parameters" : [ ]
       }, {
         "name" : "It should download all the test reports and recorded videos associated to the test Run",
-        "uid" : "5c2684b8519c65ae",
+        "uid" : "127fb5a259c350da",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383221,
-          "stop" : 1618066383273,
-          "duration" : 52
+          "start" : 1618292153292,
+          "stop" : 1618292153326,
+          "duration" : 34
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should log an error message when downloading a recorded video or test report fails",
-        "uid" : "4892a42aff154d3b",
+        "uid" : "70d3b274ea38a976",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383276,
-          "stop" : 1618066383286,
-          "duration" : 10
+          "start" : 1618292153328,
+          "stop" : 1618292153337,
+          "duration" : 9
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should download all the reports even if any of them fails",
-        "uid" : "ff80f95465cfc981",
+        "uid" : "c2164cb445dc6e19",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383290,
-          "stop" : 1618066383305,
-          "duration" : 15
+          "start" : 1618292153339,
+          "stop" : 1618292153362,
+          "duration" : 23
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should download all the recorded videos even if any of them fails",
-        "uid" : "5842ef510f5d7308",
+        "uid" : "b307b7448ce22ba0",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383308,
-          "stop" : 1618066383321,
-          "duration" : 13
+          "start" : 1618292153364,
+          "stop" : 1618292153402,
+          "duration" : 38
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should log an error message when creating the test report directory of an specific device fails",
-        "uid" : "5e7311c6cdd3b3b5",
+        "uid" : "aadbe7843ef871cc",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383328,
-          "stop" : 1618066383338,
-          "duration" : 10
+          "start" : 1618292153407,
+          "stop" : 1618292153412,
+          "duration" : 5
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should log an error message when creating the test reports directory fails",
-        "uid" : "b0ff6aaefbe9f903",
+        "uid" : "afd799d6714ed527",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383347,
-          "stop" : 1618066383350,
+          "start" : 1618292153413,
+          "stop" : 1618292153416,
           "duration" : 3
         },
         "flaky" : false,
@@ -725,51 +725,51 @@
         "parameters" : [ ]
       }, {
         "name" : "It should not try to download the reports when an error happens fetching the associated jobs of the test run",
-        "uid" : "2ad85a739a7b7af1",
+        "uid" : "c2eee2b0ac642af6",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383356,
-          "stop" : 1618066383358,
-          "duration" : 2
+          "start" : 1618292153422,
+          "stop" : 1618292153425,
+          "duration" : 3
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should download the recorded videos and test reports even if any of them fails",
-        "uid" : "78b4fc83f095d050",
+        "uid" : "f5639abed9af49e1",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383360,
-          "stop" : 1618066383375,
-          "duration" : 15
+          "start" : 1618292153427,
+          "stop" : 1618292153440,
+          "duration" : 13
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a string table with the results of the run per each device",
-        "uid" : "d98944ce2d2b7045",
+        "uid" : "d0bfca9adcf36ac1",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383393,
-          "stop" : 1618066383435,
-          "duration" : 42
+          "start" : 1618292153474,
+          "stop" : 1618292153513,
+          "duration" : 39
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return an empty string when there is an error fetching the associated jobs of the run",
-        "uid" : "b876a16c249617bb",
+        "uid" : "396ecf148ffa14db",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383437,
-          "stop" : 1618066383439,
+          "start" : 1618292153517,
+          "stop" : 1618292153519,
           "duration" : 2
         },
         "flaky" : false,
@@ -777,25 +777,25 @@
         "parameters" : [ ]
       }, {
         "name" : "It should return the upload, if its ready to be used",
-        "uid" : "b4956d8f7a196f05",
+        "uid" : "47aee06d30517ab9",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383460,
-          "stop" : 1618066383492,
-          "duration" : 32
+          "start" : 1618292153538,
+          "stop" : 1618292153565,
+          "duration" : 27
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return an UploadFailureError if the upload status is not succeeded",
-        "uid" : "fe6f71a0fd14fca1",
+        "uid" : "e46c24d5526a3569",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383495,
-          "stop" : 1618066383501,
+          "start" : 1618292153567,
+          "stop" : 1618292153573,
           "duration" : 6
         },
         "flaky" : false,
@@ -803,51 +803,51 @@
         "parameters" : [ ]
       }, {
         "name" : "It should return an UploadFailureError, if the upload status is not succeeded before the maximum number of retries",
-        "uid" : "7a8a48afcc466e4e",
+        "uid" : "fa9cc1f65cdf8663",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383503,
-          "stop" : 1618066383549,
-          "duration" : 46
+          "start" : 1618292153574,
+          "stop" : 1618292153618,
+          "duration" : 44
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return the last DeviceFarmTractorError returned when fetching upload is still failing after the maximum number of retries",
-        "uid" : "8e2784bf813ccae3",
+        "uid" : "e03104d90376a65b",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383551,
-          "stop" : 1618066383563,
-          "duration" : 12
+          "start" : 1618292153622,
+          "stop" : 1618292153633,
+          "duration" : 11
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorError when uploading the artifact to s3 fails, no matters the upload status",
-        "uid" : "fe1c431d531b516d",
+        "uid" : "9945f34cb853bb08",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383566,
-          "stop" : 1618066383621,
-          "duration" : 55
+          "start" : 1618292153635,
+          "stop" : 1618292153689,
+          "duration" : 54
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should keep fetching upload status even if an error happens in a a retry",
-        "uid" : "816c1038f53d4b31",
+        "uid" : "746fd400b0349c61",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383625,
-          "stop" : 1618066383646,
+          "start" : 1618292153690,
+          "stop" : 1618292153711,
           "duration" : 21
         },
         "flaky" : false,
@@ -855,25 +855,25 @@
         "parameters" : [ ]
       }, {
         "name" : "It should stop fetching upload status when a DeviceFarmException happens in a a retry",
-        "uid" : "d4650da32512f85b",
+        "uid" : "bd032c220f37a8bc",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383652,
-          "stop" : 1618066383672,
-          "duration" : 20
+          "start" : 1618292153717,
+          "stop" : 1618292153733,
+          "duration" : 16
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorError when creating the upload fails",
-        "uid" : "f5b21f688e08453c",
+        "uid" : "4e8a388b108e2c7c",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383675,
-          "stop" : 1618066383677,
+          "start" : 1618292153736,
+          "stop" : 1618292153738,
           "duration" : 2
         },
         "flaky" : false,
@@ -881,25 +881,25 @@
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmIllegalArtifactExtension when the upload file doesn't satisfy the upload type",
-        "uid" : "b5c891a72b10ac6d",
+        "uid" : "b538357c007890b8",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383680,
-          "stop" : 1618066383683,
-          "duration" : 3
+          "start" : 1618292153740,
+          "stop" : 1618292153742,
+          "duration" : 2
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorError when the artifact to upload doesn't exists",
-        "uid" : "c07b26c0396ae338",
+        "uid" : "15340b00071b7656",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383688,
-          "stop" : 1618066383690,
+          "start" : 1618292153745,
+          "stop" : 1618292153747,
           "duration" : 2
         },
         "flaky" : false,
@@ -907,12 +907,12 @@
         "parameters" : [ ]
       }, {
         "name" : "It should return the first found device pool as default when no name is provided",
-        "uid" : "533ca9c40cf6d069",
+        "uid" : "c3f54368a4e460c1",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383699,
-          "stop" : 1618066383702,
+          "start" : 1618292153757,
+          "stop" : 1618292153760,
           "duration" : 3
         },
         "flaky" : false,
@@ -920,38 +920,38 @@
         "parameters" : [ ]
       }, {
         "name" : "It should return the device pool that has the provided name",
-        "uid" : "acb82831d2ca1288",
+        "uid" : "60d703c61fe26a27",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383703,
-          "stop" : 1618066383705,
-          "duration" : 2
+          "start" : 1618292153764,
+          "stop" : 1618292153765,
+          "duration" : 1
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a NoRegisteredDevicePoolsError when there is no device pools associated to the project",
-        "uid" : "3cd5864c0bc852b4",
+        "uid" : "6306d712eaa8fe65",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383706,
-          "stop" : 1618066383708,
-          "duration" : 2
+          "start" : 1618292153769,
+          "stop" : 1618292153772,
+          "duration" : 3
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a DevicePoolNotFoundError when a device pool is not found",
-        "uid" : "da9c53a43e705b25",
+        "uid" : "2bc8fff98cb7283a",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383710,
-          "stop" : 1618066383712,
+          "start" : 1618292153773,
+          "stop" : 1618292153775,
           "duration" : 2
         },
         "flaky" : false,
@@ -959,25 +959,25 @@
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorError if something happens fetching the associated device pools of the project",
-        "uid" : "54056a7cead3126c",
+        "uid" : "9b3eeffe52efcc87",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383714,
-          "stop" : 1618066383716,
-          "duration" : 2
+          "start" : 1618292153776,
+          "stop" : 1618292153777,
+          "duration" : 1
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a project if its found",
-        "uid" : "335f83ee38ff24a2",
+        "uid" : "7386c83b0d02a105",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383722,
-          "stop" : 1618066383724,
+          "start" : 1618292153782,
+          "stop" : 1618292153784,
           "duration" : 2
         },
         "flaky" : false,
@@ -985,38 +985,38 @@
         "parameters" : [ ]
       }, {
         "name" : "It should create the project if it is no found",
-        "uid" : "d3ab8684fd0c6e8b",
+        "uid" : "a42dfcea0a283c4a",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383726,
-          "stop" : 1618066383733,
-          "duration" : 7
+          "start" : 1618292153786,
+          "stop" : 1618292153787,
+          "duration" : 1
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorError if something happens fetching device farm projects",
-        "uid" : "13862ea1381c7497",
+        "uid" : "6917724a84d7c2e5",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383741,
-          "stop" : 1618066383743,
-          "duration" : 2
+          "start" : 1618292153788,
+          "stop" : 1618292153789,
+          "duration" : 1
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorError if something happens creating a new project",
-        "uid" : "2e5ca86d7bd93f8d",
+        "uid" : "dcdd8bb31d396fa6",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383748,
-          "stop" : 1618066383750,
+          "start" : 1618292153790,
+          "stop" : 1618292153792,
           "duration" : 2
         },
         "flaky" : false,
@@ -1024,12 +1024,12 @@
         "parameters" : [ ]
       }, {
         "name" : "It should return the executed run when the execution is completed",
-        "uid" : "aad949777f76c963",
+        "uid" : "5c27cf63eb316b4c",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383763,
-          "stop" : 1618066383768,
+          "start" : 1618292153805,
+          "stop" : 1618292153810,
           "duration" : 5
         },
         "flaky" : false,
@@ -1037,25 +1037,25 @@
         "parameters" : [ ]
       }, {
         "name" : "It should wait until the execution completes",
-        "uid" : "9dd0b403cc8b445a",
+        "uid" : "bbc73f7128ee629a",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383770,
-          "stop" : 1618066383796,
-          "duration" : 26
+          "start" : 1618292153811,
+          "stop" : 1618292153830,
+          "duration" : 19
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorError when fetching current run fails",
-        "uid" : "4214b18238fe79f8",
+        "uid" : "99ade9d02b03ebee",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383798,
-          "stop" : 1618066383800,
+          "start" : 1618292153831,
+          "stop" : 1618292153833,
           "duration" : 2
         },
         "flaky" : false,
@@ -1063,12 +1063,12 @@
         "parameters" : [ ]
       }, {
         "name" : "It should return a DeviceFarmTractorError when scheduling the run fails",
-        "uid" : "e3d51966fac9b4ca",
+        "uid" : "5dd4d2350a0bbd5e",
         "parentUid" : "2a54e78f8bbbdf26dab40bc0159e49a1",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383802,
-          "stop" : 1618066383804,
+          "start" : 1618292153834,
+          "stop" : 1618292153836,
           "duration" : 2
         },
         "flaky" : false,
@@ -1080,38 +1080,38 @@
       "name" : "factory",
       "children" : [ {
         "name" : "When creating a runner without credentials and region, it should return a runner that uses a device farm client with default configuration",
-        "uid" : "81c0f82584ebd6eb",
+        "uid" : "eb0322de7535fb8",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066381336,
-          "stop" : 1618066381921,
-          "duration" : 585
+          "start" : 1618292151462,
+          "stop" : 1618292151967,
+          "duration" : 505
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When only accessKeyId is provided, it should return a runner that uses a device farm client with default configuration",
-        "uid" : "9fb5d3fb35a2583",
+        "uid" : "db7c55511def1251",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066381928,
-          "stop" : 1618066381939,
-          "duration" : 11
+          "start" : 1618292151971,
+          "stop" : 1618292151994,
+          "duration" : 23
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When only secretAccessKey is provided, it should return a runner that uses a device farm client with default configuration",
-        "uid" : "66a0b76cbcd0bd0f",
+        "uid" : "839ba08a726f5af7",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066381945,
-          "stop" : 1618066381951,
+          "start" : 1618292151998,
+          "stop" : 1618292152004,
           "duration" : 6
         },
         "flaky" : false,
@@ -1119,91 +1119,91 @@
         "parameters" : [ ]
       }, {
         "name" : "When sessionToken is provided but no credentials, it should return a runner that uses a device farm client with default configuration",
-        "uid" : "d0b11b52b4c50987",
+        "uid" : "5b1e4bbd39ac7ade",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066381954,
-          "stop" : 1618066381960,
-          "duration" : 6
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "When accessKeyId and secretAccessKey are provided, it should return a runner that uses a device farm client with basic credentials",
-        "uid" : "bc509c2b34f6f16a",
-        "parentUid" : "70b485be31e5bca90d814411c60e381b",
-        "status" : "passed",
-        "time" : {
-          "start" : 1618066381969,
-          "stop" : 1618066381980,
+          "start" : 1618292152009,
+          "stop" : 1618292152020,
           "duration" : 11
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
-        "name" : "When basic credentials and sessionToken are provided, it should return a runner that uses a device farm client with the basic credentials and session token",
-        "uid" : "a6e1256c4b332c54",
+        "name" : "When accessKeyId and secretAccessKey are provided, it should return a runner that uses a device farm client with basic credentials",
+        "uid" : "c34f7f85498cc08f",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066381983,
-          "stop" : 1618066381990,
-          "duration" : 7
+          "start" : 1618292152035,
+          "stop" : 1618292152045,
+          "duration" : 10
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "When basic credentials and sessionToken are provided, it should return a runner that uses a device farm client with the basic credentials and session token",
+        "uid" : "d54ff6fb7e9416ad",
+        "parentUid" : "70b485be31e5bca90d814411c60e381b",
+        "status" : "passed",
+        "time" : {
+          "start" : 1618292152048,
+          "stop" : 1618292152054,
+          "duration" : 6
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When creating a runner without credentials but with region, it should return a runner that uses a device farm client with default configuration but that use the provided region",
-        "uid" : "ff747e66472b09db",
+        "uid" : "6e81d15901b7ad69",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066381993,
-          "stop" : 1618066382014,
-          "duration" : 21
+          "start" : 1618292152057,
+          "stop" : 1618292152070,
+          "duration" : 13
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When accessKeyId, secretAccessKey and region name are provided, it should return a runner that uses a device farm client with basic credentials and the provided region",
-        "uid" : "516df8e6e9b948f4",
+        "uid" : "b937987756f6980b",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382018,
-          "stop" : 1618066382027,
-          "duration" : 9
+          "start" : 1618292152074,
+          "stop" : 1618292152081,
+          "duration" : 7
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When accessKeyId, secretAccessKey, session token and region name are provided, it should return a runner that uses a device farm client with basic credentials, the session token and the provided region",
-        "uid" : "ea490dcf96ce22b6",
+        "uid" : "743c62e593735831",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382036,
-          "stop" : 1618066382051,
-          "duration" : 15
+          "start" : 1618292152086,
+          "stop" : 1618292152093,
+          "duration" : 7
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When an error happens, it should return the exception wrapped as a left",
-        "uid" : "4bac52d62ccddac7",
+        "uid" : "9ed0eb6eb62facb7",
         "parentUid" : "70b485be31e5bca90d814411c60e381b",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382055,
-          "stop" : 1618066382062,
-          "duration" : 7
+          "start" : 1618292152097,
+          "stop" : 1618292152102,
+          "duration" : 5
         },
         "flaky" : false,
         "newFailed" : false,
@@ -1214,129 +1214,129 @@
       "name" : "runner",
       "children" : [ {
         "name" : "When running a test in device farm it should return the result",
-        "uid" : "e13bfa0e7f18d1b5",
+        "uid" : "19093ddf974ad853",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382608,
-          "stop" : 1618066382638,
-          "duration" : 30
+          "start" : 1618292152603,
+          "stop" : 1618292152634,
+          "duration" : 31
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm it should use the correct Project ARN in the process",
-        "uid" : "9e49717ad9d5a94c",
+        "uid" : "ed63ba538d84eb7c",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382641,
-          "stop" : 1618066382648,
-          "duration" : 7
+          "start" : 1618292152645,
+          "stop" : 1618292152653,
+          "duration" : 8
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm by default the capture video configuration should be enabled",
-        "uid" : "acb9be4530a7ffd1",
+        "uid" : "340cfcb19744faf4",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382653,
-          "stop" : 1618066382658,
-          "duration" : 5
+          "start" : 1618292152655,
+          "stop" : 1618292152661,
+          "duration" : 6
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm the capture video configuration should be able to be specified",
-        "uid" : "56f2a82b209916dd",
+        "uid" : "bcbef58b5b39dc46",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382662,
-          "stop" : 1618066382668,
-          "duration" : 6
+          "start" : 1618292152665,
+          "stop" : 1618292152673,
+          "duration" : 8
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm it should have APPIUM NODE as test type",
-        "uid" : "cfe731a84ad2866b",
+        "uid" : "d66ab29bd984357c",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382672,
-          "stop" : 1618066382678,
-          "duration" : 6
+          "start" : 1618292152678,
+          "stop" : 1618292152686,
+          "duration" : 8
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm it should use the test project uploaded and the test spec provided",
-        "uid" : "6585713c44a23b6",
+        "uid" : "ad3bf7fba68a6804",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382685,
-          "stop" : 1618066382691,
-          "duration" : 6
+          "start" : 1618292152693,
+          "stop" : 1618292152698,
+          "duration" : 5
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm it should use the correct paths for the different upload types",
-        "uid" : "57b11b8feba2b4b7",
+        "uid" : "fffc40eab9095f9c",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382694,
-          "stop" : 1618066382701,
-          "duration" : 7
+          "start" : 1618292152702,
+          "stop" : 1618292152707,
+          "duration" : 5
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm if no run name is provided it should create the name",
-        "uid" : "38c57bc25e2fec64",
+        "uid" : "10c4ac27cf138b58",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382705,
-          "stop" : 1618066382712,
-          "duration" : 7
+          "start" : 1618292152711,
+          "stop" : 1618292152716,
+          "duration" : 5
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm if the base test report directory path is empty it should not download the results",
-        "uid" : "d5d8dda4a8165b67",
+        "uid" : "18e88fd26371699f",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382718,
-          "stop" : 1618066382724,
-          "duration" : 6
+          "start" : 1618292152720,
+          "stop" : 1618292152728,
+          "duration" : 8
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm if the base test report directory is provided it should use it as a path",
-        "uid" : "1630ced0ae422d02",
+        "uid" : "7a7da1e207609961",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382735,
-          "stop" : 1618066382742,
+          "start" : 1618292152732,
+          "stop" : 1618292152739,
           "duration" : 7
         },
         "flaky" : false,
@@ -1344,25 +1344,25 @@
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm it should try to delete the uploads of the execution by default",
-        "uid" : "ec1cdbd4cb2739b6",
+        "uid" : "bb4bba115466c120",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382747,
-          "stop" : 1618066382757,
-          "duration" : 10
+          "start" : 1618292152744,
+          "stop" : 1618292152759,
+          "duration" : 15
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm, it should throw an error when no app path is provided",
-        "uid" : "fb3c3282056f84d7",
+        "uid" : "10cc4dabd465927b",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382764,
-          "stop" : 1618066382768,
+          "start" : 1618292152766,
+          "stop" : 1618292152770,
           "duration" : 4
         },
         "flaky" : false,
@@ -1370,129 +1370,129 @@
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm, it should throw an error if a left is returned when loading the app upload type",
-        "uid" : "3ab40d4b98b6cafa",
+        "uid" : "273cf3cc8f72e0b2",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382774,
-          "stop" : 1618066382776,
-          "duration" : 2
+          "start" : 1618292152773,
+          "stop" : 1618292152774,
+          "duration" : 1
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm it should throw an error if a left is returner by the projects handler",
-        "uid" : "9c0b6adf410cd71b",
+        "uid" : "8f83ac090824ec4e",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382784,
-          "stop" : 1618066382787,
-          "duration" : 3
+          "start" : 1618292152779,
+          "stop" : 1618292152781,
+          "duration" : 2
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm it should throw an error if a left is returner by the devices pool handler",
-        "uid" : "7861aa53d522c118",
+        "uid" : "3271142818597a41",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382792,
-          "stop" : 1618066382795,
-          "duration" : 3
+          "start" : 1618292152791,
+          "stop" : 1618292152792,
+          "duration" : 1
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler",
-        "uid" : "ca402e84d4fcda1b",
+        "uid" : "70237828ac3b8e3",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382799,
-          "stop" : 1618066382807,
-          "duration" : 8
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler and the parallel upload process should be cancelled",
-        "uid" : "e9826cb5834bee64",
-        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
-        "status" : "passed",
-        "time" : {
-          "start" : 1618066382815,
-          "stop" : 1618066382827,
-          "duration" : 12
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "When running a test in device farm it should throw an error if a left is returner by the run handler",
-        "uid" : "a576758db3ba5ae6",
-        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
-        "status" : "passed",
-        "time" : {
-          "start" : 1618066382831,
-          "stop" : 1618066382834,
-          "duration" : 3
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "When running a test in device farm, it should be a metered execution by default",
-        "uid" : "c163d631d34205db",
-        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
-        "status" : "passed",
-        "time" : {
-          "start" : 1618066382840,
-          "stop" : 1618066382844,
-          "duration" : 4
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "When running a test in device farm, it should allow unmetered executions",
-        "uid" : "b008753bfafd68b",
-        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
-        "status" : "passed",
-        "time" : {
-          "start" : 1618066382847,
-          "stop" : 1618066382852,
-          "duration" : 5
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "When running a test in device farm, it should have the app performance monitoring enable by default",
-        "uid" : "a3806f4239c22715",
-        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
-        "status" : "passed",
-        "time" : {
-          "start" : 1618066382855,
-          "stop" : 1618066382861,
+          "start" : 1618292152794,
+          "stop" : 1618292152800,
           "duration" : 6
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
-        "name" : "When running a test in device farm, it should allow to disable the app performance monitoring",
-        "uid" : "a79092151d66318b",
+        "name" : "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler and the parallel upload process should be cancelled",
+        "uid" : "f86633fc72879d0d",
         "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382864,
-          "stop" : 1618066382873,
+          "start" : 1618292152806,
+          "stop" : 1618292152824,
+          "duration" : 18
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "When running a test in device farm it should throw an error if a left is returner by the run handler",
+        "uid" : "b7d3b834cdfa2712",
+        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
+        "status" : "passed",
+        "time" : {
+          "start" : 1618292152830,
+          "stop" : 1618292152837,
+          "duration" : 7
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "When running a test in device farm, it should be a metered execution by default",
+        "uid" : "c439fbd629d41492",
+        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
+        "status" : "passed",
+        "time" : {
+          "start" : 1618292152841,
+          "stop" : 1618292152847,
+          "duration" : 6
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "When running a test in device farm, it should allow unmetered executions",
+        "uid" : "8ffcb4f26f674503",
+        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
+        "status" : "passed",
+        "time" : {
+          "start" : 1618292152851,
+          "stop" : 1618292152854,
+          "duration" : 3
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "When running a test in device farm, it should have the app performance monitoring enable by default",
+        "uid" : "c1d68c65c0693894",
+        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
+        "status" : "passed",
+        "time" : {
+          "start" : 1618292152857,
+          "stop" : 1618292152860,
+          "duration" : 3
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "When running a test in device farm, it should allow to disable the app performance monitoring",
+        "uid" : "bf558a949807a22",
+        "parentUid" : "b8e4be22f6de0b06c8437064f3488d00",
+        "status" : "passed",
+        "time" : {
+          "start" : 1618292152864,
+          "stop" : 1618292152873,
           "duration" : 9
         },
         "flaky" : false,
@@ -1504,25 +1504,25 @@
       "name" : "utils",
       "children" : [ {
         "name" : "When Android upload type is used, file must end with .apk",
-        "uid" : "92728655585470d1",
+        "uid" : "e437add646c722aa",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382892,
-          "stop" : 1618066382893,
-          "duration" : 1
+          "start" : 1618292152952,
+          "stop" : 1618292152954,
+          "duration" : 2
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When Android upload type is used, and file does not have .apk extension an error is returned",
-        "uid" : "341217aff22c71a0",
+        "uid" : "c6c18c61b79975fa",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382896,
-          "stop" : 1618066382898,
+          "start" : 1618292152957,
+          "stop" : 1618292152959,
           "duration" : 2
         },
         "flaky" : false,
@@ -1530,38 +1530,38 @@
         "parameters" : [ ]
       }, {
         "name" : "When IOS upload type is used, file must end with .ipa",
-        "uid" : "afa7c229d7aa66f9",
+        "uid" : "a4f133d2f87fde4b",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382905,
-          "stop" : 1618066382905,
-          "duration" : 0
+          "start" : 1618292152961,
+          "stop" : 1618292152962,
+          "duration" : 1
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When IOS upload type is used, and file does not have .ipa extension an error is returned",
-        "uid" : "b3933001cf288111",
+        "uid" : "1b767d1170be367b",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382910,
-          "stop" : 1618066382913,
-          "duration" : 3
+          "start" : 1618292152969,
+          "stop" : 1618292152973,
+          "duration" : 4
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When Appium Node Test Spec upload type is used, file must end with .yml",
-        "uid" : "587342d54820f486",
+        "uid" : "472b70528757d748",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382919,
-          "stop" : 1618066382920,
+          "start" : 1618292152979,
+          "stop" : 1618292152980,
           "duration" : 1
         },
         "flaky" : false,
@@ -1569,38 +1569,38 @@
         "parameters" : [ ]
       }, {
         "name" : "When Appium Node Test Spec upload type is used, and file does not have .yml extension an error is returned",
-        "uid" : "8a5a6849846e2f32",
+        "uid" : "1f6f012833fc97fa",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382927,
-          "stop" : 1618066382929,
-          "duration" : 2
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ ]
-      }, {
-        "name" : "When Upload type is not Android,IOS or Appium, the file must have .zip extension",
-        "uid" : "6ca26281860b7dfb",
-        "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
-        "status" : "passed",
-        "time" : {
-          "start" : 1618066382936,
-          "stop" : 1618066382941,
+          "start" : 1618292152985,
+          "stop" : 1618292152990,
           "duration" : 5
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
-        "name" : "When Upload type is not Android,IOS or Appium, and file does not have .zip extension an error is returned",
-        "uid" : "99016fa0ce7b2092",
+        "name" : "When Upload type is not Android,IOS or Appium, the file must have .zip extension",
+        "uid" : "8dd1688215d2f21c",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382952,
-          "stop" : 1618066382954,
+          "start" : 1618292152993,
+          "stop" : 1618292152995,
+          "duration" : 2
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "When Upload type is not Android,IOS or Appium, and file does not have .zip extension an error is returned",
+        "uid" : "dbad65f7fcb396a1",
+        "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
+        "status" : "passed",
+        "time" : {
+          "start" : 1618292153001,
+          "stop" : 1618292153003,
           "duration" : 2
         },
         "flaky" : false,
@@ -1608,25 +1608,25 @@
         "parameters" : [ ]
       }, {
         "name" : "When unknown Upload type is used, an error should be returned",
-        "uid" : "e0c5a3d4fb442eb4",
+        "uid" : "d6293e9d8592d7cd",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382962,
-          "stop" : 1618066382969,
-          "duration" : 7
+          "start" : 1618292153013,
+          "stop" : 1618292153015,
+          "duration" : 2
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When loading a file from a given path, it should return it as a right",
-        "uid" : "3f6deaca54f1ac5e",
+        "uid" : "ea06eafc3b28c33",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382976,
-          "stop" : 1618066382979,
+          "start" : 1618292153017,
+          "stop" : 1618292153020,
           "duration" : 3
         },
         "flaky" : false,
@@ -1634,25 +1634,25 @@
         "parameters" : [ ]
       }, {
         "name" : "When loading a file from a given path, if the files doesn't exists an error should be returned as a Left",
-        "uid" : "6ad251c094c98e97",
+        "uid" : "c5c8960292671b",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382984,
-          "stop" : 1618066382986,
-          "duration" : 2
+          "start" : 1618292153022,
+          "stop" : 1618292153027,
+          "duration" : 5
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ ]
       }, {
         "name" : "When no path is provided an Illegal Argument error should be returned as a left",
-        "uid" : "530a23e1e8403eed",
+        "uid" : "1ad156c1368edcf6",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382990,
-          "stop" : 1618066382991,
+          "start" : 1618292153031,
+          "stop" : 1618292153032,
           "duration" : 1
         },
         "flaky" : false,
@@ -1660,12 +1660,12 @@
         "parameters" : [ ]
       }, {
         "name" : "When no path is provided getting the upload type of a path, an Illegal Argument error should be returned as a left",
-        "uid" : "60edae3864c91a44",
+        "uid" : "5040310b34c8e3b3",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066382997,
-          "stop" : 1618066382998,
+          "start" : 1618292153039,
+          "stop" : 1618292153040,
           "duration" : 1
         },
         "flaky" : false,
@@ -1673,12 +1673,12 @@
         "parameters" : [ ]
       }, {
         "name" : "When getting the upload type of an unsupported file, an Illegal Argument error should be returned as a left",
-        "uid" : "b8ccb2f5a1cf76f",
+        "uid" : "fde993bda78a5b3f",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383001,
-          "stop" : 1618066383002,
+          "start" : 1618292153048,
+          "stop" : 1618292153049,
           "duration" : 1
         },
         "flaky" : false,
@@ -1686,13 +1686,13 @@
         "parameters" : [ ]
       }, {
         "name" : "When getting the upload type of a valid file, it should return it as a right",
-        "uid" : "c4b3b9895e8ccda4",
+        "uid" : "2db02e5f78216dc7",
         "parentUid" : "361a6ab37e0315d5eda1afb65d28dbc5",
         "status" : "passed",
         "time" : {
-          "start" : 1618066383011,
-          "stop" : 1618066383031,
-          "duration" : 20
+          "start" : 1618292153056,
+          "stop" : 1618292153082,
+          "duration" : 26
         },
         "flaky" : false,
         "newFailed" : false,
