@@ -15,6 +15,7 @@ import software.amazon.awssdk.services.devicefarm.DeviceFarmClientBuilder
 class DeviceFarmTractorFactoryTest : StringSpec({
 
     val logger = MockedDeviceFarmLogging()
+    val profileName = "test_profile"
     val expectedDefaultCredentialsProvider = DefaultCredentialsProvider.create()
     val accessKeyId = "test_access_key"
     val secretAccessKey = "test_secret_access_key"
@@ -49,6 +50,39 @@ class DeviceFarmTractorFactoryTest : StringSpec({
         }
 
     }
+
+    "When creating a runner without credentials and region but with a given profile name, it should return a runner that uses a device farm client with default configuration using given profile" {
+        //GIVEN
+        mockkStatic(ProfileCredentialsProvider::class)
+        val mock = mockk<ProfileCredentialsProvider>()
+        every { ProfileCredentialsProvider.create(profileName) } returns mock
+        val credentialsProviderSlot = slot<AwsCredentialsProvider>()
+        every { builder.credentialsProvider(capture(credentialsProviderSlot)) } returns builder
+
+        //WHEN
+        val actualRunner = DeviceFarmTractorFactory.createRunner(
+            deviceFarmClientBuilder = builder,
+            logger = logger,
+            profileName = profileName
+        )
+
+        //THEN
+        actualRunner.shouldBeRight()
+        credentialsProviderSlot.captured shouldBe mock
+
+        verifySequence {
+            builder.applyMutation(any())
+            builder.credentialsProvider(capture(slot<DefaultCredentialsProvider>())) wasNot called
+            builder.hint(DeviceFarmClientBuilder::class)
+                .credentialsProvider(capture(slot<StaticCredentialsProvider>())) wasNot called
+            builder.hint(DeviceFarmClientBuilder::class).credentialsProvider(mock)
+            builder.hint(DeviceFarmClient::class).build()
+        }
+
+        unmockkStatic(ProfileCredentialsProvider::class)
+
+    }
+
 
     "When only accessKeyId is provided, it should return a runner that uses a device farm client with default configuration" {
         //GIVEN

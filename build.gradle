@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'io.github.ricardorlg'
-version = '1.0.4'
+version = '1.0.5'
 
 ext {
     isReleasedVersion = !project.version.endsWith("-SNAPSHOT")
@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
     implementation platform("software.amazon.awssdk:bom:$aws_version")
-    api 'software.amazon.awssdk:devicefarm'
+    implementation 'software.amazon.awssdk:devicefarm'
     implementation "io.arrow-kt:arrow-fx-coroutines:$arrow_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
     implementation "io.arrow-kt:arrow-syntax:$arrow_version"

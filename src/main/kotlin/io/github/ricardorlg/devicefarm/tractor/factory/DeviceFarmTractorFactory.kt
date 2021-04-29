@@ -1,6 +1,7 @@
 package io.github.ricardorlg.devicefarm.tractor.factory
 
 import arrow.core.Either
+import io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController
 import io.github.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmTractorLogging
 import io.github.ricardorlg.devicefarm.tractor.controller.services.implementations.*
 import io.github.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunner
@@ -19,7 +20,8 @@ object DeviceFarmTractorFactory {
         accessKeyId: String = "",
         secretAccessKey: String = "",
         sessionToken: String = "",
-        region: String = ""
+        region: String = "",
+        profileName: String = "",
     ): Either<Throwable, DeviceFarmTractorRunner> {
         return Either.catch {
             deviceFarmClientBuilder
@@ -29,7 +31,8 @@ object DeviceFarmTractorFactory {
                             logger,
                             accessKeyId,
                             secretAccessKey,
-                            sessionToken
+                            sessionToken,
+                            profileName
                         )
                     )
                     if (region.isNotBlank()) {
@@ -40,7 +43,7 @@ object DeviceFarmTractorFactory {
                 }
 
             val dfClient = deviceFarmClientBuilder.build()
-            val controller = io.github.ricardorlg.devicefarm.tractor.controller.DefaultDeviceFarmTractorController(
+            val controller = DefaultDeviceFarmTractorController(
                 deviceFarmTractorLogging = logger,
                 deviceFarmProjectsHandler = DefaultDeviceFarmProjectsHandler(dfClient),
                 deviceFarmDevicePoolsHandler = DefaultDeviceFarmDevicePoolsHandler(dfClient),
@@ -57,11 +60,18 @@ object DeviceFarmTractorFactory {
         logger: IDeviceFarmTractorLogging,
         accessKeyId: String,
         secretAccessKey: String,
-        sessionToken: String
+        sessionToken: String,
+        profileName: String
     ): AwsCredentialsProvider {
         return when {
             accessKeyId.isBlank() || secretAccessKey.isBlank() -> {
-                DefaultCredentialsProvider.create()
+                if (profileName.isNotBlank()) {
+                    logger.logMessage("I will use the credential using $profileName as profile")
+                    ProfileCredentialsProvider.create(profileName)
+                } else {
+                    logger.logMessage("I will use the default AWS credentials")
+                    DefaultCredentialsProvider.create()
+                }
             }
             sessionToken.isBlank() -> {
                 logger.logMessage("I will create the device farm client using the provided credentials")
