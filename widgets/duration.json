@@ -1,1290 +1,1300 @@
 [ {
-  "uid" : "c7ebbe57777e52cc",
-  "name" : "When deleting an Upload it should return a DeleteUploadResponse as a right",
+  "uid" : "53b99d1259cb4fe2",
+  "name" : "When getting the upload type of an unsupported file, an Illegal Argument error should be returned as a left",
   "time" : {
-    "start" : 1619954404746,
-    "stop" : 1619954404819,
-    "duration" : 73
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "204810db877062e1",
-  "name" : "When running a test in device farm, it should throw an error when no app path is provided",
-  "time" : {
-    "start" : 1619954406371,
-    "stop" : 1619954406379,
-    "duration" : 8
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "61c0a25a6a7898e3",
-  "name" : "When no device pool arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
-  "time" : {
-    "start" : 1619954403507,
-    "stop" : 1619954403510,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "a657843e62da7175",
-  "name" : "When sessionToken is provided but no credentials, it should return a runner that uses a device farm client with default configuration",
-  "time" : {
-    "start" : 1619954405569,
-    "stop" : 1619954405574,
-    "duration" : 5
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d6511f8caec462fb",
-  "name" : "When only accessKeyId is provided, it should return a runner that uses a device farm client with default configuration",
-  "time" : {
-    "start" : 1619954405544,
-    "stop" : 1619954405551,
-    "duration" : 7
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "69d26aa11a19d5f2",
-  "name" : "When deleting an Upload if no arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left",
-  "time" : {
-    "start" : 1619954404858,
-    "stop" : 1619954404885,
-    "duration" : 27
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "88d32954f6336d3f",
-  "name" : "It should log a message when the searched artifact type is not found in the job artifacts",
-  "time" : {
-    "start" : 1619954406709,
-    "stop" : 1619954406730,
-    "duration" : 21
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "c5ca31b72579bec1",
-  "name" : "When fetching an AWS device farm upload, it should return an error as a left if upload ARN is empty",
-  "time" : {
-    "start" : 1619954404707,
-    "stop" : 1619954404729,
-    "duration" : 22
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "711e79006f42e153",
-  "name" : "When running a test in device farm it should throw an error if a left is returner by the projects handler",
-  "time" : {
-    "start" : 1619954406390,
-    "stop" : 1619954406393,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "89fd20ffb1e0f3fe",
-  "name" : "It should return a DeviceFarmTractorError when scheduling the run fails",
-  "time" : {
-    "start" : 1619954407222,
-    "stop" : 1619954407223,
+    "start" : 1619954410100,
+    "stop" : 1619954410101,
     "duration" : 1
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "505f9abed1f9322",
-  "name" : "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler",
+  "uid" : "290ba1a5545b9614",
+  "name" : "When an error happens, it should return the exception wrapped as a left",
   "time" : {
-    "start" : 1619954406404,
-    "stop" : 1619954406409,
-    "duration" : 5
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "dbb967c80bb4c3c1",
-  "name" : "When accessKeyId and secretAccessKey are provided, it should return a runner that uses a device farm client with basic credentials",
-  "time" : {
-    "start" : 1619954405577,
-    "stop" : 1619954405587,
-    "duration" : 10
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b4fe76f3400804f1",
-  "name" : "When running a test in device farm the capture video configuration should be able to be specified",
-  "time" : {
-    "start" : 1619954406295,
-    "stop" : 1619954406298,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "429a8379515ceda0",
-  "name" : "When an error happens scheduling the run, it should return an ErrorSchedulingRun as a left",
-  "time" : {
-    "start" : 1619954403529,
-    "stop" : 1619954403539,
-    "duration" : 10
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "732eb1a22f06fd6d",
-  "name" : "It should return a string table with the results of the run per each device",
-  "time" : {
-    "start" : 1619954406873,
-    "stop" : 1619954406908,
-    "duration" : 35
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "511ab8a2c17ec34b",
-  "name" : "When scheduling a run, it should return the run as a right",
-  "time" : {
-    "start" : 1619954403324,
-    "stop" : 1619954403441,
-    "duration" : 117
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "a9396d8c20f974ff",
-  "name" : "When deleting an Upload any error should be returned as a left",
-  "time" : {
-    "start" : 1619954404828,
-    "stop" : 1619954404838,
-    "duration" : 10
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "ca91ceccdea1f655",
-  "name" : "It should never try to delete when no uploads are provided",
-  "time" : {
-    "start" : 1619954406617,
-    "stop" : 1619954406619,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "c5af32ef60b8d7bc",
-  "name" : "It should return the upload, if its ready to be used",
-  "time" : {
-    "start" : 1619954406922,
-    "stop" : 1619954406944,
-    "duration" : 22
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e70ff583229e3eb2",
-  "name" : "It should download all the recorded videos even if any of them fails",
-  "time" : {
-    "start" : 1619954406804,
-    "stop" : 1619954406814,
-    "duration" : 10
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "af8780540d10f60f",
-  "name" : "When no path is provided an Illegal Argument error should be returned as a left",
-  "time" : {
-    "start" : 1619954406544,
-    "stop" : 1619954406545,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b6bd7df2a7a71884",
-  "name" : "When uploading artifact to S3, any error should be returned as a left",
-  "time" : {
-    "start" : 1619954404611,
-    "stop" : 1619954404617,
-    "duration" : 6
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "2d358ca9fe9c5572",
-  "name" : "It should return the executed run when the execution is completed",
-  "time" : {
-    "start" : 1619954407193,
-    "stop" : 1619954407196,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d2ed9122353f9a7c",
-  "name" : "When fetching the artifacts of a test execution any error should be returned as a DeviceFarmTractorError left",
-  "time" : {
-    "start" : 1619954402707,
-    "stop" : 1619954402761,
-    "duration" : 54
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "26074a474e51df79",
-  "name" : "It should return a project if its found",
-  "time" : {
-    "start" : 1619954407153,
-    "stop" : 1619954407155,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "72e65e4f8e94657d",
-  "name" : "When running a test in device farm if no run name is provided it should create the name",
-  "time" : {
-    "start" : 1619954406331,
-    "stop" : 1619954406339,
-    "duration" : 8
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "f9923837c61c4c3",
-  "name" : "When running a test in device farm it should use the correct Project ARN in the process",
-  "time" : {
-    "start" : 1619954406275,
-    "stop" : 1619954406283,
-    "duration" : 8
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "bd1886acdee8c279",
-  "name" : "It should log an error message when downloading a recorded video or test report fails",
-  "time" : {
-    "start" : 1619954406772,
-    "stop" : 1619954406787,
-    "duration" : 15
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "ac81b9889b014b74",
-  "name" : "When no path is provided getting the upload type of a path, an Illegal Argument error should be returned as a left",
-  "time" : {
-    "start" : 1619954406548,
-    "stop" : 1619954406549,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e3b744421dd4a4ea",
-  "name" : "When Android upload type is used, file must end with .apk",
-  "time" : {
-    "start" : 1619954406474,
-    "stop" : 1619954406475,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d5e98983b6a6ba6b",
-  "name" : "When unknown Upload type is used, an error should be returned",
-  "time" : {
-    "start" : 1619954406527,
-    "stop" : 1619954406530,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "8f69077e9e367d9",
-  "name" : "When fetching the artifacts of a test execution if no run arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left",
-  "time" : {
-    "start" : 1619954402769,
-    "stop" : 1619954402783,
-    "duration" : 14
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "1438e70da34573ca",
-  "name" : "When an error happens fetching the logger then error messages should be redirect to stderr",
-  "time" : {
-    "start" : 1619954404255,
-    "stop" : 1619954404303,
-    "duration" : 48
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d036634985bb641d",
-  "name" : "When Appium Node Test Spec upload type is used, file must end with .yml",
-  "time" : {
-    "start" : 1619954406500,
-    "stop" : 1619954406504,
-    "duration" : 4
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "8b7f30a4d88dcd98",
-  "name" : "When creating a runner without credentials and region, it should return a runner that uses a device farm client with default configuration",
-  "time" : {
-    "start" : 1619954405119,
-    "stop" : 1619954405537,
-    "duration" : 418
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "69dab7dc17c89af5",
-  "name" : "It should keep fetching upload status even if an error happens in a a retry",
-  "time" : {
-    "start" : 1619954407065,
-    "stop" : 1619954407085,
-    "duration" : 20
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "da92827691527e7f",
-  "name" : "When fetching device pools from AWS device farm, it should return the associated device pools of a given project as a right",
-  "time" : {
-    "start" : 1619954402802,
-    "stop" : 1619954402885,
-    "duration" : 83
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "798269fe309848a1",
-  "name" : "When fetching a RUN it should return it as a right",
-  "time" : {
-    "start" : 1619954403546,
-    "stop" : 1619954403613,
-    "duration" : 67
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "5d0a32ab2c0ae80c",
-  "name" : "It should download the recorded videos and test reports even if any of them fails",
-  "time" : {
-    "start" : 1619954406830,
-    "stop" : 1619954406853,
-    "duration" : 23
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "4e9c9542a0a8c948",
-  "name" : "It should download all the test reports and recorded videos associated to the test Run",
-  "time" : {
-    "start" : 1619954406740,
-    "stop" : 1619954406771,
-    "duration" : 31
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "9479b0c50586aa8c",
-  "name" : "When creating AWS device farm upload, any error should be returned as a left",
-  "time" : {
-    "start" : 1619954404532,
-    "stop" : 1619954404538,
-    "duration" : 6
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "ccabeedc23da3746",
-  "name" : "It should return a DeviceFarmTractorError when creating the upload fails",
-  "time" : {
-    "start" : 1619954407104,
-    "stop" : 1619954407106,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "952a3b51ad332803",
-  "name" : "When creating a runner without credentials but with region, it should return a runner that uses a device farm client with default configuration but that use the provided region",
-  "time" : {
-    "start" : 1619954405609,
-    "stop" : 1619954405631,
-    "duration" : 22
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "eba78acdff4771ae",
-  "name" : "When creating AWS device farm upload, project ARN is mandatory, a left should be returned if not provided",
-  "time" : {
-    "start" : 1619954404541,
-    "stop" : 1619954404556,
-    "duration" : 15
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "1f65842516506706",
-  "name" : "When Upload type is not Android,IOS or Appium, the file must have .zip extension",
-  "time" : {
-    "start" : 1619954406514,
-    "stop" : 1619954406515,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "7498a54e6f55927c",
-  "name" : "It should return the last DeviceFarmTractorError returned when fetching upload is still failing after the maximum number of retries",
-  "time" : {
-    "start" : 1619954406996,
-    "stop" : 1619954407008,
-    "duration" : 12
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "c88c7b23fd445708",
-  "name" : "It should return a DeviceFarmTractorError when uploading the artifact to s3 fails, no matters the upload status",
-  "time" : {
-    "start" : 1619954407009,
-    "stop" : 1619954407063,
-    "duration" : 54
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "76de5d18fdda7160",
-  "name" : "It should stop fetching upload status when a DeviceFarmException happens in a a retry",
-  "time" : {
-    "start" : 1619954407087,
-    "stop" : 1619954407103,
-    "duration" : 16
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "dcb7c8e0942e0c28",
-  "name" : "When no app arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
-  "time" : {
-    "start" : 1619954403466,
-    "stop" : 1619954403499,
-    "duration" : 33
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "c953c48ad374b9a9",
-  "name" : "It should return a DeviceFarmTractorErrorIllegalArgumentException if the searched artifact type is not supported",
-  "time" : {
-    "start" : 1619954406640,
-    "stop" : 1619954406648,
-    "duration" : 8
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e258d844b95d567c",
-  "name" : "It should return a DeviceFarmIllegalArtifactExtension when the upload file doesn't satisfy the upload type",
-  "time" : {
-    "start" : 1619954407108,
-    "stop" : 1619954407110,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "f373ef8fe8382cb7",
-  "name" : "When fetching the artifacts of a test execution it should return them as a right",
-  "time" : {
-    "start" : 1619954401775,
-    "stop" : 1619954402597,
-    "duration" : 822
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "f9f573d26feca2af",
-  "name" : "When running a test in device farm it should try to delete the uploads of the execution by default",
-  "time" : {
-    "start" : 1619954406359,
-    "stop" : 1619954406365,
-    "duration" : 6
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "df53480a46510214",
-  "name" : "info messages should be logged using Kotlin Logging lib",
-  "time" : {
-    "start" : 1619954404106,
-    "stop" : 1619954404202,
-    "duration" : 96
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "15bbca68a92a1b62",
-  "name" : "When only secretAccessKey is provided, it should return a runner that uses a device farm client with default configuration",
-  "time" : {
-    "start" : 1619954405556,
-    "stop" : 1619954405566,
-    "duration" : 10
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "88750ef5ee8e3e67",
-  "name" : "When Appium Node Test Spec upload type is used, and file does not have .yml extension an error is returned",
-  "time" : {
-    "start" : 1619954406508,
-    "stop" : 1619954406509,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b4300e4dfd76f11a",
-  "name" : "When no project arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
-  "time" : {
-    "start" : 1619954403517,
-    "stop" : 1619954403520,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "63109f42c91dad02",
-  "name" : "It should return a DeviceFarmTractorError if something happens creating a new project",
-  "time" : {
-    "start" : 1619954407184,
-    "stop" : 1619954407186,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "bc06313d1253c4da",
-  "name" : "When IOS upload type is used, and file does not have .ipa extension an error is returned",
-  "time" : {
-    "start" : 1619954406494,
-    "stop" : 1619954406496,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "21b3909179b4f55b",
-  "name" : "It should return a DeviceFarmTractorError if something happens fetching the associated device pools of the project",
-  "time" : {
-    "start" : 1619954407146,
-    "stop" : 1619954407147,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "4f6b8342675a9399",
-  "name" : "When getting the upload type of a valid file, it should return it as a right",
-  "time" : {
-    "start" : 1619954406559,
-    "stop" : 1619954406574,
-    "duration" : 15
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b5166c755af1260e",
-  "name" : "When uploading artifact to S3, it should return a left when upload result has not OK status",
-  "time" : {
-    "start" : 1619954404595,
-    "stop" : 1619954404604,
+    "start" : 1619954409317,
+    "stop" : 1619954409326,
     "duration" : 9
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "c3a3ae3d5cd0c03e",
-  "name" : "When fetching device pools from AWS device farm, any error should be returned as a left",
+  "uid" : "13411c28d9ad30b",
+  "name" : "When running a test in device farm it should throw an error if a left is returner by the run handler",
   "time" : {
-    "start" : 1619954402911,
-    "stop" : 1619954402921,
-    "duration" : 10
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "4b66aa60665f99d4",
-  "name" : "When running a test in device farm it should use the test project uploaded and the test spec provided",
-  "time" : {
-    "start" : 1619954406314,
-    "stop" : 1619954406318,
-    "duration" : 4
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "78b9d2d962e63f5",
-  "name" : "It should return an empty string when there is an error fetching the associated jobs of the run",
-  "time" : {
-    "start" : 1619954406909,
-    "stop" : 1619954406910,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "af3986e49cd5f7c4",
-  "name" : "It should log an error message when creating the test reports directory fails",
-  "time" : {
-    "start" : 1619954406822,
-    "stop" : 1619954406825,
+    "start" : 1619954410013,
+    "stop" : 1619954410016,
     "duration" : 3
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "c982b2e967d3da8c",
-  "name" : "When running a test in device farm it should use the correct paths for the different upload types",
+  "uid" : "bf752c6be403aabb",
+  "name" : "It should log a message when the searched artifact type is not found in the job artifacts",
   "time" : {
-    "start" : 1619954406321,
-    "stop" : 1619954406326,
-    "duration" : 5
+    "start" : 1619954410244,
+    "stop" : 1619954410270,
+    "duration" : 26
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "1dbc7bf733e97517",
-  "name" : "When running a test in device farm, it should allow to disable the app performance monitoring",
+  "uid" : "246e68439e89db56",
+  "name" : "When an error happens scheduling the run, it should return an ErrorSchedulingRun as a left",
   "time" : {
-    "start" : 1619954406453,
-    "stop" : 1619954406459,
-    "duration" : 6
+    "start" : 1619954406793,
+    "stop" : 1619954406801,
+    "duration" : 8
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "bb5233137991933e",
-  "name" : "When running a test in device farm it should return the result",
+  "uid" : "a18bc443eb3392aa",
+  "name" : "It should download all the test reports and recorded videos associated to the test Run",
   "time" : {
-    "start" : 1619954406233,
-    "stop" : 1619954406265,
+    "start" : 1619954410303,
+    "stop" : 1619954410337,
+    "duration" : 34
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cd19aa6f62457f4b",
+  "name" : "When fetching an AWS device farm upload, it should return an error as a left if upload ARN is empty",
+  "time" : {
+    "start" : 1619954407996,
+    "stop" : 1619954408028,
     "duration" : 32
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "d388b18170905d52",
-  "name" : "It should not try to download the reports when an error happens fetching the associated jobs of the test run",
+  "uid" : "5ff54a554a88691b",
+  "name" : "When fetching the artifacts of a test execution if no run arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left",
   "time" : {
-    "start" : 1619954406826,
-    "stop" : 1619954406828,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "fcbe9f5fead6bd28",
-  "name" : "When creating AWS device farm upload, tt should return the created AWS Upload as a right",
-  "time" : {
-    "start" : 1619954404464,
-    "stop" : 1619954404524,
-    "duration" : 60
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "1abcc0502e5f21e2",
-  "name" : "It should return the first found device pool as default when no name is provided",
-  "time" : {
-    "start" : 1619954407131,
-    "stop" : 1619954407133,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "328b955deb1b6a1d",
-  "name" : "When running a test in device farm by default the capture video configuration should be enabled",
-  "time" : {
-    "start" : 1619954406284,
-    "stop" : 1619954406290,
-    "duration" : 6
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "ba3316acaeb9ea01",
-  "name" : "error messages should be logged using Kotlin Logging lib",
-  "time" : {
-    "start" : 1619954404358,
-    "stop" : 1619954404442,
-    "duration" : 84
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "cb6c3600afaefcd2",
-  "name" : "It should return the device pool that has the provided name",
-  "time" : {
-    "start" : 1619954407135,
-    "stop" : 1619954407136,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "96b8008519dff964",
-  "name" : "It should return a DeviceFarmTractorError when fetching current run fails",
-  "time" : {
-    "start" : 1619954407219,
-    "stop" : 1619954407220,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "3412786b33adc740",
-  "name" : "When running a test in device farm, it should allow unmetered executions",
-  "time" : {
-    "start" : 1619954406439,
-    "stop" : 1619954406442,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e71590179d1d314c",
-  "name" : "When an error happens fetching a run it should return a ErrorFetchingAWSRun as a left",
-  "time" : {
-    "start" : 1619954403658,
-    "stop" : 1619954403663,
-    "duration" : 5
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "35989550efb7bd0c",
-  "name" : "When a run name is provided it should be used",
-  "time" : {
-    "start" : 1619954403453,
-    "stop" : 1619954403460,
-    "duration" : 7
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b725d7105e0b2285",
-  "name" : "It should wait until the execution completes",
-  "time" : {
-    "start" : 1619954407198,
-    "stop" : 1619954407217,
-    "duration" : 19
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "6efae8d70ff14d2f",
-  "name" : "When running a test in device farm, it should throw an error if a left is returned when loading the app upload type",
-  "time" : {
-    "start" : 1619954406384,
-    "stop" : 1619954406385,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "8c997fa33538313c",
-  "name" : "When fetching projects from AWS, it should return the project as a right",
-  "time" : {
-    "start" : 1619954402947,
-    "stop" : 1619954403037,
-    "duration" : 90
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "afd9895b81bc6833",
-  "name" : "When deleting an Upload if non-200 response is received then an error should be returned as a left",
-  "time" : {
-    "start" : 1619954404848,
-    "stop" : 1619954404854,
-    "duration" : 6
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "c44c997c970e4d07",
-  "name" : "When an error happens fetching the associated jobs of a Run then it should return a ErrorListingAssociatedJobs as a left",
-  "time" : {
-    "start" : 1619954403751,
-    "stop" : 1619954403758,
-    "duration" : 7
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "a56f0f00cc6c4a93",
-  "name" : "When creating a project in AWS device farm, any error should be returned as a left",
-  "time" : {
-    "start" : 1619954403225,
-    "stop" : 1619954403229,
-    "duration" : 4
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "3c0dc1f1ff374a2a",
-  "name" : "When IOS upload type is used, file must end with .ipa",
-  "time" : {
-    "start" : 1619954406485,
-    "stop" : 1619954406488,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d431f417c5f61fa5",
-  "name" : "It should delete all the provided uploads",
-  "time" : {
-    "start" : 1619954406586,
-    "stop" : 1619954406606,
-    "duration" : 20
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b34c4b09480d9fbe",
-  "name" : "When accessKeyId, secretAccessKey and region name are provided, it should return a runner that uses a device farm client with basic credentials and the provided region",
-  "time" : {
-    "start" : 1619954405640,
-    "stop" : 1619954405649,
-    "duration" : 9
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d1aab2d16bf4d0d8",
-  "name" : "It should return a DevicePoolNotFoundError when a device pool is not found",
-  "time" : {
-    "start" : 1619954407142,
-    "stop" : 1619954407144,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "f319abcb13a5dc68",
-  "name" : "It should return a NoRegisteredDevicePoolsError when there is no device pools associated to the project",
-  "time" : {
-    "start" : 1619954407138,
-    "stop" : 1619954407140,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "c2a4c62c70278307",
-  "name" : "When fetching an AWS device farm upload, any error should be returned as a left",
-  "time" : {
-    "start" : 1619954404735,
-    "stop" : 1619954404741,
-    "duration" : 6
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "2c578a9b76616a5a",
-  "name" : "When creating a project in AWS device farm, it should return the created project as a right",
-  "time" : {
-    "start" : 1619954403060,
-    "stop" : 1619954403221,
-    "duration" : 161
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "30de58cea57e30f5",
-  "name" : "When fetching an AWS device farm upload, it should return the upload as a right",
-  "time" : {
-    "start" : 1619954404625,
-    "stop" : 1619954404702,
-    "duration" : 77
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "c0be718a4405e2d2",
-  "name" : "It should log an error message when creating the test report directory of an specific device fails",
-  "time" : {
-    "start" : 1619954406816,
-    "stop" : 1619954406821,
-    "duration" : 5
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "7afe945d6083dccf",
-  "name" : "When running a test in device farm, it should be a metered execution by default",
-  "time" : {
-    "start" : 1619954406432,
-    "stop" : 1619954406436,
-    "duration" : 4
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b023b423fe1b1478",
-  "name" : "It should create the project if it is no found",
-  "time" : {
-    "start" : 1619954407157,
-    "stop" : 1619954407158,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "a505eb41aff6a240",
-  "name" : "When creating AWS device farm upload, artifact name is mandatory, a left should be returned if not provided",
-  "time" : {
-    "start" : 1619954404564,
-    "stop" : 1619954404566,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d3a2ff8b0317c7b1",
-  "name" : "When getting the upload type of an unsupported file, an Illegal Argument error should be returned as a left",
-  "time" : {
-    "start" : 1619954406552,
-    "stop" : 1619954406555,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "74425eb02b858357",
-  "name" : "When uploading artifact to S3, it should return a right when upload result has OK status",
-  "time" : {
-    "start" : 1619954404573,
-    "stop" : 1619954404589,
-    "duration" : 16
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e08075da246546ce",
-  "name" : "When loading a file from a given path, it should return it as a right",
-  "time" : {
-    "start" : 1619954406533,
-    "stop" : 1619954406534,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "eb1b6c3c29c39956",
-  "name" : "It should return a DeviceFarmTractorError when the artifact to upload doesn't exists",
-  "time" : {
-    "start" : 1619954407113,
-    "stop" : 1619954407115,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d101b0dd4d81e07",
-  "name" : "When an error happens, it should return the exception wrapped as a left",
-  "time" : {
-    "start" : 1619954405671,
-    "stop" : 1619954405680,
-    "duration" : 9
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "835148ed8eb2121c",
-  "name" : "When no run ARN is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
-  "time" : {
-    "start" : 1619954403624,
-    "stop" : 1619954403655,
-    "duration" : 31
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e2034e3880235fb5",
-  "name" : "It should download an AWS Device farm artifact of a job execution depending of its type",
-  "time" : {
-    "start" : 1619954406651,
-    "stop" : 1619954406702,
-    "duration" : 51
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "f151602caa0ee63e",
-  "name" : "When Upload type is not Android,IOS or Appium, and file does not have .zip extension an error is returned",
-  "time" : {
-    "start" : 1619954406520,
-    "stop" : 1619954406522,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "4685438243956057",
-  "name" : "When basic credentials and sessionToken are provided, it should return a runner that uses a device farm client with the basic credentials and session token",
-  "time" : {
-    "start" : 1619954405593,
-    "stop" : 1619954405606,
-    "duration" : 13
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "7eea43af3d762ee2",
-  "name" : "It should return an ErrorDownloadingArtifact when there is a problem saving the artifact on disk",
-  "time" : {
-    "start" : 1619954406732,
-    "stop" : 1619954406734,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "cbdba64b21d952f8",
-  "name" : "It should delete uploads in parallel and keep deleting even if some operation fails",
-  "time" : {
-    "start" : 1619954406608,
-    "stop" : 1619954406615,
-    "duration" : 7
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "ce996a1fef87a9a",
-  "name" : "When running a test in device farm it should have APPIUM NODE as test type",
-  "time" : {
-    "start" : 1619954406302,
-    "stop" : 1619954406308,
-    "duration" : 6
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "826408455068b696",
-  "name" : "When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided",
-  "time" : {
-    "start" : 1619954402896,
-    "stop" : 1619954402900,
-    "duration" : 4
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "435d8cc31a0683fc",
-  "name" : "When running a test in device farm if the base test report directory is provided it should use it as a path",
-  "time" : {
-    "start" : 1619954406350,
-    "stop" : 1619954406355,
-    "duration" : 5
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "fa2146ff851afce9",
-  "name" : "When creating a project in AWS device farm, if project name is empty an error should be returned as a left",
-  "time" : {
-    "start" : 1619954403232,
-    "stop" : 1619954403269,
-    "duration" : 37
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "eb1a73d292126709",
-  "name" : "When Android upload type is used, and file does not have .apk extension an error is returned",
-  "time" : {
-    "start" : 1619954406478,
-    "stop" : 1619954406481,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "5c03f27355959ce4",
-  "name" : "When loading a file from a given path, if the files doesn't exists an error should be returned as a Left",
-  "time" : {
-    "start" : 1619954406538,
-    "stop" : 1619954406540,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b443e2ecc4f44184",
-  "name" : "It should return an UploadFailureError, if the upload status is not succeeded before the maximum number of retries",
-  "time" : {
-    "start" : 1619954406951,
-    "stop" : 1619954406995,
-    "duration" : 44
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b0ed0ba604683563",
-  "name" : "When running a test in device farm if the base test report directory path is empty it should not download the results",
-  "time" : {
-    "start" : 1619954406342,
-    "stop" : 1619954406348,
-    "duration" : 6
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "78f2ef563d0b78ff",
-  "name" : "It should return a DeviceFarmTractorError if something happens fetching device farm projects",
-  "time" : {
-    "start" : 1619954407171,
-    "stop" : 1619954407173,
-    "duration" : 2
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "a1c7c7821f7a642",
-  "name" : "It should use a pretty name when the artifact type is video or customer artifact",
-  "time" : {
-    "start" : 1619954406634,
-    "stop" : 1619954406637,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "431934b18340e7ab",
-  "name" : "When running a test in device farm it should throw an error if a left is returner by the devices pool handler",
-  "time" : {
-    "start" : 1619954406398,
-    "stop" : 1619954406399,
-    "duration" : 1
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "1aed03d0155a6596",
-  "name" : "When an error happens fetching the logger then info messages should be redirect to stdout",
-  "time" : {
-    "start" : 1619954403816,
-    "stop" : 1619954404052,
-    "duration" : 236
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "d2b94244361eae86",
-  "name" : "When accessKeyId, secretAccessKey, session token and region name are provided, it should return a runner that uses a device farm client with basic credentials, the session token and the provided region",
-  "time" : {
-    "start" : 1619954405657,
-    "stop" : 1619954405665,
+    "start" : 1619954405931,
+    "stop" : 1619954405939,
     "duration" : 8
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "bba64c46f51b62d1",
-  "name" : "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler and the parallel upload process should be cancelled",
+  "uid" : "a30e4e385897116c",
+  "name" : "It should return a DeviceFarmTractorError if something happens fetching the associated device pools of the project",
   "time" : {
-    "start" : 1619954406416,
-    "stop" : 1619954406425,
-    "duration" : 9
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "1d5a38b7be7829b5",
-  "name" : "It should return an UploadFailureError if the upload status is not succeeded",
-  "time" : {
-    "start" : 1619954406946,
-    "stop" : 1619954406949,
-    "duration" : 3
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "7fa9300c0a796ff2",
-  "name" : "It should not fail if there is no artifacts to download",
-  "time" : {
-    "start" : 1619954406737,
-    "stop" : 1619954406738,
+    "start" : 1619954410754,
+    "stop" : 1619954410755,
     "duration" : 1
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "b8f39bd2bf6c0564",
-  "name" : "It should download all the reports even if any of them fails",
+  "uid" : "4c729dcf62854d7a",
+  "name" : "error messages should be logged using Kotlin Logging lib",
   "time" : {
-    "start" : 1619954406789,
-    "stop" : 1619954406803,
-    "duration" : 14
+    "start" : 1619954407623,
+    "stop" : 1619954407702,
+    "duration" : 79
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "36521c04561f5c9c",
-  "name" : "When running a test in device farm, it should have the app performance monitoring enable by default",
+  "uid" : "22b1058ce2c75a3e",
+  "name" : "It should return a DeviceFarmTractorError when the artifact to upload doesn't exists",
   "time" : {
-    "start" : 1619954406445,
-    "stop" : 1619954406450,
+    "start" : 1619954410730,
+    "stop" : 1619954410735,
     "duration" : 5
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "c9b4dc4c2f0ea49e",
-  "name" : "When running a test in device farm it should throw an error if a left is returner by the run handler",
+  "uid" : "645e65de200d2111",
+  "name" : "When only secretAccessKey is provided, it should return a runner that uses a device farm client with default configuration",
   "time" : {
-    "start" : 1619954406427,
-    "stop" : 1619954406430,
+    "start" : 1619954409215,
+    "stop" : 1619954409220,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "705dc43735107fc4",
+  "name" : "It should return an UploadFailureError if the upload status is not succeeded",
+  "time" : {
+    "start" : 1619954410546,
+    "stop" : 1619954410550,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b73c501b24d048d1",
+  "name" : "When fetching all the jobs associated to a Run it should return them as a right",
+  "time" : {
+    "start" : 1619954406929,
+    "stop" : 1619954407014,
+    "duration" : 85
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "85e327ae5d96d573",
+  "name" : "It should return the upload, if its ready to be used",
+  "time" : {
+    "start" : 1619954410520,
+    "stop" : 1619954410544,
+    "duration" : 24
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b3f38d8baea1ad8f",
+  "name" : "When running a test in device farm it should return the result",
+  "time" : {
+    "start" : 1619954409835,
+    "stop" : 1619954409865,
+    "duration" : 30
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c3d3aa56e69f8a64",
+  "name" : "info messages should be logged using Kotlin Logging lib",
+  "time" : {
+    "start" : 1619954407377,
+    "stop" : 1619954407481,
+    "duration" : 104
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5984e053b661a16f",
+  "name" : "When creating AWS device farm upload, tt should return the created AWS Upload as a right",
+  "time" : {
+    "start" : 1619954407721,
+    "stop" : 1619954407795,
+    "duration" : 74
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1766eb7ba20789e",
+  "name" : "It should return the first found device pool as default when no name is provided",
+  "time" : {
+    "start" : 1619954410742,
+    "stop" : 1619954410744,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ff0c7ded994bcc67",
+  "name" : "When no run ARN is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
+  "time" : {
+    "start" : 1619954406886,
+    "stop" : 1619954406906,
+    "duration" : 20
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a50aac1a58d60378",
+  "name" : "It should not fail if there is no artifacts to download",
+  "time" : {
+    "start" : 1619954410300,
+    "stop" : 1619954410301,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a67f4c4c90550449",
+  "name" : "When fetching the artifacts of a test execution it should return them as a right",
+  "time" : {
+    "start" : 1619954404793,
+    "stop" : 1619954405781,
+    "duration" : 988
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8ff59e55c69fac0e",
+  "name" : "When running a test in device farm it should have APPIUM NODE as test type",
+  "time" : {
+    "start" : 1619954409900,
+    "stop" : 1619954409905,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2d76928ef3c09554",
+  "name" : "It should delete all the provided uploads",
+  "time" : {
+    "start" : 1619954410127,
+    "stop" : 1619954410171,
+    "duration" : 44
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "69539fd80899f7a",
+  "name" : "When only accessKeyId is provided, it should return a runner that uses a device farm client with default configuration",
+  "time" : {
+    "start" : 1619954409198,
+    "stop" : 1619954409207,
+    "duration" : 9
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "616c93f3c40b44d9",
+  "name" : "When creating a runner without credentials but with region, it should return a runner that uses a device farm client with default configuration but that use the provided region",
+  "time" : {
+    "start" : 1619954409262,
+    "stop" : 1619954409286,
+    "duration" : 24
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a9c77de9a0f1aafa",
+  "name" : "When running a test in device farm it should use the correct Project ARN in the process",
+  "time" : {
+    "start" : 1619954409871,
+    "stop" : 1619954409878,
+    "duration" : 7
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "899703cfc2dc8cc0",
+  "name" : "When creating a project in AWS device farm, if project name is empty an error should be returned as a left",
+  "time" : {
+    "start" : 1619954406400,
+    "stop" : 1619954406461,
+    "duration" : 61
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9bae3d80b1e41c63",
+  "name" : "When running a test in device farm, it should throw an error if a left is returned when loading the app upload type",
+  "time" : {
+    "start" : 1619954409973,
+    "stop" : 1619954409976,
     "duration" : 3
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "e8ee6d6ae83de93c",
-  "name" : "When fetching all the jobs associated to a Run it should return them as a right",
+  "uid" : "46035641a0b178f0",
+  "name" : "When running a test in device farm, it should allow to disable the app performance monitoring",
   "time" : {
-    "start" : 1619954403665,
-    "stop" : 1619954403747,
-    "duration" : 82
+    "start" : 1619954410037,
+    "stop" : 1619954410041,
+    "duration" : 4
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "3a2206bea86ddb33",
+  "uid" : "ec21bfb256c14924",
+  "name" : "When running a test in device farm if the base test report directory is provided it should use it as a path",
+  "time" : {
+    "start" : 1619954409947,
+    "stop" : 1619954409954,
+    "duration" : 7
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5b34caca5df493a5",
+  "name" : "When running a test in device farm, it should throw an error when no app path is provided",
+  "time" : {
+    "start" : 1619954409964,
+    "stop" : 1619954409967,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "980532ae6cd72cfc",
+  "name" : "When accessKeyId, secretAccessKey, session token and region name are provided, it should return a runner that uses a device farm client with basic credentials, the session token and the provided region",
+  "time" : {
+    "start" : 1619954409305,
+    "stop" : 1619954409312,
+    "duration" : 7
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7d31684622cc0a88",
+  "name" : "It should return a DeviceFarmTractorError when uploading the artifact to s3 fails, no matters the upload status",
+  "time" : {
+    "start" : 1619954410621,
+    "stop" : 1619954410675,
+    "duration" : 54
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7d237a44e8b6c84b",
+  "name" : "When a run name is provided it should be used",
+  "time" : {
+    "start" : 1619954406720,
+    "stop" : 1619954406727,
+    "duration" : 7
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3fcbf9c3295ecb56",
+  "name" : "When IOS upload type is used, and file does not have .ipa extension an error is returned",
+  "time" : {
+    "start" : 1619954410070,
+    "stop" : 1619954410071,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2a278a7e14302d1c",
+  "name" : "When creating a runner without credentials and region but with a given profile name, it should return a runner that uses a device farm client with default configuration using given profile",
+  "time" : {
+    "start" : 1619954408950,
+    "stop" : 1619954409191,
+    "duration" : 241
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2c9e98cfefc26122",
+  "name" : "It should return the last DeviceFarmTractorError returned when fetching upload is still failing after the maximum number of retries",
+  "time" : {
+    "start" : 1619954410606,
+    "stop" : 1619954410619,
+    "duration" : 13
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fff2d126911f94f3",
+  "name" : "When loading a file from a given path, if the files doesn't exists an error should be returned as a Left",
+  "time" : {
+    "start" : 1619954410092,
+    "stop" : 1619954410093,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7dcfe81a7fa2323a",
+  "name" : "When fetching an AWS device farm upload, it should return the upload as a right",
+  "time" : {
+    "start" : 1619954407907,
+    "stop" : 1619954407986,
+    "duration" : 79
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1a7a73877d24be3d",
+  "name" : "It should return a DeviceFarmTractorError when scheduling the run fails",
+  "time" : {
+    "start" : 1619954410840,
+    "stop" : 1619954410841,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9d8b5282e44e4290",
+  "name" : "When uploading artifact to S3, any error should be returned as a left",
+  "time" : {
+    "start" : 1619954407898,
+    "stop" : 1619954407904,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a842603dade9e00b",
+  "name" : "When Upload type is not Android,IOS or Appium, and file does not have .zip extension an error is returned",
+  "time" : {
+    "start" : 1619954410082,
+    "stop" : 1619954410083,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5650082028706e70",
+  "name" : "It should return an empty string when there is an error fetching the associated jobs of the run",
+  "time" : {
+    "start" : 1619954410503,
+    "stop" : 1619954410504,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "76536413ac62b2dd",
+  "name" : "When running a test in device farm, it should be a metered execution by default",
+  "time" : {
+    "start" : 1619954410018,
+    "stop" : 1619954410023,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d8958882e8c11607",
+  "name" : "When getting the upload type of a valid file, it should return it as a right",
+  "time" : {
+    "start" : 1619954410103,
+    "stop" : 1619954410118,
+    "duration" : 15
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "bd5feb451afde2b0",
+  "name" : "When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided",
+  "time" : {
+    "start" : 1619954406061,
+    "stop" : 1619954406071,
+    "duration" : 10
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "653ba558419f9fc",
+  "name" : "When accessKeyId and secretAccessKey are provided, it should return a runner that uses a device farm client with basic credentials",
+  "time" : {
+    "start" : 1619954409238,
+    "stop" : 1619954409249,
+    "duration" : 11
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "94068a3b3f52abe9",
+  "name" : "It should use a pretty name when the artifact type is video or customer artifact",
+  "time" : {
+    "start" : 1619954410198,
+    "stop" : 1619954410199,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b1937376d2d72bb4",
+  "name" : "When fetching device pools from AWS device farm, any error should be returned as a left",
+  "time" : {
+    "start" : 1619954406075,
+    "stop" : 1619954406086,
+    "duration" : 11
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c3d0841b8bf8bd9d",
+  "name" : "When running a test in device farm, it should have the app performance monitoring enable by default",
+  "time" : {
+    "start" : 1619954410031,
+    "stop" : 1619954410036,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "64e2f523250d4050",
+  "name" : "When creating a project in AWS device farm, any error should be returned as a left",
+  "time" : {
+    "start" : 1619954406384,
+    "stop" : 1619954406393,
+    "duration" : 9
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3e5c2f6dd8042c3",
+  "name" : "It should log an error message when creating the test report directory of an specific device fails",
+  "time" : {
+    "start" : 1619954410400,
+    "stop" : 1619954410404,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "43c0eaa0d0c059a2",
+  "name" : "It should wait until the execution completes",
+  "time" : {
+    "start" : 1619954410814,
+    "stop" : 1619954410833,
+    "duration" : 19
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "878526c5aa5d974f",
+  "name" : "It should return the executed run when the execution is completed",
+  "time" : {
+    "start" : 1619954410803,
+    "stop" : 1619954410806,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3c18e52c5a254a5",
+  "name" : "It should return a DeviceFarmTractorError if something happens creating a new project",
+  "time" : {
+    "start" : 1619954410790,
+    "stop" : 1619954410791,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e1d9edd7fb5a5e7",
+  "name" : "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler and the parallel upload process should be cancelled",
+  "time" : {
+    "start" : 1619954410003,
+    "stop" : 1619954410011,
+    "duration" : 8
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1bf88b2ad2c4fe0d",
+  "name" : "When creating a project in AWS device farm, it should return the created project as a right",
+  "time" : {
+    "start" : 1619954406195,
+    "stop" : 1619954406376,
+    "duration" : 181
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "439bb4017abecf54",
+  "name" : "When uploading artifact to S3, it should return a left when upload result has not OK status",
+  "time" : {
+    "start" : 1619954407881,
+    "stop" : 1619954407889,
+    "duration" : 8
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c27bf6ea2c71335f",
+  "name" : "When deleting an Upload any error should be returned as a left",
+  "time" : {
+    "start" : 1619954408106,
+    "stop" : 1619954408112,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e44d21cc838c968e",
+  "name" : "It should return a DeviceFarmTractorError if something happens fetching device farm projects",
+  "time" : {
+    "start" : 1619954410786,
+    "stop" : 1619954410788,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "617b7609ea2c0ecb",
+  "name" : "When no path is provided getting the upload type of a path, an Illegal Argument error should be returned as a left",
+  "time" : {
+    "start" : 1619954410097,
+    "stop" : 1619954410098,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d6f53c452f4bef7a",
+  "name" : "When fetching projects from AWS, it should return the project as a right",
+  "time" : {
+    "start" : 1619954406102,
+    "stop" : 1619954406179,
+    "duration" : 77
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "65c9b5db08505cc7",
+  "name" : "It should download an AWS Device farm artifact of a job execution depending of its type",
+  "time" : {
+    "start" : 1619954410212,
+    "stop" : 1619954410239,
+    "duration" : 27
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "90b2d29f724fd016",
+  "name" : "When fetching a RUN it should return it as a right",
+  "time" : {
+    "start" : 1619954406806,
+    "stop" : 1619954406877,
+    "duration" : 71
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "12308157c87cbc90",
+  "name" : "It should not try to download the reports when an error happens fetching the associated jobs of the test run",
+  "time" : {
+    "start" : 1619954410423,
+    "stop" : 1619954410425,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c02fb67cd2e20ae9",
+  "name" : "When fetching an AWS device farm upload, any error should be returned as a left",
+  "time" : {
+    "start" : 1619954408030,
+    "stop" : 1619954408038,
+    "duration" : 8
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "597fc44e477cec60",
+  "name" : "When creating a runner without credentials and region, it should return a runner that uses a device farm client with default configuration",
+  "time" : {
+    "start" : 1619954408428,
+    "stop" : 1619954408942,
+    "duration" : 514
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b88efae6be8415f8",
+  "name" : "When fetching device pools from AWS device farm, it should return the associated device pools of a given project as a right",
+  "time" : {
+    "start" : 1619954405962,
+    "stop" : 1619954406053,
+    "duration" : 91
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3120421a00bc6b3e",
+  "name" : "When an error happens fetching the logger then info messages should be redirect to stdout",
+  "time" : {
+    "start" : 1619954407076,
+    "stop" : 1619954407319,
+    "duration" : 243
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "80cff7738372db9f",
+  "name" : "When no project arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
+  "time" : {
+    "start" : 1619954406781,
+    "stop" : 1619954406787,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "119129eb113bc348",
+  "name" : "When no path is provided an Illegal Argument error should be returned as a left",
+  "time" : {
+    "start" : 1619954410095,
+    "stop" : 1619954410096,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "24177ca40478beb2",
+  "name" : "When an error happens fetching the logger then error messages should be redirect to stderr",
+  "time" : {
+    "start" : 1619954407539,
+    "stop" : 1619954407580,
+    "duration" : 41
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ac1ee29342093a49",
+  "name" : "When Appium Node Test Spec upload type is used, and file does not have .yml extension an error is returned",
+  "time" : {
+    "start" : 1619954410076,
+    "stop" : 1619954410077,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4800765d7b1d2908",
+  "name" : "When uploading artifact to S3, it should return a right when upload result has OK status",
+  "time" : {
+    "start" : 1619954407856,
+    "stop" : 1619954407876,
+    "duration" : 20
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a2aca449641b5385",
+  "name" : "It should return a DeviceFarmTractorError when creating the upload fails",
+  "time" : {
+    "start" : 1619954410719,
+    "stop" : 1619954410721,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8acff4a3ebbfedca",
+  "name" : "When no app arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
+  "time" : {
+    "start" : 1619954406736,
+    "stop" : 1619954406767,
+    "duration" : 31
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b77f55b9b8187542",
+  "name" : "When running a test in device farm it should throw an error if a left is returner by the projects handler",
+  "time" : {
+    "start" : 1619954409980,
+    "stop" : 1619954409985,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "948cea8c46ad423",
+  "name" : "It should create the project if it is no found",
+  "time" : {
+    "start" : 1619954410777,
+    "stop" : 1619954410778,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1e6249d1f8cc9d9e",
+  "name" : "When accessKeyId, secretAccessKey and region name are provided, it should return a runner that uses a device farm client with basic credentials and the provided region",
+  "time" : {
+    "start" : 1619954409288,
+    "stop" : 1619954409299,
+    "duration" : 11
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1e2352addd964792",
+  "name" : "When deleting an Upload if non-200 response is received then an error should be returned as a left",
+  "time" : {
+    "start" : 1619954408116,
+    "stop" : 1619954408123,
+    "duration" : 7
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "55ec353377c952bd",
+  "name" : "It should log an error message when creating the test reports directory fails",
+  "time" : {
+    "start" : 1619954410414,
+    "stop" : 1619954410422,
+    "duration" : 8
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ba317e99ae6bd23",
+  "name" : "When unknown Upload type is used, an error should be returned",
+  "time" : {
+    "start" : 1619954410085,
+    "stop" : 1619954410086,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e8f3e551d8be72fb",
+  "name" : "It should download all the recorded videos even if any of them fails",
+  "time" : {
+    "start" : 1619954410378,
+    "stop" : 1619954410393,
+    "duration" : 15
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b25f63b1911f096b",
+  "name" : "When running a test in device farm by default the capture video configuration should be enabled",
+  "time" : {
+    "start" : 1619954409881,
+    "stop" : 1619954409885,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "58e847c48dbe558a",
+  "name" : "When deleting an Upload if no arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left",
+  "time" : {
+    "start" : 1619954408126,
+    "stop" : 1619954408149,
+    "duration" : 23
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ee3495ffa46ab3b5",
+  "name" : "When creating AWS device farm upload, artifact name is mandatory, a left should be returned if not provided",
+  "time" : {
+    "start" : 1619954407847,
+    "stop" : 1619954407852,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3df7bcb8ee8314c6",
+  "name" : "It should return a project if its found",
+  "time" : {
+    "start" : 1619954410769,
+    "stop" : 1619954410771,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d234790a0ee9aa42",
+  "name" : "When IOS upload type is used, file must end with .ipa",
+  "time" : {
+    "start" : 1619954410067,
+    "stop" : 1619954410068,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "66703f90ce168f54",
+  "name" : "It should never try to delete when no uploads are provided",
+  "time" : {
+    "start" : 1619954410182,
+    "stop" : 1619954410184,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "eaa54a1340aa9091",
+  "name" : "When Android upload type is used, file must end with .apk",
+  "time" : {
+    "start" : 1619954410060,
+    "stop" : 1619954410061,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d9f7277025e2d4be",
+  "name" : "It should delete uploads in parallel and keep deleting even if some operation fails",
+  "time" : {
+    "start" : 1619954410176,
+    "stop" : 1619954410179,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d7bfac981ff6b528",
+  "name" : "It should log an error message when downloading a recorded video or test report fails",
+  "time" : {
+    "start" : 1619954410342,
+    "stop" : 1619954410360,
+    "duration" : 18
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c5c059adfb6dbde5",
+  "name" : "It should keep fetching upload status even if an error happens in a a retry",
+  "time" : {
+    "start" : 1619954410678,
+    "stop" : 1619954410699,
+    "duration" : 21
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f23917aee64ff513",
+  "name" : "When scheduling a run, it should return the run as a right",
+  "time" : {
+    "start" : 1619954406523,
+    "stop" : 1619954406711,
+    "duration" : 188
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "aee705d3c3911296",
+  "name" : "When Appium Node Test Spec upload type is used, file must end with .yml",
+  "time" : {
+    "start" : 1619954410073,
+    "stop" : 1619954410074,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8fa64e593bc1a056",
+  "name" : "When an error happens fetching a run it should return a ErrorFetchingAWSRun as a left",
+  "time" : {
+    "start" : 1619954406918,
+    "stop" : 1619954406922,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "90e5fd2087832a73",
+  "name" : "It should download all the reports even if any of them fails",
+  "time" : {
+    "start" : 1619954410364,
+    "stop" : 1619954410375,
+    "duration" : 11
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "30a9ef56ca8ab559",
+  "name" : "When creating AWS device farm upload, project ARN is mandatory, a left should be returned if not provided",
+  "time" : {
+    "start" : 1619954407814,
+    "stop" : 1619954407842,
+    "duration" : 28
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "793f4e13558344a9",
+  "name" : "When sessionToken is provided but no credentials, it should return a runner that uses a device farm client with default configuration",
+  "time" : {
+    "start" : 1619954409225,
+    "stop" : 1619954409233,
+    "duration" : 8
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "faeea600ccede9f0",
+  "name" : "It should return a DeviceFarmIllegalArtifactExtension when the upload file doesn't satisfy the upload type",
+  "time" : {
+    "start" : 1619954410724,
+    "stop" : 1619954410726,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e8dd80cb81fe464",
+  "name" : "When an error happens fetching the associated jobs of a Run then it should return a ErrorListingAssociatedJobs as a left",
+  "time" : {
+    "start" : 1619954407018,
+    "stop" : 1619954407021,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "acdd081060f0be49",
+  "name" : "When running a test in device farm if no run name is provided it should create the name",
+  "time" : {
+    "start" : 1619954409928,
+    "stop" : 1619954409934,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f9b40710a9319145",
+  "name" : "When running a test in device farm it should throw an error if a left is returner by the devices pool handler",
+  "time" : {
+    "start" : 1619954409986,
+    "stop" : 1619954409988,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "71a3ea11ed6cdd8c",
+  "name" : "It should return an ErrorDownloadingArtifact when there is a problem saving the artifact on disk",
+  "time" : {
+    "start" : 1619954410272,
+    "stop" : 1619954410296,
+    "duration" : 24
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fce05f73e7844596",
+  "name" : "When running a test in device farm, it should allow unmetered executions",
+  "time" : {
+    "start" : 1619954410025,
+    "stop" : 1619954410029,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cfaba44f1875388",
+  "name" : "When running a test in device farm if the base test report directory path is empty it should not download the results",
+  "time" : {
+    "start" : 1619954409939,
+    "stop" : 1619954409945,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "21e3ab354add0fc1",
+  "name" : "It should stop fetching upload status when a DeviceFarmException happens in a a retry",
+  "time" : {
+    "start" : 1619954410701,
+    "stop" : 1619954410717,
+    "duration" : 16
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "67197d7a84bc959a",
+  "name" : "It should download the recorded videos and test reports even if any of them fails",
+  "time" : {
+    "start" : 1619954410429,
+    "stop" : 1619954410443,
+    "duration" : 14
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d5c5490ebbaf2dda",
+  "name" : "It should return the device pool that has the provided name",
+  "time" : {
+    "start" : 1619954410745,
+    "stop" : 1619954410746,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b9403c86457d748c",
+  "name" : "When creating AWS device farm upload, any error should be returned as a left",
+  "time" : {
+    "start" : 1619954407804,
+    "stop" : 1619954407811,
+    "duration" : 7
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fcd7cff0543957b7",
+  "name" : "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler",
+  "time" : {
+    "start" : 1619954409991,
+    "stop" : 1619954409997,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9e074eb60a604904",
+  "name" : "When fetching the artifacts of a test execution any error should be returned as a DeviceFarmTractorError left",
+  "time" : {
+    "start" : 1619954405898,
+    "stop" : 1619954405920,
+    "duration" : 22
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f97b27ad7957c8b2",
+  "name" : "When deleting an Upload it should return a DeleteUploadResponse as a right",
+  "time" : {
+    "start" : 1619954408041,
+    "stop" : 1619954408103,
+    "duration" : 62
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "bd61d2e0f5f638de",
+  "name" : "It should return a string table with the results of the run per each device",
+  "time" : {
+    "start" : 1619954410462,
+    "stop" : 1619954410501,
+    "duration" : 39
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5b52413b42848bd0",
+  "name" : "When running a test in device farm the capture video configuration should be able to be specified",
+  "time" : {
+    "start" : 1619954409888,
+    "stop" : 1619954409894,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "47698eb7c9ec45ef",
+  "name" : "When Upload type is not Android,IOS or Appium, the file must have .zip extension",
+  "time" : {
+    "start" : 1619954410079,
+    "stop" : 1619954410080,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d643f1e225ebe7f1",
+  "name" : "When running a test in device farm it should try to delete the uploads of the execution by default",
+  "time" : {
+    "start" : 1619954409957,
+    "stop" : 1619954409962,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b96157a9d94eef1e",
+  "name" : "It should return a NoRegisteredDevicePoolsError when there is no device pools associated to the project",
+  "time" : {
+    "start" : 1619954410748,
+    "stop" : 1619954410750,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5a87c103872f83d2",
+  "name" : "When no device pool arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left",
+  "time" : {
+    "start" : 1619954406776,
+    "stop" : 1619954406779,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b500224cb923d196",
   "name" : "When fetching projects from AWS, any error should be returned as a left",
   "time" : {
-    "start" : 1619954403042,
-    "stop" : 1619954403047,
-    "duration" : 5
+    "start" : 1619954406183,
+    "stop" : 1619954406187,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cd126cb0dce27ecb",
+  "name" : "When Android upload type is used, and file does not have .apk extension an error is returned",
+  "time" : {
+    "start" : 1619954410063,
+    "stop" : 1619954410065,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "78d2b26f9d910810",
+  "name" : "When running a test in device farm it should use the correct paths for the different upload types",
+  "time" : {
+    "start" : 1619954409918,
+    "stop" : 1619954409924,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4e9f5c75e9974da",
+  "name" : "It should return an UploadFailureError, if the upload status is not succeeded before the maximum number of retries",
+  "time" : {
+    "start" : 1619954410552,
+    "stop" : 1619954410601,
+    "duration" : 49
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e3964074809b67f6",
+  "name" : "When running a test in device farm it should use the test project uploaded and the test spec provided",
+  "time" : {
+    "start" : 1619954409908,
+    "stop" : 1619954409914,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "61349978da84bade",
+  "name" : "It should return a DeviceFarmTractorErrorIllegalArgumentException if the searched artifact type is not supported",
+  "time" : {
+    "start" : 1619954410201,
+    "stop" : 1619954410210,
+    "duration" : 9
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b587e2ad254a0ca0",
+  "name" : "It should return a DeviceFarmTractorError when fetching current run fails",
+  "time" : {
+    "start" : 1619954410837,
+    "stop" : 1619954410838,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9c5e19218724b8ba",
+  "name" : "It should return a DevicePoolNotFoundError when a device pool is not found",
+  "time" : {
+    "start" : 1619954410751,
+    "stop" : 1619954410753,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c55f4cea590696f5",
+  "name" : "When basic credentials and sessionToken are provided, it should return a runner that uses a device farm client with the basic credentials and session token",
+  "time" : {
+    "start" : 1619954409251,
+    "stop" : 1619954409259,
+    "duration" : 8
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cf36e914bd7ca9cc",
+  "name" : "When loading a file from a given path, it should return it as a right",
+  "time" : {
+    "start" : 1619954410088,
+    "stop" : 1619954410089,
+    "duration" : 1
   },
   "status" : "passed",
   "severity" : "normal"
