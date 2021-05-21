@@ -5,7 +5,6 @@ import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorError
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Path
 import kotlin.time.Duration
-import kotlin.time.seconds
 
 interface IDeviceFarmTractorController {
     suspend fun findOrCreateProject(projectName: String): Either<DeviceFarmTractorError, Project>
@@ -19,7 +18,7 @@ interface IDeviceFarmTractorController {
         projectArn: String,
         artifactPath: String,
         uploadType: UploadType,
-        delaySpaceInterval: Duration = 2.seconds,
+        delaySpaceInterval: Duration = Duration.seconds(2),
         maximumNumberOfRetries: Int = 3600
     ): Either<DeviceFarmTractorError, Upload>
 
@@ -33,21 +32,21 @@ interface IDeviceFarmTractorController {
         runName: String,
         projectArn: String,
         testConfiguration: ScheduleRunTest,
-        delaySpaceInterval: Duration = 10.seconds
+        delaySpaceInterval: Duration = Duration.seconds(10)
     ): Either<DeviceFarmTractorError, Run>
 
     suspend fun downloadAllEvidencesOfTestRun(
         run: Run,
         destinyDirectory: Path,
-        delayForDownload: Duration = 20.seconds
+        delayForDownload: Duration = Duration.seconds(20)
     )
 
     suspend fun downloadAWSDeviceFarmArtifacts(
         artifacts: List<Artifact>,
-        deviceName:String,
+        deviceName: String,
         path: Path,
         artifactType: ArtifactType
     ): Either<DeviceFarmTractorError, Unit>
 
-    suspend fun getDeviceResultsTable(run: Run):String
+    suspend fun getDeviceResultsTable(run: Run): String
 }

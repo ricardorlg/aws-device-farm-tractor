@@ -8,6 +8,7 @@ import io.kotest.assertions.arrow.either.shouldBeRight
 import io.kotest.assertions.fail
 import io.kotest.core.spec.style.StringSpec
 import software.amazon.awssdk.services.devicefarm.model.*
+import kotlin.time.Duration
 import kotlin.time.milliseconds
 
 class WhenWorkingWithDeviceFarmRuns : StringSpec({
@@ -116,7 +117,7 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
             runName = runName,
             projectArn = projectArn,
             testConfiguration = testConfiguration,
-            delaySpaceInterval = 5.milliseconds
+            delaySpaceInterval = Duration.milliseconds(5)
         )
 
         //THEN

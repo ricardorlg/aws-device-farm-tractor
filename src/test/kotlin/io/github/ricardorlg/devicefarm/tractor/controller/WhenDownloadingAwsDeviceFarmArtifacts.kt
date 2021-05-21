@@ -34,6 +34,7 @@ import java.nio.file.Paths
 import java.nio.file.attribute.PosixFilePermissions
 import kotlin.io.path.createDirectory
 import kotlin.io.path.listDirectoryEntries
+import kotlin.time.Duration
 import kotlin.time.milliseconds
 
 class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
@@ -64,7 +65,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
     "It should return a DeviceFarmTractorErrorIllegalArgumentException if the searched artifact type is not supported"{
         checkAll(Exhaustive.collection(INVALID_ARTIFACT_TYPES)) { type ->
             //GIVEN
-            val customerArtifact = tempfile("test_downloadable_${type.name.toLowerCase()}_", ".zip")
+            val customerArtifact = tempfile("test_downloadable_${type.name.lowercase()}_", ".zip")
             val destinyFolder = tempFolder("testReports")
             val artifact = Artifact
                 .builder()
@@ -103,7 +104,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
     "It should download an AWS Device farm artifact of a job execution depending of its type"{
         checkAll(Exhaustive.collection(validTypes)) { type ->
             //GIVEN
-            val customerArtifact = tempfile("test_downloadable_${type.name.toLowerCase()}_", ".zip")
+            val customerArtifact = tempfile("test_downloadable_${type.name.lowercase()}_", ".zip")
             val destinyFolder = tempFolder("testReports")
             val artifact = Artifact
                 .builder()
@@ -139,7 +140,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
     "It should log a message when the searched artifact type is not found in the job artifacts"{
         checkAll(Exhaustive.collection(validTypes)) { type ->
             //GIVEN
-            val customerArtifact = tempfile("test_downloadable_${type.name.toLowerCase()}_", ".zip")
+            val customerArtifact = tempfile("test_downloadable_${type.name.lowercase()}_", ".zip")
             val destinyFolder = tempFolder("testReports")
             val artifact = Artifact
                 .builder()
@@ -292,7 +293,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val runHandler = MockedDeviceFarmRunsHandler(
             getAssociatedJobsImpl = { Either.Right(jobs) }
         )
-        val reportDirectoryPath = Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
+        val reportDirectoryPath = Paths.get("test_reports_${run.name().lowercase().replace("\\s".toRegex(), "_")}")
 
         //WHEN
         DefaultDeviceFarmTractorController(
@@ -302,7 +303,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.toFile().name
@@ -320,7 +321,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
     "It should log an error message when downloading a recorded video or test report fails"{
         checkAll(Exhaustive.collection(downloadableTypes)) { type ->
             //GIVEN
-            val testFile = tempfile("test_downloadable_${type.name.toLowerCase()}", ".zip")
+            val testFile = tempfile("test_downloadable_${type.name.lowercase()}", ".zip")
             val destinyFolder = tempFolder("testReports")
             val run = Run
                 .builder()
@@ -353,7 +354,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                 getAssociatedJobsImpl = { Either.Right(listOf(job)) }
             )
             val reportDirectoryPath =
-                Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
+                Paths.get("test_reports_${run.name().lowercase().replace("\\s".toRegex(), "_")}")
 
             testFile.setReadable(false)
 
@@ -366,7 +367,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                     uploadArtifactsHandler,
                     runHandler,
                     downloadArtifactsHandler
-                ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
+                ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
             }.lineSequence()
                 .filter(String::isNotBlank)
                 .map(String::trim)
@@ -438,7 +439,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val runHandler = MockedDeviceFarmRunsHandler(
             getAssociatedJobsImpl = { Either.Right(jobs) }
         )
-        val reportDirectoryPath = Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
+        val reportDirectoryPath = Paths.get("test_reports_${run.name().lowercase().replace("\\s".toRegex(), "_")}")
 
         //WHEN
         DefaultDeviceFarmTractorController(
@@ -448,7 +449,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.fileName.toString()
@@ -519,7 +520,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val runHandler = MockedDeviceFarmRunsHandler(
             getAssociatedJobsImpl = { Either.Right(jobs) }
         )
-        val reportDirectoryPath = Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
+        val reportDirectoryPath = Paths.get("test_reports_${run.name().lowercase().replace("\\s".toRegex(), "_")}")
 
         //WHEN
         DefaultDeviceFarmTractorController(
@@ -529,7 +530,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.fileName.toString()
@@ -575,7 +576,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             getAssociatedJobsImpl = { Either.Right(listOf(job)) }
         )
         val reportDirectoryPath = destinyFolder
-            .resolve("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
+            .resolve("test_reports_${run.name().lowercase().replace("\\s".toRegex(), "_")}")
             .createDirectory()
 
         //WHEN
@@ -587,7 +588,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                 uploadArtifactsHandler,
                 runHandler,
                 downloadArtifactsHandler
-            ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
+            ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
         }.lineSequence()
             .filter(String::isNotBlank)
             .map(String::trim)
@@ -623,7 +624,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val runHandler = MockedDeviceFarmRunsHandler(
             getAssociatedJobsImpl = { Either.Right(listOf(job)) }
         )
-        val testReportsName = "test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}"
+        val testReportsName = "test_reports_${run.name().lowercase().replace("\\s".toRegex(), "_")}"
         destinyFolder.toFile().setReadOnly()
 
 
@@ -636,7 +637,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                 uploadArtifactsHandler,
                 runHandler,
                 downloadArtifactsHandler
-            ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
+            ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
         }.lineSequence()
             .filter(String::isNotBlank)
             .map(String::trim)
@@ -673,7 +674,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
 
 
         //THEN
@@ -752,7 +753,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         val runHandler = MockedDeviceFarmRunsHandler(
             getAssociatedJobsImpl = { Either.Right(jobs) }
         )
-        val reportDirectoryPath = Paths.get("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
+        val reportDirectoryPath = Paths.get("test_reports_${run.name().lowercase().replace("\\s".toRegex(), "_")}")
 
         val expectedFiles = expectedReports
             .filter { it != reportNotReadable }
@@ -771,7 +772,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.fileName.toString()

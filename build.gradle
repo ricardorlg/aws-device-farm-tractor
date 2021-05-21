@@ -1,6 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.4.32'
-    id 'io.qameta.allure' version '2.8.1'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.0'
     id 'maven-publish'
     id 'signing'
 }
@@ -14,6 +13,9 @@ ext {
 
 repositories {
     mavenCentral()
+    maven {
+        url = "https://oss.sonatype.org/content/repositories/snapshots"
+    }
 }
 
 dependencies {
@@ -21,7 +23,6 @@ dependencies {
     implementation 'software.amazon.awssdk:devicefarm'
     implementation "io.arrow-kt:arrow-fx-coroutines:$arrow_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
-    implementation "io.arrow-kt:arrow-syntax:$arrow_version"
     implementation "io.github.microutils:kotlin-logging:$kotlin_logging_version"
     implementation "org.http4k:http4k-core:$http4k_version"
     implementation "com.jakewharton.picnic:picnic:$picnic_version"
@@ -30,15 +31,10 @@ dependencies {
     testImplementation "io.mockk:mockk:$mockk_version"
     testImplementation "io.kotest:kotest-runner-junit5:$kotest_version"
     testImplementation "io.kotest:kotest-assertions-core:$kotest_version"
-    testImplementation "io.kotest:kotest-assertions-arrow-jvm:$kotest_version"
-    testImplementation "io.kotest:kotest-extensions-allure:$kotest_version"
+    testImplementation "io.kotest.extensions:kotest-assertions-arrow:$kotest_arrow_extension_version"
+    testImplementation "io.kotest:kotest-extensions-htmlreporter:$kotest_version"
     testImplementation "io.kotest:kotest-property:$kotest_version"
 
-}
-
-allure {
-    autoconfigure = false
-    version = "$allure_version"
 }
 
 java {
@@ -61,7 +57,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 test {
     testLogging.showStandardStreams = true
     useJUnitPlatform()
-    systemProperty("kotest.framework.parallelism", System.getProperty("kotest.framework.parallelism", "1"))
 }
 
 publishing {
@@ -106,7 +101,7 @@ publishing {
                 licenses {
                     license {
                         name = 'MIT License'
-                        url = 'http://www.opensource.org/licenses/mit-license.php'
+                        url = 'https://opensource.org/licenses/MIT'
                     }
                 }
 
@@ -126,18 +121,6 @@ publishing {
 
 signing {
     sign publishing.publications.deviceFarmTractor
-}
-
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-    }
-
 }
 
 

@@ -92,8 +92,6 @@ class MockedDeviceFarmController(
         return Unit.right()
     }
 
-    override suspend fun getDeviceResultsTable(run: Run): String {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getDeviceResultsTable(run: Run) = "Mock"
 
 }

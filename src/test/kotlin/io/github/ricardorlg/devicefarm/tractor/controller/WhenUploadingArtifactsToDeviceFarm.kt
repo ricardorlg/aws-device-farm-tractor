@@ -19,6 +19,7 @@ import software.amazon.awssdk.services.devicefarm.model.DeviceFarmException
 import software.amazon.awssdk.services.devicefarm.model.Upload
 import software.amazon.awssdk.services.devicefarm.model.UploadStatus
 import software.amazon.awssdk.services.devicefarm.model.UploadType
+import kotlin.time.Duration
 import kotlin.time.milliseconds
 
 class WhenUploadingArtifactsToDeviceFarm : StringSpec({
@@ -116,7 +117,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
 
         //THEN
         val expectedErrorMessage =
-            "The artifact ${file.nameWithoutExtension} AWS status was ${expectedUpload.status()} message = ${expectedUpload.message()}"
+            "The artifact ${file.name} upload AWS status was ${expectedUpload.status()}, message = ${expectedUpload.message()}"
         response shouldBeLeft {
             it.shouldBeInstanceOf<UploadFailureError>()
             it shouldHaveMessage expectedErrorMessage
@@ -160,13 +161,13 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn,
             artifactPath,
             defaultUploadType,
-            10.milliseconds,
+            Duration.milliseconds(10),
             5
         )
 
         //THEN
         val expectedErrorMessage =
-            "The artifact ${file.nameWithoutExtension} AWS status was ${expectedUpload.status()} message = ${expectedUpload.message()}"
+            "The artifact ${file.name} upload AWS status was ${expectedUpload.status()}, message = ${expectedUpload.message()}"
         response shouldBeLeft {
             it.shouldBeInstanceOf<UploadFailureError>()
             it shouldHaveMessage expectedErrorMessage
@@ -203,7 +204,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn,
             artifactPath,
             defaultUploadType,
-            2.milliseconds,
+            Duration.milliseconds(2),
             5
         )
 
@@ -253,7 +254,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn,
             artifactPath,
             defaultUploadType,
-            10.milliseconds,
+            Duration.milliseconds(10),
         )
 
         //THEN
@@ -312,7 +313,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn = projectArn,
             artifactPath = artifactPath,
             uploadType = defaultUploadType,
-            delaySpaceInterval = 5.milliseconds
+            delaySpaceInterval = Duration.milliseconds(5)
         )
 
         //THEN
@@ -365,7 +366,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn = projectArn,
             artifactPath = artifactPath,
             uploadType = defaultUploadType,
-            delaySpaceInterval = 5.milliseconds
+            delaySpaceInterval = Duration.milliseconds(5)
         )
 
         //THEN

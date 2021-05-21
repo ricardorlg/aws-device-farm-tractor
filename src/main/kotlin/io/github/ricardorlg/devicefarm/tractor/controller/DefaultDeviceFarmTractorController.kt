@@ -25,6 +25,7 @@ import kotlin.io.path.createDirectory
 import kotlin.io.path.deleteExisting
 import kotlin.io.path.listDirectoryEntries
 import kotlin.time.Duration
+import kotlin.time.DurationUnit
 
 internal class DefaultDeviceFarmTractorController(
     deviceFarmTractorLogging: IDeviceFarmTractorLogging,
@@ -111,7 +112,7 @@ internal class DefaultDeviceFarmTractorController(
             ).bind()
 
             val fetchAWSUploadSchedulePolicy = Schedule
-                .spaced<Either<DeviceFarmTractorError, Upload>>(delaySpaceInterval)
+                .spaced<Either<DeviceFarmTractorError, Upload>>(delaySpaceInterval.toDouble(DurationUnit.NANOSECONDS))
                 .whileOutput { retryNumber -> retryNumber < maximumNumberOfRetries }
                 .whileInput<Either<DeviceFarmTractorError, Upload>> { currentResult ->
                     when (currentResult) {
@@ -144,9 +145,9 @@ internal class DefaultDeviceFarmTractorController(
                     }
                 }) { _, b ->
                 b.ensure(
-                    error = { upload -> UploadFailureError("The artifact ${file.nameWithoutExtension} AWS status was ${upload.status()} message = ${upload.message()}") },
+                    error = { upload -> UploadFailureError("The artifact ${file.name} upload AWS status was ${upload.status()}, message = ${upload.message().ifEmpty { "There was no error message, please check if file is valid (yml)" }}") },
                     predicate = { upload -> upload.status() == UploadStatus.SUCCEEDED },
-                    predicateAction = { logMessage("The Artifact ${file.nameWithoutExtension} was uploaded to AWS and is ready to use") }
+                    predicateAction = { logMessage("The Artifact ${file.name} was uploaded to AWS and is ready to use") }
                 )
             }.bind()
         }
@@ -172,8 +173,9 @@ internal class DefaultDeviceFarmTractorController(
         delaySpaceInterval: Duration
     ): Either<DeviceFarmTractorError, Run> {
         return either {
+            //TODO: Use duration when arrow kotlin 1.5 is fully supported
             val policy = Schedule
-                .spaced<Run>(delaySpaceInterval)
+                .spaced<Run>(delaySpaceInterval.toDouble(DurationUnit.NANOSECONDS))
                 .whileInput<Run> { run -> run.status() != ExecutionStatus.COMPLETED }
                 .logInput { logMessage(" Current Run status = ${it.status()}") }
                 .zipRight(Schedule.identity())
@@ -200,7 +202,7 @@ internal class DefaultDeviceFarmTractorController(
             .map { associatedJobs ->
                 createDirectory(
                     destinyDirectory
-                        .resolve("test_reports_${run.name().toLowerCase().replace("\\s".toRegex(), "_")}")
+                        .resolve("test_reports_${run.name().lowercase().replace("\\s".toRegex(), "_")}")
                 ).map { reportsPath ->
                     associatedJobs
                         .parTraverse(Dispatchers.IO) { job ->
@@ -208,7 +210,7 @@ internal class DefaultDeviceFarmTractorController(
                                 reportsPath.resolve(
                                     job.device()
                                         .name()
-                                        .toLowerCase()
+                                        .lowercase()
                                         .replace("\\s".toRegex(), "_")
                                 )
                             ).map { path ->

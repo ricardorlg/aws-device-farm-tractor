@@ -18,5 +18,5 @@ interface IDeviceFarmRunsHandler {
 
     suspend fun fetchRun(runArn: String): Either<DeviceFarmTractorError, Run>
 
-    suspend fun getAssociatedJobs(run:Run):Either<DeviceFarmTractorError,List<Job>>
+    suspend fun getAssociatedJobs(run: Run): Either<DeviceFarmTractorError, List<Job>>
 }
