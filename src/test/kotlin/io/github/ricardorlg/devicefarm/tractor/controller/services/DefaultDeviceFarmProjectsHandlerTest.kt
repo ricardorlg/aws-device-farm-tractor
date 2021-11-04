@@ -2,9 +2,10 @@ package io.github.ricardorlg.devicefarm.tractor.controller.services
 
 import io.github.ricardorlg.devicefarm.tractor.controller.services.implementations.DefaultDeviceFarmProjectsHandler
 import io.github.ricardorlg.devicefarm.tractor.model.*
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
@@ -39,7 +40,7 @@ class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmProjectsHandler(dfClient).listProjects()
 
         //THEN
-        response shouldBeRight expectedProjects
+        response.shouldBeRight().shouldBe(expectedProjects)
 
         verify {
             dfClient.listProjectsPaginator().projects()
@@ -56,7 +57,7 @@ class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmProjectsHandler(dfClient).listProjects()
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorFetchingProjects>()
             it shouldHaveMessage ERROR_MESSAGE_FETCHING_AWS_PROJECTS
             it.cause shouldBe expectedError
@@ -82,7 +83,7 @@ class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmProjectsHandler(dfClient).createProject(projectName)
 
         //THEN
-        response shouldBeRight expectedProject
+        response.shouldBeRight() shouldBe expectedProject
         verify {
             dfClient.createProject(CreateProjectRequest.builder().name(projectName).build())
         }
@@ -98,7 +99,7 @@ class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmProjectsHandler(dfClient).createProject(projectName)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorCreatingProject>()
             it shouldHaveMessage "$ERROR_PREFIX_MESSAGE_CREATING_NEW_PROJECT $projectName"
             it.cause shouldBe expectedError
@@ -113,7 +114,7 @@ class DefaultDeviceFarmProjectsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmProjectsHandler(dfClient).createProject("   ")
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_PROJECT_NAME
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()

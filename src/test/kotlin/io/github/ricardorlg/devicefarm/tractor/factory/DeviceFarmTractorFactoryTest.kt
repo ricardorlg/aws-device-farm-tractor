@@ -1,8 +1,8 @@
 package io.github.ricardorlg.devicefarm.tractor.factory
 
 import io.github.ricardorlg.devicefarm.tractor.stubs.MockedDeviceFarmLogging
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
@@ -318,7 +318,7 @@ class DeviceFarmTractorFactoryTest : StringSpec({
         val actualRunner = DeviceFarmTractorFactory.createRunner(deviceFarmClientBuilder = builder, logger = logger)
 
         //THEN
-        actualRunner shouldBeLeft expectedError
+        actualRunner.shouldBeLeft() shouldBe expectedError
 
         verifySequence {
             builder.applyMutation(any())

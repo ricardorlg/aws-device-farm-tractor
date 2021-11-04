@@ -3,10 +3,11 @@ package io.github.ricardorlg.devicefarm.tractor.controller
 import arrow.core.Either
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
 import io.github.ricardorlg.devicefarm.tractor.stubs.*
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.assertions.fail
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
 import software.amazon.awssdk.services.devicefarm.model.Project
 
 class WhenWorkingWithDeviceFarmProjects : StringSpec({
@@ -44,7 +45,7 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
         ).findOrCreateProject(expectedProject.name())
 
         //THEN
-        response shouldBeRight expectedProject
+        response.shouldBeRight() shouldBe expectedProject
 
     }
 
@@ -67,7 +68,7 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
         ).findOrCreateProject(expectedProject.name())
 
         //THEN
-        response shouldBeRight expectedProject
+        response.shouldBeRight() shouldBe expectedProject
     }
 
     "It should return a DeviceFarmTractorError if something happens fetching device farm projects"{
@@ -89,7 +90,7 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
         ).findOrCreateProject("Non Important")
 
         //THEN
-        response shouldBeLeft expectedError
+        response.shouldBeLeft() shouldBe expectedError
 
     }
 
@@ -112,7 +113,6 @@ class WhenWorkingWithDeviceFarmProjects : StringSpec({
         ).findOrCreateProject("Non Important")
 
         //THEN
-        response shouldBeLeft expectedError
-
+        response.shouldBeLeft() shouldBe expectedError
     }
 })

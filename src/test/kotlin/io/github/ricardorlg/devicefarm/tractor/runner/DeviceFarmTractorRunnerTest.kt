@@ -25,7 +25,6 @@ import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Paths
 import java.time.LocalDateTime
 import kotlin.time.Duration
-import kotlin.time.seconds
 
 class DeviceFarmTractorRunnerTest : StringSpec({
 

@@ -3,10 +3,12 @@ package io.github.ricardorlg.devicefarm.tractor.utils
 import io.github.ricardorlg.devicefarm.tractor.model.*
 import io.github.ricardorlg.devicefarm.tractor.utils.HelperMethods.uploadType
 import io.github.ricardorlg.devicefarm.tractor.utils.HelperMethods.validateFileExtensionByType
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
+import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.property.Exhaustive
@@ -24,7 +26,7 @@ class HelperMethodsTest : StringSpec({
         val response = file.validateFileExtensionByType(UploadType.ANDROID_APP)
 
         //THEN
-        response shouldBeRight file
+        response.shouldBeRight() shouldBe file
     }
     "When Android upload type is used, and file does not have .apk extension an error is returned" {
         //GIVEN
@@ -36,7 +38,7 @@ class HelperMethodsTest : StringSpec({
         val response = file.validateFileExtensionByType(UploadType.ANDROID_APP)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmIllegalArtifactExtension>()
             it shouldHaveMessage expectedErrorMessage
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -50,7 +52,7 @@ class HelperMethodsTest : StringSpec({
         val response = file.validateFileExtensionByType(UploadType.IOS_APP)
 
         //THEN
-        response shouldBeRight file
+        response.shouldBeRight() shouldBe file
     }
     "When IOS upload type is used, and file does not have .ipa extension an error is returned" {
         //GIVEN
@@ -62,7 +64,7 @@ class HelperMethodsTest : StringSpec({
         val response = file.validateFileExtensionByType(UploadType.IOS_APP)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmIllegalArtifactExtension>()
             it shouldHaveMessage expectedErrorMessage
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -76,7 +78,7 @@ class HelperMethodsTest : StringSpec({
         val response = file.validateFileExtensionByType(UploadType.APPIUM_NODE_TEST_SPEC)
 
         //THEN
-        response shouldBeRight file
+        response.shouldBeRight() shouldBe file
     }
     "When Appium Node Test Spec upload type is used, and file does not have .yml extension an error is returned" {
         //GIVEN
@@ -88,7 +90,7 @@ class HelperMethodsTest : StringSpec({
         val response = file.validateFileExtensionByType(UploadType.APPIUM_NODE_TEST_SPEC)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmIllegalArtifactExtension>()
             it shouldHaveMessage expectedErrorMessage
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -102,7 +104,7 @@ class HelperMethodsTest : StringSpec({
         val response = file.validateFileExtensionByType(UploadType.WEB_APP)
 
         //THEN
-        response shouldBeRight file
+        response.shouldBeRight() shouldBe file
     }
     "When Upload type is not Android,IOS or Appium, and file does not have .zip extension an error is returned" {
         //GIVEN
@@ -114,7 +116,7 @@ class HelperMethodsTest : StringSpec({
         val response = file.validateFileExtensionByType(UploadType.WEB_APP)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmIllegalArtifactExtension>()
             it shouldHaveMessage expectedErrorMessage
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -125,7 +127,7 @@ class HelperMethodsTest : StringSpec({
         val response = tempfile().validateFileExtensionByType(UploadType.UNKNOWN_TO_SDK_VERSION)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmIllegalArtifactExtension.UnsupportedException>()
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
         }
@@ -138,7 +140,7 @@ class HelperMethodsTest : StringSpec({
         val response = HelperMethods.loadFileFromPath(expectedFile.path)
 
         //THEN
-        response shouldBeRight expectedFile
+        response.shouldBeRight() shouldBe expectedFile
     }
     "When loading a file from a given path, if the files doesn't exists an error should be returned as a Left" {
         //WHEN
@@ -146,7 +148,7 @@ class HelperMethodsTest : StringSpec({
         val response = HelperMethods.loadFileFromPath(path)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorGeneralError>()
             it shouldHaveMessage "The file at $path does not exists"
             it.cause.shouldBeInstanceOf<java.lang.IllegalArgumentException>()
@@ -157,7 +159,7 @@ class HelperMethodsTest : StringSpec({
         val response = HelperMethods.loadFileFromPath("   ")
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
         }
     }
@@ -167,7 +169,7 @@ class HelperMethodsTest : StringSpec({
         val response = "   ".uploadType()
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage MANDATORY_PATH_PARAMETER
         }
@@ -181,7 +183,7 @@ class HelperMethodsTest : StringSpec({
         val response = app.path.uploadType()
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage UNSUPPORTED_APP_FILE_EXTENSION.format(app.extension)
         }
@@ -203,7 +205,7 @@ class HelperMethodsTest : StringSpec({
             val response = app.path.uploadType()
 
             //THEN
-            response shouldBeRight expectedUploadType
+            response.shouldBeRight() shouldBe expectedUploadType
         }
     }
 })

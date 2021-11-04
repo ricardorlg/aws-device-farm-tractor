@@ -5,8 +5,8 @@ import io.github.ricardorlg.devicefarm.tractor.model.*
 import io.github.ricardorlg.devicefarm.tractor.stubs.*
 import io.github.ricardorlg.devicefarm.tractor.tempFolder
 import io.github.ricardorlg.devicefarm.tractor.utils.prettyName
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.assertions.fail
 import io.kotest.assertions.withClue
 import io.kotest.core.spec.style.StringSpec
@@ -18,6 +18,7 @@ import io.kotest.matchers.paths.shouldBeADirectory
 import io.kotest.matchers.paths.shouldContainFile
 import io.kotest.matchers.paths.shouldContainNFiles
 import io.kotest.matchers.paths.shouldNotContainFile
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldStartWith
 import io.kotest.matchers.throwable.shouldHaveMessage
@@ -35,7 +36,6 @@ import java.nio.file.attribute.PosixFilePermissions
 import kotlin.io.path.createDirectory
 import kotlin.io.path.listDirectoryEntries
 import kotlin.time.Duration
-import kotlin.time.milliseconds
 
 class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
 
@@ -92,7 +92,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             )
 
             //THEN
-            response shouldBeLeft {
+            response.shouldBeLeft() should {
                 it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
                 it shouldHaveMessage "$type is not supported"
             }
@@ -131,7 +131,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             )
 
             //THEN
-            response shouldBeRight Unit
+            response.shouldBeRight()
             destinyFolder shouldContainFile customerArtifact.name
             destinyFolder shouldContainNFiles 1
         }
@@ -170,7 +170,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                     deviceName = deviceName,
                     path = destinyFolder,
                     artifactType = type
-                ).shouldBeRight(Unit)
+                ).shouldBeRight()
             }.lines()
                 .filter(String::isNotBlank)
                 .map(String::trim)
@@ -215,7 +215,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorDownloadingArtifact>()
             it.cause.shouldBeInstanceOf<AccessDeniedException>()
         }
@@ -242,7 +242,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
         )
 
         //THEN
-        response shouldBeRight Unit
+        response.shouldBeRight()
         destinyFolder shouldNotContainFile customerArtifact.name
         destinyFolder shouldContainNFiles 0
     }

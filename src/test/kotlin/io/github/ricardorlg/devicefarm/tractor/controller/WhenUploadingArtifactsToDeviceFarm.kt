@@ -7,11 +7,13 @@ import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmIllegalArtifactEx
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
 import io.github.ricardorlg.devicefarm.tractor.model.UploadFailureError
 import io.github.ricardorlg.devicefarm.tractor.stubs.*
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.assertions.fail
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
+import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
 import kotlinx.coroutines.delay
@@ -20,7 +22,6 @@ import software.amazon.awssdk.services.devicefarm.model.Upload
 import software.amazon.awssdk.services.devicefarm.model.UploadStatus
 import software.amazon.awssdk.services.devicefarm.model.UploadType
 import kotlin.time.Duration
-import kotlin.time.milliseconds
 
 class WhenUploadingArtifactsToDeviceFarm : StringSpec({
 
@@ -72,7 +73,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //THEN
-        response shouldBeRight expectedUpload
+        response.shouldBeRight() shouldBe expectedUpload
 
     }
 
@@ -118,7 +119,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         //THEN
         val expectedErrorMessage =
             "The artifact ${file.name} upload AWS status was ${expectedUpload.status()}, message = ${expectedUpload.message()}"
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<UploadFailureError>()
             it shouldHaveMessage expectedErrorMessage
         }
@@ -168,7 +169,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         //THEN
         val expectedErrorMessage =
             "The artifact ${file.name} upload AWS status was ${expectedUpload.status()}, message = ${expectedUpload.message()}"
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<UploadFailureError>()
             it shouldHaveMessage expectedErrorMessage
         }
@@ -209,7 +210,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft expectedError
+        response.shouldBeLeft() shouldBe expectedError
     }
 
     "It should return a DeviceFarmTractorError when uploading the artifact to s3 fails, no matters the upload status"{
@@ -258,7 +259,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft expectedError
+        response.shouldBeLeft() shouldBe expectedError
     }
 
     "It should keep fetching upload status even if an error happens in a a retry"{
@@ -317,8 +318,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //THEN
-        response shouldBeRight expectedUpload
-
+        response.shouldBeRight() shouldBe expectedUpload
     }
 
     "It should stop fetching upload status when a DeviceFarmException happens in a a retry"{
@@ -370,7 +370,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft uploadFailure
+        response.shouldBeLeft() shouldBe uploadFailure
 
     }
 
@@ -401,7 +401,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft expectedError
+        response.shouldBeLeft() shouldBe expectedError
     }
 
     "It should return a DeviceFarmIllegalArtifactExtension when the upload file doesn't satisfy the upload type"{
@@ -432,7 +432,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmIllegalArtifactExtension>()
             it shouldHaveMessage expectedErrorMessage
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -465,7 +465,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorGeneralError>()
         }
     }

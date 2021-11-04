@@ -3,13 +3,13 @@ package io.github.ricardorlg.devicefarm.tractor.controller
 import arrow.core.Either
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorGeneralError
 import io.github.ricardorlg.devicefarm.tractor.stubs.*
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.assertions.fail
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
 import software.amazon.awssdk.services.devicefarm.model.*
 import kotlin.time.Duration
-import kotlin.time.milliseconds
 
 class WhenWorkingWithDeviceFarmRuns : StringSpec({
 
@@ -68,7 +68,7 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
         )
 
         //THEN
-        response shouldBeRight expectedResult
+        response.shouldBeRight() shouldBe expectedResult
 
     }
 
@@ -121,7 +121,7 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
         )
 
         //THEN
-        response shouldBeRight expectedResult
+        response.shouldBeRight() shouldBe expectedResult
 
     }
 
@@ -160,7 +160,7 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft expectedError
+        response.shouldBeLeft() shouldBe expectedError
 
     }
 
@@ -192,7 +192,7 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft expectedError
+        response.shouldBeLeft() shouldBe expectedError
 
     }
 })

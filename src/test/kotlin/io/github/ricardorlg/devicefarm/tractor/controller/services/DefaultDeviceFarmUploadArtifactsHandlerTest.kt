@@ -2,10 +2,11 @@ package io.github.ricardorlg.devicefarm.tractor.controller.services
 
 import io.github.ricardorlg.devicefarm.tractor.controller.services.implementations.DefaultDeviceFarmUploadArtifactsHandler
 import io.github.ricardorlg.devicefarm.tractor.model.*
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.engine.spec.tempfile
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
@@ -46,7 +47,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         )
 
         //THEN
-        response shouldBeRight expectedUpload
+        response.shouldBeRight().shouldBe(expectedUpload)
         verify {
             dfClient.createUpload(
                 CreateUploadRequest
@@ -73,7 +74,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorCreatingUpload>()
             it shouldHaveMessage ERROR_CREATING_AWS_UPLOAD.format(projectArn)
             it.cause shouldBe expectedError
@@ -100,7 +101,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_PROJECT_ARN
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -120,7 +121,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_FILENAME
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -144,7 +145,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
             DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).uploadArtifactToS3(artifact, awsUpload)
 
         //THEN
-        response shouldBeRight Unit
+        response.shouldBeRight().shouldBe(Unit)
     }
     "When uploading artifact to S3, it should return a left when upload result has not OK status" {
         //GIVEN
@@ -165,7 +166,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
             )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorUploadingArtifact>()
             it shouldHaveMessage ARTIFACT_UPLOAD_TO_S3_NOT_SUCCESSFULLY.format(
                 artifact.nameWithoutExtension,
@@ -194,7 +195,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
             )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorUploadingArtifact>()
             it shouldHaveMessage ERROR_UPLOADING_ARTIFACT_TO_S3.format(
                 artifact.nameWithoutExtension
@@ -219,7 +220,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).fetchUpload(uploadARN)
 
         //THEN
-        response shouldBeRight expectedUpload
+        response.shouldBeRight() shouldBe expectedUpload
         verify {
             dfClient.getUpload(
                 GetUploadRequest
@@ -235,7 +236,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).fetchUpload("")
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_UPLOAD_ARN
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -254,7 +255,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).fetchUpload(uploadARN)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorFetchingUpload>()
             it shouldHaveMessage ERROR_FETCHING_UPLOAD_FROM_AWS.format(uploadARN)
             it.cause shouldBe expectedError
@@ -285,7 +286,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).deleteUpload(uploadARN)
 
         //THEN
-        response shouldBeRight expectedResponse
+        response.shouldBeRight() shouldBe expectedResponse
         verify {
             dfClient.deleteUpload(DeleteUploadRequest.builder().arn(uploadARN).build())
         }
@@ -301,7 +302,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).deleteUpload(uploadARN)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorDeletingUpload>()
             it shouldHaveMessage ERROR_DELETING_UPLOAD.format(uploadARN)
             it.cause shouldBe expectedError
@@ -332,7 +333,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).deleteUpload(uploadARN)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorDeletingUpload>()
             it shouldHaveMessage DELETE_UPLOAD_INVALID_RESPONSE_CODE.format(codeError)
         }
@@ -346,7 +347,7 @@ class DefaultDeviceFarmUploadArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmUploadArtifactsHandler(dfClient, httpClient).deleteUpload("  ")
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_UPLOAD_ARN
         }

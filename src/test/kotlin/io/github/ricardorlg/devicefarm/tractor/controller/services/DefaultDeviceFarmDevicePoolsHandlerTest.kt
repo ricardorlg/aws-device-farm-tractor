@@ -2,12 +2,13 @@ package io.github.ricardorlg.devicefarm.tractor.controller.services
 
 import io.github.ricardorlg.devicefarm.tractor.controller.services.implementations.DefaultDeviceFarmDevicePoolsHandler
 import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorErrorIllegalArgumentException
-import io.github.ricardorlg.devicefarm.tractor.model.ErrorFetchingDevicePools
 import io.github.ricardorlg.devicefarm.tractor.model.EMPTY_PROJECT_ARN
 import io.github.ricardorlg.devicefarm.tractor.model.ERROR_MESSAGE_FETCHING_DEVICE_POOLS
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.github.ricardorlg.devicefarm.tractor.model.ErrorFetchingDevicePools
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
@@ -39,7 +40,7 @@ class DefaultDeviceFarmDevicePoolsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmDevicePoolsHandler(dfClient).fetchDevicePools(projectArn)
 
         //THEN
-        response shouldBeRight expectedDevicePools
+        response.shouldBeRight().shouldBe(expectedDevicePools)
         verify {
             dfClient.listDevicePoolsPaginator(ListDevicePoolsRequest.builder().arn(projectArn).build())
         }
@@ -50,7 +51,7 @@ class DefaultDeviceFarmDevicePoolsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmDevicePoolsHandler(dfClient).fetchDevicePools("")
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_PROJECT_ARN
             it.cause.shouldBeInstanceOf<IllegalArgumentException>()
@@ -71,7 +72,7 @@ class DefaultDeviceFarmDevicePoolsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmDevicePoolsHandler(dfClient).fetchDevicePools(projectArn)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorFetchingDevicePools>()
             it shouldHaveMessage ERROR_MESSAGE_FETCHING_DEVICE_POOLS
             it.cause shouldBe expectedError

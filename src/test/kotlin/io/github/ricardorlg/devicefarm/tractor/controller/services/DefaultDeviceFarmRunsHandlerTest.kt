@@ -2,9 +2,10 @@ package io.github.ricardorlg.devicefarm.tractor.controller.services
 
 import io.github.ricardorlg.devicefarm.tractor.controller.services.implementations.DefaultDeviceFarmRunsHandler
 import io.github.ricardorlg.devicefarm.tractor.model.*
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
@@ -48,7 +49,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             )
 
         //THEN
-        response shouldBeRight expectedRun
+        response.shouldBeRight().shouldBe(expectedRun)
         verify {
             dfClient.scheduleRun(
                 ScheduleRunRequest
@@ -91,7 +92,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             )
 
         //THEN
-        response shouldBeRight expectedRun
+        response.shouldBeRight().shouldBe(expectedRun)
         verify {
             dfClient.scheduleRun(
                 ScheduleRunRequest
@@ -125,7 +126,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_APP_ARN
         }
@@ -149,7 +150,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_DEVICE_POOL_ARN
         }
@@ -173,7 +174,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_PROJECT_ARN
         }
@@ -203,7 +204,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             )
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorSchedulingRun>()
             it shouldHaveMessage ERROR_SCHEDULING_RUN
             it.cause shouldBe expectedError
@@ -229,7 +230,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmRunsHandler(dfClient).fetchRun(runARN)
 
         //THEN
-        response shouldBeRight expectedRun
+        response.shouldBeRight() shouldBe expectedRun
         verify {
             dfClient.getRun(GetRunRequest.builder().arn(runARN).build())
         }
@@ -241,7 +242,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmRunsHandler(dfClient).fetchRun(" ")
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_RUN_ARN
         }
@@ -260,7 +261,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmRunsHandler(dfClient).fetchRun(runARN)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorFetchingAWSRun>()
             it shouldHaveMessage ERROR_FETCHING_RUN.format(runARN)
             it.cause shouldBe expectedError
@@ -294,7 +295,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             .getAssociatedJobs(run)
 
         //THEN
-        response shouldBeRight expectedJobs
+        response.shouldBeRight() shouldBe expectedJobs
 
         verify {
             dfClient.listJobsPaginator(ListJobsRequest.builder().arn(run.arn()).build())
@@ -317,7 +318,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
             .getAssociatedJobs(run)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<ErrorListingAssociatedJobs>()
             it shouldHaveMessage ERROR_FETCHING_JOBS.format(run.arn())
             it.cause shouldBe expectedError

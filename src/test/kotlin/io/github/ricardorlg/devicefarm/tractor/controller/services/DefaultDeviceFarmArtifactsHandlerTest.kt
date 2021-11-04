@@ -5,9 +5,10 @@ import io.github.ricardorlg.devicefarm.tractor.model.DeviceFarmTractorErrorIlleg
 import io.github.ricardorlg.devicefarm.tractor.model.EMPTY_RUN_ARN
 import io.github.ricardorlg.devicefarm.tractor.model.ERROR_FETCHING_ARTIFACTS
 import io.github.ricardorlg.devicefarm.tractor.model.ErrorFetchingArtifacts
-import io.kotest.assertions.arrow.either.shouldBeLeft
-import io.kotest.assertions.arrow.either.shouldBeRight
+import io.kotest.assertions.arrow.core.shouldBeLeft
+import io.kotest.assertions.arrow.core.shouldBeRight
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
@@ -43,10 +44,12 @@ class DefaultDeviceFarmArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmArtifactsHandler(dfClient).getArtifacts(runArn)
 
         //THEN
-        response shouldBeRight expectedArtifacts
+        response.shouldBeRight().shouldBe(expectedArtifacts)
 
         verify {
-            dfClient.listArtifactsPaginator(ListArtifactsRequest.builder().type(ArtifactCategory.FILE).arn(runArn).build())
+            dfClient.listArtifactsPaginator(
+                ListArtifactsRequest.builder().type(ArtifactCategory.FILE).arn(runArn).build()
+            )
         }
         confirmVerified(dfClient)
     }
@@ -60,14 +63,16 @@ class DefaultDeviceFarmArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmArtifactsHandler(dfClient).getArtifacts(runArn)
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should  {
             it.shouldBeInstanceOf<ErrorFetchingArtifacts>()
             it shouldHaveMessage ERROR_FETCHING_ARTIFACTS.format(runArn)
             it.cause shouldBe expectedError
         }
 
         verify {
-            dfClient.listArtifactsPaginator(ListArtifactsRequest.builder().type(ArtifactCategory.FILE).arn(runArn).build())
+            dfClient.listArtifactsPaginator(
+                ListArtifactsRequest.builder().type(ArtifactCategory.FILE).arn(runArn).build()
+            )
         }
         confirmVerified(dfClient)
     }
@@ -77,7 +82,7 @@ class DefaultDeviceFarmArtifactsHandlerTest : StringSpec({
         val response = DefaultDeviceFarmArtifactsHandler(dfClient).getArtifacts("")
 
         //THEN
-        response shouldBeLeft {
+        response.shouldBeLeft() should {
             it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
             it shouldHaveMessage EMPTY_RUN_ARN
         }
