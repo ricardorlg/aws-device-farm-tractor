@@ -22,6 +22,7 @@ import software.amazon.awssdk.services.devicefarm.model.Upload
 import software.amazon.awssdk.services.devicefarm.model.UploadStatus
 import software.amazon.awssdk.services.devicefarm.model.UploadType
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 
 class WhenUploadingArtifactsToDeviceFarm : StringSpec({
 
@@ -162,7 +163,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn,
             artifactPath,
             defaultUploadType,
-            Duration.milliseconds(10),
+            10.milliseconds,
             5
         )
 
@@ -205,7 +206,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn,
             artifactPath,
             defaultUploadType,
-            Duration.milliseconds(2),
+            2.milliseconds,
             5
         )
 
@@ -255,7 +256,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn,
             artifactPath,
             defaultUploadType,
-            Duration.milliseconds(10),
+            10.milliseconds,
         )
 
         //THEN
@@ -314,7 +315,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn = projectArn,
             artifactPath = artifactPath,
             uploadType = defaultUploadType,
-            delaySpaceInterval = Duration.milliseconds(5)
+            delaySpaceInterval = 5.milliseconds
         )
 
         //THEN
@@ -366,7 +367,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
             projectArn = projectArn,
             artifactPath = artifactPath,
             uploadType = defaultUploadType,
-            delaySpaceInterval = Duration.milliseconds(5)
+            delaySpaceInterval = 5.milliseconds
         )
 
         //THEN

@@ -25,6 +25,8 @@ import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Paths
 import java.time.LocalDateTime
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.hours
+import kotlin.time.Duration.Companion.seconds
 
 class DeviceFarmTractorRunnerTest : StringSpec({
 
@@ -1197,7 +1199,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
     }
 
     "When running a test in device farm it should throw an error if a left is returner by the upload artifacts handler and the parallel upload process should be cancelled".config(
-        timeout = Duration.seconds(1)
+        timeout = 1.seconds
     ) {
         //region GIVEN
         val project = Project
@@ -1237,7 +1239,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
                     when (uploadType) {
                         UploadType.ANDROID_APP -> {
-                            delay(Duration.hours(10))
+                            delay(10.hours)
                             appUpload.right()
                         }
                         UploadType.APPIUM_NODE_TEST_PACKAGE -> {

@@ -36,6 +36,7 @@ import java.nio.file.attribute.PosixFilePermissions
 import kotlin.io.path.createDirectory
 import kotlin.io.path.listDirectoryEntries
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 
 class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
 
@@ -303,7 +304,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.toFile().name
@@ -367,7 +368,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                     uploadArtifactsHandler,
                     runHandler,
                     downloadArtifactsHandler
-                ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
+                ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
             }.lineSequence()
                 .filter(String::isNotBlank)
                 .map(String::trim)
@@ -449,7 +450,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.fileName.toString()
@@ -530,7 +531,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.fileName.toString()
@@ -588,7 +589,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                 uploadArtifactsHandler,
                 runHandler,
                 downloadArtifactsHandler
-            ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
+            ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
         }.lineSequence()
             .filter(String::isNotBlank)
             .map(String::trim)
@@ -637,7 +638,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
                 uploadArtifactsHandler,
                 runHandler,
                 downloadArtifactsHandler
-            ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
+            ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
         }.lineSequence()
             .filter(String::isNotBlank)
             .map(String::trim)
@@ -674,7 +675,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
 
 
         //THEN
@@ -772,7 +773,7 @@ class WhenDownloadingAwsDeviceFarmArtifacts : StringSpec({
             uploadArtifactsHandler,
             runHandler,
             downloadArtifactsHandler
-        ).downloadAllEvidencesOfTestRun(run, destinyFolder, Duration.milliseconds(0))
+        ).downloadAllEvidencesOfTestRun(run, destinyFolder, 0.milliseconds)
 
         //THEN
         destinyFolder shouldContainFile reportDirectoryPath.fileName.toString()

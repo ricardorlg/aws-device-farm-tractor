@@ -10,6 +10,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import software.amazon.awssdk.services.devicefarm.model.*
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 
 class WhenWorkingWithDeviceFarmRuns : StringSpec({
 
@@ -117,7 +118,7 @@ class WhenWorkingWithDeviceFarmRuns : StringSpec({
             runName = runName,
             projectArn = projectArn,
             testConfiguration = testConfiguration,
-            delaySpaceInterval = Duration.milliseconds(5)
+            delaySpaceInterval = 5.milliseconds
         )
 
         //THEN

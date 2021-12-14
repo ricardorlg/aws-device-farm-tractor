@@ -50,9 +50,10 @@ jar {
     }
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions.useIR = true
-    kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlin.time.ExperimentalTime", "-Xuse-experimental=kotlin.io.path.ExperimentalPathApi"]
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        freeCompilerArgs += "-opt-in=kotlin.time.ExperimentalTime"
+    }
 }
 
 test {
