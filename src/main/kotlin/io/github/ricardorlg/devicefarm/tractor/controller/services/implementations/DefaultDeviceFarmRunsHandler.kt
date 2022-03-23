@@ -1,6 +1,7 @@
 package io.github.ricardorlg.devicefarm.tractor.controller.services.implementations
 
 import arrow.core.Either
+import arrow.core.left
 import io.github.ricardorlg.devicefarm.tractor.controller.services.definitions.IDeviceFarmRunsHandler
 import io.github.ricardorlg.devicefarm.tractor.model.*
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
@@ -15,10 +16,14 @@ internal class DefaultDeviceFarmRunsHandler(private val deviceFarmClient: Device
         executionConfiguration: ExecutionConfiguration,
         runName: String,
         projectArn: String,
-        testConfiguration: ScheduleRunTest
+        testConfiguration: ScheduleRunTest,
     ): Either<DeviceFarmTractorError, Run> {
+        if (testConfiguration.type() != TestType.APPIUM_WEB_NODE && testConfiguration.type() != TestType.APPIUM_NODE) {
+            return DeviceFarmTractorErrorIllegalArgumentException(UNSUPPORTED_EXECUTION_TYPE.format(testConfiguration.type()?.name?:"Unknown")).left()
+        }
+        val isWebExecution = testConfiguration.type() == TestType.APPIUM_WEB_NODE
         return when {
-            appArn.isBlank() -> {
+            !isWebExecution && appArn.isBlank() -> {
                 Either.Left(DeviceFarmTractorErrorIllegalArgumentException(EMPTY_APP_ARN))
             }
             devicePoolArn.isBlank() -> {
@@ -31,13 +36,14 @@ internal class DefaultDeviceFarmRunsHandler(private val deviceFarmClient: Device
                 Either.catch {
                     val request = ScheduleRunRequest
                         .builder()
-                        .appArn(appArn)
                         .configuration(runConfiguration)
                         .devicePoolArn(devicePoolArn)
                         .executionConfiguration(executionConfiguration)
                         .projectArn(projectArn)
                         .test(testConfiguration)
                         .apply {
+                            if (!isWebExecution)
+                                appArn(appArn)
                             if (runName.isNotBlank())
                                 name(runName)
                         }.build()

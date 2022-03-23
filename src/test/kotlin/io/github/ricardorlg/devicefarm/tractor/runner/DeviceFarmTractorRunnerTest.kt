@@ -24,7 +24,6 @@ import kotlinx.coroutines.delay
 import software.amazon.awssdk.services.devicefarm.model.*
 import java.nio.file.Paths
 import java.time.LocalDateTime
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.seconds
 
@@ -46,6 +45,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
     val testSpecUploadName = "testSpec.yml"
     val testSpecPath = "testSpecPath"
     val runName = "test Run unit test"
+    val testExecutionNative = TestExecutionType.MOBILE_NATIVE
 
     val mockedDate = LocalDateTime.now()
     mockkStatic(LocalDateTime::class)
@@ -126,7 +126,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testSpecPath = testSpecPath,
             runName = runName,
             downloadReports = false,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -216,7 +217,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testSpecPath = testSpecPath,
             runName = runName,
             downloadReports = false,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -302,7 +304,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testSpecPath = testSpecPath,
             runName = runName,
             downloadReports = false,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -389,93 +392,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             runName = runName,
             downloadReports = false,
             cleanStateAfterRun = false,
-            captureVideo = false
-        )
-        //endregion
-
-        //region THEN
-        response shouldBe expectedRun
-        //endregion
-    }
-
-    "When running a test in device farm it should have APPIUM NODE as test type" {
-        //region GIVEN
-        val project = Project
-            .builder()
-            .arn(expectedProjectArn)
-            .name(projectName)
-            .build()
-
-        val devicePool = DevicePool
-            .builder()
-            .arn(devicePoolArn)
-            .name(devicePoolName)
-            .build()
-
-        val appUpload = Upload
-            .builder()
-            .arn(appUploadArn)
-            .name(appUploadName)
-            .type(appUploadType)
-            .build()
-
-        val testsUpload = Upload
-            .builder()
-            .arn(testsUploadArn)
-            .name(testsUploadName)
-            .type(UploadType.APPIUM_NODE_TEST_PACKAGE)
-            .build()
-
-        val testSpecUpload = Upload
-            .builder()
-            .arn(testSpecUploadArn)
-            .name(testSpecUploadName)
-            .type(UploadType.APPIUM_NODE_TEST_SPEC)
-            .build()
-
-        val expectedRun = Run
-            .builder()
-            .name(runName)
-            .status(ExecutionStatus.COMPLETED)
-            .result(ExecutionResult.PASSED)
-            .build()
-
-        val controller = MockedDeviceFarmController(
-            findOrCreateProjectImpl = { Either.Right(project) },
-            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
-            uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
-                when (uploadType) {
-                    UploadType.ANDROID_APP -> {
-                        appUpload
-                    }
-                    UploadType.APPIUM_NODE_TEST_PACKAGE -> {
-                        testsUpload
-                    }
-                    UploadType.APPIUM_NODE_TEST_SPEC -> {
-                        testSpecUpload
-                    }
-                    else -> fail("the upload type $uploadType should never been passed as a parameter")
-                }.right()
-            },
-            scheduleRunAndWaitImpl = { _, _, _, _, _, _, testConfiguration ->
-                withClue("the test execution type should be Appium Node") {
-                    testConfiguration.type() shouldBe TestType.APPIUM_NODE
-                }
-                Either.Right(expectedRun)
-            }
-        )
-        //endregion
-
-        //region WHEN
-        val response = DeviceFarmTractorRunner(controller).runTests(
-            projectName = projectName,
-            devicePoolName = devicePoolName,
-            appPath = appPath,
-            testProjectPath = testsPath,
-            testSpecPath = testSpecPath,
-            runName = runName,
-            downloadReports = false,
-            cleanStateAfterRun = false
+            captureVideo = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -562,7 +480,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testSpecPath = testSpecPath,
             runName = runName,
             downloadReports = false,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -646,7 +565,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testSpecPath = testSpecPath,
             runName = runName,
             downloadReports = false,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -654,6 +574,84 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         response shouldBe expectedRun
         //endregion
     }
+
+    "When running a test in device farm as web execution type it should use the correct paths for the different upload types" {
+        //region GIVEN
+        val project = Project
+            .builder()
+            .arn(expectedProjectArn)
+            .name(projectName)
+            .build()
+
+        val devicePool = DevicePool
+            .builder()
+            .arn(devicePoolArn)
+            .name(devicePoolName)
+            .build()
+
+        val testsUpload = Upload
+            .builder()
+            .arn(testsUploadArn)
+            .name(testsUploadName)
+            .type(UploadType.APPIUM_NODE_TEST_PACKAGE)
+            .build()
+
+        val testSpecUpload = Upload
+            .builder()
+            .arn(testSpecUploadArn)
+            .name(testSpecUploadName)
+            .type(UploadType.APPIUM_NODE_TEST_SPEC)
+            .build()
+
+        val expectedRun = Run
+            .builder()
+            .name(runName)
+            .status(ExecutionStatus.COMPLETED)
+            .result(ExecutionResult.PASSED)
+            .build()
+
+        val controller = MockedDeviceFarmController(
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
+            uploadArtifactToDeviceFarmImpl = { _, path, uploadType ->
+                when (uploadType) {
+                    UploadType.ANDROID_APP -> {
+                        fail("WEB execution type should not try to upload any app")
+                    }
+                    UploadType.APPIUM_NODE_TEST_PACKAGE -> {
+                        withClue("the path for the test project should be the correct one") { path shouldBe testsPath }
+                        testsUpload
+                    }
+                    UploadType.APPIUM_NODE_TEST_SPEC -> {
+                        withClue("the path for the test spec file should be the correct one") { path shouldBe testSpecPath }
+                        testSpecUpload
+                    }
+                    else -> fail("the upload type $uploadType should never been passed as a parameter")
+                }.right()
+            },
+            scheduleRunAndWaitImpl = { _, _, _, _, _, _, _ -> Either.Right(expectedRun) }
+        )
+        //endregion
+
+        //region WHEN
+        val response = DeviceFarmTractorRunner(controller).runTests(
+            projectName = projectName,
+            devicePoolName = devicePoolName,
+            appPath = appPath,
+            testProjectPath = testsPath,
+            testSpecPath = testSpecPath,
+            runName = runName,
+            downloadReports = false,
+            cleanStateAfterRun = false,
+            testExecutionType = TestExecutionType.MOBILE_WEB
+        )
+        //endregion
+
+        //region THEN
+        response shouldBe expectedRun
+        //endregion
+    }
+
 
     "When running a test in device farm if no run name is provided it should create the name" {
         //region GIVEN
@@ -734,7 +732,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testProjectPath = testsPath,
             testSpecPath = testSpecPath,
             downloadReports = false,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -815,7 +814,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testProjectPath = testsPath,
             testSpecPath = testSpecPath,
             runName = runName,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -905,7 +905,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testSpecPath = testSpecPath,
             runName = runName,
             testReportsBaseDirectory = testBaseReportDirectory,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -987,7 +988,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             appPath = appPath,
             testProjectPath = testsPath,
             testSpecPath = testSpecPath,
-            runName = runName
+            runName = runName,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -1007,7 +1009,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 testSpecPath = testSpecPath,
                 runName = runName,
                 downloadReports = false,
-                cleanStateAfterRun = false
+                cleanStateAfterRun = false,
+                testExecutionType = testExecutionNative
             )
         }
         //endregion
@@ -1033,7 +1036,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 testSpecPath = testSpecPath,
                 runName = runName,
                 downloadReports = false,
-                cleanStateAfterRun = false
+                cleanStateAfterRun = false,
+                testExecutionType = testExecutionNative
             )
         }
         //endregion
@@ -1063,7 +1067,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     testSpecPath = testSpecPath,
                     runName = runName,
                     downloadReports = false,
-                    cleanStateAfterRun = false
+                    cleanStateAfterRun = false,
+                    testExecutionType = testExecutionNative
                 )
             }
             loggedErrorMessage shouldBe expectedErrorMessage
@@ -1106,7 +1111,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     testSpecPath = testSpecPath,
                     runName = runName,
                     downloadReports = false,
-                    cleanStateAfterRun = false
+                    cleanStateAfterRun = false,
+                    testExecutionType = testExecutionNative
                 )
             }
             loggedErrorMessage shouldBe expectedErrorMessage
@@ -1184,7 +1190,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     testSpecPath = testSpecPath,
                     runName = runName,
                     downloadReports = false,
-                    cleanStateAfterRun = false
+                    cleanStateAfterRun = false,
+                    testExecutionType = testExecutionNative
                 )
             }
             loggedErrorMessage shouldBe expectedErrorMessage
@@ -1265,7 +1272,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     testSpecPath = testSpecPath,
                     runName = runName,
                     downloadReports = false,
-                    cleanStateAfterRun = false
+                    cleanStateAfterRun = false,
+                    testExecutionType = testExecutionNative
                 )
             }
             loggedErrorMessage shouldBe expectedErrorMessage
@@ -1351,7 +1359,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                     testSpecPath = testSpecPath,
                     runName = runName,
                     downloadReports = false,
-                    cleanStateAfterRun = false
+                    cleanStateAfterRun = false,
+                    testExecutionType = testExecutionNative
                 )
             }
             loggedErrorMessage shouldBe expectedErrorMessage
@@ -1442,7 +1451,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testSpecPath = testSpecPath,
             runName = runName,
             downloadReports = false,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -1451,7 +1461,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         //endregion
     }
 
-    "When running a test in device farm, it should allow unmetered executions"{
+    "When running a test in device farm, it should allow no metered executions"{
         //region GIVEN
         val project = Project
             .builder()
@@ -1511,7 +1521,7 @@ class DeviceFarmTractorRunnerTest : StringSpec({
                 }.right()
             },
             scheduleRunAndWaitImpl = { _, scheduleRunConfiguration, _, _, _, _, _ ->
-                withClue("unmetered executions should be available") {
+                withClue("non-metered executions should be available") {
                     scheduleRunConfiguration.billingMethod() shouldBe BillingMethod.UNMETERED
                 }
                 Either.Right(expectedRun)
@@ -1529,7 +1539,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             runName = runName,
             downloadReports = false,
             cleanStateAfterRun = false,
-            meteredTests = false
+            meteredTests = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -1616,7 +1627,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             testSpecPath = testSpecPath,
             runName = runName,
             downloadReports = false,
-            cleanStateAfterRun = false
+            cleanStateAfterRun = false,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -1704,7 +1716,8 @@ class DeviceFarmTractorRunnerTest : StringSpec({
             runName = runName,
             downloadReports = false,
             cleanStateAfterRun = false,
-            disablePerformanceMonitoring = true
+            disablePerformanceMonitoring = true,
+            testExecutionType = testExecutionNative
         )
         //endregion
 
@@ -1712,6 +1725,183 @@ class DeviceFarmTractorRunnerTest : StringSpec({
         response shouldBe expectedRun
         //endregion
     }
+
+    "When running a test in device farm with Mobile native type then the AWS Test type should be APPIUM NODE"{
+        //region GIVEN
+        val project = Project
+            .builder()
+            .arn(expectedProjectArn)
+            .name(projectName)
+            .build()
+
+        val devicePool = DevicePool
+            .builder()
+            .arn(devicePoolArn)
+            .name(devicePoolName)
+            .build()
+
+        val appUpload = Upload
+            .builder()
+            .arn(appUploadArn)
+            .name(appUploadName)
+            .type(appUploadType)
+            .build()
+
+        val testsUpload = Upload
+            .builder()
+            .arn(testsUploadArn)
+            .name(testsUploadName)
+            .type(UploadType.APPIUM_NODE_TEST_PACKAGE)
+            .build()
+
+        val testSpecUpload = Upload
+            .builder()
+            .arn(testSpecUploadArn)
+            .name(testSpecUploadName)
+            .type(UploadType.APPIUM_NODE_TEST_SPEC)
+            .build()
+
+        val expectedRun = Run
+            .builder()
+            .name(runName)
+            .status(ExecutionStatus.COMPLETED)
+            .result(ExecutionResult.PASSED)
+            .build()
+
+        val controller = MockedDeviceFarmController(
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
+            uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
+                when (uploadType) {
+                    UploadType.ANDROID_APP -> {
+                        appUpload
+                    }
+                    UploadType.APPIUM_NODE_TEST_PACKAGE -> {
+                        testsUpload
+                    }
+                    UploadType.APPIUM_NODE_TEST_SPEC -> {
+                        testSpecUpload
+                    }
+                    else -> fail("the upload type $uploadType should never been passed as a parameter")
+                }.right()
+            },
+            scheduleRunAndWaitImpl = { _, _, _, _, _, _, scheduleRunTestConfiguration ->
+                withClue("the test execution type should be APPIUM_NODE") {
+                   scheduleRunTestConfiguration.type() shouldBe TestType.APPIUM_NODE
+                }
+                Either.Right(expectedRun)
+            }
+        )
+        //endregion
+
+        //region WHEN
+        val response = DeviceFarmTractorRunner(controller).runTests(
+            projectName = projectName,
+            devicePoolName = devicePoolName,
+            appPath = appPath,
+            testProjectPath = testsPath,
+            testSpecPath = testSpecPath,
+            runName = runName,
+            downloadReports = false,
+            cleanStateAfterRun = false,
+            disablePerformanceMonitoring = true,
+            testExecutionType = testExecutionNative
+        )
+        //endregion
+
+        //region THEN
+        response shouldBe expectedRun
+        //endregion
+    }
+
+    "When running a test in device farm with WEB type then the AWS Test type should be APPIUM WEB"{
+        //region GIVEN
+        val project = Project
+            .builder()
+            .arn(expectedProjectArn)
+            .name(projectName)
+            .build()
+
+        val devicePool = DevicePool
+            .builder()
+            .arn(devicePoolArn)
+            .name(devicePoolName)
+            .build()
+
+        val appUpload = Upload
+            .builder()
+            .arn(appUploadArn)
+            .name(appUploadName)
+            .type(appUploadType)
+            .build()
+
+        val testsUpload = Upload
+            .builder()
+            .arn(testsUploadArn)
+            .name(testsUploadName)
+            .type(UploadType.APPIUM_NODE_TEST_PACKAGE)
+            .build()
+
+        val testSpecUpload = Upload
+            .builder()
+            .arn(testSpecUploadArn)
+            .name(testSpecUploadName)
+            .type(UploadType.APPIUM_NODE_TEST_SPEC)
+            .build()
+
+        val expectedRun = Run
+            .builder()
+            .name(runName)
+            .status(ExecutionStatus.COMPLETED)
+            .result(ExecutionResult.PASSED)
+            .build()
+
+        val controller = MockedDeviceFarmController(
+            findOrCreateProjectImpl = { Either.Right(project) },
+            findOrUseDefaultDevicePoolImpl = { _, _ -> Either.Right(devicePool) },
+            uploadArtifactToDeviceFarmImpl = { _, _, uploadType ->
+                when (uploadType) {
+                    UploadType.ANDROID_APP -> {
+                        appUpload
+                    }
+                    UploadType.APPIUM_NODE_TEST_PACKAGE -> {
+                        testsUpload
+                    }
+                    UploadType.APPIUM_NODE_TEST_SPEC -> {
+                        testSpecUpload
+                    }
+                    else -> fail("the upload type $uploadType should never been passed as a parameter")
+                }.right()
+            },
+            scheduleRunAndWaitImpl = { _, _, _, _, _, _, scheduleRunTestConfiguration ->
+                withClue("the test execution type should be APPIUM_WEB_NODE") {
+                    scheduleRunTestConfiguration.type() shouldBe TestType.APPIUM_WEB_NODE
+                }
+                Either.Right(expectedRun)
+            }
+        )
+        //endregion
+
+        //region WHEN
+        val response = DeviceFarmTractorRunner(controller).runTests(
+            projectName = projectName,
+            devicePoolName = devicePoolName,
+            appPath = appPath,
+            testProjectPath = testsPath,
+            testSpecPath = testSpecPath,
+            runName = runName,
+            downloadReports = false,
+            cleanStateAfterRun = false,
+            disablePerformanceMonitoring = true,
+            testExecutionType = TestExecutionType.MOBILE_WEB
+        )
+        //endregion
+
+        //region THEN
+        response shouldBe expectedRun
+        //endregion
+    }
+
 
     afterTest {
         unmockkStatic(LocalDateTime::class)

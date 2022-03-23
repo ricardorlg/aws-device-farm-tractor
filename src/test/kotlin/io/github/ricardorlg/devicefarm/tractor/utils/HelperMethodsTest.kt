@@ -144,7 +144,7 @@ class HelperMethodsTest : StringSpec({
     }
     "When loading a file from a given path, if the files doesn't exists an error should be returned as a Left" {
         //WHEN
-        val path = "path/to/nonexisting/file"
+        val path = "path/to/non_existing/file"
         val response = HelperMethods.loadFileFromPath(path)
 
         //THEN

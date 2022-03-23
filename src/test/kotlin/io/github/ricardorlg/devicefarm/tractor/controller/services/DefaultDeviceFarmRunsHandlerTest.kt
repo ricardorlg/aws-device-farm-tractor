@@ -9,6 +9,11 @@ import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.throwable.shouldHaveMessage
 import io.kotest.matchers.types.shouldBeInstanceOf
+import io.kotest.property.Exhaustive
+import io.kotest.property.checkAll
+import io.kotest.property.exhaustive.collection
+import io.kotest.property.exhaustive.enum
+import io.kotest.property.exhaustive.filter
 import io.mockk.*
 import software.amazon.awssdk.core.pagination.sync.SdkIterable
 import software.amazon.awssdk.services.devicefarm.DeviceFarmClient
@@ -22,94 +27,134 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
     val devicePoolArn = "arn:device_pool:test:1234"
     val executionConfiguration = ExecutionConfiguration.builder().build()
     val projectArn = "arn:project:test:1234"
-    val testConfiguration = ScheduleRunTest.builder().build()
+    val validTestTypes = listOf(TestType.APPIUM_NODE, TestType.APPIUM_WEB_NODE)
+    val testNativeConfiguration = ScheduleRunTest.builder().type(TestType.APPIUM_NODE).build()
     val runARN = "arn:run:test"
     val runName = "test_run_name"
 
     "When scheduling a run, it should return the run as a right"{
-        //GIVEN
-        val expectedRun = Run
-            .builder()
-            .arn(runARN)
-            .build()
-        every {
-            dfClient
-                .scheduleRun(any<ScheduleRunRequest>())
-        } returns ScheduleRunResponse.builder().run(expectedRun).build()
+        checkAll(Exhaustive.collection(validTestTypes)) { executionType ->
+            //GIVEN
+            val testExecutionConfiguration = ScheduleRunTest.builder().type(executionType).build()
+            val expectedRun = Run
+                .builder()
+                .arn(runARN)
+                .build()
+            every {
+                dfClient
+                    .scheduleRun(any<ScheduleRunRequest>())
+            } returns ScheduleRunResponse.builder().run(expectedRun).build()
 
-        //WHEN
-        val response = DefaultDeviceFarmRunsHandler(dfClient)
-            .scheduleRun(
-                appArn = appArn,
-                runConfiguration = runConfiguration,
-                devicePoolArn = devicePoolArn,
-                executionConfiguration = executionConfiguration,
-                projectArn = projectArn,
-                testConfiguration = testConfiguration
-            )
+            //WHEN
+            val response = DefaultDeviceFarmRunsHandler(dfClient)
+                .scheduleRun(
+                    appArn = appArn,
+                    runConfiguration = runConfiguration,
+                    devicePoolArn = devicePoolArn,
+                    executionConfiguration = executionConfiguration,
+                    projectArn = projectArn,
+                    testConfiguration = testExecutionConfiguration
+                )
 
-        //THEN
-        response.shouldBeRight().shouldBe(expectedRun)
-        verify {
-            dfClient.scheduleRun(
-                ScheduleRunRequest
-                    .builder()
-                    .appArn(appArn)
-                    .configuration(runConfiguration)
-                    .devicePoolArn(devicePoolArn)
-                    .executionConfiguration(executionConfiguration)
-                    .projectArn(projectArn)
-                    .test(testConfiguration)
-                    .build()
-            )
+            //THEN
+            response.shouldBeRight().shouldBe(expectedRun)
+            verify {
+                dfClient.scheduleRun(
+                    ScheduleRunRequest
+                        .builder()
+                        .configuration(runConfiguration)
+                        .devicePoolArn(devicePoolArn)
+                        .executionConfiguration(executionConfiguration)
+                        .projectArn(projectArn)
+                        .test(testExecutionConfiguration)
+                        .apply {
+                            if (executionType == TestType.APPIUM_NODE)
+                                appArn(appArn)
+                        }
+                        .build()
+                )
+            }
+
+            confirmVerified(dfClient)
         }
+    }
 
-        confirmVerified(dfClient)
+    "When test execution type is not supported it should return a DeviceFarmTractorErrorIllegalArgumentException as a left"{
+        checkAll(Exhaustive.enum<TestType>().filter { it !in validTestTypes }) { executionType ->
+            //GIVEN
+            val testExecutionConfiguration = ScheduleRunTest.builder().type(executionType).build()
 
+            //WHEN
+            val response = DefaultDeviceFarmRunsHandler(dfClient)
+                .scheduleRun(
+                    appArn = appArn,
+                    runConfiguration = runConfiguration,
+                    devicePoolArn = devicePoolArn,
+                    executionConfiguration = executionConfiguration,
+                    runName = runName,
+                    projectArn = projectArn,
+                    testConfiguration = testExecutionConfiguration
+                )
+
+            //THEN
+            response.shouldBeLeft() should {
+                it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
+                it shouldHaveMessage UNSUPPORTED_EXECUTION_TYPE.format(executionType.name)
+            }
+            verify {
+                dfClient.scheduleRun(any<ScheduleRunRequest>()) wasNot called
+            }
+            confirmVerified(dfClient)
+        }
     }
 
     "When a run name is provided it should be used"{
-        //GIVEN
-        val expectedRun = Run
-            .builder()
-            .arn(runARN)
-            .build()
-        every {
-            dfClient
-                .scheduleRun(any<ScheduleRunRequest>())
-        } returns ScheduleRunResponse.builder().run(expectedRun).build()
+        checkAll(Exhaustive.collection(validTestTypes)) { executionType ->
+            //GIVEN
+            val testExecutionConfiguration = ScheduleRunTest.builder().type(executionType).build()
+            val expectedRun = Run
+                .builder()
+                .arn(runARN)
+                .build()
+            every {
+                dfClient
+                    .scheduleRun(any<ScheduleRunRequest>())
+            } returns ScheduleRunResponse.builder().run(expectedRun).build()
 
-        //WHEN
-        val response = DefaultDeviceFarmRunsHandler(dfClient)
-            .scheduleRun(
-                appArn = appArn,
-                runConfiguration = runConfiguration,
-                devicePoolArn = devicePoolArn,
-                executionConfiguration = executionConfiguration,
-                runName = runName,
-                projectArn = projectArn,
-                testConfiguration = testConfiguration
-            )
+            //WHEN
+            val response = DefaultDeviceFarmRunsHandler(dfClient)
+                .scheduleRun(
+                    appArn = appArn,
+                    runConfiguration = runConfiguration,
+                    devicePoolArn = devicePoolArn,
+                    executionConfiguration = executionConfiguration,
+                    runName = runName,
+                    projectArn = projectArn,
+                    testConfiguration = testExecutionConfiguration
+                )
 
-        //THEN
-        response.shouldBeRight().shouldBe(expectedRun)
-        verify {
-            dfClient.scheduleRun(
-                ScheduleRunRequest
-                    .builder()
-                    .appArn(appArn)
-                    .configuration(runConfiguration)
-                    .devicePoolArn(devicePoolArn)
-                    .executionConfiguration(executionConfiguration)
-                    .projectArn(projectArn)
-                    .name(runName)
-                    .test(testConfiguration)
-                    .build()
-            )
+            //THEN
+            response.shouldBeRight().shouldBe(expectedRun)
+            verify {
+                dfClient.scheduleRun(
+                    ScheduleRunRequest
+                        .builder()
+                        .configuration(runConfiguration)
+                        .devicePoolArn(devicePoolArn)
+                        .executionConfiguration(executionConfiguration)
+                        .projectArn(projectArn)
+                        .name(runName)
+                        .test(testExecutionConfiguration)
+                        .apply {
+                            if (executionType == TestType.APPIUM_NODE)
+                                appArn(appArn)
+                        }
+                        .build()
+                )
+            }
+
+            confirmVerified(dfClient)
         }
-
-        confirmVerified(dfClient)
-
     }
 
     "When no app arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left"{
@@ -122,7 +167,7 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
                 executionConfiguration = executionConfiguration,
                 runName = runName,
                 projectArn = projectArn,
-                testConfiguration = testConfiguration
+                testConfiguration = testNativeConfiguration
             )
 
         //THEN
@@ -137,84 +182,95 @@ class DefaultDeviceFarmRunsHandlerTest : StringSpec({
     }
 
     "When no device pool arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left"{
-        //WHEN
-        val response = DefaultDeviceFarmRunsHandler(dfClient)
-            .scheduleRun(
-                appArn = appArn,
-                runConfiguration = runConfiguration,
-                devicePoolArn = "  ",
-                executionConfiguration = executionConfiguration,
-                runName = runName,
-                projectArn = projectArn,
-                testConfiguration = testConfiguration
-            )
+        checkAll(Exhaustive.collection(validTestTypes)) { executionType ->
+            //GIVEN
+            val testExecutionConfiguration = ScheduleRunTest.builder().type(executionType).build()
+            //WHEN
+            val response = DefaultDeviceFarmRunsHandler(dfClient)
+                .scheduleRun(
+                    appArn = appArn,
+                    runConfiguration = runConfiguration,
+                    devicePoolArn = "  ",
+                    executionConfiguration = executionConfiguration,
+                    runName = runName,
+                    projectArn = projectArn,
+                    testConfiguration = testExecutionConfiguration
+                )
 
-        //THEN
-        response.shouldBeLeft() should {
-            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
-            it shouldHaveMessage EMPTY_DEVICE_POOL_ARN
+            //THEN
+            response.shouldBeLeft() should {
+                it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
+                it shouldHaveMessage EMPTY_DEVICE_POOL_ARN
+            }
+            verify {
+                dfClient.scheduleRun(any<ScheduleRunRequest>()) wasNot called
+            }
+            confirmVerified(dfClient)
         }
-        verify {
-            dfClient.scheduleRun(any<ScheduleRunRequest>()) wasNot called
-        }
-        confirmVerified(dfClient)
     }
 
     "When no project arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left"{
-        //WHEN
-        val response = DefaultDeviceFarmRunsHandler(dfClient)
-            .scheduleRun(
-                appArn = appArn,
-                runConfiguration = runConfiguration,
-                devicePoolArn = devicePoolArn,
-                executionConfiguration = executionConfiguration,
-                runName = runName,
-                projectArn = "  ",
-                testConfiguration = testConfiguration
-            )
+        checkAll(Exhaustive.collection(validTestTypes)) { executionType ->
+            //GIVEN
+            val testExecutionConfiguration = ScheduleRunTest.builder().type(executionType).build()
 
-        //THEN
-        response.shouldBeLeft() should {
-            it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
-            it shouldHaveMessage EMPTY_PROJECT_ARN
+            //WHEN
+            val response = DefaultDeviceFarmRunsHandler(dfClient)
+                .scheduleRun(
+                    appArn = appArn,
+                    runConfiguration = runConfiguration,
+                    devicePoolArn = devicePoolArn,
+                    executionConfiguration = executionConfiguration,
+                    runName = runName,
+                    projectArn = "  ",
+                    testConfiguration = testExecutionConfiguration
+                )
+
+            //THEN
+            response.shouldBeLeft() should {
+                it.shouldBeInstanceOf<DeviceFarmTractorErrorIllegalArgumentException>()
+                it shouldHaveMessage EMPTY_PROJECT_ARN
+            }
+            verify {
+                dfClient.scheduleRun(any<ScheduleRunRequest>()) wasNot called
+            }
+            confirmVerified(dfClient)
         }
-        verify {
-            dfClient.scheduleRun(any<ScheduleRunRequest>()) wasNot called
-        }
-        confirmVerified(dfClient)
     }
 
     "When an error happens scheduling the run, it should return an ErrorSchedulingRun as a left"{
-        //GIVEN
-        val expectedError = RuntimeException("test error")
-        every {
-            dfClient
-                .scheduleRun(any<ScheduleRunRequest>())
-        } throws expectedError
+        checkAll(Exhaustive.collection(validTestTypes)) { executionType ->
+            //GIVEN
+            val testExecutionConfiguration = ScheduleRunTest.builder().type(executionType).build()
+            val expectedError = RuntimeException("test error")
+            every {
+                dfClient
+                    .scheduleRun(any<ScheduleRunRequest>())
+            } throws expectedError
 
-        //WHEN
-        val response = DefaultDeviceFarmRunsHandler(dfClient)
-            .scheduleRun(
-                appArn = appArn,
-                runConfiguration = runConfiguration,
-                devicePoolArn = devicePoolArn,
-                executionConfiguration = executionConfiguration,
-                projectArn = projectArn,
-                testConfiguration = testConfiguration
-            )
+            //WHEN
+            val response = DefaultDeviceFarmRunsHandler(dfClient)
+                .scheduleRun(
+                    appArn = appArn,
+                    runConfiguration = runConfiguration,
+                    devicePoolArn = devicePoolArn,
+                    executionConfiguration = executionConfiguration,
+                    projectArn = projectArn,
+                    testConfiguration = testExecutionConfiguration
+                )
 
-        //THEN
-        response.shouldBeLeft() should {
-            it.shouldBeInstanceOf<ErrorSchedulingRun>()
-            it shouldHaveMessage ERROR_SCHEDULING_RUN
-            it.cause shouldBe expectedError
+            //THEN
+            response.shouldBeLeft() should {
+                it.shouldBeInstanceOf<ErrorSchedulingRun>()
+                it shouldHaveMessage ERROR_SCHEDULING_RUN
+                it.cause shouldBe expectedError
+            }
+            verify {
+                dfClient.scheduleRun(any<ScheduleRunRequest>())
+            }
+
+            confirmVerified(dfClient)
         }
-        verify {
-            dfClient.scheduleRun(any<ScheduleRunRequest>())
-        }
-
-        confirmVerified(dfClient)
-
     }
 
     "When fetching a RUN it should return it as a right" {

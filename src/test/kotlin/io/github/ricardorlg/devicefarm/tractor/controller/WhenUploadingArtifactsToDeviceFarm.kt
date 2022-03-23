@@ -21,7 +21,6 @@ import software.amazon.awssdk.services.devicefarm.model.DeviceFarmException
 import software.amazon.awssdk.services.devicefarm.model.Upload
 import software.amazon.awssdk.services.devicefarm.model.UploadStatus
 import software.amazon.awssdk.services.devicefarm.model.UploadType
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
 class WhenUploadingArtifactsToDeviceFarm : StringSpec({
@@ -443,7 +442,7 @@ class WhenUploadingArtifactsToDeviceFarm : StringSpec({
 
     "It should return a DeviceFarmTractorError when the artifact to upload doesn't exists"{
         //GIVEN
-        val artifactPath = "path/to/nonexisting/file"
+        val artifactPath = "path/to/non_existing/file"
 
         val uploadArtifactsHandler = MockedDeviceFarmUploadArtifactsHandler(
             createUploadImpl = { _, _, _ -> fail("this should never been called") },

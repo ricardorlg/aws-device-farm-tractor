@@ -9,7 +9,6 @@ import io.kotest.assertions.fail
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import software.amazon.awssdk.services.devicefarm.model.*
-import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
 class WhenWorkingWithDeviceFarmRuns : StringSpec({
