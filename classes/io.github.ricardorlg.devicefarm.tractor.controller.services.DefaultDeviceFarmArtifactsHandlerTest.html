@@ -23,13 +23,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">3</div>
+<div class="counter">2</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">2</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.404s</div>
+<div class="counter">0.001s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,10 +61,150 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="AbstractMethodError"></a>
+<h3 class="failures">AbstractMethodError</h3>
+<span class="code">
+<pre>java.lang.AbstractMethodError: Receiver class io.kotest.assertions.ErrorCollectorContextElement does not define or inherit an implementation of the resolved method 'abstract kotlinx.coroutines.CopyableThreadContextElement copyForChild()' of interface kotlinx.coroutines.CopyableThreadContextElement.
+	at kotlinx.coroutines.CoroutineContextKt$foldCopies$1.invoke(CoroutineContext.kt:83)
+	at kotlinx.coroutines.CoroutineContextKt$foldCopies$1.invoke(CoroutineContext.kt:80)
+	at kotlin.coroutines.CoroutineContext$Element$DefaultImpls.fold(CoroutineContext.kt:70)
+	at kotlinx.coroutines.ThreadContextElement$DefaultImpls.fold(ThreadContextElement.kt:52)
+	at kotlinx.coroutines.CopyableThreadContextElement$DefaultImpls.fold(ThreadContextElement.kt:139)
+	at io.kotest.assertions.ErrorCollectorContextElement.fold(ErrorCollector.kt:39)
+	at kotlinx.coroutines.CoroutineContextKt.foldCopies(CoroutineContext.kt:80)
+	at kotlinx.coroutines.CoroutineContextKt.newCoroutineContext(CoroutineContext.kt:36)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:152)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor.intercept(CoroutineErrorCollectorInterceptor.kt:27)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invokeSuspend(TestCaseExecutor.kt:83)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invoke(TestCaseExecutor.kt)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invoke(TestCaseExecutor.kt)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invokeSuspend(coroutineDispatcherFactoryInterceptor.kt:57)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invoke(coroutineDispatcherFactoryInterceptor.kt)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invoke(coroutineDispatcherFactoryInterceptor.kt)
+	at io.kotest.engine.concurrency.FixedThreadCoroutineDispatcherFactory$withDispatcher$4.invokeSuspend(FixedThreadCoroutineDispatcherFactory.kt:53)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="executionError"></a>
+<h3 class="failures">executionError</h3>
+<span class="code">
+<pre>java.lang.AbstractMethodError: Receiver class io.kotest.assertions.ErrorCollectorContextElement does not define or inherit an implementation of the resolved method 'abstract kotlinx.coroutines.CopyableThreadContextElement copyForChild()' of interface kotlinx.coroutines.CopyableThreadContextElement.
+	at kotlinx.coroutines.CoroutineContextKt$foldCopies$1.invoke(CoroutineContext.kt:83)
+	at kotlinx.coroutines.CoroutineContextKt$foldCopies$1.invoke(CoroutineContext.kt:80)
+	at kotlin.coroutines.CoroutineContext$Element$DefaultImpls.fold(CoroutineContext.kt:70)
+	at kotlinx.coroutines.ThreadContextElement$DefaultImpls.fold(ThreadContextElement.kt:52)
+	at kotlinx.coroutines.CopyableThreadContextElement$DefaultImpls.fold(ThreadContextElement.kt:139)
+	at io.kotest.assertions.ErrorCollectorContextElement.fold(ErrorCollector.kt:39)
+	at kotlinx.coroutines.CoroutineContextKt.foldCopies(CoroutineContext.kt:80)
+	at kotlinx.coroutines.CoroutineContextKt.newCoroutineContext(CoroutineContext.kt:36)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:152)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor.intercept(CoroutineErrorCollectorInterceptor.kt:27)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invokeSuspend(TestCaseExecutor.kt:83)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invoke(TestCaseExecutor.kt)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invoke(TestCaseExecutor.kt)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invokeSuspend(coroutineDispatcherFactoryInterceptor.kt:57)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invoke(coroutineDispatcherFactoryInterceptor.kt)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invoke(coroutineDispatcherFactoryInterceptor.kt)
+	at io.kotest.engine.concurrency.FixedThreadCoroutineDispatcherFactory$withDispatcher$4.invokeSuspend(FixedThreadCoroutineDispatcherFactory.kt:53)
+	at ???(Coroutine boundary.?(?)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invokeSuspend(TestCaseExecutor.kt:83)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invokeSuspend(TestCaseExecutor.kt:83)
+	at io.kotest.engine.test.interceptors.TestFinishedInterceptor.intercept(TestFinishedInterceptor.kt:21)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invokeSuspend(TestCaseExecutor.kt:83)
+	at io.kotest.engine.spec.runners.SingleInstanceSpecRunner.runTest(SingleInstanceSpecRunner.kt:112)
+	at io.kotest.engine.spec.runners.SingleInstanceSpecRunner$execute$interceptAndRun$2$2.invokeSuspend(SingleInstanceSpecRunner.kt:51)
+	at io.kotest.engine.test.scheduler.SequentialTestScheduler$schedule$3$1$1.invokeSuspend(SequentialTestScheduler.kt:20)
+	at io.kotest.engine.test.scheduler.SequentialTestScheduler.schedule(SequentialTestScheduler.kt:18)
+	at io.kotest.engine.spec.runners.SingleInstanceSpecRunner.execute_gIAlu_s$interceptAndRun(SingleInstanceSpecRunner.kt:49)
+	at io.kotest.engine.spec.runners.SingleInstanceSpecRunner$execute$3.invokeSuspend(SingleInstanceSpecRunner.kt:58)
+	at io.kotest.engine.spec.runners.SingleInstanceSpecRunner.execute-gIAlu-s(SingleInstanceSpecRunner.kt:56)
+	at io.kotest.engine.spec.JvmSpecExecutorDelegate.execute(createSpecExecutorDelegate.kt:71)
+	at io.kotest.engine.spec.SpecExecutor$specInterceptors$initial$1.invokeSuspend(SpecExecutor.kt:107)
+	at io.kotest.engine.spec.interceptor.ConfigurationInContextInterceptor$intercept$2.invokeSuspend(ConfigurationInContextInterceptor.kt:23)
+	at io.kotest.engine.spec.interceptor.ConfigurationInContextInterceptor.intercept-0E7RQCE(ConfigurationInContextInterceptor.kt:22)
+	at io.kotest.engine.spec.SpecExecutor$specInterceptors$3$1.invokeSuspend(SpecExecutor.kt:116)
+	at io.kotest.engine.spec.interceptor.SpecExtensionInterceptor$intercept$2.invokeSuspend(SpecExtensionInterceptor.kt:21)
+	at io.kotest.engine.spec.SpecExtensions$intercept$initial$1.invokeSuspend(SpecExtensions.kt:143)
+	at io.kotest.engine.spec.SpecExtensions.intercept(SpecExtensions.kt:154)
+	at io.kotest.engine.spec.interceptor.SpecExtensionInterceptor.intercept-0E7RQCE(SpecExtensionInterceptor.kt:21)
+	at io.kotest.engine.spec.SpecExecutor$specInterceptors$3$1.invokeSuspend(SpecExecutor.kt:116)
+	at io.kotest.engine.spec.interceptor.ProjectContextInterceptor$intercept$2.invokeSuspend(ProjectContextInterceptor.kt:21)
+	at io.kotest.engine.spec.interceptor.ProjectContextInterceptor.intercept-0E7RQCE(ProjectContextInterceptor.kt:20)
+	at io.kotest.engine.spec.SpecExecutor$specInterceptors$3$1.invokeSuspend(SpecExecutor.kt:116)
+	at io.kotest.engine.spec.SpecExecutor.specInterceptors-gIAlu-s(SpecExecutor.kt:117)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$innerExecute$1.invokeSuspend(SpecExecutor.kt:85)
+	at io.kotest.engine.spec.interceptor.FinalizeSpecInterceptor.intercept-0E7RQCE(FinalizeSpecInterceptor.kt:19)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.PrepareSpecInterceptor.intercept-0E7RQCE(PrepareSpecInterceptor.kt:20)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.ApplyExtensionsInterceptor.intercept-0E7RQCE(ApplyExtensionsInterceptor.kt:35)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.SpecFinishedInterceptor.intercept-0E7RQCE(SpecFinishedInterceptor.kt:19)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.SpecStartedInterceptor.intercept-0E7RQCE(SpecStartedInterceptor.kt:19)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.SpecRefExtensionInterceptor$intercept$inner$1.invokeSuspend(SpecRefExtensionInterceptor.kt:24)
+	at io.kotest.engine.spec.interceptor.SpecRefExtensionInterceptor.intercept-0E7RQCE(SpecRefExtensionInterceptor.kt:27)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.RequiresTagSpecInterceptor.intercept-0E7RQCE(RequiresTagSpecInterceptor.kt:35)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.TagsExcludedSpecInterceptor.intercept-0E7RQCE(TagsExcludedDiscoveryExtension.kt:32)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.SystemPropertySpecFilterInterceptor.intercept-0E7RQCE(SystemPropertySpecFilterInterceptor.kt:49)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.SpecFilterInterceptor.intercept-0E7RQCE(SpecFilterInterceptor.kt:37)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.IgnoredSpecInterceptor.intercept-0E7RQCE(IgnoredSpecInterceptor.kt:42)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.spec.interceptor.EnabledIfSpecInterceptor.intercept-0E7RQCE(EnabledIfSpecInterceptor.kt:40)
+	at io.kotest.engine.spec.SpecExecutor$referenceInterceptors$3$1.invokeSuspend(SpecExecutor.kt:90)
+	at io.kotest.engine.ConcurrentTestSuiteScheduler$schedule$8$1$2.invokeSuspend(ConcurrentTestSuiteScheduler.kt:71)
+Caused by: java.lang.AbstractMethodError: Receiver class io.kotest.assertions.ErrorCollectorContextElement does not define or inherit an implementation of the resolved method 'abstract kotlinx.coroutines.CopyableThreadContextElement copyForChild()' of interface kotlinx.coroutines.CopyableThreadContextElement.
+	at kotlinx.coroutines.CoroutineContextKt$foldCopies$1.invoke(CoroutineContext.kt:83)
+	at kotlinx.coroutines.CoroutineContextKt$foldCopies$1.invoke(CoroutineContext.kt:80)
+	at kotlin.coroutines.CoroutineContext$Element$DefaultImpls.fold(CoroutineContext.kt:70)
+	at kotlinx.coroutines.ThreadContextElement$DefaultImpls.fold(ThreadContextElement.kt:52)
+	at kotlinx.coroutines.CopyableThreadContextElement$DefaultImpls.fold(ThreadContextElement.kt:139)
+	at io.kotest.assertions.ErrorCollectorContextElement.fold(ErrorCollector.kt:39)
+	at kotlinx.coroutines.CoroutineContextKt.foldCopies(CoroutineContext.kt:80)
+	at kotlinx.coroutines.CoroutineContextKt.newCoroutineContext(CoroutineContext.kt:36)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:152)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at io.kotest.engine.test.interceptors.CoroutineErrorCollectorInterceptor.intercept(CoroutineErrorCollectorInterceptor.kt:27)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invokeSuspend(TestCaseExecutor.kt:83)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invoke(TestCaseExecutor.kt)
+	at io.kotest.engine.test.TestCaseExecutor$execute$2$1.invoke(TestCaseExecutor.kt)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invokeSuspend(coroutineDispatcherFactoryInterceptor.kt:57)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invoke(coroutineDispatcherFactoryInterceptor.kt)
+	at io.kotest.engine.test.interceptors.CoroutineDispatcherFactoryInterceptor$intercept$4.invoke(coroutineDispatcherFactoryInterceptor.kt)
+	at io.kotest.engine.concurrency.FixedThreadCoroutineDispatcherFactory$withDispatcher$4.invokeSuspend(FixedThreadCoroutineDispatcherFactory.kt:53)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -75,19 +215,14 @@
 </tr>
 </thead>
 <tr>
-<td class="success">When fetching the artifacts of a test execution any error should be returned as a DeviceFarmTractorError left</td>
-<td class="success">0.005s</td>
-<td class="success">passed</td>
+<td class="failures">AbstractMethodError</td>
+<td class="failures">0s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">When fetching the artifacts of a test execution if no run arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left</td>
-<td class="success">0.009s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">When fetching the artifacts of a test execution it should return them as a right</td>
-<td class="success">1.390s</td>
-<td class="success">passed</td>
+<td class="failures">executionError</td>
+<td class="failures">0.001s</td>
+<td class="failures">failed</td>
 </tr>
 </table>
 </div>
@@ -99,7 +234,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.4.1</a> at Apr 4, 2022, 10:58:49 AM</p>
+<a href="http://www.gradle.org">Gradle 7.4.1</a> at Apr 4, 2022, 4:25:48 PM</p>
 </div>
 </div>
 </body>
