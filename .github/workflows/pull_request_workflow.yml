@@ -25,7 +25,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build test
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v1.32
+        uses: EnricoMi/publish-unit-test-result-action@v1.33
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
