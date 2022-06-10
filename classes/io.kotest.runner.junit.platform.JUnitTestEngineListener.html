@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - Class io.github.ricardorlg.devicefarm.tractor.controller.WhenDeletingUploadsFromDeviceFarm</title>
+<title>Test results - IncompatibleClassChangeError</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>Class io.github.ricardorlg.devicefarm.tractor.controller.WhenDeletingUploadsFromDeviceFarm</h1>
+<h1>IncompatibleClassChangeError</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/io.github.ricardorlg.devicefarm.tractor.controller.html">io.github.ricardorlg.devicefarm.tractor.controller</a> &gt; WhenDeletingUploadsFromDeviceFarm</div>
+<a href="../packages/io.kotest.runner.junit.platform.html">io.kotest.runner.junit.platform</a> &gt; JUnitTestEngineListener</div>
 <div id="summary">
 <table>
 <tr>
@@ -23,13 +23,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">3</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.075s</div>
+<div class="counter">0.002s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,71 +61,19 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Standard error</a>
+<a href="#tab1">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Tests</h2>
-<table>
-<thead>
-<tr>
-<th>Test</th>
-<th>Duration</th>
-<th>Result</th>
-</tr>
-</thead>
-<tr>
-<td class="success">It should delete all the provided uploads</td>
-<td class="success">0.067s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">It should delete uploads in parallel and keep deleting even if some operation fails</td>
-<td class="success">0.006s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">It should never try to delete when no uploads are provided</td>
-<td class="success">0.002s</td>
-<td class="success">passed</td>
-</tr>
-</table>
-</div>
-<div id="tab1" class="tab">
-<h2>Standard error</h2>
+<h2>Failed tests</h2>
+<div class="test">
+<a name="initializationError"></a>
+<h3 class="failures">initializationError</h3>
 <span class="code">
 <pre>java.lang.IncompatibleClassChangeError: Found interface kotlin.time.TimeMark, but class was expected
-	at io.kotest.engine.spec.interceptor.SpecFinishedInterceptor.intercept-0E7RQCE(SpecFinishedInterceptor.kt:37)
-	at io.kotest.engine.spec.interceptor.SpecFinishedInterceptor$intercept$1.invokeSuspend(SpecFinishedInterceptor.kt)
-	at ???(Coroutine boundary.?(?)
-	at io.kotest.engine.ConcurrentTestSuiteScheduler.schedule(ConcurrentTestSuiteScheduler.kt:43)
-	at io.kotest.engine.TestEngine$execute$innerExecute$1.invokeSuspend(TestEngine.kt:62)
-	at io.kotest.engine.interceptors.TestEngineInitializedInterceptor.intercept(TestEngineInitializedInterceptor.kt:18)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.interceptors.WriteFailuresInterceptor.intercept(WriteFailuresInterceptor.kt:36)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.interceptors.EmptyTestSuiteInterceptor.intercept(EmptyTestSuiteInterceptor.kt:29)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.interceptors.ProjectTimeoutEngineInterceptor.intercept(ProjectTimeoutEngineInterceptor.kt:17)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.interceptors.ProjectListenerEngineInterceptor.intercept(ProjectListenerEngineInterceptor.kt:25)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.interceptors.ProjectExtensionEngineInterceptor$intercept$initial$1.invokeSuspend(ProjectExtensionEngineInterceptor.kt:24)
-	at io.kotest.engine.interceptors.ProjectExtensionEngineInterceptor.intercept(ProjectExtensionEngineInterceptor.kt:36)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.interceptors.TestDslStateInterceptor.intercept(TestDslStateInterceptor.kt:16)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.interceptors.TestEngineStartedFinishedInterceptor.intercept(TestEngineStartedFinishedInterceptor.kt:23)
-	at io.kotest.engine.TestEngine$execute$execute$1$1.invokeSuspend(TestEngine.kt:68)
-	at io.kotest.engine.TestEngineLauncher$launch$2.invokeSuspend(TestEngineLauncher.kt:196)
-	at io.kotest.common.RunBlockingKt$runBlocking$1.invokeSuspend(runBlocking.kt:3)
-Caused by: java.lang.IncompatibleClassChangeError: Found interface kotlin.time.TimeMark, but class was expected
 	at io.kotest.engine.spec.interceptor.SpecFinishedInterceptor.intercept-0E7RQCE(SpecFinishedInterceptor.kt:37)
 	at io.kotest.engine.spec.interceptor.SpecFinishedInterceptor$intercept$1.invokeSuspend(SpecFinishedInterceptor.kt)
 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
@@ -180,6 +128,24 @@ Caused by: java.lang.IncompatibleClassChangeError: Found interface kotlin.time.T
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </pre>
 </span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">initializationError</td>
+<td class="failures">0.002s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
 </div>
 </div>
 <div id="footer">

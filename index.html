@@ -20,13 +20,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">133</div>
+<div class="counter">4</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">4.976s</div>
+<div class="counter">0.077s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">75%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,13 +58,25 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Packages</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Classes</a>
+<a href="#tab1">Packages</a>
+</li>
+<li>
+<a href="#tab2">Classes</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/io.kotest.runner.junit.platform.JUnitTestEngineListener.html">IncompatibleClassChangeError</a>.
+<a href="classes/io.kotest.runner.junit.platform.JUnitTestEngineListener.html#initializationError">initializationError</a>
+</li>
+</ul>
+</div>
+<div id="tab1" class="tab">
 <h2>Packages</h2>
 <table>
 <thead>
@@ -82,56 +94,26 @@
 <td class="success">
 <a href="packages/io.github.ricardorlg.devicefarm.tractor.controller.html">io.github.ricardorlg.devicefarm.tractor.controller</a>
 </td>
-<td>42</td>
+<td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.636s</td>
+<td>0.075s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="success">
-<a href="packages/io.github.ricardorlg.devicefarm.tractor.controller.services.html">io.github.ricardorlg.devicefarm.tractor.controller.services</a>
+<td class="failures">
+<a href="packages/io.kotest.runner.junit.platform.html">io.kotest.runner.junit.platform</a>
 </td>
-<td>41</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>3.359s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="packages/io.github.ricardorlg.devicefarm.tractor.factory.html">io.github.ricardorlg.devicefarm.tractor.factory</a>
-</td>
-<td>11</td>
-<td>0</td>
-<td>0</td>
-<td>0.846s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="packages/io.github.ricardorlg.devicefarm.tractor.runner.html">io.github.ricardorlg.devicefarm.tractor.runner</a>
-</td>
-<td>24</td>
-<td>0</td>
-<td>0</td>
-<td>0.112s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="packages/io.github.ricardorlg.devicefarm.tractor.utils.html">io.github.ricardorlg.devicefarm.tractor.utils</a>
-</td>
-<td>15</td>
-<td>0</td>
-<td>0</td>
-<td>0.023s</td>
-<td class="success">100%</td>
+<td>0.002s</td>
+<td class="failures">0%</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Classes</h2>
 <table>
 <thead>
@@ -152,158 +134,18 @@
 <td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.106s</td>
+<td>0.075s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts</a>
+<td class="failures">
+<a href="classes/io.kotest.runner.junit.platform.JUnitTestEngineListener.html">io.kotest.runner.junit.platform.JUnitTestEngineListener</a>
 </td>
-<td>14</td>
+<td>1</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0.272s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenFetchingResultsTable.html">io.github.ricardorlg.devicefarm.tractor.controller.WhenFetchingResultsTable</a>
-</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0.035s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm.html">io.github.ricardorlg.devicefarm.tractor.controller.WhenUploadingArtifactsToDeviceFarm</a>
-</td>
-<td>10</td>
-<td>0</td>
-<td>0</td>
-<td>0.184s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithAWSDevicePools.html">io.github.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithAWSDevicePools</a>
-</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-<td>0.009s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmProjects.html">io.github.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmProjects</a>
-</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>0.004s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmRuns.html">io.github.ricardorlg.devicefarm.tractor.controller.WhenWorkingWithDeviceFarmRuns</a>
-</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>0.026s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>1.266s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest</a>
-</td>
-<td>3</td>
-<td>0</td>
-<td>0</td>
-<td>0.096s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest</a>
-</td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-<td>0.372s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest</a>
-</td>
-<td>12</td>
-<td>0</td>
-<td>0</td>
-<td>0.395s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmTractorLoggerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmTractorLoggerTest</a>
-</td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>0.892s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest</a>
-</td>
-<td>14</td>
-<td>0</td>
-<td>0</td>
-<td>0.338s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest</a>
-</td>
-<td>11</td>
-<td>0</td>
-<td>0</td>
-<td>0.846s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest.html">io.github.ricardorlg.devicefarm.tractor.runner.DeviceFarmTractorRunnerTest</a>
-</td>
-<td>24</td>
-<td>0</td>
-<td>0</td>
-<td>0.112s</td>
-<td class="success">100%</td>
-</tr>
-<tr>
-<td class="success">
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest.html">io.github.ricardorlg.devicefarm.tractor.utils.HelperMethodsTest</a>
-</td>
-<td>15</td>
-<td>0</td>
-<td>0</td>
-<td>0.023s</td>
-<td class="success">100%</td>
+<td>0.002s</td>
+<td class="failures">0%</td>
 </tr>
 </tbody>
 </table>
@@ -316,7 +158,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.4.2</a> at Jun 9, 2022, 10:33:51 PM</p>
+<a href="http://www.gradle.org">Gradle 7.4.2</a> at Jun 10, 2022, 1:38:04 PM</p>
 </div>
 </div>
 </body>
