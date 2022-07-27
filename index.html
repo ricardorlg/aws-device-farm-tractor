@@ -26,7 +26,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">4</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">5.120s</div>
+<div class="counter">4.690s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">96%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,13 +58,37 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Packages</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Classes</a>
+<a href="#tab1">Packages</a>
+</li>
+<li>
+<a href="#tab2">Classes</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest.html">DefaultDeviceFarmArtifactsHandlerTest</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest.html#When fetching the artifacts of a test execution it should return them as a right">When fetching the artifacts of a test execution it should return them as a right</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest.html">DefaultDeviceFarmDevicePoolsHandlerTest</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest.html#When fetching device pools from AWS device farm, it should return the associated device pools of a given project as a right">When fetching device pools from AWS device farm, it should return the associated device pools of a given project as a right</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest.html">DefaultDeviceFarmProjectsHandlerTest</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest.html#When fetching projects from AWS, it should return the project as a right">When fetching projects from AWS, it should return the project as a right</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">DefaultDeviceFarmRunsHandlerTest</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html#When fetching all the jobs associated to a Run it should return them as a right">When fetching all the jobs associated to a Run it should return them as a right</a>
+</li>
+</ul>
+</div>
+<div id="tab1" class="tab">
 <h2>Packages</h2>
 <table>
 <thead>
@@ -85,18 +109,18 @@
 <td>42</td>
 <td>0</td>
 <td>0</td>
-<td>0.614s</td>
+<td>0.607s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="packages/io.github.ricardorlg.devicefarm.tractor.controller.services.html">io.github.ricardorlg.devicefarm.tractor.controller.services</a>
 </td>
 <td>41</td>
+<td>4</td>
 <td>0</td>
-<td>0</td>
-<td>3.388s</td>
-<td class="success">100%</td>
+<td>2.946s</td>
+<td class="failures">90%</td>
 </tr>
 <tr>
 <td class="success">
@@ -105,7 +129,7 @@
 <td>11</td>
 <td>0</td>
 <td>0</td>
-<td>0.969s</td>
+<td>0.990s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -115,7 +139,7 @@
 <td>24</td>
 <td>0</td>
 <td>0</td>
-<td>0.121s</td>
+<td>0.123s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -125,13 +149,13 @@
 <td>15</td>
 <td>0</td>
 <td>0</td>
-<td>0.028s</td>
+<td>0.024s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Classes</h2>
 <table>
 <thead>
@@ -152,7 +176,7 @@
 <td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.096s</td>
+<td>0.098s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -162,7 +186,7 @@
 <td>14</td>
 <td>0</td>
 <td>0</td>
-<td>0.250s</td>
+<td>0.264s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -172,7 +196,7 @@
 <td>2</td>
 <td>0</td>
 <td>0</td>
-<td>0.033s</td>
+<td>0.029s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -182,7 +206,7 @@
 <td>10</td>
 <td>0</td>
 <td>0</td>
-<td>0.189s</td>
+<td>0.180s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -192,7 +216,7 @@
 <td>5</td>
 <td>0</td>
 <td>0</td>
-<td>0.009s</td>
+<td>0.007s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -202,7 +226,7 @@
 <td>4</td>
 <td>0</td>
 <td>0</td>
-<td>0.010s</td>
+<td>0.006s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -212,48 +236,48 @@
 <td>4</td>
 <td>0</td>
 <td>0</td>
-<td>0.027s</td>
+<td>0.023s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest</a>
 </td>
 <td>3</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>1.182s</td>
-<td class="success">100%</td>
+<td>1.036s</td>
+<td class="failures">66%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest</a>
 </td>
 <td>3</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0.110s</td>
-<td class="success">100%</td>
+<td>0.096s</td>
+<td class="failures">66%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest</a>
 </td>
 <td>5</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0.375s</td>
-<td class="success">100%</td>
+<td>0.366s</td>
+<td class="failures">80%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest</a>
 </td>
 <td>12</td>
+<td>1</td>
 <td>0</td>
-<td>0</td>
-<td>0.482s</td>
-<td class="success">100%</td>
+<td>0.343s</td>
+<td class="failures">91%</td>
 </tr>
 <tr>
 <td class="success">
@@ -262,7 +286,7 @@
 <td>4</td>
 <td>0</td>
 <td>0</td>
-<td>0.845s</td>
+<td>0.770s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -272,7 +296,7 @@
 <td>14</td>
 <td>0</td>
 <td>0</td>
-<td>0.394s</td>
+<td>0.335s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -282,7 +306,7 @@
 <td>11</td>
 <td>0</td>
 <td>0</td>
-<td>0.969s</td>
+<td>0.990s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -292,7 +316,7 @@
 <td>24</td>
 <td>0</td>
 <td>0</td>
-<td>0.121s</td>
+<td>0.123s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -302,7 +326,7 @@
 <td>15</td>
 <td>0</td>
 <td>0</td>
-<td>0.028s</td>
+<td>0.024s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
@@ -316,7 +340,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.5</a> at Jul 27, 2022, 12:56:33 PM</p>
+<a href="http://www.gradle.org">Gradle 7.5</a> at Jul 27, 2022, 3:20:37 PM</p>
 </div>
 </div>
 </body>
