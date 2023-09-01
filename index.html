@@ -26,7 +26,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">9</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">5.254s</div>
+<div class="counter">4.639s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">93%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,13 +58,57 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Packages</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Classes</a>
+<a href="#tab1">Packages</a>
+</li>
+<li>
+<a href="#tab2">Classes</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should download all the recorded videos even if any of them fails">It should download all the recorded videos even if any of them fails</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should download all the reports even if any of them fails">It should download all the reports even if any of them fails</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should download all the test reports and recorded videos associated to the test Run">It should download all the test reports and recorded videos associated to the test Run</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should download an AWS Device farm artifact of a job execution depending of its type">It should download an AWS Device farm artifact of a job execution depending of its type</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should download the recorded videos and test reports even if any of them fails">It should download the recorded videos and test reports even if any of them fails</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should log a message when the searched artifact type is not found in the job artifacts">It should log a message when the searched artifact type is not found in the job artifacts</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should log an error message when downloading a recorded video or test report fails">It should log an error message when downloading a recorded video or test report fails</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should not fail if there is no artifacts to download">It should not fail if there is no artifacts to download</a>
+</li>
+<li>
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">WhenDownloadingAwsDeviceFarmArtifacts</a>.
+<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html#It should return a DeviceFarmTractorErrorIllegalArgumentException if the searched artifact type is not supported">It should return a DeviceFarmTractorErrorIllegalArgumentException if the searched artifact type is not supported</a>
+</li>
+</ul>
+</div>
+<div id="tab1" class="tab">
 <h2>Packages</h2>
 <table>
 <thead>
@@ -79,14 +123,14 @@
 </thead>
 <tbody>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="packages/io.github.ricardorlg.devicefarm.tractor.controller.html">io.github.ricardorlg.devicefarm.tractor.controller</a>
 </td>
 <td>42</td>
+<td>9</td>
 <td>0</td>
-<td>0</td>
-<td>0.721s</td>
-<td class="success">100%</td>
+<td>1.057s</td>
+<td class="failures">78%</td>
 </tr>
 <tr>
 <td class="success">
@@ -95,7 +139,7 @@
 <td>41</td>
 <td>0</td>
 <td>0</td>
-<td>3.545s</td>
+<td>2.679s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -105,7 +149,7 @@
 <td>11</td>
 <td>0</td>
 <td>0</td>
-<td>0.820s</td>
+<td>0.716s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -115,7 +159,7 @@
 <td>24</td>
 <td>0</td>
 <td>0</td>
-<td>0.143s</td>
+<td>0.156s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -125,13 +169,13 @@
 <td>15</td>
 <td>0</td>
 <td>0</td>
-<td>0.025s</td>
+<td>0.031s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Classes</h2>
 <table>
 <thead>
@@ -152,18 +196,18 @@
 <td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.090s</td>
+<td>0.205s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts.html">io.github.ricardorlg.devicefarm.tractor.controller.WhenDownloadingAwsDeviceFarmArtifacts</a>
 </td>
 <td>14</td>
+<td>9</td>
 <td>0</td>
-<td>0</td>
-<td>0.320s</td>
-<td class="success">100%</td>
+<td>0.575s</td>
+<td class="failures">35%</td>
 </tr>
 <tr>
 <td class="success">
@@ -172,7 +216,7 @@
 <td>2</td>
 <td>0</td>
 <td>0</td>
-<td>0.039s</td>
+<td>0.040s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -182,7 +226,7 @@
 <td>10</td>
 <td>0</td>
 <td>0</td>
-<td>0.227s</td>
+<td>0.190s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -192,7 +236,7 @@
 <td>5</td>
 <td>0</td>
 <td>0</td>
-<td>0.008s</td>
+<td>0.014s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -212,7 +256,7 @@
 <td>4</td>
 <td>0</td>
 <td>0</td>
-<td>0.030s</td>
+<td>0.026s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -222,7 +266,7 @@
 <td>3</td>
 <td>0</td>
 <td>0</td>
-<td>1.233s</td>
+<td>0.812s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -232,7 +276,7 @@
 <td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.083s</td>
+<td>0.090s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -242,7 +286,7 @@
 <td>5</td>
 <td>0</td>
 <td>0</td>
-<td>0.377s</td>
+<td>0.344s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -252,7 +296,7 @@
 <td>12</td>
 <td>0</td>
 <td>0</td>
-<td>0.503s</td>
+<td>0.427s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -262,7 +306,7 @@
 <td>4</td>
 <td>0</td>
 <td>0</td>
-<td>0.957s</td>
+<td>0.725s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -272,7 +316,7 @@
 <td>14</td>
 <td>0</td>
 <td>0</td>
-<td>0.392s</td>
+<td>0.281s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -282,7 +326,7 @@
 <td>11</td>
 <td>0</td>
 <td>0</td>
-<td>0.820s</td>
+<td>0.716s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -292,7 +336,7 @@
 <td>24</td>
 <td>0</td>
 <td>0</td>
-<td>0.143s</td>
+<td>0.156s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -302,7 +346,7 @@
 <td>15</td>
 <td>0</td>
 <td>0</td>
-<td>0.025s</td>
+<td>0.031s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
@@ -316,7 +360,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.0.2</a> at Aug 31, 2023, 11:08:04 PM</p>
+<a href="http://www.gradle.org">Gradle 8.0.2</a> at Sep 1, 2023, 10:54:46 PM</p>
 </div>
 </div>
 </body>
