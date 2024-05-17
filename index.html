@@ -26,7 +26,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">23</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">3.403s</div>
+<div class="counter">3.363s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">82%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,113 +58,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Packages</a>
 </li>
 <li>
-<a href="#tab1">Packages</a>
-</li>
-<li>
-<a href="#tab2">Classes</a>
+<a href="#tab1">Classes</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<ul class="linkList">
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest.html">DefaultDeviceFarmArtifactsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest.html#When fetching the artifacts of a test execution if no run arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left">When fetching the artifacts of a test execution if no run arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest.html">DefaultDeviceFarmDevicePoolsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest.html#When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided">When fetching device pools from AWS device farm, project ARN is mandatory, a left should be returned if it is not provided</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest.html">DefaultDeviceFarmProjectsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest.html#When creating a project in AWS device farm, if project name is empty an error should be returned as a left">When creating a project in AWS device farm, if project name is empty an error should be returned as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">DefaultDeviceFarmRunsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html#When no app arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left">When no app arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">DefaultDeviceFarmRunsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html#When no device pool arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left">When no device pool arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">DefaultDeviceFarmRunsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html#When no project arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left">When no project arn is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">DefaultDeviceFarmRunsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html#When no run ARN is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left">When no run ARN is provided it should return a DeviceFarmTractorErrorIllegalArgumentException as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">DefaultDeviceFarmRunsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html#When test execution type is not supported it should return a DeviceFarmTractorErrorIllegalArgumentException as a left">When test execution type is not supported it should return a DeviceFarmTractorErrorIllegalArgumentException as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html">DefaultDeviceFarmUploadArtifactsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html#When creating AWS device farm upload, artifact name is mandatory, a left should be returned if not provided">When creating AWS device farm upload, artifact name is mandatory, a left should be returned if not provided</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html">DefaultDeviceFarmUploadArtifactsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html#When creating AWS device farm upload, project ARN is mandatory, a left should be returned if not provided">When creating AWS device farm upload, project ARN is mandatory, a left should be returned if not provided</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html">DefaultDeviceFarmUploadArtifactsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html#When deleting an Upload if no arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left">When deleting an Upload if no arn is provided a DeviceFarmTractorErrorIllegalArgumentException should be returned as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html">DefaultDeviceFarmUploadArtifactsHandlerTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html#When fetching an AWS device farm upload, it should return an error as a left if upload ARN is empty">When fetching an AWS device farm upload, it should return an error as a left if upload ARN is empty</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When accessKeyId and secretAccessKey are provided, it should return a runner that uses a device farm client with basic credentials">When accessKeyId and secretAccessKey are provided, it should return a runner that uses a device farm client with basic credentials</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When accessKeyId, secretAccessKey and region name are provided, it should return a runner that uses a device farm client with basic credentials and the provided region">When accessKeyId, secretAccessKey and region name are provided, it should return a runner that uses a device farm client with basic credentials and the provided region</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When accessKeyId, secretAccessKey, session token and region name are provided, it should return a runner that uses a device farm client with basic credentials, the session token and the provided region">When accessKeyId, secretAccessKey, session token and region name are provided, it should return a runner that uses a device farm client with basic credentials, the session token and the provided region</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When an error happens, it should return the exception wrapped as a left">When an error happens, it should return the exception wrapped as a left</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When basic credentials and sessionToken are provided, it should return a runner that uses a device farm client with the basic credentials and session token">When basic credentials and sessionToken are provided, it should return a runner that uses a device farm client with the basic credentials and session token</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When creating a runner without credentials and region but with a given profile name, it should return a runner that uses a device farm client with default configuration using given profile">When creating a runner without credentials and region but with a given profile name, it should return a runner that uses a device farm client with default configuration using given profile</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When creating a runner without credentials and region, it should return a runner that uses a device farm client with default configuration">When creating a runner without credentials and region, it should return a runner that uses a device farm client with default configuration</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When creating a runner without credentials but with region, it should return a runner that uses a device farm client with default configuration but that use the provided region">When creating a runner without credentials but with region, it should return a runner that uses a device farm client with default configuration but that use the provided region</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When only accessKeyId is provided, it should return a runner that uses a device farm client with default configuration">When only accessKeyId is provided, it should return a runner that uses a device farm client with default configuration</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When only secretAccessKey is provided, it should return a runner that uses a device farm client with default configuration">When only secretAccessKey is provided, it should return a runner that uses a device farm client with default configuration</a>
-</li>
-<li>
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">DeviceFarmTractorFactoryTest</a>.
-<a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html#When sessionToken is provided but no credentials, it should return a runner that uses a device farm client with default configuration">When sessionToken is provided but no credentials, it should return a runner that uses a device farm client with default configuration</a>
-</li>
-</ul>
-</div>
-<div id="tab1" class="tab">
 <h2>Packages</h2>
 <table>
 <thead>
@@ -185,28 +85,28 @@
 <td>42</td>
 <td>0</td>
 <td>0</td>
-<td>0.612s</td>
+<td>0.567s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
 <a href="packages/io.github.ricardorlg.devicefarm.tractor.controller.services.html">io.github.ricardorlg.devicefarm.tractor.controller.services</a>
 </td>
 <td>41</td>
-<td>12</td>
 <td>0</td>
-<td>2.207s</td>
-<td class="failures">70%</td>
+<td>0</td>
+<td>2.125s</td>
+<td class="success">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
 <a href="packages/io.github.ricardorlg.devicefarm.tractor.factory.html">io.github.ricardorlg.devicefarm.tractor.factory</a>
 </td>
 <td>11</td>
-<td>11</td>
 <td>0</td>
-<td>0.503s</td>
-<td class="failures">0%</td>
+<td>0</td>
+<td>0.591s</td>
+<td class="success">100%</td>
 </tr>
 <tr>
 <td class="success">
@@ -215,7 +115,7 @@
 <td>24</td>
 <td>0</td>
 <td>0</td>
-<td>0.068s</td>
+<td>0.067s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -231,7 +131,7 @@
 </tbody>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Classes</h2>
 <table>
 <thead>
@@ -252,7 +152,7 @@
 <td>3</td>
 <td>0</td>
 <td>0</td>
-<td>0.073s</td>
+<td>0.068s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -262,7 +162,7 @@
 <td>14</td>
 <td>0</td>
 <td>0</td>
-<td>0.302s</td>
+<td>0.253s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -272,7 +172,7 @@
 <td>2</td>
 <td>0</td>
 <td>0</td>
-<td>0.027s</td>
+<td>0.036s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -282,7 +182,7 @@
 <td>10</td>
 <td>0</td>
 <td>0</td>
-<td>0.176s</td>
+<td>0.180s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -292,7 +192,7 @@
 <td>5</td>
 <td>0</td>
 <td>0</td>
-<td>0.007s</td>
+<td>0.004s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -312,48 +212,48 @@
 <td>4</td>
 <td>0</td>
 <td>0</td>
-<td>0.023s</td>
+<td>0.022s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmArtifactsHandlerTest</a>
 </td>
 <td>3</td>
-<td>1</td>
 <td>0</td>
-<td>0.645s</td>
-<td class="failures">66%</td>
+<td>0</td>
+<td>0.603s</td>
+<td class="success">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmDevicePoolsHandlerTest</a>
 </td>
 <td>3</td>
-<td>1</td>
 <td>0</td>
-<td>0.084s</td>
-<td class="failures">66%</td>
+<td>0</td>
+<td>0.064s</td>
+<td class="success">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmProjectsHandlerTest</a>
 </td>
 <td>5</td>
-<td>1</td>
 <td>0</td>
-<td>0.284s</td>
-<td class="failures">80%</td>
+<td>0</td>
+<td>0.252s</td>
+<td class="success">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmRunsHandlerTest</a>
 </td>
 <td>12</td>
-<td>5</td>
 <td>0</td>
-<td>0.297s</td>
-<td class="failures">58%</td>
+<td>0</td>
+<td>0.283s</td>
+<td class="success">100%</td>
 </tr>
 <tr>
 <td class="success">
@@ -362,28 +262,28 @@
 <td>4</td>
 <td>0</td>
 <td>0</td>
-<td>0.657s</td>
+<td>0.646s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest.html">io.github.ricardorlg.devicefarm.tractor.controller.services.DefaultDeviceFarmUploadArtifactsHandlerTest</a>
 </td>
 <td>14</td>
-<td>4</td>
 <td>0</td>
-<td>0.240s</td>
-<td class="failures">71%</td>
+<td>0</td>
+<td>0.277s</td>
+<td class="success">100%</td>
 </tr>
 <tr>
-<td class="failures">
+<td class="success">
 <a href="classes/io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest.html">io.github.ricardorlg.devicefarm.tractor.factory.DeviceFarmTractorFactoryTest</a>
 </td>
 <td>11</td>
-<td>11</td>
 <td>0</td>
-<td>0.503s</td>
-<td class="failures">0%</td>
+<td>0</td>
+<td>0.591s</td>
+<td class="success">100%</td>
 </tr>
 <tr>
 <td class="success">
@@ -392,7 +292,7 @@
 <td>24</td>
 <td>0</td>
 <td>0</td>
-<td>0.068s</td>
+<td>0.067s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -416,7 +316,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.0.2</a> at May 16, 2024, 7:43:07 PM</p>
+<a href="http://www.gradle.org">Gradle 8.0.2</a> at May 17, 2024, 3:16:14 AM</p>
 </div>
 </div>
 </body>
